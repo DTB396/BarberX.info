@@ -3,6 +3,7 @@
 Barber Cam is being built with a stewardship-first approach. The project’s legitimacy depends on restraint, transparency, and due process.
 
 ## Core Commitments
+
 - **Truthful record:** discourage selective editing and misleading presentation.
 - **Non-escalation:** recording must never be used to provoke conflict.
 - **Dignity:** avoid humiliation, harassment, or public shaming.
@@ -11,6 +12,7 @@ Barber Cam is being built with a stewardship-first approach. The project’s leg
 - **Due process:** support fair outcomes; do not substitute for lawful procedures.
 
 ## Prohibited Uses
+
 - Covert surveillance or stalking
 - Harassment, intimidation, or targeted humiliation
 - Monetizing or trading sensitive recordings
@@ -18,7 +20,9 @@ Barber Cam is being built with a stewardship-first approach. The project’s leg
 - Incitement, vigilantism, or interference with emergencies
 
 ## Safety First
+
 If recording increases immediate risk, de-escalation and safety come first.
 
 ## Status
+
 This document is a draft. Implementation details will be released after validation and review.
