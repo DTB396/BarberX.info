@@ -47,24 +47,25 @@ def fetch_pdf(url: str) -> bytes:
         if content_length:
             try:
                 size = int(content_length)
+                if size > MAX_PDF_SIZE:
+                    raise ValueError(f"PDF file too large: {size} bytes (max: {MAX_PDF_SIZE})")
             except (ValueError, TypeError):
                 # If content length is invalid, proceed but enforce size limit during read
                 pass
-            else:
-                if size > MAX_PDF_SIZE:
-                    raise ValueError(f"PDF file too large: {size} bytes (max: {MAX_PDF_SIZE})")
         
         # Read data in chunks with size limit
-        data = b""
+        chunks = []
+        total_size = 0
         while True:
             chunk = r.read(CHUNK_SIZE)
             if not chunk:
                 break
-            data += chunk
-            if len(data) > MAX_PDF_SIZE:
+            chunks.append(chunk)
+            total_size += len(chunk)
+            if total_size > MAX_PDF_SIZE:
                 raise ValueError(f"PDF file exceeds maximum size of {MAX_PDF_SIZE} bytes")
         
-        return data
+        return b"".join(chunks)
 
 def extract_text_from_pdf(pdf_bytes: bytes) -> tuple[str, int]:
     reader = PdfReader(io.BytesIO(pdf_bytes))
