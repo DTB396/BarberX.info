@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-# HawkEye v6 config
-
 baseDir = "."
-
-# Prefer inlineHeader OR headerPath (inlineHeader wins)
-inlineHeader = """\
-Copyright © 2024–2026 Faith Frontier. All rights reserved.
-PROPRIETARY — See LICENSE.\
-"""
-
-# Strict match (your “SOLO STRICT”)
-strictCheck = true
-
-# Let HawkEye handle typical excludes + language comment styles
-useDefaultExcludes = true
-useDefaultMapping = true
-
-# Only scan what you care about
-=======
-﻿baseDir = "."
 strictCheck = true
 useDefaultExcludes = true
 useDefaultMapping = true
@@ -28,7 +8,6 @@ Copyright © 2024–2026 BARBER CAM, Faith Frontier Ecclesiastical Trust. All ri
 PROPRIETARY — See LICENSE.\
 """
 
->>>>>>> 5eca342 (Fix .licenserc.toml schema for license header checker)
 includes = [
   "**/*.py",
   "**/*.js",
@@ -48,10 +27,6 @@ includes = [
   "**/*.yml"
 ]
 
-<<<<<<< HEAD
-# Extra excludes beyond default ones (optional)
-=======
->>>>>>> 5eca342 (Fix .licenserc.toml schema for license header checker)
 excludes = [
   "**/node_modules/**",
   "**/.venv/**",
@@ -61,30 +36,4 @@ excludes = [
   "**/.git/**"
 ]
 
-<<<<<<< HEAD
-# Optional but nice: what HawkEye looks for
-keywords = ["copyright", "proprietary"]
-
-# Optional: values you can reference in templates (if you later switch to headerPath templates)
-[properties]
-inceptionYear = 2024
-[mapping]
-py = { lineComment = "#" }
-js = { lineComment = "//" }
-ts = { lineComment = "//" }
-tsx = { lineComment = "//" }
-jsx = { lineComment = "//" }
-go = { lineComment = "//" }
-rs = { lineComment = "//" }
-java = { lineComment = "//" }
-kt = { lineComment = "//" }
-c = { blockComment = ["/*", "*/"] }
-h = { blockComment = ["/*", "*/"] }
-cpp = { blockComment = ["/*", "*/"] }
-hpp = { blockComment = ["/*", "*/"] }
-sh = { lineComment = "#" }
-yaml = { lineComment = "#" }
-yml = { lineComment = "#" }
-=======
 mapping = { py="#", js="//", ts="//", tsx="//", jsx="//", go="//", rs="//", java="//", kt="//", c="/*", h="/*", cpp="/*", hpp="/*", sh="#", yaml="#", yml="#" }
->>>>>>> 5eca342 (Fix .licenserc.toml schema for license header checker)
