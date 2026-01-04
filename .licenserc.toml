@@ -36,4 +36,20 @@ excludes = [
   "**/.git/**"
 ]
 
-mapping = { py="#", js="//", ts="//", tsx="//", jsx="//", go="//", rs="//", java="//", kt="//", c="/*", h="/*", cpp="/*", hpp="/*", sh="#", yaml="#", yml="#" }
+[mapping]
+py   = "#"
+js   = "//"
+ts   = "//"
+tsx  = "//"
+jsx  = "//"
+go   = "//"
+rs   = "//"
+java = "//"
+kt   = "//"
+c    = "/*"
+h    = "/*"
+cpp  = "/*"
+hpp  = "/*"
+sh   = "#"
+yaml = "#"
+yml  = "#"
