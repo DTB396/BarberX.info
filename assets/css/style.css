@@ -24,7 +24,7 @@
 
 <script>
 (() => {
-  const MIN_RATIO = 4.5; // 4.5 = WCAG AA for normal text (3.0 for large text)
+  const MIN_RATIO = 4.5; // WCAG AA minimum contrast ratio (applied to all text sizes here)
 
   // Which elements to auto-check:
   // Add data-contrast="auto" to anything critical (recommended),
