@@ -1472,3 +1472,90 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg);
   }
 }
+
+/* ==========================================================================
+   MARKDOWN / DOCS PAGES
+   ========================================================================== */
+
+.md{
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.7;
+}
+
+/* Header */
+.md-header{
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+}
+
+.md-title{
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  margin: 0 0 .75rem 0;
+}
+
+.md-lead{
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+/* Content */
+.md-content h2{
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  border-left: 4px solid var(--accent);
+  padding-left: .75rem;
+}
+
+.md-content h3{
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+  font-size: 1.25rem;
+}
+
+.md-content p{
+  margin: 1rem 0;
+}
+
+.md-content ul,
+.md-content ol{
+  margin: 1rem 0 1rem 1.25rem;
+}
+
+.md-content li{
+  margin: .4rem 0;
+}
+
+/* Code */
+.md-content code{
+  background: var(--surface-2);
+  padding: .15em .35em;
+  border-radius: 4px;
+  font-size: .95em;
+}
+
+.md-content pre{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* Footer */
+.md-footer{
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.md-meta{
+  font-size: .9rem;
+  color: var(--text-muted);
+}
