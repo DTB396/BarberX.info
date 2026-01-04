@@ -197,22 +197,8 @@
   --focus: 0 0 0 3px rgba(29,78,216,.35);
 }
 
-/* DARK (system) */
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg: #0b1220;
-    --surface: rgba(255,255,255,.06);
-    --surface-2: rgba(255,255,255,.10);
-    --text: #ffffff;
-    --text-muted: rgba(255,255,255,.74);
-    --border: rgba(255,255,255,.16);
-
-    --shadow: 0 12px 36px rgba(0,0,0,.55);
-
-    --focus: 0 0 0 3px rgba(59,130,246,.40);
-  }
-}
-
+/* Dark theme overrides for these tokens are defined in the main dark mode
+   section later in this file (around lines 1605–1671). */
 /* Base application of tokens */
 html, body{
   background: var(--bg);
