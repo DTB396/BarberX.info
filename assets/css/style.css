@@ -496,37 +496,48 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.barber-pole {
-  width: 40px;
-  height: 120px;
-  background: #fff;
-  border-radius: 20px;
+.barber-pole-container {
+  width: 100%;
+  max-width: 100px;
   margin: 0 auto 2rem;
-  overflow: hidden;
-  position: relative;
+  perspective: 1000px;
 }
 
-.pole-stripes {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--accent) 0px,
-    var(--accent) 10px,
-    #fff 10px,
-    #fff 20px,
-    var(--accent-blue) 20px,
-    var(--accent-blue) 30px,
-    #fff 30px,
-    #fff 40px
-  );
-  background-size: 200% 200%;
-  animation: poleRotate 3s linear infinite;
+.barber-pole-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes poleRotate {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 100%; }
+.pole-spin {
+  animation: rotatePole 4s linear infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+@keyframes rotatePole {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .pole-spin {
+    animation: none;
+    opacity: 0.7;
+  }
+  
+  .badge-dot,
+  .scroll-line,
+  .progress-bar,
+  .indicator-pulse {
+    animation: none !important;
+  }
 }
 
 .visual-text .est {
