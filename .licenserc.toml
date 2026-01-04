@@ -12,6 +12,12 @@ strictCheck = true
 # Let HawkEye pick correct comment style per language/extension
 useDefaultMapping = true
 
+# Explicitly pin comment style for C/C++-family files to block comments
+[mappings]
+"**/*.c"   = "block"
+"**/*.h"   = "block"
+"**/*.cpp" = "block"
+"**/*.hpp" = "block"
 # Keep the default excludes too (good hygiene)
 useDefaultExcludes = true
 
