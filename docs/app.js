@@ -49,6 +49,31 @@ function scoreMatch(query, text) {
   return score;
 }
 
+/**
+ * Renders the search results for the given query.
+ *
+ * This function:
+ * - Scores each item in the global `data` array using {@link scoreMatch},
+ *   based on the query, title, case ID, tags, and text/snippet content.
+ * - Filters out items with zero score when a non-empty query is provided.
+ * - Sorts the remaining items by descending score and limits to the top 50.
+ * - Updates the `$meta` element with result and index counts.
+ * - Populates the `$results` element with result cards.
+ *
+ * Each element in the `data` array is expected to be an object with:
+ * - `title` {string} Optional human-readable title.
+ * - `caseId` {string} Optional identifier shown as a badge.
+ * - `tags` {string[]} Optional list of short tag strings.
+ * - `snippet` {string} Optional text snippet to display.
+ * - `text` {string} Optional full text used for scoring if present.
+ * - `ocrNeeded` {boolean} Optional flag; when true, shows an "OCR needed" badge.
+ * - `ok` {boolean} Optional flag; when falsy, shows an "Index error" badge.
+ * - `error` {string} Optional error message displayed when present.
+ * - `url` {string} URL to the underlying PDF resource.
+ *
+ * @param {string} query - The search query string; may be empty or whitespace.
+ *                         An empty query shows up to 50 unfiltered items.
+ */
 function render(query) {
   const q = (query || "").trim();
   const rows = data
