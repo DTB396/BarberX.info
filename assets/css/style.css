@@ -1560,8 +1560,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .md-content pre {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 1rem;
   overflow-x: auto;
   border-radius: var(--radius-sm);
