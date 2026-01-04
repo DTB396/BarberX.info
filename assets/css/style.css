@@ -1540,7 +1540,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: .95em;
 }
 
-.md-content pre{
+.md-content pre {
   background: var(--surface);
   border: 1px solid var(--border);
   padding: 1rem;
