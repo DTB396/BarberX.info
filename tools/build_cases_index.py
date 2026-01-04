@@ -21,6 +21,9 @@ MAX_SNIPPET_LENGTH = 240
 # Maximum PDF file size in bytes (50 MB) to prevent memory exhaustion
 MAX_PDF_SIZE = 50 * 1024 * 1024
 
+# Chunk size for reading PDF data in bytes
+CHUNK_SIZE = 8192
+
 # Timeout for PDF downloads in seconds
 PDF_DOWNLOAD_TIMEOUT = 60
 
@@ -53,15 +56,13 @@ def fetch_pdf(url: str) -> bytes:
         
         # Read data in chunks with size limit
         data = b""
-        chunk_size = 8192
-        while len(data) < MAX_PDF_SIZE:
-            chunk = r.read(chunk_size)
+        while True:
+            chunk = r.read(CHUNK_SIZE)
             if not chunk:
                 break
             data += chunk
-        
-        if len(data) > MAX_PDF_SIZE:
-            raise ValueError(f"PDF file exceeds maximum size of {MAX_PDF_SIZE} bytes")
+            if len(data) > MAX_PDF_SIZE:
+                raise ValueError(f"PDF file exceeds maximum size of {MAX_PDF_SIZE} bytes")
         
         return data
 
