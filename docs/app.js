@@ -139,7 +139,7 @@ function sanitizeUrl(url) {
   try {
     const parsed = new URL(url, window.location.href);
     if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-      return url;
+      return parsed.href;
     }
   } catch (e) {
     // Invalid URL
