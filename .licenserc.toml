@@ -4,7 +4,7 @@ baseDir = "."
 
 # Prefer inlineHeader OR headerPath (inlineHeader wins)
 inlineHeader = """\
-Copyright © 2024–2026 Faith Frontier Ecclesiastical Trust. All rights reserved.
+Copyright © 2024–2026 Faith Frontier. All rights reserved.
 PROPRIETARY — See LICENSE.\
 """
 
