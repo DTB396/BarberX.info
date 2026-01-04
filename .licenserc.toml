@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HawkEye v6 config
 
 baseDir = "."
@@ -16,6 +17,18 @@ useDefaultExcludes = true
 useDefaultMapping = true
 
 # Only scan what you care about
+=======
+﻿baseDir = "."
+strictCheck = true
+useDefaultExcludes = true
+useDefaultMapping = true
+
+inlineHeader = """\
+Copyright © 2024–2026 BARBER CAM, Faith Frontier Ecclesiastical Trust. All rights reserved. 
+PROPRIETARY — See LICENSE.\
+"""
+
+>>>>>>> 5eca342 (Fix .licenserc.toml schema for license header checker)
 includes = [
   "**/*.py",
   "**/*.js",
@@ -35,7 +48,10 @@ includes = [
   "**/*.yml"
 ]
 
+<<<<<<< HEAD
 # Extra excludes beyond default ones (optional)
+=======
+>>>>>>> 5eca342 (Fix .licenserc.toml schema for license header checker)
 excludes = [
   "**/node_modules/**",
   "**/.venv/**",
@@ -45,6 +61,7 @@ excludes = [
   "**/.git/**"
 ]
 
+<<<<<<< HEAD
 # Optional but nice: what HawkEye looks for
 keywords = ["copyright", "proprietary"]
 
@@ -68,3 +85,6 @@ hpp = { blockComment = ["/*", "*/"] }
 sh = { lineComment = "#" }
 yaml = { lineComment = "#" }
 yml = { lineComment = "#" }
+=======
+mapping = { py="#", js="//", ts="//", tsx="//", jsx="//", go="//", rs="//", java="//", kt="//", c="/*", h="/*", cpp="/*", hpp="/*", sh="#", yaml="#", yml="#" }
+>>>>>>> 5eca342 (Fix .licenserc.toml schema for license header checker)
