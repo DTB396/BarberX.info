@@ -1541,7 +1541,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .md-content pre {
-  background: var(--surface);
+  background: var(--card);
   border: 1px solid var(--border);
   padding: 1rem;
   overflow-x: auto;
