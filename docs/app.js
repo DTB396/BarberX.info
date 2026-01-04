@@ -108,7 +108,7 @@ function render(query) {
         ${item.snippet ? `<div class="snip">${escapeHtml(item.snippet)}</div>` : ""}
         ${err}
         <div class="actions">
-          <a class="btn primary" href="${item.url}" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn primary" href="${sanitizeUrl(item.url)}" target="_blank" rel="noopener">Open PDF</a>
         </div>
       </div>
     `;
@@ -119,6 +119,45 @@ function escapeHtml(s) {
   return (s || "").replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
   }[c]));
+}
+
+/**
+ * Sanitizes a URL to ensure it uses a safe protocol (http or https) or is a safe relative path.
+ *
+ * This function validates URLs to prevent XSS attacks via malicious protocols (e.g., javascript:, data:).
+ * It accepts:
+ * - Absolute URLs with http: or https: protocols
+ * - Relative paths explicitly starting with /, ./, or ../
+ *
+ * All other URLs, including protocol-relative URLs (//), are rejected.
+ *
+ * @param {string} url - The URL to sanitize.
+ * @returns {string} The sanitized URL if it uses a safe protocol or is a safe relative path, or "#" otherwise.
+ */
+function sanitizeUrl(url) {
+  if (!url) return "#";
+  const trimmed = String(url).trim();
+  if (!trimmed) return "#";
+  
+  // Reject protocol-relative URLs (e.g., //malicious.com)
+  if (trimmed.startsWith("//")) return "#";
+  
+  // Allow explicit relative paths
+  if (trimmed.startsWith("/") || trimmed.startsWith("./") || trimmed.startsWith("../")) {
+    return trimmed;
+  }
+  
+  // Only allow URLs with explicit http or https protocol
+  try {
+    const parsed = new URL(trimmed);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return trimmed;
+    }
+  } catch {
+    // Invalid URL or relative path without explicit prefix - reject it
+  }
+  
+  return "#";
 }
 
 async function init() {
