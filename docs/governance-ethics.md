@@ -31,6 +31,8 @@ If recording increases immediate risk, de-escalation and safety come first.
 
 This document is a draft. Implementation details will be released after validation and review.
 
+  </section>
+
   <footer class="md-footer">
     <p class="md-meta">Last updated: <time datetime="2026-01-04">Jan 4, 2026</time></p>
   </footer>
