@@ -144,19 +144,19 @@ function sanitizeUrl(url) {
   
   // Try to parse the URL
   try {
-    // For relative URLs, use window.location.href as base
-    const parsed = new URL(trimmed, window.location.href);
+    // For absolute URLs (starting with http:// or https://)
+    if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+      const parsed = new URL(trimmed);
+      if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+        return trimmed;
+      }
+      return "#";
+    }
     
-    // Only allow http: and https: protocols
+    // For relative URLs, validate they parse correctly with base
+    const parsed = new URL(trimmed, window.location.href);
     if (parsed.protocol === "http:" || parsed.protocol === "https:") {
-      // For absolute URLs, verify they start with http:// or https://
-      if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
-        return trimmed;
-      }
-      // For relative URLs, return as-is (they were parsed successfully with base)
-      if (trimmed.startsWith("/") || trimmed.startsWith("./") || trimmed.startsWith("../")) {
-        return trimmed;
-      }
+      return trimmed;
     }
   } catch (e) {
     // Invalid URL format
