@@ -51,3 +51,20 @@ keywords = ["copyright", "proprietary"]
 # Optional: values you can reference in templates (if you later switch to headerPath templates)
 [properties]
 inceptionYear = 2024
+[mapping]
+py   = "#"
+js   = "//"
+ts   = "//"
+tsx  = "//"
+jsx  = "//"
+go   = "//"
+rs   = "//"
+java = "//"
+kt   = "//"
+c    = "/*"
+h    = "/*"
+cpp  = "/*"
+hpp  = "/*"
+sh   = "#"
+yaml = "#"
+yml  = "#"
