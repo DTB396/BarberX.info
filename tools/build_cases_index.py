@@ -71,16 +71,7 @@ if __name__ == "__main__":
 
         # Extract text layer
         try:
-            reader = PdfReader(io.BytesIO(pdf))
-            all_text = []
-            pages_with_text = 0
-            for i, page in enumerate(reader.pages):
-                t = page.extract_text() or ""
-                t = clean_text(t)
-                if t:
-                    pages_with_text += 1
-                    all_text.append(t)
-            text = "\n".join(all_text)
+            text, pages_with_text = extract_text_from_pdf(pdf)
         except Exception as e:
             index.append({
                 "caseId": case_id,
