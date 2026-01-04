@@ -108,7 +108,7 @@ function render(query) {
         ${item.snippet ? `<div class="snip">${escapeHtml(item.snippet)}</div>` : ""}
         ${err}
         <div class="actions">
-          <a class="btn primary" href="${item.url}" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn primary" href="${sanitizeUrl(item.url)}" target="_blank" rel="noopener">Open PDF</a>
         </div>
       </div>
     `;
@@ -119,6 +119,32 @@ function escapeHtml(s) {
   return (s || "").replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
   }[c]));
+}
+
+/**
+ * Sanitizes a URL to ensure it uses a safe protocol (http or https).
+ *
+ * @param {string} url - The URL to sanitize.
+ * @returns {string} The sanitized URL if it uses a safe protocol, or "#" otherwise.
+ */
+function sanitizeUrl(url) {
+  if (!url) return "#";
+  const trimmed = String(url).trim();
+  if (!trimmed) return "#";
+  
+  try {
+    const parsed = new URL(trimmed, window.location.href);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return trimmed;
+    }
+  } catch {
+    // Invalid URL, check if it's a relative URL
+    if (trimmed.startsWith("/") || trimmed.startsWith("./") || trimmed.startsWith("../")) {
+      return trimmed;
+    }
+  }
+  
+  return "#";
 }
 
 async function init() {
