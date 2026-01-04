@@ -2,6 +2,8 @@ const $q = document.getElementById("q");
 const $results = document.getElementById("results");
 const $meta = document.getElementById("meta");
 
+const MAX_DISPLAYED_TAGS = 6;
+
 let data = [];
 
 /**
@@ -91,7 +93,7 @@ function render(query) {
     : "Loading index…";
 
   $results.innerHTML = rows.map(({item, s}) => {
-    const tags = (item.tags || []).slice(0, 6);
+    const tags = (item.tags || []).slice(0, MAX_DISPLAYED_TAGS);
     const ocr = item.ocrNeeded ? `<span class="badge">OCR needed</span>` : "";
     const ok = item.ok ? "" : `<span class="badge">Index error</span>`;
     const err = item.error ? `<div class="snip">Index error: ${item.error}</div>` : "";
