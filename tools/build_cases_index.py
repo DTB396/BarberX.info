@@ -41,11 +41,24 @@ def fetch_pdf(url: str) -> bytes:
     with urlopen(req, timeout=PDF_DOWNLOAD_TIMEOUT) as r:
         # Check content length to prevent downloading files that are too large
         content_length = r.headers.get("Content-Length")
-        if content_length and int(content_length) > MAX_PDF_SIZE:
-            raise ValueError(f"PDF file too large: {int(content_length)} bytes (max: {MAX_PDF_SIZE})")
+        if content_length:
+            try:
+                size = int(content_length)
+                if size > MAX_PDF_SIZE:
+                    raise ValueError(f"PDF file too large: {size} bytes (max: {MAX_PDF_SIZE})")
+            except ValueError as e:
+                # If content length is invalid, proceed but enforce size limit during read
+                pass
         
-        # Read data with size limit
-        data = r.read(MAX_PDF_SIZE + 1)
+        # Read data in chunks with size limit
+        data = b""
+        chunk_size = 8192
+        while len(data) <= MAX_PDF_SIZE:
+            chunk = r.read(chunk_size)
+            if not chunk:
+                break
+            data += chunk
+        
         if len(data) > MAX_PDF_SIZE:
             raise ValueError(f"PDF file exceeds maximum size of {MAX_PDF_SIZE} bytes")
         
