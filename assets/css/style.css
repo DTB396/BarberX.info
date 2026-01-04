@@ -317,7 +317,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent);
   margin-bottom: 1rem;
   padding: 0.4rem 1rem;
-  background: var(--bg);
+  background: rgb(8, 99, 39);
   border-radius: 100px;
 }
 
