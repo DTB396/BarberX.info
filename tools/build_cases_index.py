@@ -1,4 +1,8 @@
-import json, re, sys, os, hashlib
+import hashlib
+import io
+import json
+import re
+import sys
 from pathlib import Path
 from urllib.request import urlopen, Request
 
@@ -10,6 +14,19 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MANIFEST = Path("cases/manifest.json")
 INDEX_OUT = OUT_DIR / "index.json"
+MAX_SNIPPET_LENGTH = 240
+
+# Maximum snippet length for text previews
+MAX_SNIPPET_LENGTH = 240
+
+# Maximum PDF file size in bytes (50 MB) to prevent memory exhaustion
+MAX_PDF_SIZE = 50 * 1024 * 1024
+
+# Chunk size for reading PDF data in bytes
+CHUNK_SIZE = 8192
+
+# Timeout for PDF downloads in seconds
+PDF_DOWNLOAD_TIMEOUT = 60
 
 def clean_text(s: str) -> str:
     s = s.replace("\x00", " ")
@@ -17,51 +34,40 @@ def clean_text(s: str) -> str:
     return s
 
 def sha1(s: str) -> str:
-    return hashlib.sha1(s.encode("utf-8", errors="ignore")).hexdigest()
+    return hashlib.sha1(s.encode("utf-8")).hexdigest()
 
-def fetch_pdf(url: str, max_size_mb: int = 100) -> bytes:
-    """
-    Fetch a PDF from a URL with size validation to prevent memory exhaustion.
+def fetch_pdf(url: str) -> bytes:
+    # Validate URL scheme for security
+    if not url.startswith(("http://", "https://")):
+        raise ValueError(f"Invalid URL scheme. Only http:// and https:// are allowed: {url}")
     
-    Args:
-        url: The URL to fetch
-        max_size_mb: Maximum allowed file size in megabytes (default: 100MB)
-    
-    Returns:
-        The PDF content as bytes
-    
-    Raises:
-        ValueError: If the file size exceeds max_size_mb
-        urllib.error.URLError: If the download fails
-    """
-    max_size_bytes = max_size_mb * 1024 * 1024
     req = Request(url, headers={"User-Agent": "BarberCamPreviewIndexer/1.0"})
-    
-    with urlopen(req, timeout=60) as r:
-        # Check Content-Length header if available
-        content_length = r.getheader('Content-Length')
+    with urlopen(req, timeout=PDF_DOWNLOAD_TIMEOUT) as r:
+        # Check content length to prevent downloading files that are too large
+        content_length = r.headers.get("Content-Length")
         if content_length:
-            file_size = int(content_length)
-            if file_size > max_size_bytes:
-                raise ValueError(f"PDF size ({file_size / 1024 / 1024:.1f}MB) exceeds maximum allowed size ({max_size_mb}MB)")
+            try:
+                size = int(content_length)
+            except ValueError:
+                # If content length is invalid, proceed but enforce size limit during read
+                size = None
+            
+            if size is not None and size > MAX_PDF_SIZE:
+                raise ValueError(f"PDF file too large: {size} bytes (max: {MAX_PDF_SIZE})")
         
-        # Read the content in chunks to avoid loading oversized files into memory
-        chunk_size = 8192  # 8KB chunks
+        # Read data in chunks with size limit
         chunks = []
         total_size = 0
-        
         while True:
-            chunk = r.read(chunk_size)
+            chunk = r.read(CHUNK_SIZE)
             if not chunk:
                 break
-            
-            total_size += len(chunk)
-            if total_size > max_size_bytes:
-                raise ValueError(f"PDF size exceeds maximum allowed size ({max_size_mb}MB)")
-            
             chunks.append(chunk)
+            total_size += len(chunk)
+            if total_size > MAX_PDF_SIZE:
+                raise ValueError(f"PDF file exceeds maximum size of {MAX_PDF_SIZE} bytes")
         
-        return b''.join(chunks)
+        return b"".join(chunks)
 
 def extract_text_from_pdf(pdf_bytes: bytes) -> tuple[str, int]:
     reader = PdfReader(io.BytesIO(pdf_bytes))
@@ -75,16 +81,14 @@ def extract_text_from_pdf(pdf_bytes: bytes) -> tuple[str, int]:
             parts.append(t)
     return ("\n".join(parts), pages_with_text)
 
-def snippet(text: str, max_len: int = 240) -> str:
+def snippet(text: str, max_len: int = MAX_SNIPPET_LENGTH) -> str:
     t = clean_text(text)
     return t[:max_len] + ("…" if len(t) > max_len else "")
 
 if __name__ == "__main__":
-    import io
-
     if not MANIFEST.exists():
         print(f"Missing {MANIFEST}. Create cases/manifest.json first.", file=sys.stderr)
-        sys.exit(2)
+        sys.exit(1)
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     index = []
@@ -110,16 +114,7 @@ if __name__ == "__main__":
 
         # Extract text layer
         try:
-            reader = PdfReader(io.BytesIO(pdf))
-            all_text = []
-            pages_with_text = 0
-            for i, page in enumerate(reader.pages):
-                t = page.extract_text() or ""
-                t = clean_text(t)
-                if t:
-                    pages_with_text += 1
-                    all_text.append(t)
-            text = "\n".join(all_text)
+            text, pages_with_text = extract_text_from_pdf(pdf)
         except Exception as e:
             index.append({
                 "caseId": case_id,
