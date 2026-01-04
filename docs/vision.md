@@ -326,5 +326,3 @@ We will build tools with restraint. We will operate with accountability. We will
 ---
 
 *This vision document reflects Barber Cam's commitment to ethical, lawful, and transparent operation. It is a living document, subject to refinement as we learn from experience and community feedback.*
-
-</article>

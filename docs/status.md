@@ -1,5 +1,3 @@
-<article class="md">
-
 # Barber Cam - Project Status
 
 ## Current Phase: Validation and Framework Development
@@ -124,5 +122,3 @@ For inquiries about Barber Cam development status:
 ---
 
 Last Updated: January 2026
-
-</article>
