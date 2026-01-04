@@ -1772,3 +1772,25 @@ h1, h2, h3, h4, h5, h6 {
     animation: none !important;
   }
 }
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: block;
+  max-height: 48px;
+  width: auto;
+}
+.footer-logo {
+  display: block;
+  max-width: 140px;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}

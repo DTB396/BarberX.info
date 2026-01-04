@@ -1,13 +1,3 @@
-{%- comment -%}
--------------------------------------------------------------
-Barber-Cam Hero – reusable include (Jekyll/Liquid)
-Optional params:
-include.cta_label (default: "Explore Now")
-include.cta_href (default: "#preview")
-include.badge (default: "Under Development")
--------------------------------------------------------------
-{%- endcomment -%}
-
 {%- assign cta_label = include.cta_label | default: "Explore Now" -%}
 {%- assign cta_href = include.cta_href | default: "#preview" -%}
 {%- assign badge = include.badge | default: "Under Development" -%}
@@ -26,13 +16,12 @@ Unique-ish suffix to avoid duplicate SVG ids if included more than once.
         <div class="stripe stripe-3"></div>
     </div>
 
-    <div class="container">
-        <!-- TEXT -->
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-dot" aria-hidden="true"></span>
-                <span>{{ badge }}</span>
-            </div>
+<div class="container">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Under Development</span>
+        </div>
 
             <h1 class="hero-title" id="hero-heading">
                 <span class="title-line">Citizen</span>

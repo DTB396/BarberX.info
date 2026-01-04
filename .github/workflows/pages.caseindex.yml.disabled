@@ -1,4 +1,4 @@
-name: Build and Deploy Pages (Case Index)
+name: Build and Deploy Pages
 
 on:
   push:
@@ -21,17 +21,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: false
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
           pip install pypdf
 
-      - name: Build case index
+      - name: Build case index (writes into docs/ or _data/)
         run: |
           if [ -f tools/build_cases_index.py ]; then
             python tools/build_cases_index.py
@@ -39,10 +45,19 @@ jobs:
             echo "tools/build_cases_index.py not found; skipping case index build step."
           fi
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: .
+          destination: ./_site
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: ./_site
 
   deploy:
     environment:
