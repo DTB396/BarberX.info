@@ -1,5 +1,3 @@
-<article class="md">
-
 # Barber-Cam Vision
 
 ## Our Mission
