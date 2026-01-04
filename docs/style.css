@@ -29,7 +29,7 @@ body {
 .wrap { max-width: 980px; margin: 0 auto; padding: 18px; }
 
 .brand { display: flex; gap: 14px; align-items: center; }
-.kicker { font-size: 12px; letter-spacing: .14em; color: var(--muted); }
+.kicker { font-size: 12px; letter-spacing: 0.14em; color: var(--muted); }
 h1 { margin: 2px 0 4px; font-size: 22px; }
 .sub { color: var(--muted); font-size: 14px; }
 
@@ -70,7 +70,7 @@ h1 { margin: 2px 0 4px; font-size: 22px; }
   border: 1px solid var(--border);
   color: var(--muted);
 }
-.snip { margin-top: 10px; color: var(--text); opacity: .9; font-size: 13px; line-height: 1.4; }
+.snip { margin-top: 10px; color: var(--text); opacity: 0.9; font-size: 13px; line-height: 1.4; }
 .actions { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
 a.btn {
   display: inline-block;
