@@ -9,7 +9,7 @@ PROPRIETARY — See LICENSE.\
 
 strictCheck = true
 useDefaultExcludes = true
-useDefaultMapping  = true
+useDefaultMapping = true
 
 includes = [
   "**/*.py",
