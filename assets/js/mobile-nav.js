@@ -28,16 +28,20 @@
     isExpanded ? closeNav() : openNav();
   });
 
-  // Close when a nav link is clicked (anchors AND normal links)
+  // Close when internal anchor links are clicked (same-page navigation)
   mainNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      closeNav();
-      // Optional: return focus to toggle for accessibility
-      requestAnimationFrame(() => {
-        if (navToggle && typeof navToggle.focus === "function") {
-          navToggle.focus();
-        }
-      });
+    link.addEventListener("click", (e) => {
+      // Only close for internal anchor links (hash navigation on same page)
+      const href = link.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        closeNav();
+        // Optional: return focus to toggle for accessibility
+        requestAnimationFrame(() => {
+          if (navToggle && typeof navToggle.focus === "function") {
+            navToggle.focus();
+          }
+        });
+      }
     });
   });
 

@@ -43,6 +43,12 @@
   --transition-fast: 0.2s var(--ease-smooth);
   --transition-base: 0.3s var(--ease-smooth);
   --transition-slow: 0.5s var(--ease-smooth);
+  
+  /* Layout */
+  --header-height: 96px;
+  
+  /* Badge Colors */
+  --badge-green: #0b5f2c;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -60,7 +66,7 @@ html {
   font-size: 16px;
 }
 
-section[id] { scroll-margin-top: 96px; } /* adjust to your header height */
+section[id] { scroll-margin-top: var(--header-height); }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -111,8 +117,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.15em;
 
   color: #ffffff;
-  background-color: #0b5f2c;
-  border: 1.5px solid #0b5f2c;
+  background-color: var(--badge-green);
+  border: 1.5px solid var(--badge-green);
 
   margin-bottom: 1rem;
   padding: 0.35rem 0.9rem;
