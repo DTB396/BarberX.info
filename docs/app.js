@@ -29,7 +29,7 @@ function render(query) {
   const rows = data
     .map(item => {
       const text = item.text || item.snippet || "";
-      const s = scoreMatch(q, `${item.title}\n${item.caseId}\n${item.tags?.join(" ")}\n${text}`);
+      const s = scoreMatch(q, `${item.title}\n${item.caseId}\n${(item.tags || []).join(" ")}\n${text}`);
       return { item, s };
     })
     .filter(x => q ? x.s > 0 : true)
