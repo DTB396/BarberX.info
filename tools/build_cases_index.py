@@ -47,11 +47,12 @@ def fetch_pdf(url: str) -> bytes:
         if content_length:
             try:
                 size = int(content_length)
-                if size > MAX_PDF_SIZE:
-                    raise ValueError(f"PDF file too large: {size} bytes (max: {MAX_PDF_SIZE})")
-            except (ValueError, TypeError):
+            except ValueError:
                 # If content length is invalid, proceed but enforce size limit during read
-                pass
+                size = None
+            
+            if size is not None and size > MAX_PDF_SIZE:
+                raise ValueError(f"PDF file too large: {size} bytes (max: {MAX_PDF_SIZE})")
         
         # Read data in chunks with size limit
         chunks = []
