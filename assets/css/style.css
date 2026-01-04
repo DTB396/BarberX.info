@@ -225,7 +225,7 @@ a:hover{ filter: brightness(1.05); }
 hr{ border-color: var(--border); }
 
 ::selection{
-  background: var(--bg);
+  background: var(--accent);
 }
 
 /* Surfaces */
