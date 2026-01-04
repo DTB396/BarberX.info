@@ -1470,3 +1470,98 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg);
   }
 }
+
+/* Markdown Theme Wrapper — additive only */
+.md {
+  max-width: 78ch;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  color: rgba(255,255,255,0.86);
+  line-height: 1.7;
+}
+
+.md h1, .md h2, .md h3, .md h4 {
+  color: rgba(255,255,255,0.96);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 2.2rem 0 1rem;
+}
+
+.md h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
+.md h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.md h3 { font-size: 1.25rem; }
+.md h4 { font-size: 1.1rem; }
+
+.md p { margin: 0.9rem 0; }
+
+.md a {
+  color: rgba(255, 90, 115, 0.95); /* your barber accent, readable */
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.md a:hover { opacity: 0.9; }
+
+.md ul, .md ol { padding-left: 1.25rem; margin: 0.9rem 0; }
+.md li { margin: 0.35rem 0; }
+
+.md blockquote {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid rgba(255, 90, 115, 0.75);
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  color: rgba(255,255,255,0.84);
+}
+
+.md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+  padding: 0.15em 0.35em;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.92);
+}
+
+.md pre {
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.md pre code { background: transparent; padding: 0; }
+
+.md hr {
+  border: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.10);
+  margin: 2rem 0;
+}
+
+/* Tables */
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.md th, .md td {
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.md th {
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.04);
+}
+.md tr:hover td { background: rgba(255,255,255,0.03); }
+
+/* Images in markdown */
+.md img {
+  max-width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
