@@ -1,19 +1,33 @@
-# HawkEye v6 config
+# HawkEye license header checker config (v6)
 
 baseDir = "."
+<<<<<<< HEAD
 
 # Prefer inlineHeader OR headerPath (inlineHeader wins)
 inlineHeader = """\
 Copyright © 2024–2026 Faith Frontier. All rights reserved.
+baseDir = "."
+strictCheck = true
+useDefaultExcludes = true
+useDefaultMapping = true
+
+inlineHeader = """\
+Copyright © 2024–2026 BARBER CAM, Faith Frontier Ecclesiastical Trust. All rights reserved. 
 PROPRIETARY — See LICENSE.\
 """
 
 # Strict match (your “SOLO STRICT”)
+=======
+>>>>>>> origin/main
 strictCheck = true
-
-# Let HawkEye handle typical excludes + language comment styles
 useDefaultExcludes = true
 useDefaultMapping = true
+
+# Put the header you want inserted/checked
+inlineHeader = """\
+Copyright © 2024–2026 BARBER CAM, Faith Frontier Ecclesiastical Trust. All rights reserved.
+PROPRIETARY — See LICENSE.\
+"""
 
 # Only scan what you care about
 includes = [
@@ -35,7 +49,7 @@ includes = [
   "**/*.yml"
 ]
 
-# Extra excludes beyond default ones (optional)
+# What NOT to check (in addition to defaults)
 excludes = [
   "**/node_modules/**",
   "**/.venv/**",
@@ -45,26 +59,33 @@ excludes = [
   "**/.git/**"
 ]
 
+<<<<<<< HEAD
+mapping = { py="#", js="//", ts="//", tsx="//", jsx="//", go="//", rs="//", java="//", kt="//", c="/*", h="/*", cpp="/*", hpp="/*", sh="#", yaml="#", yml="#" }
+=======
 # Optional but nice: what HawkEye looks for
 keywords = ["copyright", "proprietary"]
 
-# Optional: values you can reference in templates (if you later switch to headerPath templates)
 [properties]
 inceptionYear = 2024
+
+# Explicit overrides (singular table name is REQUIRED: [mapping], NOT [mappings])
 [mapping]
-py = { lineComment = "#" }
-js = { lineComment = "//" }
-ts = { lineComment = "//" }
-tsx = { lineComment = "//" }
-jsx = { lineComment = "//" }
-go = { lineComment = "//" }
-rs = { lineComment = "//" }
+py   = { lineComment = "#" }
+js   = { lineComment = "//" }
+ts   = { lineComment = "//" }
+tsx  = { lineComment = "//" }
+jsx  = { lineComment = "//" }
+go   = { lineComment = "//" }
+rs   = { lineComment = "//" }
 java = { lineComment = "//" }
-kt = { lineComment = "//" }
-c = { blockComment = ["/*", "*/"] }
-h = { blockComment = ["/*", "*/"] }
-cpp = { blockComment = ["/*", "*/"] }
-hpp = { blockComment = ["/*", "*/"] }
-sh = { lineComment = "#" }
+kt   = { lineComment = "//" }
+sh   = { lineComment = "#" }
 yaml = { lineComment = "#" }
-yml = { lineComment = "#" }
+yml  = { lineComment = "#" }
+
+# C/C++ family should use block comments
+c    = { blockComment = ["/*", "*/"] }
+h    = { blockComment = ["/*", "*/"] }
+cpp  = { blockComment = ["/*", "*/"] }
+hpp  = { blockComment = ["/*", "*/"] }
+>>>>>>> origin/main
