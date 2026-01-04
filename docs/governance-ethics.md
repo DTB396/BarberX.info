@@ -1,5 +1,3 @@
-<article class="md">
-
 # Governance & Ethics (Draft)
 
 Barber Cam is being built with a stewardship-first approach. The project’s legitimacy depends on restraint, transparency, and due process.
@@ -28,5 +26,3 @@ If recording increases immediate risk, de-escalation and safety come first.
 ## Status
 
 This document is a draft. Implementation details will be released after validation and review.
-
-</article>
