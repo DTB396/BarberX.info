@@ -127,6 +127,8 @@ For inquiries about Barber Cam development status:
 
 ---
 
+  </section>
+
   <footer class="md-footer">
     <p class="md-meta">Last updated: <time datetime="2026-01-04">Jan 4, 2026</time></p>
   </footer>
