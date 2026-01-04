@@ -107,11 +107,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--accent);
+
+  color: #0b5f2c;
+  background-color: transparent;
+  border: 1.5px solid #0b5f2c;
+
   margin-bottom: 1rem;
-  padding: 0.4rem 1rem;
-  background: rgb(8, 99, 39);
-  border-radius: 100px;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
 }
 
 .section-title {
