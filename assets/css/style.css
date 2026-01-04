@@ -1533,7 +1533,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Code */
-.md-content code{
+.md-content code {
   background: var(--surface-2);
   padding: .15em .35em;
   border-radius: var(--radius-sm);
