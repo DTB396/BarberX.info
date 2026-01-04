@@ -1,3 +1,6 @@
+// Copyright © 2024–2026 Faith Frontier Ecclesiastical Trust. All rights reserved.
+// PROPRIETARY — See LICENSE.
+
 // Barber Cam — Nav + small utilities (additive, preserves visuals)
 (function () {
   // Footer year
