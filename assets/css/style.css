@@ -1498,7 +1498,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 .75rem 0;
 }
 
-.md-lead{
+.md-lead {
   font-size: 1.1rem;
   color: var(--text-muted);
   max-width: 60ch;
