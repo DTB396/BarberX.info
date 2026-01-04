@@ -97,7 +97,7 @@ function render(query) {
 
 function escapeHtml(s) {
   return (s || "").replace(/[&<>"'`]/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;","`":"&#96;"
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"
   }[c]));
 }
 
@@ -147,6 +147,17 @@ function debounce(func, delay) {
   };
 }
 
+/**
+ * Formats an error object into a readable message.
+ * 
+ * @param {Error|any} err - The error object
+ * @param {string} prefix - The prefix for the error message
+ * @returns {string} - The formatted error message
+ */
+function formatError(err, prefix) {
+  return prefix + ": " + (err && err.message ? err.message : String(err));
+}
+
 async function init() {
   // Set up accessibility attributes
   if ($q && !$q.hasAttribute('aria-label')) {
@@ -159,7 +170,7 @@ async function init() {
   try {
     res = await fetch("./data/index.json");
   } catch (err) {
-    throw new Error("Failed to fetch index.json: " + (err && err.message ? err.message : String(err)));
+    throw new Error(formatError(err, "Failed to fetch index.json"));
   }
 
   if (!res.ok) {
@@ -169,7 +180,7 @@ async function init() {
   try {
     data = await res.json();
   } catch (err) {
-    throw new Error("Failed to parse index.json: " + (err && err.message ? err.message : String(err)));
+    throw new Error(formatError(err, "Failed to parse index.json"));
   }
   
   $meta.textContent = `${data.length} document(s) indexed`;
