@@ -1,3 +1,4 @@
+@'
 ---
 layout: default
 title: Cases
@@ -11,7 +12,8 @@ permalink: /cases/
   </header>
 
   <div class="search">
-    <input id="q" type="search" placeholder="Search: names, dates, docket, “due process”, “service”, “findings”…"
+    <input id="q" type="search"
+      placeholder="Search: names, dates, docket, “due process”, “service”, “findings”…"
       autocomplete="off" />
     <div class="hint" id="hint">Tip: try “notice”, “hearing”, “service”, “order”, “findings”.</div>
   </div>
@@ -23,5 +25,6 @@ permalink: /cases/
 <script>
   window.CASES_JSON_URL = "{{ '/assets/data/cases.json' | relative_url }}";
 </script>
-
 <script src="{{ '/assets/js/cases.js' | relative_url }}" defer></script>
+<link rel="stylesheet" href="{{ '/assets/css/cases.css' | relative_url }}">
+'@ | Set-Content -Encoding UTF8 docs\cases\index.html
