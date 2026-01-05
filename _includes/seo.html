@@ -1,69 +1,30 @@
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SEO META TAGS — Comprehensive Search Engine Optimization
-     Barber Cam Preview Site
-═══════════════════════════════════════════════════════════════════════════ -->
+{%- assign seo_title = page.title | default: site.title -%}
+{%- assign seo_desc = page.description | default: site.description -%}
+{%- assign seo_image = page.image | default: site.image -%}
+{%- assign seo_type = page.og_type | default: 'website' -%}
 
-<!-- Primary Meta Tags -->
-<meta name="title" content="Barber Cam | Citizen Accountability Platform">
-<meta name="description" content="Barber Cam — Precision. Patience. Virtue. Honor. A citizen-led accountability platform built on transparency, ethical documentation, and due process. Under development.">
-<meta name="keywords" content="Barber Cam, citizen accountability, transparency, documentation, ethics, due process, privacy-first, open governance, NY style, precision">
-<meta name="author" content="Barber Cam">
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_desc | escape }}">
 <meta name="robots" content="index, follow">
-<meta name="language" content="English">
-<meta name="revisit-after" content="7 days">
-<meta name="generator" content="Barber Cam Preview">
 
-<!-- Canonical URL -->
-<link rel="canonical" href="https://dtb396.github.io/barber-cam-preview/">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
 
 <!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="{{ site.title }}">
-<meta property="og:title" content="{{ page.title | default: site.title }}">
-<meta property="og:description" content="{{ page.description | default: site.description }}">
-<meta property="og:image" content="{{ '/assets/img/og-image.png' | absolute_url }}">
+<meta property="og:type" content="{{ seo_type }}">
+<meta property="og:site_name" content="{{ site.title | default: 'Barber Cam' }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ seo_desc | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{%- if seo_image -%}
+<meta property="og:image" content="{{ seo_image | absolute_url }}">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
-<meta name="twitter:image" content="{{ '/assets/img/og-image.png' | absolute_url }}">
-
+<meta property="og:image:height" content="630">
+{%- endif -%}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ page.title | default: site.title }}">
-<meta name="twitter:description" content="{{ page.description | default: site.description }}">
-<meta name="twitter:image" content="{{ '/assets/img/logo/barbercam-social-square.svg' | absolute_url }}">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dtb396.github.io/barber-cam-preview/">
-<meta property="og:title" content="Barber Cam | Citizen Accountability Platform">
-<meta property="og:description" content="Precision. Patience. Virtue. Honor. A citizen-led accountability platform built on transparency, ethical documentation, and due process.">
-<meta property="og:image" content="https://dtb396.github.io/barber-cam-preview/assets/img/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Barber Cam - Citizen Accountability Through Record">
-<meta property="og:site_name" content="Barber Cam">
-<meta property="og:locale" content="en_US">
-
-<!-- Additional SEO Meta -->
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Barber Cam">
-<meta name="application-name" content="Barber Cam">
-<meta name="msapplication-TileColor" content="#c41e3a">
-<meta name="msapplication-config" content="/browserconfig.xml">
-
-<!-- Geo Tags (New York Based) -->
-<meta name="geo.region" content="US-NY">
-<meta name="geo.placename" content="New York">
-
-<!-- Dublin Core Metadata -->
-<meta name="DC.title" content="Barber Cam">
-<meta name="DC.creator" content="Barber Cam Team">
-<meta name="DC.subject" content="Citizen Accountability, Transparency, Documentation">
-<meta name="DC.description" content="A citizen-led accountability platform built on ethical principles">
-<meta name="DC.publisher" content="Barber Cam">
-<meta name="DC.type" content="Software">
-<meta name="DC.format" content="text/html">
-<meta name="DC.language" content="en">
-<meta name="DC.rights" content="All Rights Reserved">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_desc | escape }}">
+{%- if seo_image -%}
+<meta name="twitter:image" content="{{ seo_image | absolute_url }}">
+{%- endif -%}

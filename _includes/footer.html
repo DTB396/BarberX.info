@@ -1,24 +1,18 @@
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
-
       <div class="footer-brand">
         <div class="footer-logo">
-          <span class="brand-icon" aria-hidden="true">✂</span>
-
-          <picture>
-            <source srcset="{{ '/assets/img/logo/barbercam-footer-min.svg' | relative_url }}" type="image/svg+xml">
-            <img src="{{ '/assets/img/logo/barbercam-footer-min.png' | relative_url }}" alt="Barber Cam" width="180"
-              height="44" loading="lazy">
-          </picture>
+          <img src="{{ '/assets/img/logo/barbercam-footer-min.svg' | relative_url }}" alt="Barber Cam" width="220"
+            height="44" loading="lazy" decoding="async">
         </div>
 
         <p class="footer-tagline">Precision. Patience. Virtue. Honor.</p>
         <p class="footer-description">Citizen accountability through record, dignity, and due process.</p>
 
         <div class="footer-contact">
-          <a href="mailto:BarberCamX@ProtonMail.com" class="contact-link">
-            <span>BarberCamX@ProtonMail.com</span>
+          <a href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}" class="contact-link">
+            <span>{{ site.email | default: 'BarberCamX@ProtonMail.com' }}</span>
           </a>
         </div>
       </div>
@@ -33,19 +27,18 @@
           <span>Privacy-First</span><span>•</span><span>No Tracking</span><span>•</span><span>No Data Sales</span>
         </div>
       </div>
-
     </div>
 
     <div class="footer-bottom">
       <div class="footer-copyright">
-        <p>&copy; <span id="year"></span> Barber Cam. All rights reserved.</p>
+        <p>&copy; <span id="year">{{ site.time | date: '%Y' }}</span> Barber Cam. All rights reserved.</p>
         <p class="footer-legal">Built with precision in New York.</p>
       </div>
 
       <div class="footer-legal-links">
         <a href="{{ '/LICENSE' | relative_url }}">License</a>
         <span>•</span>
-        <a href="mailto:BarberCamX@ProtonMail.com">Contact</a>
+        <a href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}">Contact</a>
       </div>
     </div>
   </div>

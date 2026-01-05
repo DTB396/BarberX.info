@@ -1,3 +1,8 @@
+---
+layout: default
+title: Vision
+permalink: /docs/vision/
+---
 <article class="md">
   <header class="md-header">
     <h1 class="md-title">Barber-Cam Vision</h1>
