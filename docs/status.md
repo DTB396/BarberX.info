@@ -1,3 +1,8 @@
+---
+layout: default
+title: Development Status
+permalink: /docs/status/
+---
 <article class="md" role="article">
   <header class="md-header">
     <h1 class="md-title">Barber Cam - Project Status</h1>

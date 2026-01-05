@@ -1,3 +1,8 @@
+---
+layout: default
+title: Governance & Ethics
+permalink: /docs/governance-ethics/
+---
 <article class="md" role="article">
   <header class="md-header">
     <h1 class="md-title">Governance & Ethics (in Active Development)</h1>

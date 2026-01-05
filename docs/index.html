@@ -1,39 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Barber Cam Preview — Case Index</title>
-  <link rel="stylesheet" href="../assets/css/style.css" />
-</head>
-<body>
-  <header class="wrap">
-    <div class="brand">
-      <div class="pole" aria-hidden="true"></div>
-      <div>
-        <div class="kicker">EST. 2024</div>
-        <h1>Barber Cam Preview</h1>
-        <div class="sub">A CUT ABOVE — Fast case search across published PDFs</div>
-      </div>
-    </div>
+---
+layout: default
+permalink: /
+title: "Barber Cam | Citizen Accountability Platform"
+description: "Precision. Patience. Virtue. Honor. A citizen-led accountability platform built on transparency, ethical
+documentation, and due process."
+image: /assets/img/logo/barbercam-social-square.png
+---
 
-    <div class="search">
-      <label for="q">Search</label>
-      <input id="q" type="search" placeholder="Search: names, dates, docket, 'due process', 'service', 'findings'…" autocomplete="off" />
-      <div class="hint" id="hint">Tip: try “notice”, “hearing”, “service”, “order”, “findings”.</div>
-    </div>
-  </header>
+{% include barber-hero.html cta_label="View Preview" cta_href="#preview" badge="Under Development" %}
 
-  <main class="wrap">
-    <div class="meta" id="meta"></div>
-    <div id="results" class="results"></div>
-  </main>
-
-  <footer class="wrap footer">
-    <p>
-      Informational demo only. Search results come from extracted PDF text and may be incomplete. Verify against the official record.
-    </p>
-  </footer>
-
-</body>
-</html>
+{% include homepage-preview.html %}
+{% include homepage-principles.html %}
+{% include homepage-status.html %}
+{% include homepage-connect.html %}

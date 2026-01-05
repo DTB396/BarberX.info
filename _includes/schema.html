@@ -1,203 +1,21 @@
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SCHEMA.ORG STRUCTURED DATA — JSON-LD
-     Rich snippets for search engines
-═══════════════════════════════════════════════════════════════════════════ -->
-
-<!-- Organization Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Barber Cam",
-  "alternateName": "BarberCam",
-  "url": "https://dtb396.github.io/barber-cam-preview/",
-  "logo": "https://dtb396.github.io/barber-cam-preview/assets/img/logo.png",
-  "description": "A citizen-led accountability platform built on transparency, ethical documentation, and due process.",
-  "email": "BarberCamX@ProtonMail.com",
-  "foundingDate": "2024",
-  "slogan": "Precision. Patience. Virtue. Honor.",
-  "knowsAbout": [
-    "Citizen Accountability",
-    "Ethical Documentation",
-    "Transparency",
-    "Due Process",
-    "Privacy-First Technology"
-  ],
-  "areaServed": {
-    "@type": "Country",
-    "name": "United States"
-  }
+  "name": "{{ site.title | escape }}",
+  "url": "{{ '/' | absolute_url }}",
+  "description": "{{ site.description | escape }}",
+  "email": "{{ site.email | default: '' }}",
+  "foundingDate": "2024"
 }
 </script>
 
-<!-- WebSite Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Barber Cam",
-  "alternateName": "Barber Cam Preview",
-  "url": "https://dtb396.github.io/barber-cam-preview/",
-  "description": "Citizen accountability through record, dignity, and due process.",
-  "inLanguage": "en-US",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Barber Cam"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://dtb396.github.io/barber-cam-preview/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-
-<!-- WebPage Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Barber Cam | Citizen Accountability Platform",
-  "description": "Precision. Patience. Virtue. Honor. A citizen-led accountability platform under development.",
-  "url": "https://dtb396.github.io/barber-cam-preview/",
-  "inLanguage": "en-US",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Barber Cam",
-    "url": "https://dtb396.github.io/barber-cam-preview/"
-  },
-  "about": {
-    "@type": "Thing",
-    "name": "Citizen Accountability",
-    "description": "Transparency and ethical documentation for citizens"
-  },
-  "mainEntity": {
-    "@type": "SoftwareApplication",
-    "name": "Barber Cam",
-    "applicationCategory": "Utility",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "Citizen-led documentation platform built on ethical principles"
-  }
-}
-</script>
-
-<!-- SoftwareApplication Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Barber Cam",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Web, Windows, macOS, Linux",
-  "description": "A citizen-led accountability platform featuring secure recording, local server deployment, and built-in governance workflows for ethical evidence handling.",
-  "url": "https://dtb396.github.io/barber-cam-preview/",
-  "author": {
-    "@type": "Organization",
-    "name": "Barber Cam"
-  },
-  "datePublished": "2024",
-  "softwareVersion": "Preview",
-  "releaseNotes": "Under active development. Preview site only.",
-  "featureList": [
-    "Secure Recording with End-to-End Encryption",
-    "Local Server Deployment",
-    "Tamper-Evident Timestamps",
-    "Built-in Governance Workflows",
-    "Privacy-First Architecture",
-    "Due Process Compliance"
-  ],
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/ComingSoon"
-  }
-}
-</script>
-
-<!-- BreadcrumbList Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://dtb396.github.io/barber-cam-preview/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Preview",
-      "item": "https://dtb396.github.io/barber-cam-preview/#preview"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Principles",
-      "item": "https://dtb396.github.io/barber-cam-preview/#principles"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Status",
-      "item": "https://dtb396.github.io/barber-cam-preview/#status"
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Connect",
-      "item": "https://dtb396.github.io/barber-cam-preview/#connect"
-    }
-  ]
-}
-</script>
-
-<!-- FAQPage Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Barber Cam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Barber Cam is a citizen-led accountability platform focused on transparency, restraint, and dignity through ethical documentation. It is not law enforcement, surveillance, or vigilantism."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "When will Barber Cam be available?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Barber Cam is currently under active development. Core systems, safeguards, and governance structures are being validated before any public release."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Barber Cam a surveillance tool?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Barber Cam is explicitly not surveillance, not vigilantism, and not designed to inflame conflict. It is a voluntary, citizen-driven framework for recording interactions where documentation protects all parties involved."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I get early access?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can request early access by signing up on our website or contacting us at BarberCamX@ProtonMail.com. We will notify you when the beta launches."
-      }
-    }
-  ]
+  "name": "{{ site.title | escape }}",
+  "url": "{{ '/' | absolute_url }}",
+  "inLanguage": "en-US"
 }
 </script>
