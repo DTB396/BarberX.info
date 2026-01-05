@@ -1809,3 +1809,26 @@ h1, h2, h3, h4, h5, h6 {
     transition: none;
   }
 }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  height: 34px;
+  /* tune */
+  width: auto;
+  max-width: 240px;
+  /* tune */
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
+}
+
+@media (max-width: 480px) {
+  .brand-logo {
+    height: 30px;
+  }
+}

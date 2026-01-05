@@ -241,3 +241,8 @@ init().catch(err => {
   $meta.textContent = "Failed to load index.json";
   $results.innerHTML = `<div class="card"><div class="snip">${escapeHtml(String(err))}</div></div>`;
 });
+
+
+fetch((window.CASES_JSON_URL || "./cases.json"))
+  .then(r => r.json())
+  .then(() => { /* render */ });
