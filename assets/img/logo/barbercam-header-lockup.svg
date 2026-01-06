@@ -10,20 +10,20 @@
   </ns0:defs>
 
   <ns0:g id="h_camera">
-    <ns0:rect x="64.00" y="94.50" width="352.00" height="231.00" rx="30.80" fill="url(#h_gBody)" />
-    <ns0:circle cx="240.00" cy="210.00" r="101.20" fill="none" stroke="#FFFFFF" stroke-width="15.40" />
-    <ns0:circle cx="240.00" cy="210.00" r="79.20" fill="none" stroke="#FFFFFF" stroke-width="11.00" />
-    <ns0:circle cx="240.00" cy="210.00" r="28.60" fill="#FFFFFF" opacity="0.96" />
-    <ns0:circle cx="372.00" cy="152.80" r="13.20" fill="#D12A2A" opacity="1.0" />
+    <ns0:rect x="64.00" y="94.50" width="352.00" height="231.00" rx="30.80" fill="#FAFAFA" />
+    <ns0:circle cx="240.00" cy="210.00" r="101.20" fill="none" stroke="#0A0A0F" stroke-width="15.40" />
+    <ns0:circle cx="240.00" cy="210.00" r="79.20" fill="none" stroke="#0A0A0F" stroke-width="11.00" />
+    <ns0:circle cx="240.00" cy="210.00" r="28.60" fill="#0A0A0F" opacity="0.96" />
+    <ns0:circle cx="372.00" cy="152.80" r="13.20" fill="#C41E3A" opacity="1.0" />
     <ns0:g transform="translate(240.00,60.40)">
-      <ns0:rect x="-132.00" y="-19.80" width="264.00" height="24.20" rx="11.00" fill="#0B1320" />
-      <ns0:rect x="-11.00" y="-11.00" width="22.00" height="77.00" rx="8.80" fill="#0B1320" />
-      <ns0:circle cx="-96.80" cy="46.20" r="28.60" fill="none" stroke="#0B1320" stroke-width="11.00" />
-      <ns0:circle cx="96.80" cy="46.20" r="28.60" fill="none" stroke="#0B1320" stroke-width="11.00" />
+      <ns0:rect x="-132.00" y="-19.80" width="264.00" height="24.20" rx="11.00" fill="#FAFAFA" />
+      <ns0:rect x="-11.00" y="-11.00" width="22.00" height="77.00" rx="8.80" fill="#FAFAFA" />
+      <ns0:circle cx="-96.80" cy="46.20" r="28.60" fill="none" stroke="#FAFAFA" stroke-width="11.00" />
+      <ns0:circle cx="96.80" cy="46.20" r="28.60" fill="none" stroke="#FAFAFA" stroke-width="11.00" />
     </ns0:g>
   </ns0:g>
 
-  <ns0:text x="420" y="190.0" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="96.00" letter-spacing="4" fill="#0B1320">BARBER CAM</ns0:text>
-  <ns0:text x="420" y="274.0" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="34.00" letter-spacing="2" fill="#0B1320" opacity="0.9">Record clean. Store safe. Share fair.</ns0:text>
+  <ns0:text x="420" y="190.0" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="96.00" letter-spacing="4" fill="#0A0A0F">BARBER CAM</ns0:text>
+  <ns0:text x="420" y="274.0" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="34.00" letter-spacing="2" fill="#0A0A0F" opacity="1">Record clean. Store safe. Share fair.</ns0:text>
 
 </ns0:svg>

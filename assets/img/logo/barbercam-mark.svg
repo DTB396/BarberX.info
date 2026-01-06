@@ -19,10 +19,10 @@
     <circle cx="256.00" cy="256.00" r="26.00" fill="#FFFFFF" opacity="0.96"/>
     <circle cx="376.00" cy="204.00" r="12.00" fill="#D12A2A" opacity="1.0"/>
     <g transform="translate(256.00,120.00)">
-      <rect x="-120.00" y="-18.00" width="240.00" height="22.00" rx="10.00" fill="#0B1320"/>
-      <rect x="-10.00" y="-10.00" width="20.00" height="70.00" rx="8.00" fill="#0B1320"/>
-      <circle cx="-88.00" cy="42.00" r="26.00" fill="none" stroke="#0B1320" stroke-width="10.00"/>
-      <circle cx="88.00" cy="42.00" r="26.00" fill="none" stroke="#0B1320" stroke-width="10.00"/>
+      <rect x="-120.00" y="-18.00" width="240.00" height="22.00" rx="10.00" fill="#0A0A0F"/>
+        <rect x="-10.00" y="-10.00" width="20.00" height="70.00" rx="8.00" fill="#0A0A0F"/>
+        <circle cx="-88.00" cy="42.00" r="26.00" fill="none" stroke="#0A0A0F" stroke-width="10.00"/>
+        <circle cx="88.00" cy="42.00" r="26.00" fill="none" stroke="#0A0A0F" stroke-width="10.00"/>
     </g>
   </g>
 
