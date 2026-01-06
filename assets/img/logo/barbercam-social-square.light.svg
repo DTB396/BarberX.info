@@ -27,10 +27,10 @@
     <circle cx="512.00" cy="532.00" r="37.70" fill="#0a0a0f" opacity="0.96" />
     <circle cx="686.00" cy="456.60" r="17.40" fill="#D12A2A" opacity="1.0" />
     <g transform="translate(512.00,334.80)">
-      <rect x="-174.00" y="-26.10" width="348.00" height="31.90" rx="14.50" fill="#0B1320" />
-      <rect x="-14.50" y="-14.50" width="29.00" height="101.50" rx="11.60" fill="#0B1320" />
-      <circle cx="-127.60" cy="60.90" r="37.70" fill="none" stroke="#0B1320" stroke-width="14.50" />
-      <circle cx="127.60" cy="60.90" r="37.70" fill="none" stroke="#0B1320" stroke-width="14.50" />
+      <rect x="-174.00" y="-26.10" width="348.00" height="31.90" rx="14.50" fill="#1a1a2e" />
+      <rect x="-14.50" y="-14.50" width="29.00" height="101.50" rx="11.60" fill="#1a1a2e" />
+      <circle cx="-127.60" cy="60.90" r="37.70" fill="none" stroke="#1a1a2e" stroke-width="14.50" />
+      <circle cx="127.60" cy="60.90" r="37.70" fill="none" stroke="#1a1a2e" stroke-width="14.50" />
     </g>
   </g>
 
