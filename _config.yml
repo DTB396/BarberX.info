@@ -1,17 +1,44 @@
-title: Barber Cam
-description: Citizen Accountability Platform
-url: "https://barberx.info"
-baseurl: ""
+# _config.yml — Barber Cam (GitHub Pages + custom domain)
 
+title: "Barber Cam"
+description: "Citizen Accountability Platform"
+
+# Custom domain (root)
+url: "https://barberx.info"
+baseurl: ""   # MUST be empty for root custom domain
+
+# Branding / contact
 theme_color: "#c41e3a"
 email: "BarberCamX@ProtonMail.com"
 
-theme: null
+# Build settings
 markdown: kramdown
 permalink: pretty
 
-# Default social share image (PNG recommended for OG)
-image: /assets/img/og-image.png
+# Optional but recommended for GitHub Pages sites
+timezone: "America/New_York"
+lang: "en"
 
+# Social share image (use | relative_url in templates when referencing)
+image: "/assets/img/og-image.png"
+
+# Plugins supported by GitHub Pages (keep it tight)
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Excludes (keeps build clean)
+exclude:
+  - README.md
+  - LICENSE
+  - node_modules
+  - vendor
+  - vendor/bundle
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - yarn.lock
+  - scripts
+  - tools
