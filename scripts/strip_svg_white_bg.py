@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright © 2024–2026 BARBER CAM, Faith Frontier Ecclesiastical Trust. All rights reserved.
+# PROPRIETARY — See LICENSE.
+
 """
 Strip common white-background "canvas" artifacts from SVG files.
 
