@@ -1,0 +1,142 @@
+---
+layout: default
+---
+
+<article class="case-record shell u-max-w-4xl u-mx-auto">
+  {% include breadcrumbs.html %}
+
+  <header class="case-header u-mb-xl u-p-md">
+    <p class="case-eyebrow u-text-accent">
+      {{ page.court }}{% if page.venue %} — {{ page.venue }}{% endif %}
+    </p>
+    <h1 class="case-title u-mb-sm u-text-highlight">{{ page.title }}</h1>
+    <p class="case-subtitle u-text-muted">
+      {{ page.short_title }} · Docket {{ page.primary_docket | default: page.docket | default: page.dockets | join: ", " }}
+    </p>
+    <dl class="case-meta u-mt-md u-mb-md">
+      <div>
+        <dt>Case Type</dt>
+        <dd>{{ page.case_type }}</dd>
+      </div>
+      <div>
+        <dt>Status</dt>
+        <dd>{{ page.status }}</dd>
+      </div>
+      {% if page.filed_date %}
+      <div>
+        <dt>Filed</dt>
+        <dd>{{ page.filed_date | date: "%B %-d, %Y" }}</dd>
+      </div>
+      {% endif %}
+      {% if page.forum_level %}
+      <div>
+        <dt>Forum</dt>
+        <dd>{{ page.forum_level }}</dd>
+      </div>
+      {% endif %}
+    </dl>
+  </header>
+
+  <section class="case-body u-pb-xl">
+    {{ content }}
+  </section>
+
+  {% if page.source_url or page.received_via or page.provenance_note %}
+  <section class="case-provenance u-mt-lg">
+    <h2 class="u-text-accent">Provenance</h2>
+    <dl class="provenance-meta">
+      {% if page.source_url %}
+      <div>
+        <dt>Primary Source</dt>
+        <dd><a href="{{ page.source_url }}" rel="noopener" target="_blank">Link</a></dd>
+      </div>
+      {% endif %}
+      {% if page.received_via %}
+      <div>
+        <dt>Received Via</dt>
+        <dd>{{ page.received_via }}</dd>
+      </div>
+      {% endif %}
+      {% if page.provenance_note %}
+      <div>
+        <dt>Notes</dt>
+        <dd>{{ page.provenance_note }}</dd>
+      </div>
+      {% endif %}
+    </dl>
+  </section>
+  {% endif %}
+
+
+  {% assign slug = page.url | split:'/' | last | default: page.slug %}
+  {% assign docket_data = site.data.docket[slug] %}
+  {% if docket_data and docket_data.size > 0 %}
+  <section class="docket">
+    <h2>Docket</h2>
+      {% assign docket = docket_data | sort: "date" | reverse %}
+      <ul class="docket-list">
+        {% for d in docket %}
+          <li>
+            <time>{{ d.date }}</time> — <strong>{{ d.type }}:</strong>
+            {% if d.file %}
+			  {% assign docket_file = d.file %}
+			  {% assign first_char = docket_file | slice: 0, 1 %}
+			  {% if first_char == '/' %}
+			    <a href="{{ docket_file }}" target="_blank" rel="noopener">{{ d.title }}</a>
+			  {% else %}
+          <a href="/cases/{{ slug }}/filings/{{ docket_file | uri_escape }}" target="_blank" rel="noopener">{{ d.title }}</a>
+			  {% endif %}
+			{% else %}
+			  <span>{{ d.title }}</span>
+			{% endif %}
+            {% if d.notes %}<div class="notes">{{ d.notes }}</div>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+  </section>
+  {% endif %}
+
+  {%- comment -%}
+    DOCUMENTS SECTION - Only show if no docket data exists
+    Docket data is superior (has dates) so we hide this if docket is present
+  {%- endcomment -%}
+  {% unless docket_data and docket_data.size > 0 %}
+    {% if page.assets_dir and page.documents and page.documents.size > 0 %}
+    <section class="case-files">
+      <h2>Documents</h2>
+      <ul>
+        {% for doc in page.documents %}
+        <li>
+          <a href="{{ page.assets_dir | append: doc.path }}" target="_blank" rel="noopener">
+            {{ doc.label }}
+          </a>
+          {% assign cs_slug = page.slug | default: slug %}
+          {% assign checksums = site.data.checksums[cs_slug] %}
+          {% if checksums and checksums[doc.path] %}
+          <span class="checksum"> · SHA256: {{ checksums[doc.path] }}</span>
+          {% endif %}
+          {% if doc.note %}
+          <span class="case-doc-note"> — {{ doc.note }}</span>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {% endunless %}
+
+
+  {% if page.related_dockets and page.related_dockets.size > 0 %}
+  <section class="case-related">
+    <h2>Related Matters</h2>
+    <ul>
+      {% for rd in page.related_dockets %}
+      <li>{{ rd }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% comment %}AI-generated analysis section{% endcomment %}
+  {% include case-analysis.html %}
+</article>

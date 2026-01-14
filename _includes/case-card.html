@@ -1,0 +1,78 @@
+{%- comment -%}
+  CASE CARD COMPONENT
+  
+  Displays a single case as a card in the cases index grid.
+  
+  Usage: {% include case-card.html case=case_object %}
+  
+  Required: case object with front matter (title, status, court, etc.)
+{%- endcomment -%}
+
+{% assign c = include.case %}
+{% assign slug = c.url | split:'/' | last | default: c.slug %}
+
+<article class="case-card" 
+         data-status="{{ c.status | downcase }}" 
+         data-court="{{ c.court | downcase }}"
+         data-docket="{{ c.docket | default: c.primary_docket | default: c.dockets | join: ' ' }}">
+  
+  <div class="case-card-header">
+    <span class="case-card-status case-status--{{ c.status }}">
+      {{ c.status | default: "Unknown" | capitalize }}
+    </span>
+    <h3 class="case-card-title">
+      <a href="{{ c.url | relative_url }}" style="color: inherit; text-decoration: none;">
+        {{ c.short_title | default: c.title }}
+      </a>
+    </h3>
+    <div class="case-card-docket">
+      {{ c.primary_docket | default: c.docket | default: c.dockets | join: ", " }}
+    </div>
+  </div>
+  
+  <div class="case-meta">
+    <div class="case-meta-item">
+      <span class="case-meta-label">Court</span>
+      <span class="case-meta-value">{{ c.court | truncate: 30 }}</span>
+    </div>
+    <div class="case-meta-item">
+      <span class="case-meta-label">Filed</span>
+      <span class="case-meta-value">
+        {% if c.filed_date %}
+          {{ c.filed_date | date: "%b %-d, %Y" }}
+        {% else %}
+          N/A
+        {% endif %}
+      </span>
+    </div>
+    <div class="case-meta-item">
+      <span class="case-meta-label">Type</span>
+      <span class="case-meta-value">{{ c.case_type | truncate: 25 }}</span>
+    </div>
+    <div class="case-meta-item">
+      <span class="case-meta-label">Role</span>
+      <span class="case-meta-value">{{ c.role | default: "Litigant" | truncate: 25 }}</span>
+    </div>
+  </div>
+  
+  {% if c.excerpt or c.description or c.procedural_posture %}
+  <div class="case-card-description">
+    {{ c.excerpt | default: c.description | default: c.procedural_posture | strip_html | truncate: 180 }}
+  </div>
+  {% endif %}
+  
+  {% if c.tags and c.tags.size > 0 %}
+  <div class="case-card-tags">
+    {% for tag in c.tags limit:3 %}
+      <span class="case-tag">{{ tag }}</span>
+    {% endfor %}
+    {% if c.tags.size > 3 %}
+      <span class="case-tag">+{{ c.tags.size | minus: 3 }} more</span>
+    {% endif %}
+  </div>
+  {% endif %}
+  
+  <a href="{{ c.url | relative_url }}" class="view-case-btn">
+    View Case Details →
+  </a>
+</article>

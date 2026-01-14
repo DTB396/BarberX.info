@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<article class="essay shell u-max-w-3xl u-mx-auto">
+  <header class="essay-header u-mb-xl u-p-md">
+    {% if page.date %}
+    <p class="essay-date u-text-muted">{{ page.date | date: "%B %-d, %Y" }}</p>
+    {% endif %}
+    <h1 class="essay-title u-mb-sm u-text-highlight">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="essay-description u-text-muted">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <section class="essay-body u-pb-xl">
+    {{ content }}
+  </section>
+
+  {% if page.tags %}
+  <footer class="essay-footer u-mt-lg">
+    <div class="essay-tags">
+      {% for tag in page.tags %}
+      <span class="tag u-text-accent">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </footer>
+  {% endif %}
+</article>

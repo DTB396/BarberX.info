@@ -1,48 +1,60 @@
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <picture>
-            <source srcset="{{ '/assets/img/logo/barbercam-footer-min.dark.svg' | relative_url }}" media="(prefers-color-scheme: dark)">
-            <source srcset="{{ '/assets/img/logo/barbercam-footer-min.light.svg' | relative_url }}" media="(prefers-color-scheme: light)">
-            <img src="{{ '/assets/img/logo/barbercam-footer-min.svg' | relative_url }}" alt="Barber Cam" width="220" height="44" loading="lazy" decoding="async">
-          </picture>
-        </div>
-
-        <p class="footer-tagline">Precision. Patience. Virtue. Honor.</p>
-        <p class="footer-description">Citizen accountability through record, dignity, and due process.</p>
-
-        <div class="footer-contact">
-          <a href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}" class="contact-link">
-            <span>{{ site.email | default: 'BarberCamX@ProtonMail.com' }}</span>
-          </a>
-        </div>
-      </div>
-
-      {% include footer-links.html %}
-
-      <div class="footer-notice">
-        <h4>Public Notice</h4>
-        <p>Under active development. No operational software, internal systems, or proprietary methods are published on
-          this site.</p>
-        <div class="footer-compliance">
-          <span>Privacy-First</span><span>•</span><span>No Tracking</span><span>•</span><span>No Data Sales</span>
-        </div>
-      </div>
+<footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/Organization">
+  <div class="footer-inner container">
+    <!-- Brand / Logo -->
+    <div class="footer-brand">
+      <a href="{{ '/' | relative_url }}" class="footer-logo-link" itemprop="url" aria-label="Faith Frontier Ecclesiastical Trust home">
+        <img src="{{ site.logo_mark | default: '/assets/img/faithfrontier-mark.svg' | relative_url }}"
+             alt="Faith Frontier Ecclesiastical Trust"
+             class="footer-logo"
+             itemprop="logo">
+        <span class="footer-name" itemprop="name">Faith Frontier</span>
+      </a>
+      <p class="footer-tagline">In the World, But Not of It</p>
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-copyright">
-        <p>&copy; <span id="year">{{ site.time | date: '%Y' }}</span> Barber Cam. All rights reserved.</p>
-        <p class="footer-legal">Built with precision in New York.</p>
-      </div>
+    <!-- Mission summary -->
+    <div class="footer-about">
+      <p>
+        <strong>Faith Frontier</strong> is an ecclesiastical trust guided by the teachings of Jesus Christ
+        and the witness tradition preserved in the Geneva Bible. We seek justice, mercy, and humility
+        in public recordkeeping — restoring community, sovereignty, and faith at human scale.
+      </p>
+    </div>
 
-      <div class="footer-legal-links">
-        <a href="{{ '/LICENSE' | relative_url }}">License</a>
-        <span>•</span>
-        <a href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}">Contact</a>
-      </div>
+    <!-- Navigation links -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul>
+        <li><a href="{{ '/story/' | relative_url }}">Story</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">About Devon</a></li>
+        <li><a href="{{ '/manifesto/' | relative_url }}">Manifesto</a></li>
+        <li><a href="{{ '/tillerstead-sanctuary-vision/' | relative_url }}">Sanctuary</a></li>
+        <li><a href="{{ '/health/holistic-independence/' | relative_url }}">Health Map</a></li>
+        <li><a href="{{ '/essays/' | relative_url }}">Essays</a></li>
+        <li><a href="{{ '/cases/' | relative_url }}">Cases</a></li>
+        <li><a href="{{ '/stewardship-resources/' | relative_url }}">Resources</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Legal -->
+    <div class="footer-bottom">
+      <p class="footer-meta">
+        &copy; {{ site.time | date: "%Y" }} Faith Frontier · Devon Tyler Barber
+        <br>All Rights Preserved.
+        <br><span class="footer-motto">Soli Deo Gloria · Lex Dei Supra · Covenant over Contract</span>
+      </p>
+    </div>
+
+    <!-- Disclaimer notice -->
+    <div class="footer-notice">
+      <strong>Notice:</strong>
+      All materials published on Faith Frontier—including essays, commentary, and narrative content—are informational only and reflect good-faith documentation. 
+      Court dockets and official records referenced on faithfrontier.org are presented in trust to honor New Jersey Courts' commitment to integrity and transparency. 
+      Documents filed under penalty of perjury (such as court filings and sworn statements) remain under the jurisdiction of the appropriate court and should be read in their official context. 
+      Nothing authored on this site constitutes sworn testimony unless explicitly identified as a court document. 
+      For clarity, context, or pastoral guidance, email
+      <a href="mailto:info@Tillerstead.com">info@Tillerstead.com</a>
+      to speak with a Faith Frontier representative.
     </div>
   </div>
 </footer>

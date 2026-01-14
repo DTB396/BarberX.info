@@ -1,17 +1,109 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="{{ site.theme_color | default: '#c41e3a' }}">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-{% include seo.html %}
-{% include schema.html %}
+<title>
+  {% if page.title %}{{ page.title }} | Faith Frontier Ecclesiastical Trust{% else %}Faith Frontier Ecclesiastical Trust{% endif %}
+</title>
 
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<meta name="description" content="{{ page.description | default: site.description | default: 'Faith Frontier Ecclesiastical Trust - Faith-informed transparency for New Jersey. Public records, civic literacy, and property stewardship with humility and accountability.' }}">
+<meta name="author" content="Devon Tyler Barber">
+<meta name="keywords" content="faith frontier, ecclesiastical trust, new jersey, civic literacy, public records, stewardship, accountability, transparency">
 
+<!-- Canonical -->
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title="Faith Frontier RSS Feed" href="{{ '/feed.xml' | absolute_url }}">
+
+{% assign ff_logo_mark_svg = site.logo_mark | default: '/assets/img/faithfrontier-mark.svg' %}
+{% assign ff_favicon_png = '/assets/img/favicon.png' %}
+
+<!-- Favicon / Icons -->
+<link rel="icon" type="image/svg+xml" href="{{ ff_logo_mark_svg | relative_url }}">
+<link rel="icon" type="image/png" href="{{ ff_favicon_png | relative_url }}">
+<link rel="apple-touch-icon" href="{{ ff_favicon_png | relative_url }}">
+<link rel="mask-icon" href="{{ ff_logo_mark_svg | relative_url }}" color="#d4a574">
+<meta name="theme-color" content="#020617">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+<meta property="og:site_name" content="Faith Frontier Ecclesiastical Trust">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} | Faith Frontier{% else %}Faith Frontier Ecclesiastical Trust{% endif %}">
+<meta property="og:description" content="{{ page.description | default: site.description | default: 'Faith-informed transparency for New Jersey. Public records, civic literacy, and property stewardship with humility and accountability.' }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:locale" content="en_US">
+
+{% if page.image %}
+{% else %}
+  {% if page.layout == 'essay' %}
+    <meta property="og:image" content="{{ '/assets/img/logo/faithfrontier-mark.svg' | absolute_url }}">
+    <meta property="og:image:alt" content="Faith Frontier Ecclesiastical Trust Logo Mark">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  {% else %}
+    <meta property="og:image" content="{{ '/assets/img/og/og-faithfrontier-default.png' | absolute_url }}">
+    <meta property="og:image:alt" content="Faith Frontier Ecclesiastical Trust">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  {% endif %}
+{% endif %}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }} | Faith Frontier{% else %}Faith Frontier Ecclesiastical Trust{% endif %}">
+<meta name="twitter:description" content="{{ page.description | default: site.description | default: 'Faith-informed transparency for New Jersey. Public records, civic literacy, and property stewardship.' }}">
+{% if page.image %}
+{% else %}
+  {% if page.layout == 'essay' %}
+    <meta name="twitter:image" content="{{ '/assets/img/logo/faithfrontier-mark.svg' | absolute_url }}">
+  {% else %}
+    <meta name="twitter:image" content="{{ '/assets/img/og/og-faithfrontier-default.png' | absolute_url }}">
+  {% endif %}
+{% endif %}
+<meta name="twitter:image:alt" content="{{ page.title | default: 'Faith Frontier Ecclesiastical Trust' }}">
+
+<!-- Performance hints -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-<!-- Icons -->
-<link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}">
-<link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+<!-- Fonts - Inter and Manrope optimized for FaithFrontier -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- Main stylesheet (imports all base, layout, component, utility CSS) -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<!-- Case-only styles -->
+{% if page.layout == 'case-enhanced' or page.layout == 'case' %}
+<link rel="stylesheet" href="{{ '/assets/css/case-analysis.css' | relative_url }}">
+{% endif %}
+
+<!-- Enhanced case styles (only for the enhanced layout) -->
+{% if page.layout == 'case-enhanced' %}
+<link rel="stylesheet" href="{{ '/assets/css/case-enhanced.css' | relative_url }}">
+{% endif %}
+
+<!-- Page-specific styles (optional) -->
+{% if page.stylesheet %}
+<link rel="stylesheet" href="{{ page.stylesheet | relative_url }}">
+{% endif %}
+
+<!-- Structured Data for SEO -->
+{% include structured-data.html %}
+
+{%- comment -%} Auto OG image for /health/* pages (slug-based, no front matter needed) {%- endcomment -%}
+{% if page.url and page.url contains '/health' %}
+  {% assign parts = page.url | split: '/' %}
+  {% assign health_slug = parts[2] | default: '' %}
+  {% if health_slug == '' %}
+    {% assign health_slug = 'health' %}
+  {% endif %}
+
+  {% assign og_svg = '/assets/img/og/health-' | append: health_slug | append: '.svg' %}
+
+  <meta property="og:image" content="{{ og_svg | absolute_url }}">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ og_svg | absolute_url }}">
+{% endif %}

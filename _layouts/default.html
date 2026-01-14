@@ -1,20 +1,85 @@
-<!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="{{ page.body_class | default: '' }}">
+    {% include header.html %}
 
-<head>
-  {% include head.html %}
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-</head>
+    {%- comment -%}
+      Optional hero panel (e.g., homepage).
+      Turn on with `hero_panel: true` in front matter.
+    {%- endcomment -%}
+    {% if page.hero_panel %}
 
-<body class="{{ page.body_class | default: '' }}">
-  {% include header.html %}
+    {% endif %}
 
-  <main id="main" tabindex="-1">
-    {{ content }}
-  </main>
+    {%- comment -%}
+      Page hero (title/eyebrow/subtitle).  
+      Hide with `hide_hero: true` in front matter.
+    {%- endcomment -%}
+    {%- comment -%}
+      Use premium-hero.html for homepage, page-hero.html for all other pages
+    {%- endcomment -%}
+    {% if page.url == '/' or page.permalink == '/' or page.layout == 'home' or page.homepage_hero %}
+      {% include premium-hero.html %}
+    {% elsif page.hide_hero != true %}
+      {% include page-hero.html %}
+    {% endif %}
 
-  {% include footer.html %}
-  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-</body>
+    {%- comment -%}
+      Breadcrumbs.  
+      Turn off with `show_breadcrumbs: false` if needed.
+    {%- endcomment -%}
+    {% if page.show_breadcrumbs != false %}
+      {% include breadcrumbs.html %}
+    {% endif %}
 
+
+    {%- comment -%} Minimal maintenance banner (subtle, only if enabled) {%- endcomment -%}
+    {% if site.maintenance or page.maintenance_banner %}
+      <section class="maintenance-banner u-bg-warning-faint u-text-muted u-py-xs u-mb-md u-radius-md u-shadow-xs" aria-label="Site maintenance notice">
+        <div class="maintenance-banner__inner u-flex u-align-center u-gap-xs">
+          <span class="maintenance-banner__icon u-mr-xs" aria-hidden="true">⚠️</span>
+          <span class="maintenance-banner__text u-text-xs">Some features or records may be temporarily unavailable while we update FaithFrontier.org.</span>
+        </div>
+      </section>
+    {% endif %}
+
+    <main id="main" class="site-main u-max-w-5xl u-mx-auto u-pb-2xl" aria-label="Main content">
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    {%- comment -%}
+      Global scripts (nav toggle, etc.).
+    {%- endcomment -%}
+    {% include scripts.html %}
+        {%- comment -%}
+      Per-page includes and scripts (for pages that need data bootstraps, widgets, etc.).
+      Usage in front matter:
+        page_includes:
+          - holistic-data.html
+        page_js:
+          - /assets/js/holistic-filter.js
+    {%- endcomment -%}
+
+    {% if page.page_includes %}
+      {% for inc in page.page_includes %}
+        {% include {{ inc }} %}
+      {% endfor %}
+    {% endif %}
+
+    {% if page.page_js %}
+      {% for src in page.page_js %}
+        <script src="{{ src | relative_url }}"></script>
+      {% endfor %}
+    {% endif %}
+
+    {%- comment -%}
+      Floating Spotify Player (persists across all pages)
+    {%- endcomment -%}
+    {% include spotify-player.html %}
+  </body>
 </html>

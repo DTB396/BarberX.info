@@ -1,0 +1,45 @@
+:root {
+  /* FaithFrontier tokens */
+  /* Virtues: Integrity | Faith | Perseverance */
+  --ff-ink: #0B1220;
+  --ff-navy: #0E1B2A;
+  --ff-emerald: #0F5D4D;
+  --ff-gold: #B08D2F;
+  --ff-parchment: #F5F0E6;
+  --ff-stone: #E6E2DA;
+  --ff-danger: #8A1F2E;
+  --ff-success: #1E6B4E;
+  --ff-info: #1B4F72;
+  --ff-radius: 16px;
+  --ff-maxw: 1120px;
+  --ff-shadow: 0 14px 40px rgba(11,18,32,.16);
+  --ff-font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --ff-font-serif: ui-serif, Georgia, ''Times New Roman'', serif;
+  --ff-motion-style: gentle-purposeful;
+  --ff-motion-speed: medium;
+  --ff-easing: ease-out;
+  --ff-bg: #F5F0E6;
+  --ff-surface: #E6E2DA;
+  --ff-text: #0B1220;
+  --ff-muted: #0E1B2A;
+  --ff-brand: #0F5D4D;
+  --ff-accent: #B08D2F;
+  --ff-info: #1B4F72;
+  --ff-success: #1E6B4E;
+  --ff-danger: #8A1F2E;
+  --ff-border: rgba(11,18,32,.18);
+  --ff-focus: #B08D2F;
+    /* Motion (durations) */
+      --ff-dur-1: 120ms;
+      --ff-dur-2: 180ms;
+      --ff-dur-3: 260ms;
+      --ff-dur-4: 420ms;
+    
+      /* Motion (easing) */
+      --ff-ease-standard: cubic-bezier(.2, 0, 0, 1);
+      --ff-ease-out: cubic-bezier(0, 0, .2, 1);
+      --ff-ease-in-out: cubic-bezier(.4, 0, .2, 1);
+    
+      /* Default motion */
+      --ff-ease: var(--ff-ease-out);
+}

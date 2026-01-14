@@ -1,27 +1,65 @@
-<header id="siteHeader" class="site-header" role="banner">
-  <div class="container header-inner">
-    <a class="brand" href="{{ "/" | relative_url }}" aria-label="Barber Cam home">
-      <picture>
-        <source srcset="{{ '/assets/img/logo/barbercam-header-lockup.dark.svg' | relative_url }}" media="(prefers-color-scheme: dark)">
-        <source srcset="{{ '/assets/img/logo/barbercam-header-lockup.light.svg' | relative_url }}" media="(prefers-color-scheme: light)">
-        <img class="brand-logo" src="{{ '/assets/img/logo/barbercam-header-lockup.svg' | relative_url }}" alt="Barber Cam" />
-      </picture>
+<header class="premium-header" role="banner">
+  <div class="premium-header__inner">
+    
+    <!-- Left Navigation (3 items) -->
+    <nav class="premium-nav premium-nav--left" aria-label="Primary navigation left">
+      <ul class="premium-nav__list">
+        <li><a href="{{ '/story/' | relative_url }}" class="premium-nav__link">Story</a></li>
+        <li><a href="{{ '/manifesto/' | relative_url }}" class="premium-nav__link">Manifesto</a></li>
+        <li><a href="{{ '/tillerstead-sanctuary-vision/' | relative_url }}" class="premium-nav__link">Sanctuary</a></li>
+      </ul>
+    </nav>
+
+    <!-- Center-aligned brand (unified with footer) -->
+    <a class="premium-brand js-site-logo" href="{{ '/' | relative_url }}" aria-label="Faith Frontier Ecclesiastical Trust home">
+      <img src="{{ site.logo_mark | default: '/assets/img/faithfrontier-mark.svg' | relative_url }}"
+           alt="Faith Frontier Ecclesiastical Trust"
+           class="footer-logo premium-brand__mark"
+           itemprop="logo">
+      <span class="footer-name premium-brand__wordmark" itemprop="name">Faith Frontier</span>
     </a>
 
-    <button class="nav-toggle" type="button"
-      aria-expanded="false"
-      aria-controls="primaryNav"
-      aria-label="Open menu"
-      data-nav-toggle>
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav id="primaryNav" class="main-nav" aria-label="Primary" data-nav>
-      <!-- keep your links -->
-      <a href="#preview">Preview</a>
-      <a href="#principles">Principles</a>
-      <a href="#status">Status</a>
-      <a href="#connect">Connect</a>
+    <!-- Right Navigation (4 items + CTA) -->
+    <nav class="premium-nav premium-nav--right" aria-label="Primary navigation right">
+      <ul class="premium-nav__list">
+        <li><a href="{{ '/health/holistic-independence/' | relative_url }}" class="premium-nav__link">Health Map</a></li>
+        <li><a href="{{ '/essays/' | relative_url }}" class="premium-nav__link">Essays</a></li>
+        <li><a href="{{ '/cases/' | relative_url }}" class="premium-nav__link">Cases</a></li>
+        <li><a href="{{ '/stewardship-resources/' | relative_url }}" class="premium-nav__link premium-nav__link--highlight">Resources</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}" class="premium-nav__link">Contact</a></li>
+      </ul>
     </nav>
+
+    <!-- Mobile hamburger toggle -->
+    <button class="premium-nav-toggle" 
+            aria-label="Toggle navigation menu" 
+            aria-expanded="false" 
+            aria-controls="premium-nav-mobile">
+      <span class="premium-nav-toggle__bar"></span>
+      <span class="premium-nav-toggle__bar"></span>
+      <span class="premium-nav-toggle__bar"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile Navigation Drawer (outside header for proper positioning) -->
+<nav id="premium-nav-mobile" class="premium-nav premium-nav--mobile" aria-label="Mobile navigation">
+  <div class="premium-nav__header">
+    <button class="premium-nav__close" aria-label="Close navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <ul class="premium-nav__list">
+    <li><a href="{{ '/story/' | relative_url }}" class="premium-nav__link">Story</a></li>
+    <li><a href="{{ '/manifesto/' | relative_url }}" class="premium-nav__link">Manifesto</a></li>
+    <li><a href="{{ '/tillerstead-sanctuary-vision/' | relative_url }}" class="premium-nav__link">Sanctuary</a></li>
+    <li><a href="{{ '/health/holistic-independence/' | relative_url }}" class="premium-nav__link">Health Map</a></li>
+    <li><a href="{{ '/essays/' | relative_url }}" class="premium-nav__link">Essays</a></li>
+    <li><a href="{{ '/cases/' | relative_url }}" class="premium-nav__link">Cases</a></li>
+    <li><a href="{{ '/stewardship-resources/' | relative_url }}" class="premium-nav__link premium-nav__link--highlight">Resources</a></li>
+    <li><a href="{{ '/contact/' | relative_url }}" class="premium-nav__link">Contact</a></li>
+  </ul>
+</nav>

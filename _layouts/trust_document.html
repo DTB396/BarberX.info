@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<section class="section-content trust-hero">
+  <p class="trust-eyebrow">Sanctuary · Inner Room · Ecclesiastical Trust</p>
+  <h1>{{ page.title }}</h1>
+  <div class="trust-meta">
+    {% if page.doc_type %}
+      <span class="trust-badge">{{ page.doc_type | replace: '_', ' ' | capitalize }}</span>
+    {% endif %}
+    {% if page.status %}
+      <span class="trust-chip">{{ page.status | replace: '_', ' ' | capitalize }}</span>
+    {% endif %}
+    {% if page.access_level %}
+      <span class="trust-chip trust-chip--inner">{{ page.access_level | replace: '_', ' ' | capitalize }}</span>
+    {% endif %}
+    {% if page.date %}
+      <span class="trust-date">{{ page.date | date: "%B %d, %Y" }}</span>
+    {% endif %}
+  </div>
+  <div class="trust-note trust-note--muted">
+    <h2>Ecclesiastical &amp; Spiritual Context</h2>
+    <p>
+      These records are maintained as part of Faith Frontier’s ecclesiastical and spiritual stewardship. They are not legal advice,
+      not court filings, and not sworn statements under penalty of perjury. If clarity is needed, please email
+      <a href="mailto:info@Tillerstead.com">info@Tillerstead.com</a> for pastoral or administrative guidance.
+    </p>
+  </div>
+</section>
+
+<section class="section-content trust-body">
+  <div class="trust-panel">
+    {% if page.pdf_path %}
+      <div class="trust-actions">
+        <a href="{{ page.pdf_path | relative_url }}" class="btn btn-primary trust-download">View / Download Signed PDF</a>
+      </div>
+    {% endif %}
+
+    <div class="trust-content">
+      {{ content }}
+    </div>
+  </div>
+</section>

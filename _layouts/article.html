@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<article class="article shell u-max-w-4xl u-mx-auto">
+  <header class="article-header u-mb-xl u-p-md" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(1,138,106,0.06); border-radius: var(--radius-lg);">
+    <p class="article-kicker u-text-emerald" style="text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.95rem; margin: 0 0 0.5rem 0;">
+      Biography · Constitutional Narrative
+    </p>
+    <h1 class="article-title u-mb-sm u-text-highlight" style="font-size: clamp(2rem, 3vw, 3rem);">
+      {{ page.title }}
+    </h1>
+    {% if page.description %}
+    <p class="article-description u-mb-sm u-text-muted" style="font-size: 1.1rem; line-height: 1.7;">
+      {{ page.description }}
+    </p>
+    {% endif %}
+    <div class="article-meta u-flex u-gap-md u-text-muted" style="font-size: 0.95rem; flex-wrap: wrap; align-items: center;">
+      {% if page.author %}
+      <span><strong class="u-text-emerald">Author:</strong> {{ page.author }}</span>
+      {% endif %}
+      {% if page.date %}
+      <span><strong class="u-text-accent">Date:</strong> {{ page.date | date: "%B %-d, %Y" }}</span>
+      {% endif %}
+      {% if page.category %}
+      <span class="article-category u-text-accent" style="padding: 0.2rem 0.6rem; border-radius: 999px; background: var(--brass-alpha-18); border: 1px solid var(--brass-alpha-35);">
+        {{ page.category }}
+      </span>
+      {% endif %}
+    </div>
+  </header>
+
+  <section class="article-body u-pb-xl u-grid u-gap-lg">
+    {{ content }}
+  </section>
+</article>

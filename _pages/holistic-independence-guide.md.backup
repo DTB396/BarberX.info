@@ -1,0 +1,252 @@
+---
+layout: default
+title: "Holistic Independence & Stewardship Guide"
+description: "Interactive guide: select your state or USDA zone to view medication patterns, gardening-first alternatives, frost windows, and safety cautions. Educational only—coordinate care with licensed clinicians."
+audience: "Public"
+status: "Living document"
+permalink: /health/holistic-independence/
+show_breadcrumbs: true
+hide_hero: true
+
+page_includes:
+  - holistic-data.html
+
+page_css:
+  - /assets/css/pages/holistic-map.css
+  - /assets/css/pages/holistic-map-enhanced.css
+
+page_js:
+  - /assets/js/holistic-interactive-map.js
+---
+<section class="section-block">
+  <div class="container">
+    <p class="section-eyebrow">Stewardship • Food-first • Informed consent</p>
+    <h1 class="section-heading">Holistic Independence & Stewardship Guide</h1>
+    <p class="section-lead">
+      A practical, zone-based reference to help families reduce baseline inflammation and preventable health burden—
+      while coordinating safely with licensed clinicians when medication is involved.
+    </p>
+
+    <blockquote>
+      <p><em>“Jesus entered the temple and overturned the tables of the money changers.”</em></p>
+      <p class="muted">
+        This guide challenges dependency-by-default. It does not reject legitimate medical care.
+      </p>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+
+    <h2 class="h3">Read first (safety + scope)</h2>
+
+    <div class="callout">
+      <ul>
+        <li><strong>Educational only.</strong> Faith Frontier does not diagnose, treat, or prescribe.</li>
+        <li><strong>No “stop your meds” messaging.</strong> Medication changes must be made with a licensed clinician.</li>
+        <li><strong>Urgent symptoms:</strong> if severe, sudden, or worsening, seek urgent medical care.</li>
+        <li><strong>Microclimates vary.</strong> USDA zones and frost windows are planning aids, not guarantees.</li>
+      </ul>
+    </div>
+
+    <p class="muted">
+      The interactive tool links medication patterns, gardening-first alternatives, and zone guidance. Use it to start conversations,
+      build a weekly plan, and document outcomes with professionals where appropriate.
+    </p>
+
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+    <h2 class="h3">Interactive guide</h2>
+    <p class="muted">
+      Choose your <strong>USDA zone</strong> (fastest), or pick your <strong>state</strong> (more context).
+      You can also search by plant or condition.
+    </p>
+
+    <div class="step-container">
+
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number-badge">1</div>
+          <div>
+            <h3 class="step-title">Select your zone or state</h3>
+            <p class="step-subtitle">Zone → frost window → what you can grow</p>
+          </div>
+        </div>
+
+        <!-- Controls: keep IDs/classes consistent with your JS -->
+        <div class="map-section">
+          <div class="map-instructions">
+            <h4>Start here</h4>
+            <p>Select a USDA zone, optionally choose a state, then view recommendations below.</p>
+          </div>
+
+          <!-- Your JS expects these controls (keep existing markup if you already have it) -->
+          <div class="holistic-controls">
+            <label class="control">
+              <span>USDA Zone</span>
+              <select id="zoneSelect">
+                <option value="">Choose zone…</option>
+                <option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                <option value="6">6</option><option value="7">7</option><option value="8">8</option>
+                <option value="9">9</option><option value="10">10</option><option value="11">11</option>
+              </select>
+            </label>
+
+            <label class="control">
+              <span>State (optional)</span>
+              <select id="stateSelect">
+                <option value="">Pick a state…</option>
+              </select>
+            </label>
+
+            <label class="control control-wide">
+              <span>Search</span>
+              <input id="searchInput" type="text" placeholder="Search plant, condition, or keyword…" />
+            </label>
+
+            <button id="searchBtn" class="btn btn-primary">Apply</button>
+            <button id="resetBtn" class="btn btn-ghost" type="button">Reset</button>
+          </div>
+
+          <div class="map-shell" id="usMapShell">
+            <object id="usMapObj" type="image/svg+xml" data="{{ '/assets/svg/us-states.svg' | relative_url }}"></object>
+          </div>
+
+          <div id="mapTooltip" class="map-tooltip" hidden></div>
+
+          <p class="muted" style="margin-top:10px;">
+            Tip: clicking a state on the map can prefill state/zone if the SVG is tagged.
+            If it doesn’t, use the dropdowns above—same results.
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number-badge">2</div>
+          <div>
+            <h3 class="step-title">Your context</h3>
+            <p class="step-subtitle">Frost window + medication patterns + cautions</p>
+          </div>
+        </div>
+
+        <div id="resultsMeta" class="results-meta"></div>
+
+        <div class="callout" style="margin-top:12px;">
+          <strong>Clinician note:</strong>
+          If you’re tracking blood pressure, glucose, sleep, pain, mood, or GI symptoms, document baseline first, then re-check at 2, 6, and 12 weeks.
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number-badge">3</div>
+          <div>
+            <h3 class="step-title">Plants you can grow</h3>
+            <p class="step-subtitle">Food + tea + gentle preparation, with cautions</p>
+          </div>
+        </div>
+
+        <div id="resultsGrid" class="results-grid"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+    <h2 class="h3">Start small: a 14-day stewardship plan</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Week 1: stabilize inputs</h3>
+        <ul>
+          <li>Morning outdoor light (10–20 min)</li>
+          <li>Daily walk or gardening movement (20–40 min)</li>
+          <li>One meal/day: whole foods + fiber</li>
+          <li>Water + electrolytes as appropriate</li>
+          <li>Sleep window: consistent bedtime</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Week 2: add a garden habit</h3>
+        <ul>
+          <li>Plant 2–4 “starter” crops for your zone</li>
+          <li>One daily tea/food plant (gentle, low risk)</li>
+          <li>Track one metric (sleep, pain, BP, steps)</li>
+          <li>Share notes with a clinician if on meds</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:10px;">
+      This guide emphasizes food, movement, and cultivation—then adds herbs cautiously.
+      High-dose extracts are not the default.
+    </p>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+    <h2 class="h3">Safety cautions (quick)</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Higher interaction risk</h3>
+        <ul>
+          <li><strong>St. John’s Wort</strong> (broad medication interactions)</li>
+          <li><strong>Kava</strong> (possible liver risk)</li>
+          <li><strong>Concentrated extracts</strong> (start low; coordinate)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Safer default forms</h3>
+        <ul>
+          <li>Food use (culinary herbs, spices)</li>
+          <li>Gentle teas (low concentration)</li>
+          <li>Simple topical infused oils (diluted)</li>
+        </ul>
+        <p class="muted">Essential oils are concentrated—avoid undiluted skin use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+    <h2 class="h3">Data sources & verification</h2>
+    <p>
+      Medication context is summarized from publicly available datasets and reports. This page is maintained as a living document,
+      and source verification notes are tracked in the project’s data documentation.
+    </p>
+    <ul>
+      <li><strong>Verification report:</strong> Health Map Data Sources (internal documentation)</li>
+      <li><strong>Note:</strong> state and national statistics are time-bound and must be read with their data year.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+    <h2 class="h3">Next upgrades (rebuild roadmap)</h2>
+    <ul>
+      <li>State tooltip improvements: show zone hint + frost range + 3 featured plants</li>
+      <li>Condition subguides: pain/nerve, sleep, stress, inflammation, digestion</li>
+      <li>Printable “starter plans” by region + zone</li>
+      <li>Clinician appendix: collaboration workflow + contraindication checklist + measurement templates</li>
+    </ul>
+    <p class="muted">
+      Living document. Contributions welcome, with safety and sourcing standards.
+    </p>
+  </div>
+</section>
