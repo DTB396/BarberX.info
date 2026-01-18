@@ -135,40 +135,9 @@ layout: default
   {% endif %}
 
   {%- comment -%}
-    DOCKET ENTRIES - Chronological filings and dates
+    DOCKET ENTRIES - Modern filterable docket navigator
   {%- endcomment -%}
-  <section class="case-section docket">
-    <h2>Docket Entries</h2>
-    {% assign slug = page.url | split:'/' | last | default: page.slug %}
-    {% assign docket_data = site.data.docket[slug] %}
-    {% if docket_data %}
-      {% assign docket = docket_data | sort: "date" | reverse %}
-      <div class="docket-stats">
-        <span class="docket-count">{{ docket | size }} entries</span>
-        {% if docket.first %}
-        <span class="docket-latest">Latest: {{ docket.first.date | date: "%B %-d, %Y" }}</span>
-        {% endif %}
-      </div>
-      <ul class="docket-list">
-        {% for d in docket %}
-          <li class="docket-entry docket-entry--{{ d.type | downcase | replace: ' ', '-' }}">
-            <time datetime="{{ d.date }}">{{ d.date | date: "%Y-%m-%d" }}</time>
-            <span class="docket-type">{{ d.type }}</span>
-            {% if d.file %}
-            <a href="{{ d.file }}" target="_blank" rel="noopener" class="docket-title">{{ d.title }}</a>
-            {% else %}
-            <span class="docket-title">{{ d.title }}</span>
-            {% endif %}
-            {% if d.notes %}
-            <div class="docket-notes">{{ d.notes }}</div>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="no-entries">No docket entries yet.</p>
-    {% endif %}
-  </section>
+  {% include case-docket.html %}
 
   {%- comment -%}
     KEY FILINGS - Only show if no docket system is in use
@@ -287,3 +256,6 @@ layout: default
   </footer>
   {% endif %}
 </article>
+
+<!-- Case page navigation enhancements -->
+<script src="{{ '/assets/js/case-nav.js' | relative_url }}" defer></script>
