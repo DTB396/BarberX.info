@@ -6,20 +6,18 @@ description: "Complete archive of Faith Frontier's legal proceedings—documenti
 stylesheet: /assets/css/cases-index.css
 ---
 
-# {%- comment -%}
-
-# FAITH FRONTIER CASE RECORDS INDEX
+{%- comment -%}
+FAITH FRONTIER CASE RECORDS INDEX
 
 This page displays the complete legal archive with:
-
 - Hero section with case statistics
 - Filter controls for status, court, and search
 - Responsive card grid of all published cases
 - Smart resource display (notes/evidence only when present)
 
 Styling: /assets/css/cases-index.css
-Case Layout: \_layouts/case-enhanced.html
-Resources Include: \_includes/case-resources.html
+Case Layout: _layouts/case-enhanced.html
+Resources Include: _includes/case-resources.html
 {%- endcomment -%}
 
 <!-- ==================== HERO SECTION ==================== -->

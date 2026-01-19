@@ -522,6 +522,98 @@
 }
 
 /* ==========================================================================
+   Quick-Jump Navigation
+   ========================================================================== */
+
+.case-quick-nav {
+  position: sticky;
+  top: 80px;
+  z-index: var(--z-sticky, 200);
+  margin: 0 -2rem 2rem;
+  padding: 0.75rem 2rem;
+  background: var(--ff-surface-alt);
+  border-bottom: 1px solid rgb(212 165 116 / 20%);
+  backdrop-filter: blur(10px);
+}
+
+.case-quick-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.case-quick-nav__label {
+  font-family: var(--ff-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--ff-text-muted);
+  white-space: nowrap;
+}
+
+.case-quick-nav__list {
+  display: flex;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.case-quick-nav__link {
+  display: inline-flex;
+  padding: var(--space-2xs) var(--space-sm);
+  font-family: var(--ff-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  color: var(--ff-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.case-quick-nav__link:hover {
+  background: rgb(212 165 116 / 15%);
+  color: var(--ff-secondary);
+  text-decoration: none;
+}
+
+.case-quick-nav__link.is-active {
+  background: var(--ff-primary);
+  color: var(--pure-white);
+}
+
+/* Highlighted docket entry (from direct link) */
+.docket-card.is-highlighted,
+.docket-entry.is-highlighted {
+  animation: highlight-pulse 1s ease-out;
+  box-shadow: 0 0 0 3px var(--ff-primary);
+}
+
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 6px rgb(16 92 74 / 40%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 3px var(--ff-primary);
+  }
+}
+
+@media (width <= 768px) {
+  .case-quick-nav {
+    margin: 0 -1rem 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .case-quick-nav__label {
+    display: none;
+  }
+}
+
+/* ==========================================================================
    Print Styles
    ========================================================================== */
 
@@ -550,5 +642,133 @@
     border: 1px solid var(--pure-black);
     color: var(--pure-black);
     background: var(--pure-white);
+  }
+
+  .case-quick-nav {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   LARGE SCREEN ENHANCEMENTS (1400px+)
+   ========================================================================== */
+
+@media (min-width: 1400px) {
+  .case-record--enhanced {
+    max-width: 100rem;
+    padding: 3rem;
+  }
+
+  .case-caption {
+    padding-bottom: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .case-title {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+  }
+
+  .case-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .case-meta {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-section {
+    margin: 4rem 0;
+    padding: 2.5rem 0;
+  }
+
+  .case-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .docket-entry {
+    padding: 1.25rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .filing-item {
+    padding: 1.5rem;
+  }
+
+  .case-involvement,
+  .case-current-status {
+    padding: 2.5rem;
+    border-radius: 12px;
+  }
+
+  .timeline-list {
+    padding-left: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   ULTRA-WIDE SCREEN (1800px+)
+   ========================================================================== */
+
+@media (min-width: 1800px) {
+  .case-record--enhanced {
+    max-width: 120rem;
+    padding: 4rem;
+  }
+
+  .case-title {
+    font-size: clamp(2.75rem, 3.5vw, 4rem);
+  }
+
+  .case-meta {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+
+  .case-section {
+    margin: 5rem 0;
+  }
+
+  .case-section h2 {
+    font-size: 2rem;
+  }
+
+  .case-section h3 {
+    font-size: 1.35rem;
+  }
+
+  .docket-stats {
+    padding: 1.5rem 2rem;
+    gap: 3rem;
+  }
+
+  .case-involvement,
+  .case-current-status,
+  .case-posture .posture-narrative {
+    padding: 3rem;
+    border-radius: 16px;
+  }
+}
+
+/* ==========================================================================
+   4K SCREEN (2560px+)
+   ========================================================================== */
+
+@media (min-width: 2560px) {
+  .case-record--enhanced {
+    max-width: 160rem;
+    padding: 5rem;
+  }
+
+  .case-title {
+    font-size: 4rem;
+  }
+
+  .case-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .case-meta {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

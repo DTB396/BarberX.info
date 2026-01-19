@@ -1,17 +1,16 @@
 ---
 layout: default
 permalink: /
-title: "Barber Cam | Citizen Accountability Platform"
-description: "Precision. Patience. Virtue. Honor. A citizen-led accountability platform built on transparency, ethical
-documentation, and due process."
+title: "BarberX.info | Personal Accountability Journal"
+description: "Honest experiences. Real documentation. Shining light on bad actors to help the good bunch navigate better."
 image: /assets/img/og-image.png
 ---
 
-{% include barber-hero.html cta_label="View Preview" cta_href="#preview" badge="Under Development" %}
-{% include preview.html %}
-{% include principles.html %}
-{% include status.html %}
-{% include connect.html %}
-{% include compliance.html %}
+{% include components/heroes/barber-hero.html cta_label="View Preview" cta_href="#preview" badge="Under Development" %}
+{% include sections/home/preview.html %}
+{% include sections/home/principles.html %}
+{% include sections/home/status.html %}
+{% include components/forms/connect.html %}
+{% include sections/home/compliance.html %}
 
 <script src="{{ "/assets/js/header.js" | relative_url }}" defer></script>

@@ -1,23 +1,13 @@
 /* ============================================================================
    Faith Frontier Master Theme
    Unified design system for consistent styling across all pages
+   
+   NOTE: All CSS imports are now centralized in main.css to prevent duplication.
+   This file contains theme-specific styling only (header, nav, footer, etc.)
    ============================================================================ */
 
 /* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:wght@400;600;700&display=swap");
-
-/* Import theme modules */
-@import url("variables.css");
-@import url("../components/adaptive-contrast.css");
-@import url("base.css");
-@import url("../layouts/layout.css");
-@import url("../components/components.css");
-@import url("../pages/cases.css");
-@import url("../components/premium-header.css");
-@import url("../components/premium-hero.css");
-@import url("../components/theme-toggle.css");
-@import url("../layouts/page-transitions.css");
-@import url("../components/featured-essays.css");
 
 /* ======================================
    Header / Navigation / Logo
@@ -74,6 +64,8 @@
   max-height: 32px;
 }
 
+/* Note: Additional .ff-logo-inline svg rules consolidated here */
+
 .site-logo {
   display: flex;
   align-items: center;
@@ -118,12 +110,6 @@
 
 /* Header logo – desktop */
 .ff-logo--header {
-  max-height: 36px;
-  width: auto;
-}
-
-.ff-logo-inline svg {
-  display: block;
   max-height: 36px;
   width: auto;
 }
@@ -302,14 +288,14 @@
   background: rgb(0 0 0 / 60%);
   backdrop-filter: blur(2px);
   z-index: 998;
-  animation: fadeIn 0.25s ease;
+  animation: fade-in 0.25s ease;
 }
 
 .nav-backdrop.is-visible {
   display: block;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -484,7 +470,7 @@
   background: rgb(130 90 30 / 12%);
 }
 
-@keyframes slideInRight {
+@keyframes slide-in-right {
   from {
     opacity: 0;
     transform: translateX(20px);
@@ -733,4 +719,114 @@
 
 .footer-notice a:hover {
   color: var(--accent-brass);
+}
+
+/* ======================================
+   FOOTER LARGE SCREEN ENHANCEMENTS (1400px+)
+====================================== */
+
+@media (min-width: 1400px) {
+  .site-footer {
+    padding: var(--space-4xl) 0 var(--space-2xl);
+  }
+
+  .footer-inner {
+    max-width: 80rem;
+    gap: var(--space-xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr;
+    gap: var(--space-2xl);
+    text-align: left;
+  }
+
+  .footer-brand {
+    align-items: flex-start;
+  }
+
+  .footer-logo {
+    width: 100px;
+  }
+
+  .footer-name {
+    font-size: 1.25rem;
+  }
+
+  .footer-about {
+    max-width: none;
+    font-size: 1rem;
+  }
+
+  .footer-nav ul {
+    justify-content: flex-start;
+    gap: var(--space-md) var(--space-xl);
+  }
+
+  .footer-notice {
+    max-width: none;
+    margin: 0;
+  }
+}
+
+/* ======================================
+   FOOTER ULTRA-WIDE (1800px+)
+====================================== */
+
+@media (min-width: 1800px) {
+  .site-footer {
+    padding: var(--space-4xl) 0 var(--space-3xl);
+    font-size: 1rem;
+  }
+
+  .footer-inner {
+    max-width: 100rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.5fr 2.5fr 1.5fr;
+    gap: var(--space-3xl);
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+
+  .footer-name {
+    font-size: 1.35rem;
+  }
+
+  .footer-nav a {
+    font-size: 1.05rem;
+  }
+
+  .footer-notice {
+    padding: var(--space-lg);
+    font-size: 0.95rem;
+  }
+}
+
+/* ======================================
+   FOOTER 4K (2560px+)
+====================================== */
+
+@media (min-width: 2560px) {
+  .footer-inner {
+    max-width: 140rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: var(--space-4xl);
+  }
+
+  .footer-logo {
+    width: 140px;
+  }
+
+  .footer-nav a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+  }
 }

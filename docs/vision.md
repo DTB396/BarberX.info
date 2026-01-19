@@ -6,97 +6,95 @@ permalink: /docs/vision/
 
 <article class="md">
   <header class="md-header">
-    <h1 class="md-title">Barber-Cam Vision</h1>
-    <p class="md-lead">Barber Cam exists to preserve truth, reduce harm, and reinforce accountability through ethical record-keeping.</p>
+    <h1 class="md-title">Documentation Philosophy</h1>
+    <p class="md-lead">This site exists to document truth, expose patterns of bad behavior, and help good people avoid similar problems.</p>
   </header>
 
   <section class="md-content">
 
-## Our Mission
+## My Mission
 
-We are dedicated to educating and empowering citizens to understand and engage with constitutional principles, lawful governance, and community stewardship.
+I'm sharing my documented experiences to help others recognize bad actors and systemic 
+dysfunction. Not to build a platform. Not to corner a market. Just to shine light on 
+problems honestly and productively.
 
 ## Core Philosophy
 
-Technology should restrain power, not amplify it. Every tool we build must serve truthfulness, transparency, and accountability—never coercion, manipulation, or surveillance.
+Documentation should expose truth, not obscure it. Every case shared must serve honesty, 
+clarity, and helping good people make better decisions — never revenge, harassment, or manipulation.
 
 ---
 
 ## Foundational Principles
 
-### Grounding Discipline
+### Why Document?
 
-All Barber Cam operations remain:
+All documentation serves to:
 
-- **Historically grounded** — Claims based on verifiable facts
-- **Legally sober** — Respect for U.S. and state law
-- **Operationally realistic** — Describing what exists, not speculation
-- **Non-extremist** — Avoiding inflammatory or absolutist language
-- **Non-speculative** — No inventing facts or predicting outcomes
+- **Preserve truth** — Capture what actually happened with evidence
+- **Expose patterns** — Bad actors leave recognizable trails
+- **Protect others** — Share lessons so good people avoid similar traps
+- **Maintain integrity** — Focus on facts, not spin or narrative
 
-### Stewardship Model
+### Documentation Standards
 
-Our approach to documentation emphasizes:
+My approach emphasizes:
 
-- **Asset stewardship** — Responsible management of recorded resources
-- **Minimal collection** — Collect and retain as little as possible
-- **Mutual aid** — Voluntary networks for community support
-- **Local accountability** — Empowering neighborhood oversight
-
----
-
-## Key Principles
-
-- **Transparency** — Clear, honest documentation of events; open processes that build public trust
-- **Accountability** — Creating verifiable records that matter; power must answer to evidence
-- **Ethics** — Responsible handling of sensitive recordings; documentation for protection, not persecution
-- **Privacy** — Balancing documentation with individual rights; your data stays yours
-- **Due Process** — Supporting fair outcomes; never substituting for lawful procedures
-- **Dignity** — Avoiding humiliation, harassment, or public shaming
+- **Context preservation** — Every claim needs supporting detail
+- **Minimal speculation** — Stick to what can be verified
+- **Pattern focus** — Individual incidents reveal systemic issues
+- **Protective purpose** — Document to inform, not to attack
 
 ---
 
-## What Barber Cam Is
+## What This Site Is
 
-- A **citizen-driven accountability framework** for ethical documentation
-- A **voluntary documentation initiative** emphasizing restraint and dignity
-- A **transparency project** providing accessible records for community learning
-- A **privacy-first platform** where data belongs to those who create it
+- A **personal accountability journal** documenting real experiences
+- A **pattern recognition resource** identifying bad actor behaviors  
+- A **lessons learned repository** helping others navigate better
+- An **evidence preservation site** maintaining chain of custody
 
-## What Barber Cam Is NOT
+## What This Site Is NOT
 
-- A law enforcement tool or government agency
-- A surveillance platform or mass monitoring system
-- A vigilante technology or confrontation tool
-- A data harvesting or behavioral profiling service
-- A replacement for lawful procedures or professional legal advice
-
----
-
-## Why Barber-Cam?
-
-In an era where trust is scarce, Barber-Cam provides a reliable way to capture and preserve moments that matter—ensuring that the truth is always accessible when it's needed most.
-
-**Truth is preserved through accurate, contemporaneous documentation.** The goal is resolution, not retribution. Documentation exists to prevent harm, not escalate it.
+- A commercial platform or product
+- A BWC tool suite or technology service
+- A vigilante operation or harassment campaign
+- A replacement for professional legal advice
 
 ---
 
-## Legal & Compliance Framework
+## Why BarberX?
 
-Barber Cam operates within established legal frameworks:
+Because cutting through bureaucratic spin requires precision. These are my documented 
+experiences with bad actors who hide behind process, paperwork, and position.
 
-- **United States Constitution** as supreme law
-- **Federal statutes** governing relevant activities
-- **State law** (including New Jersey jurisdiction)
-- **Local ordinances** and municipal codes
-
-**Important:** Barber Cam does not provide legal advice. Recording laws vary by location and situation. Users are responsible for complying with applicable laws, consent rules, and venue policies. Always consult a licensed attorney for legal guidance.
+**Truth is preserved through careful documentation.** The goal is protection, not retribution. 
+Evidence exists to help good people recognize bad patterns.
 
 ---
 
-## Our Future Vision
+## Legal & Ethical Framework
 
-### Phase 1: Foundation & Validation _(In Progress)_
+This documentation operates within legal boundaries:
+
+- **First Amendment** protects truthful documentation
+- **Recording laws** vary by jurisdiction (compliance required)
+- **Privacy considerations** guide what gets shared publicly
+- **Professional counsel** should be consulted for specific situations
+
+**Important:** This site shares experiences and documentation, not legal advice. 
+Consult licensed attorneys for guidance on your specific situation.
+
+---
+
+## Current Focus
+
+### Active Documentation
+
+- Preserving evidence from ongoing encounters
+- Identifying patterns across multiple cases
+- Building comprehensive case files with supporting materials
+- Sharing lessons learned to help others
 
 **Current Focus:**
 

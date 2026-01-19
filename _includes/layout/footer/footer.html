@@ -1,0 +1,74 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <picture>
+            <source
+              srcset="{{ '/assets/img/logo/barbercam-footer-min.dark.svg' | relative_url }}"
+              media="(prefers-color-scheme: dark)"
+            />
+            <source
+              srcset="{{ '/assets/img/logo/barbercam-footer-min.light.svg' | relative_url }}"
+              media="(prefers-color-scheme: light)"
+            />
+            <img
+              src="{{ '/assets/img/logo/barbercam-footer-min.svg' | relative_url }}"
+              alt="Barber Cam"
+              width="220"
+              height="44"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+
+        <p class="footer-tagline">Precision. Patience. Virtue. Honor.</p>
+        <p class="footer-description">
+          Citizen accountability through record, dignity, and due process.
+        </p>
+
+        <div class="footer-contact">
+          <a
+            href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}"
+            class="contact-link"
+          >
+            <span>{{ site.email | default: 'BarberCamX@ProtonMail.com' }}</span>
+          </a>
+        </div>
+      </div>
+
+      {% include footer-links.html %}
+
+      <div class="footer-notice">
+        <h4>Public Notice</h4>
+        <p>
+          Under active development. No operational software, internal systems,
+          or proprietary methods are published on this site.
+        </p>
+        <div class="footer-compliance">
+          <span>Privacy-First</span><span>•</span><span>No Tracking</span
+          ><span>•</span><span>No Data Sales</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>
+          &copy; <span id="year">{{ site.time | date: '%Y' }}</span> Barber Cam.
+          All rights reserved.
+        </p>
+        <p class="footer-legal">Built with precision in New York.</p>
+      </div>
+
+      <div class="footer-legal-links">
+        <a href="{{ '/LICENSE' | relative_url }}">License</a>
+        <span>•</span>
+        <a href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}"
+          >Contact</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>

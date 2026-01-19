@@ -15,7 +15,7 @@
   box-shadow: var(--ts-shadow-lift);
 }
 
-#usMapObj {
+#us-map-obj {
   width: 100%;
   height: auto;
   display: block;

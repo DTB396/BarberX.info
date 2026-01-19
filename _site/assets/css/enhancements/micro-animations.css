@@ -283,7 +283,7 @@ a:not(.btn):focus::after {
    MODAL & DIALOG ANIMATIONS
    ========================================================================== */
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -293,7 +293,7 @@ a:not(.btn):focus::after {
   }
 }
 
-@keyframes slideUp {
+@keyframes slide-up {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -307,19 +307,19 @@ a:not(.btn):focus::after {
 
 dialog[open],
 .modal[open] {
-  animation: fadeIn 0.3s ease-out;
+  animation: fade-in 0.3s ease-out;
 }
 
 dialog[open] > div,
 .modal[open] > div {
-  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ==========================================================================
    NOTIFICATION ANIMATIONS
    ========================================================================== */
 
-@keyframes slideInRight {
+@keyframes slide-in-right {
   from {
     transform: translateX(100%);
     opacity: 0;
@@ -333,7 +333,7 @@ dialog[open] > div,
 
 .notification,
 .toast {
-  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ==========================================================================
@@ -378,7 +378,7 @@ dialog[open] > div,
 }
 
 /* Mobile menu slide in */
-@keyframes slideInFromRight {
+@keyframes slide-in-from-right {
   from {
     transform: translateX(100%);
   }
@@ -389,7 +389,7 @@ dialog[open] > div,
 }
 
 .mobile-menu[data-open="true"] {
-  animation: slideInFromRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slide-in-from-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================

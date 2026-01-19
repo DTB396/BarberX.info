@@ -248,22 +248,17 @@
     break-inside: avoid;
   }
 
-  /* Avoid breaks after headings */
-  h1,
+  /* Avoid breaks around headings */
+  h1 {
+    break-after: avoid;
+  }
+
   h2,
   h3,
   h4,
   h5,
   h6 {
     break-after: avoid;
-  }
-
-  /* Avoid breaks before headings */
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
     break-before: avoid;
   }
 

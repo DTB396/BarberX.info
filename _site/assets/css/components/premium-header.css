@@ -141,10 +141,6 @@
 .premium-nav--left,
 .premium-nav--right {
   display: none;
-}
-
-.premium-nav--left,
-.premium-nav--right {
   position: relative;
   right: auto;
   top: auto;
@@ -560,5 +556,128 @@ body {
 
   body {
     padding-top: 0;
+  }
+}
+
+/* ============================================
+   LARGE SCREEN HEADER ENHANCEMENTS (1400px+)
+   ============================================ */
+
+@media (min-width: 1400px) {
+  .premium-header__inner {
+    max-width: 1600px;
+    padding: 1.75rem 3rem;
+    gap: 3rem;
+  }
+
+  .premium-header.is-scrolled .premium-header__inner {
+    padding: 1rem 3rem;
+  }
+
+  .premium-brand__mark {
+    width: 56px;
+    height: 56px;
+  }
+
+  .premium-brand__wordmark svg {
+    max-height: 56px;
+  }
+
+  .premium-header.is-scrolled .premium-brand__mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .premium-header.is-scrolled .premium-brand__wordmark svg {
+    max-height: 42px;
+  }
+
+  .premium-nav__list {
+    gap: 0.75rem;
+  }
+
+  .premium-nav__link {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   ULTRA-WIDE HEADER (1800px+)
+   ============================================ */
+
+@media (min-width: 1800px) {
+  .premium-header__inner {
+    max-width: 1900px;
+    padding: 2rem 4rem;
+    gap: 4rem;
+  }
+
+  .premium-header.is-scrolled .premium-header__inner {
+    padding: 1.125rem 4rem;
+  }
+
+  .premium-brand__mark {
+    width: 64px;
+    height: 64px;
+  }
+
+  .premium-brand__wordmark svg {
+    max-height: 64px;
+  }
+
+  .premium-header.is-scrolled .premium-brand__mark {
+    width: 48px;
+    height: 48px;
+  }
+
+  .premium-header.is-scrolled .premium-brand__wordmark svg {
+    max-height: 48px;
+  }
+
+  .premium-nav__list {
+    gap: 1rem;
+  }
+
+  .premium-nav__link {
+    padding: 0.875rem 1.5rem;
+    font-size: 1.0625rem;
+  }
+
+  .premium-nav__link--highlight {
+    padding: 0.75rem 1.75rem;
+  }
+}
+
+/* ============================================
+   4K HEADER (2560px+)
+   ============================================ */
+
+@media (min-width: 2560px) {
+  .premium-header__inner {
+    max-width: 2400px;
+    padding: 2.25rem 5rem;
+  }
+
+  .premium-brand__mark {
+    width: 72px;
+    height: 72px;
+  }
+
+  .premium-brand__wordmark svg {
+    max-height: 72px;
+  }
+
+  .premium-nav__link {
+    font-size: 1.125rem;
+    padding: 1rem 1.75rem;
+  }
+
+  html {
+    scroll-padding-top: 140px;
+  }
+
+  body {
+    padding-top: 120px;
   }
 }

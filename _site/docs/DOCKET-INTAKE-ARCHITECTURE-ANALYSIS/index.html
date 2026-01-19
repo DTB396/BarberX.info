@@ -1,0 +1,1317 @@
+<!doctype html>
+<html lang="en" dir="/docs/DOCKET-INTAKE-ARCHITECTURE-ANALYSIS/">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta
+  name="theme-color"
+  content="#c41e3a"
+/>
+
+<title>Docket Intake &amp; Integrity System - Architecture Analysis Report</title>
+<meta name="description" content="Personal Documentation &amp; Accountability Journal" />
+<meta name="robots" content="index, follow" />
+
+<link rel="canonical" href="https://barberx.info/docs/DOCKET-INTAKE-ARCHITECTURE-ANALYSIS/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta
+  property="og:site_name"
+  content="BarberX.info"
+/>
+<meta property="og:title" content="Docket Intake &amp;amp; Integrity System - Architecture Analysis Report" />
+<meta property="og:description" content="Personal Documentation &amp; Accountability Journal" />
+<meta property="og:url" content="https://barberx.info/docs/DOCKET-INTAKE-ARCHITECTURE-ANALYSIS/" /><meta property="og:image" content="https://barberx.info/assets/img/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" /><!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Docket Intake &amp;amp; Integrity System - Architecture Analysis Report" />
+<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="https://barberx.info/assets/img/og-image.png" /> <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BarberX.info",
+    "url": "https://barberx.info/",
+    "description": "Personal Documentation &amp; Accountability Journal",
+    "email": "BarberCamX@ProtonMail.com",
+    "foundingDate": "2024"
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BarberX.info",
+    "url": "https://barberx.info/",
+    "inLanguage": "en-US"
+  }
+</script>
+
+
+<link rel="stylesheet" href="/assets/css/style.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Icons -->
+<link rel="icon" href="/assets/img/favicon.png" />
+<link
+  rel="apple-touch-icon"
+  href="/assets/img/apple-touch-icon.png"
+/>
+
+    <link rel="stylesheet" href="/assets/css/components/barber-pole-spinner.css" />
+    
+    
+    
+  </head>
+
+  <body><a href="#main" class="skip-to-main" style="
+      position: absolute;
+      left: -9999px;
+      z-index: 999;
+      padding: 1rem;
+      background: var(--color-primary);
+      color: white;
+      text-decoration: none;
+    ">Skip to main content</a>
+      <header id="siteHeader" class="site-header" role="banner">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Barber Cam home">
+      <picture>
+        <source srcset="/assets/img/logo/barbercam-header-lockup.dark.svg" media="(prefers-color-scheme: dark)">
+        <source srcset="/assets/img/logo/barbercam-header-lockup.light.svg" media="(prefers-color-scheme: light)">
+        <img class="brand-logo" src="/assets/img/logo/barbercam-header-lockup.svg" alt="Barber Cam" width="320" height="84" loading="eager" decoding="async">
+      </picture>
+    </a>
+
+    <button class="nav-toggle" type="button"
+      aria-expanded="false"
+      aria-controls="primaryNav"
+      aria-label="Open menu"
+      data-nav-toggle>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav id="primaryNav" class="main-nav" aria-label="Primary" data-nav>
+      <ul class="nav-list">
+        <li><a href="/cases/">Cases</a></li>
+        <li><a href="/#preview">Preview</a></li>
+        <li><a href="/#principles">Principles</a></li>
+        <li><a href="/#status">Status</a></li>
+        <li><a href="/#connect">Connect</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <main id="main" tabindex="-1">
+      <article class="page shell u-max-w-4xl u-mx-auto"><header class="page-header u-mb-xl u-p-md" style="
+    border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+  ">
+    <h1 class="page-title u-mb-sm u-text-highlight" style="font-size: clamp(2rem, 3vw, 3rem)">
+      Docket Intake &amp; Integrity System - Architecture Analysis Report
+    </h1>
+    
+
+  </header><section class="page-body u-pb-xl" style="line-height: 1.8;">
+    <h1 id="docket-intake--integrity-system---architecture-analysis-report">Docket Intake &amp; Integrity System - Architecture Analysis Report</h1>
+
+<p><strong>Date:</strong> January 19, 2026<br />
+<strong>Prepared by:</strong> Design &amp; Architecture Agent<br />
+<strong>Platform:</strong> BarberX.info - Citizen-Led Legal Documentation Platform</p>
+
+<hr />
+
+<h2 id="executive-summary">Executive Summary</h2>
+
+<p>This report provides a comprehensive analysis of the BarberX.info docket intake system, identifying critical integrity issues, architectural inconsistencies, and providing prioritized recommendations for improvement. The system currently supports 10+ active legal cases with hundreds of court filings, making data integrity paramount.</p>
+
+<hr />
+
+<h2 id="1-current-state-analysis">1. Current State Analysis</h2>
+
+<h3 id="11-system-overview">1.1 System Overview</h3>
+
+<p>The docket intake system is a Jekyll-based static site architecture with automated PDF processing capabilities:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────────────────────────────────────────────┐
+│                     INTAKE WORKFLOW                             │
+├─────────────────────────────────────────────────────────────────┤
+│  _inbox/              │  GitHub Actions     │  cases/&lt;slug&gt;/    │
+│  ├── *.pdf            │  ──────────────────►│  └── filings/     │
+│  └── &lt;case-slug&gt;/     │  docket-intake.js   │      └── *.pdf    │
+│      └── *.pdf        │                     │                   │
+├─────────────────────────────────────────────────────────────────┤
+│                     DATA STORES                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  _data/cases-map.yml    → Docket number → case slug mapping     │
+│  _data/docket/*.yml     → Legacy docket metadata (deprecated?)  │
+│  _data/docket_index/*.yml → Current docket index files          │
+│  _data/checksums/*.yml  → SHA256 file checksums                 │
+│  _cases/*.md            → Case front matter &amp; documentation     │
+│  cases/&lt;slug&gt;/docket/   → Duplicate PDF storage (!)             │
+│  cases/&lt;slug&gt;/filings/  → Canonical filing storage              │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre></div></div>
+
+<h3 id="12-current-data-models">1.2 Current Data Models</h3>
+
+<h4 id="case-map-schema-_datacases-mapyml">Case Map Schema (_data/cases-map.yml)</h4>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Docket number → case slug mapping</span>
+<span class="na">A-000313-25</span><span class="pi">:</span> <span class="s">a-000313-25</span>
+<span class="na">ATL-L-002794-25</span><span class="pi">:</span> <span class="s">atl-l-002794-25</span>
+<span class="s">1:22-cv-06206-KMW-EAP: usdj-1-22-cv-06206</span>
+</code></pre></div></div>
+
+<h4 id="docket-entry-schema-_datadocket_indexyml">Docket Entry Schema (_data/docket_index/*.yml)</h4>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">2026-01-10-2026-01-10_Order_order-dismissing-first-otsc</span>
+  <span class="na">date</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2026-01-10"</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">Order</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s">2026 01 10 Order order dismissing first otsc</span>
+  <span class="na">file</span><span class="pi">:</span> <span class="s">/cases/atl-l-003252-25/filings/2026-01-10_Order_order-dismissing-first-otsc.pdf</span>
+  <span class="na">court_stamp</span><span class="pi">:</span> <span class="no">null</span>
+  <span class="na">notes</span><span class="pi">:</span> <span class="s">Scanned by audit</span>
+</code></pre></div></div>
+
+<h4 id="checksum-schema-_datachecksumsyml">Checksum Schema (_data/checksums/*.yml)</h4>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">20251207-verified-complaint-and-cis.pdf</span><span class="pi">:</span> <span class="s">67d3cfc8c38de145520eaea517fb92390e4254e67004554eceb9bdea9467b7f7</span>
+</code></pre></div></div>
+
+<h3 id="13-key-components-identified">1.3 Key Components Identified</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Location</th>
+      <th>Purpose</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">docket-intake.js</code></td>
+      <td>scripts/</td>
+      <td>Primary automated PDF intake</td>
+      <td>✅ Active</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">batch-pdf-intake.js</code></td>
+      <td>scripts/</td>
+      <td>Legacy batch upload (deprecated)</td>
+      <td>⚠️ Legacy</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">validate-docket-files.js</code></td>
+      <td>scripts/</td>
+      <td>Pre-commit validation</td>
+      <td>✅ Active</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">validate-case-integrity.js</code></td>
+      <td>scripts/</td>
+      <td>Case folder validation</td>
+      <td>✅ Active</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">generate-checksums.js</code></td>
+      <td>tools/</td>
+      <td>SHA256 checksum generation</td>
+      <td>✅ Active</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">check-docket-integrity.ps1</code></td>
+      <td>scripts/</td>
+      <td>PowerShell diagnostics</td>
+      <td>⚠️ Diagnostic only</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">enforce-filing-schema.js</code></td>
+      <td>tools/</td>
+      <td>Filename normalization</td>
+      <td>✅ Active</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">repair-docket-system.js</code></td>
+      <td>scripts/</td>
+      <td>One-time repair utility</td>
+      <td>⚠️ Emergency</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="14-intake-workflow-current">1.4 Intake Workflow (Current)</h3>
+
+<ol>
+  <li><strong>Drop PDFs</strong> → <code class="language-plaintext highlighter-rouge">_inbox/</code> or <code class="language-plaintext highlighter-rouge">_inbox/&lt;case-slug&gt;/</code></li>
+  <li><strong>Git commit &amp; push</strong> → Triggers GitHub Actions</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">docket-intake.js</code> runs:</strong>
+    <ul>
+      <li>Scans <code class="language-plaintext highlighter-rouge">_inbox/</code> and <code class="language-plaintext highlighter-rouge">assets/uploads/</code></li>
+      <li>Extracts docket number from filename patterns</li>
+      <li>Maps docket → case slug via <code class="language-plaintext highlighter-rouge">_data/cases-map.yml</code></li>
+      <li>Moves PDF to <code class="language-plaintext highlighter-rouge">cases/&lt;slug&gt;/filings/</code></li>
+      <li>Renames to <code class="language-plaintext highlighter-rouge">YYYY-MM-DD_Type_description.pdf</code> format</li>
+      <li>Updates <code class="language-plaintext highlighter-rouge">_data/docket_index/&lt;slug&gt;.yml</code></li>
+      <li>Extracts court stamp (attempts OCR)</li>
+      <li>Generates placeholder PDFs if missing</li>
+    </ul>
+  </li>
+  <li><strong>PR created</strong> for review</li>
+  <li><strong>Merge</strong> → Site rebuilds via Jekyll</li>
+</ol>
+
+<hr />
+
+<h2 id="2-integrity-issues-identified">2. Integrity Issues Identified</h2>
+
+<h3 id="21-critical-issues-">2.1 Critical Issues 🔴</h3>
+
+<h4 id="issue-1-duplicate-file-storage-locations">Issue #1: Duplicate File Storage Locations</h4>
+<p><strong>Severity:</strong> CRITICAL</p>
+
+<p>Files exist in <strong>three separate locations</strong> for the same case:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Example for ATL-L-003252-25</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cases/&lt;slug&gt;/filings/</code></td>
+      <td>50 PDFs (canonical)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cases/&lt;slug&gt;/docket/</code></td>
+      <td>74 PDFs (duplicate/legacy)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">assets/cases/&lt;slug&gt;/docket/</code></td>
+      <td>Referenced in old YAML</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Impact:</strong></p>
+<ul>
+  <li>Storage bloat (2-3x duplication)</li>
+  <li>Path confusion in docket YAML files</li>
+  <li>Risk of file version divergence</li>
+</ul>
+
+<p><strong>Evidence:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cases/atl-l-003252-25/filings/   → 50 files
+cases/atl-l-003252-25/docket/   → 74 files (many duplicates with different naming)
+</code></pre></div></div>
+
+<h4 id="issue-2-inconsistent-file-path-references">Issue #2: Inconsistent File Path References</h4>
+<p><strong>Severity:</strong> CRITICAL</p>
+
+<p>Docket YAML files reference <strong>inconsistent path formats:</strong></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _data/docket/atl-l-003252-25.yml references:</span>
+<span class="na">file</span><span class="pi">:</span> <span class="s">/assets/cases/atl-l-003252-25/docket/20251207-verified-complaint.pdf</span>
+
+<span class="c1"># _data/docket_index/atl-l-003252-25.yml references:</span>
+<span class="na">file</span><span class="pi">:</span> <span class="s">/cases/atl-l-003252-25/filings/2026-01-10_Order_order-dismissing.pdf</span>
+</code></pre></div></div>
+
+<p><strong>Impact:</strong> Broken links, 404 errors, inconsistent user experience</p>
+
+<h4 id="issue-3-duplicate-docket-data-directories">Issue #3: Duplicate Docket Data Directories</h4>
+<p><strong>Severity:</strong> HIGH</p>
+
+<p>Two parallel docket data directories exist:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/docket/</code> (13 files)</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/docket_index/</code> (13 files)</li>
+</ul>
+
+<p>Both contain similar but <strong>non-identical</strong> content for the same cases.</p>
+
+<h4 id="issue-4-missing-audit-trail-for-file-changes">Issue #4: Missing Audit Trail for File Changes</h4>
+<p><strong>Severity:</strong> HIGH</p>
+
+<p>No systematic tracking of:</p>
+<ul>
+  <li>When files were added/modified</li>
+  <li>Who uploaded files</li>
+  <li>File provenance chain</li>
+  <li>Version history</li>
+</ul>
+
+<h3 id="22-high-priority-issues-">2.2 High Priority Issues 🟠</h3>
+
+<h4 id="issue-5-inconsistent-filename-formats">Issue #5: Inconsistent Filename Formats</h4>
+<p>Multiple naming conventions in use:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20251207-verified-complaint-and-cis.pdf          # YYYYMMDD-name.pdf
+2025-12-27_Motion_proposed-amended-complaint.pdf  # YYYY-MM-DD_Type_name.pdf
+12-07-2025-dtb-certification-of-facts.pdf         # MM-DD-YYYY-name.pdf (!)
+</code></pre></div></div>
+
+<h4 id="issue-6-duplicate-ids-in-docket-yaml">Issue #6: Duplicate IDs in Docket YAML</h4>
+<p>The <code class="language-plaintext highlighter-rouge">validate-case-integrity.js</code> identifies but doesn’t auto-fix:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">duplicateIds</span> <span class="o">=</span> <span class="nx">ids</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">id</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">ids</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">!==</span> <span class="nx">idx</span><span class="p">);</span>
+<span class="c1">// Found in docket_index files: repeated IDs like "2025-12-23-2025-12-23_Filing_..."</span>
+</code></pre></div></div>
+
+<h4 id="issue-7-no-schema-validation">Issue #7: No Schema Validation</h4>
+<p>No JSON Schema or formal validation beyond runtime checks. Validation is:</p>
+<ul>
+  <li>Runtime JavaScript (can be bypassed)</li>
+  <li>Inconsistent between scripts</li>
+  <li>Missing for front matter in <code class="language-plaintext highlighter-rouge">_cases/*.md</code></li>
+</ul>
+
+<h4 id="issue-8-orphaned-files">Issue #8: Orphaned Files</h4>
+<p>Files exist that aren’t registered in any docket YAML:</p>
+<ul>
+  <li>Identified by <code class="language-plaintext highlighter-rouge">validate-case-integrity.js</code></li>
+  <li>No automated cleanup mechanism</li>
+</ul>
+
+<h3 id="23-medium-priority-issues-">2.3 Medium Priority Issues 🟡</h3>
+
+<h4 id="issue-9-court-stamp-extraction-failures">Issue #9: Court Stamp Extraction Failures</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// docket-intake.js</span>
+<span class="nx">courtStamp</span> <span class="o">=</span> <span class="nx">getCourtStamp</span><span class="p">(</span><span class="nx">destPath</span><span class="p">);</span>
+<span class="c1">// Returns null for many files - no fallback verification</span>
+</code></pre></div></div>
+
+<h4 id="issue-10-no-backuprecovery-strategy">Issue #10: No Backup/Recovery Strategy</h4>
+<ul>
+  <li>No automated backups before destructive operations</li>
+  <li><code class="language-plaintext highlighter-rouge">repair-docket-system.js</code> doesn’t create rollback points</li>
+  <li>Git history is only safety net</li>
+</ul>
+
+<h4 id="issue-11-missing-github-actions-workflow-for-intake">Issue #11: Missing GitHub Actions Workflow for Intake</h4>
+<p>The <code class="language-plaintext highlighter-rouge">pages.yml</code> workflow only builds Jekyll - no docket intake automation:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .github/workflows/pages.yml - only does build/deploy</span>
+<span class="c1"># Missing: docket-intake job</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-architecture-recommendations">3. Architecture Recommendations</h2>
+
+<h3 id="31-proposed-folder-structure">3.1 Proposed Folder Structure</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BarberX.info/
+├── _data/
+│   ├── cases-map.yml           # Docket → slug mapping
+│   ├── cases-schema.json       # NEW: JSON Schema for validation
+│   ├── docket/                  # DEPRECATED: Remove after migration
+│   └── docket_index/           # RENAME TO: docket/
+│       └── &lt;slug&gt;.yml          # Consolidated docket metadata
+│
+├── _cases/                      # Case definitions (Jekyll collection)
+│   └── &lt;slug&gt;.md               # Case front matter &amp; content
+│
+├── _inbox/                      # Intake staging area
+│   ├── .gitkeep
+│   ├── README.md
+│   └── &lt;slug&gt;/                 # Case-specific inbox folders
+│       └── *.pdf
+│
+├── cases/                       # PUBLIC: Served case content
+│   └── &lt;slug&gt;/
+│       ├── index.md            # Case landing page
+│       ├── docket.yml          # REMOVE: Migrate to _data/docket/
+│       └── filings/            # CANONICAL: All PDFs here
+│           └── *.pdf
+│
+├── _data/
+│   ├── audit/                  # NEW: Audit trail logs
+│   │   └── &lt;slug&gt;-audit.yml
+│   └── checksums/              # KEEP: SHA256 verification
+│       └── &lt;slug&gt;.yml
+│
+└── scripts/
+    ├── docket-intake.js        # ENHANCE: Add validation layer
+    └── integrity/               # NEW: Integrity tooling
+        ├── validate-all.js
+        ├── migrate-legacy.js
+        └── generate-audit.js
+</code></pre></div></div>
+
+<h3 id="32-data-validation-layer-design">3.2 Data Validation Layer Design</h3>
+
+<h4 id="proposed-json-schema-for-docket-entries">Proposed JSON Schema for Docket Entries</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://json-schema.org/draft-07/schema#"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"$id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://barberx.info/schemas/docket-entry.json"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Docket Entry"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w"> </span><span class="s2">"file"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[a-z0-9-]+$"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unique identifier for this filing"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^</span><span class="se">\\</span><span class="s2">d{4}-</span><span class="se">\\</span><span class="s2">d{2}-</span><span class="se">\\</span><span class="s2">d{2}$"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filing date in YYYY-MM-DD format"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Filing"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Notice"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Brief"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Exhibit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Motion"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Complaint"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Certification"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Proof of Service"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Request"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Proposed Order"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Document type classification"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human-readable document title"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^/cases/[a-z0-9-]+/filings/[A-Za-z0-9_-]+</span><span class="se">\\</span><span class="s2">.pdf$"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canonical file path"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"court_stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="s2">"null"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Extracted court stamp date/ID"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sha256"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[a-f0-9]{64}$"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHA256 checksum for integrity verification"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"intake_date"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date-time"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"When file was ingested into system"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"inbox"</span><span class="p">,</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w"> </span><span class="s2">"repair"</span><span class="p">,</span><span class="w"> </span><span class="s2">"migration"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How file entered the system"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Optional notes about the filing"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="33-checksumhash-verification-system">3.3 Checksum/Hash Verification System</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌────────────────────────────────────────────────────────────┐
+│                 INTEGRITY VERIFICATION FLOW                │
+├────────────────────────────────────────────────────────────┤
+│  1. INTAKE                                                 │
+│     PDF → SHA256 hash → Store in docket entry + checksums/ │
+│                                                            │
+│  2. PERIODIC VERIFICATION (GitHub Actions)                 │
+│     For each case:                                         │
+│       - Load _data/checksums/&lt;slug&gt;.yml                    │
+│       - Hash all files in cases/&lt;slug&gt;/filings/            │
+│       - Compare hashes                                     │
+│       - Flag mismatches in audit log                       │
+│                                                            │
+│  3. PRE-DEPLOY GATE                                        │
+│     Jekyll build fails if integrity check fails            │
+└────────────────────────────────────────────────────────────┘
+</code></pre></div></div>
+
+<h3 id="34-backup-and-recovery-strategy">3.4 Backup and Recovery Strategy</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proposed: .github/workflows/backup.yml</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">Weekly Backup &amp; Integrity Check</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">schedule</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">cron</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0</span><span class="nv"> </span><span class="s">3</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">0'</span>  <span class="c1"># Sundays at 3 AM</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span> <span class="pi">{}</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">backup</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">fetch-depth</span><span class="pi">:</span> <span class="m">0</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Create backup archive</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">tar -czf backup-$(date +%Y%m%d).tar.gz \</span>
+            <span class="s">_data/docket/ \</span>
+            <span class="s">_data/checksums/ \</span>
+            <span class="s">_cases/ \</span>
+            <span class="s">cases/*/filings/</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Upload to artifact storage</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v4</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">docket-backup-$</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">backup-*.tar.gz</span>
+          <span class="na">retention-days</span><span class="pi">:</span> <span class="m">90</span>
+
+  <span class="na">integrity-check</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v4</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">node-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">20'</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">node scripts/validate-case-integrity.js</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">node tools/generate-checksums.js --verify</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-intake-workflow-improvements">4. Intake Workflow Improvements</h2>
+
+<h3 id="41-optimized-intake-process">4.1 Optimized Intake Process</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────────────────────────────────────────┐
+│              PROPOSED INTAKE WORKFLOW v2.0                  │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  STEP 1: UPLOAD                                             │
+│  ───────────────                                            │
+│  User drops PDF(s) to _inbox/&lt;case-slug&gt;/                   │
+│  Filename: &lt;YYYYMMDD&gt;-&lt;description&gt;.pdf (optional format)   │
+│                                                             │
+│  STEP 2: PRE-VALIDATION (local, pre-commit)                 │
+│  ──────────────────────────────────────────                 │
+│  ✓ PDF magic number check (%PDF-)                           │
+│  ✓ Minimum file size (&gt;1KB)                                 │
+│  ✓ Case slug exists in cases-map.yml                        │
+│  ✓ No duplicate filenames in destination                    │
+│                                                             │
+│  STEP 3: GIT COMMIT &amp; PUSH                                  │
+│  ────────────────────────                                   │
+│  Conventional commit: "intake(&lt;slug&gt;): &lt;description&gt;"       │
+│                                                             │
+│  STEP 4: GITHUB ACTIONS PROCESSING                          │
+│  ─────────────────────────────────                          │
+│  a) docket-intake.js processes _inbox/                      │
+│  b) For each PDF:                                           │
+│     - Extract date from filename or file metadata           │
+│     - Classify document type (Order, Motion, etc.)          │
+│     - Generate canonical filename                           │
+│     - Compute SHA256 checksum                               │
+│     - Move to cases/&lt;slug&gt;/filings/                         │
+│     - Update _data/docket/&lt;slug&gt;.yml                        │
+│     - Update _data/checksums/&lt;slug&gt;.yml                     │
+│     - Log to _data/audit/&lt;slug&gt;-audit.yml                   │
+│  c) Run integrity validation                                │
+│  d) Create PR with summary                                  │
+│                                                             │
+│  STEP 5: REVIEW &amp; MERGE                                     │
+│  ───────────────────────                                    │
+│  Human reviews:                                             │
+│  - File classifications correct?                            │
+│  - Dates accurate?                                          │
+│  - No duplicates?                                           │
+│  Merge triggers Jekyll rebuild                              │
+│                                                             │
+│  STEP 6: POST-DEPLOY VERIFICATION                           │
+│  ────────────────────────────────                           │
+│  - Verify PDFs accessible via URLs                          │
+│  - Checksum verification                                    │
+│  - Link checker on docket pages                             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div></div>
+
+<h3 id="42-automation-opportunities">4.2 Automation Opportunities</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Current</th>
+      <th>Proposed Automation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PDF date extraction</td>
+      <td>Filename pattern only</td>
+      <td>+ PDF metadata + OCR fallback</td>
+    </tr>
+    <tr>
+      <td>Document classification</td>
+      <td>Simple keyword match</td>
+      <td>+ ML-based classification</td>
+    </tr>
+    <tr>
+      <td>Duplicate detection</td>
+      <td>By filename only</td>
+      <td>+ SHA256 + fuzzy title matching</td>
+    </tr>
+    <tr>
+      <td>Court stamp extraction</td>
+      <td>Basic text extraction</td>
+      <td>+ OCR with NJ court patterns</td>
+    </tr>
+    <tr>
+      <td>Broken link detection</td>
+      <td>Manual</td>
+      <td>+ Automated link checker in CI</td>
+    </tr>
+    <tr>
+      <td>Integrity verification</td>
+      <td>On-demand script</td>
+      <td>+ Scheduled GitHub Action</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="43-error-handling--recovery">4.3 Error Handling &amp; Recovery</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Proposed: Enhanced error handling in docket-intake.js</span>
+
+<span class="kd">const</span> <span class="nx">IntakeError</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">INVALID_PDF</span><span class="p">:</span> <span class="dl">'</span><span class="s1">INVALID_PDF</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">CASE_NOT_FOUND</span><span class="p">:</span> <span class="dl">'</span><span class="s1">CASE_NOT_FOUND</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">DUPLICATE_FILE</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DUPLICATE_FILE</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">CHECKSUM_MISMATCH</span><span class="p">:</span> <span class="dl">'</span><span class="s1">CHECKSUM_MISMATCH</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">MOVE_FAILED</span><span class="p">:</span> <span class="dl">'</span><span class="s1">MOVE_FAILED</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">processWithRecovery</span><span class="p">(</span><span class="nx">pdfPath</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">backup</span> <span class="o">=</span> <span class="nx">createTempBackup</span><span class="p">(</span><span class="nx">pdfPath</span><span class="p">);</span>
+  
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">validatePdf</span><span class="p">(</span><span class="nx">pdfPath</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">processIntake</span><span class="p">(</span><span class="nx">pdfPath</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">verifyIntegrity</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">removeTempBackup</span><span class="p">(</span><span class="nx">backup</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">success</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">result</span> <span class="p">};</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">restoreFromBackup</span><span class="p">(</span><span class="nx">backup</span><span class="p">);</span>
+    <span class="nx">logIntakeError</span><span class="p">(</span><span class="nx">pdfPath</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span> 
+      <span class="na">success</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+      <span class="na">error</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span>
+      <span class="na">quarantine</span><span class="p">:</span> <span class="nx">moveToQuarantine</span><span class="p">(</span><span class="nx">pdfPath</span><span class="p">)</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-implementation-priority-matrix">5. Implementation Priority Matrix</h2>
+
+<h3 id="51-high-priority-critical-for-integrity-">5.1 High Priority (Critical for Integrity) 🔴</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Task</th>
+      <th>Effort</th>
+      <th>Impact</th>
+      <th>Dependencies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>H1</td>
+      <td>Consolidate duplicate PDF storage</td>
+      <td>4h</td>
+      <td>HIGH</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>H2</td>
+      <td>Unify <code class="language-plaintext highlighter-rouge">_data/docket/</code> and <code class="language-plaintext highlighter-rouge">_data/docket_index/</code></td>
+      <td>2h</td>
+      <td>HIGH</td>
+      <td>H1</td>
+    </tr>
+    <tr>
+      <td>H3</td>
+      <td>Fix inconsistent file path references</td>
+      <td>3h</td>
+      <td>HIGH</td>
+      <td>H1, H2</td>
+    </tr>
+    <tr>
+      <td>H4</td>
+      <td>Add JSON Schema validation</td>
+      <td>4h</td>
+      <td>HIGH</td>
+      <td>H2</td>
+    </tr>
+    <tr>
+      <td>H5</td>
+      <td>Create GitHub Actions intake workflow</td>
+      <td>3h</td>
+      <td>HIGH</td>
+      <td>H4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="52-medium-priority-workflow-improvements-">5.2 Medium Priority (Workflow Improvements) 🟠</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Task</th>
+      <th>Effort</th>
+      <th>Impact</th>
+      <th>Dependencies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M1</td>
+      <td>Standardize filename format enforcement</td>
+      <td>2h</td>
+      <td>MEDIUM</td>
+      <td>H1</td>
+    </tr>
+    <tr>
+      <td>M2</td>
+      <td>Add audit trail logging</td>
+      <td>3h</td>
+      <td>MEDIUM</td>
+      <td>H5</td>
+    </tr>
+    <tr>
+      <td>M3</td>
+      <td>Implement checksum verification in CI</td>
+      <td>2h</td>
+      <td>MEDIUM</td>
+      <td>H5</td>
+    </tr>
+    <tr>
+      <td>M4</td>
+      <td>Create backup workflow</td>
+      <td>2h</td>
+      <td>MEDIUM</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>M5</td>
+      <td>Add pre-commit hook for validation</td>
+      <td>1h</td>
+      <td>MEDIUM</td>
+      <td>H4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="53-low-priority-nice-to-have-">5.3 Low Priority (Nice-to-Have) 🟢</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Task</th>
+      <th>Effort</th>
+      <th>Impact</th>
+      <th>Dependencies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>L1</td>
+      <td>ML-based document classification</td>
+      <td>8h</td>
+      <td>LOW</td>
+      <td>M2</td>
+    </tr>
+    <tr>
+      <td>L2</td>
+      <td>OCR-enhanced court stamp extraction</td>
+      <td>6h</td>
+      <td>LOW</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>L3</td>
+      <td>Interactive intake dashboard</td>
+      <td>8h</td>
+      <td>LOW</td>
+      <td>M2</td>
+    </tr>
+    <tr>
+      <td>L4</td>
+      <td>Duplicate detection by content hash</td>
+      <td>3h</td>
+      <td>LOW</td>
+      <td>M3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="54-recommended-implementation-order">5.4 Recommended Implementation Order</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Week 1: Foundation
+├── H1: Consolidate PDF storage
+├── H2: Unify docket directories
+└── H3: Fix path references
+
+Week 2: Validation
+├── H4: JSON Schema validation
+├── M1: Filename standardization
+└── M5: Pre-commit hooks
+
+Week 3: Automation
+├── H5: GitHub Actions intake
+├── M3: Checksum verification CI
+└── M4: Backup workflow
+
+Week 4: Audit &amp; Polish
+├── M2: Audit trail logging
+└── Review &amp; documentation
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6-specific-codeconfig-recommendations">6. Specific Code/Config Recommendations</h2>
+
+<h3 id="61-new-files-to-create">6.1 New Files to Create</h3>
+
+<h4 id="611-json-schema-file">6.1.1 JSON Schema File</h4>
+<p><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">_data/schemas/docket-entry-schema.json</code></p>
+
+<p>See Section 3.2 for full schema.</p>
+
+<h4 id="612-github-actions-workflow">6.1.2 GitHub Actions Workflow</h4>
+<p><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">.github/workflows/docket-intake.yml</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Docket Intake Processing</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">main</span><span class="pi">]</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">_inbox/**'</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">assets/uploads/**'</span>
+
+<span class="na">permissions</span><span class="pi">:</span>
+  <span class="na">contents</span><span class="pi">:</span> <span class="s">write</span>
+  <span class="na">pull-requests</span><span class="pi">:</span> <span class="s">write</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">intake</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+      
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v4</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">node-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">20'</span>
+          <span class="na">cache</span><span class="pi">:</span> <span class="s1">'</span><span class="s">npm'</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run docket intake</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">node scripts/docket-intake.js</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Validate integrity</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">node scripts/validate-case-integrity.js</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Generate checksums</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">node tools/generate-checksums.js</span>
+      
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Create Pull Request</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peter-evans/create-pull-request@v5</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">intake:</span><span class="nv"> </span><span class="s">Automated</span><span class="nv"> </span><span class="s">docket</span><span class="nv"> </span><span class="s">processing'</span>
+          <span class="na">commit-message</span><span class="pi">:</span> <span class="s1">'</span><span class="s">chore:</span><span class="nv"> </span><span class="s">Process</span><span class="nv"> </span><span class="s">docket</span><span class="nv"> </span><span class="s">intake</span><span class="nv"> </span><span class="s">files'</span>
+          <span class="na">branch</span><span class="pi">:</span> <span class="s">automated/docket-intake</span>
+          <span class="na">delete-branch</span><span class="pi">:</span> <span class="no">true</span>
+          <span class="na">body</span><span class="pi">:</span> <span class="pi">|</span>
+            <span class="s">## Automated Docket Intake</span>
+            
+            <span class="s">This PR was automatically generated by the docket intake workflow.</span>
+            
+            <span class="s">### Changes</span>
+            <span class="s">- Processed files from `_inbox/`</span>
+            <span class="s">- Updated docket YAML files</span>
+            <span class="s">- Generated/updated checksums</span>
+            
+            <span class="s">Please review file classifications and dates before merging.</span>
+</code></pre></div></div>
+
+<h4 id="613-audit-trail-schema">6.1.3 Audit Trail Schema</h4>
+<p><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">_data/audit/README.md</code> and example format</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _data/audit/&lt;slug&gt;-audit.yml</span>
+<span class="c1"># Audit trail for case: atl-l-003252-25</span>
+
+<span class="pi">-</span> <span class="na">timestamp</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2026-01-19T14:30:00Z"</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">FILE_ADDED</span>
+  <span class="na">file</span><span class="pi">:</span> <span class="s">/cases/atl-l-003252-25/filings/2026-01-19_Motion_example.pdf</span>
+  <span class="na">sha256</span><span class="pi">:</span> <span class="s">abc123...</span>
+  <span class="na">source</span><span class="pi">:</span> <span class="s">inbox</span>
+  <span class="na">user</span><span class="pi">:</span> <span class="s">github-actions[bot]</span>
+  
+<span class="pi">-</span> <span class="na">timestamp</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2026-01-19T14:30:01Z"</span>
+  <span class="na">action</span><span class="pi">:</span> <span class="s">DOCKET_UPDATED</span>
+  <span class="na">file</span><span class="pi">:</span> <span class="s">_data/docket/atl-l-003252-25.yml</span>
+  <span class="na">entries_added</span><span class="pi">:</span> <span class="m">1</span>
+  <span class="na">entries_total</span><span class="pi">:</span> <span class="m">51</span>
+</code></pre></div></div>
+
+<h3 id="62-files-to-modify">6.2 Files to Modify</h3>
+
+<h4 id="621-enhanced-docket-intakejs">6.2.1 Enhanced docket-intake.js</h4>
+
+<p>Key additions needed:</p>
+<ol>
+  <li>Schema validation before writing YAML</li>
+  <li>Checksum generation inline</li>
+  <li>Audit log writing</li>
+  <li>Quarantine directory for failures</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Add to top of docket-intake.js</span>
+<span class="k">import</span> <span class="nx">Ajv</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">ajv</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">crypto</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">crypto</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ajv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ajv</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">schema</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">_data/schemas/docket-entry-schema.json</span><span class="dl">'</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">validateEntry</span> <span class="o">=</span> <span class="nx">ajv</span><span class="p">.</span><span class="nx">compile</span><span class="p">(</span><span class="nx">schema</span><span class="p">);</span>
+
+<span class="c1">// Add to processIntake function</span>
+<span class="kd">const</span> <span class="nx">sha256</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="dl">'</span><span class="s1">sha256</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">destPath</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">id</span><span class="p">,</span>
+  <span class="nx">date</span><span class="p">,</span>
+  <span class="nx">type</span><span class="p">,</span>
+  <span class="nx">title</span><span class="p">,</span>
+  <span class="na">file</span><span class="p">:</span> <span class="nx">fileUrl</span><span class="p">,</span>
+  <span class="nx">sha256</span><span class="p">,</span>  <span class="c1">// NEW</span>
+  <span class="na">intake_date</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span>  <span class="c1">// NEW</span>
+  <span class="na">source</span><span class="p">:</span> <span class="dl">'</span><span class="s1">inbox</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// NEW</span>
+  <span class="na">court_stamp</span><span class="p">:</span> <span class="nx">courtStamp</span><span class="p">,</span>
+  <span class="na">notes</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Intake: automated processing</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="c1">// Validate before saving</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">validateEntry</span><span class="p">(</span><span class="nx">entry</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Schema validation failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">validateEntry</span><span class="p">.</span><span class="nx">errors</span><span class="p">);</span>
+  <span class="nx">moveToQuarantine</span><span class="p">(</span><span class="nx">destPath</span><span class="p">);</span>
+  <span class="k">continue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="622-pre-commit-hook">6.2.2 Pre-commit Hook</h4>
+<p><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">.husky/pre-commit</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="nb">.</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">dirname</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="si">)</span><span class="s2">/_/husky.sh"</span>
+
+<span class="c"># Run validation on staged docket files</span>
+npx node scripts/validate-docket-files.js
+
+<span class="c"># Check for files in inbox that should be processed</span>
+<span class="k">if </span>git diff <span class="nt">--cached</span> <span class="nt">--name-only</span> | <span class="nb">grep</span> <span class="nt">-q</span> <span class="s2">"^_inbox/"</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">echo</span> <span class="s2">"⚠️  Files in _inbox/ detected. They will be processed by GitHub Actions after push."</span>
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<h3 id="63-migration-script">6.3 Migration Script</h3>
+
+<p><strong>Location:</strong> <code class="language-plaintext highlighter-rouge">scripts/migrate-docket-system.js</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#!/usr/bin/env node
+</span><span class="cm">/**
+ * One-time migration script to consolidate docket system
+ * 
+ * Tasks:
+ * 1. Merge _data/docket/ and _data/docket_index/ → _data/docket/
+ * 2. Move cases/&lt;slug&gt;/docket/*.pdf → cases/&lt;slug&gt;/filings/
+ * 3. Update all file path references
+ * 4. Regenerate checksums
+ * 5. Create backup before changes
+ */</span>
+
+<span class="k">import</span> <span class="nx">fs</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">path</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">yaml</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">js-yaml</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">DRY_RUN</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">--dry-run</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">BACKUP_DIR</span> <span class="o">=</span> <span class="s2">`backups/migration-</span><span class="p">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()}</span><span class="s2">`</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">🔄 Docket System Migration</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Mode: </span><span class="p">${</span><span class="nx">DRY_RUN</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">DRY RUN</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">LIVE</span><span class="dl">'</span><span class="p">}</span><span class="s2">\n`</span><span class="p">);</span>
+  
+  <span class="c1">// Step 1: Create backup</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">DRY_RUN</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">mkdirSync</span><span class="p">(</span><span class="nx">BACKUP_DIR</span><span class="p">,</span> <span class="p">{</span> <span class="na">recursive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="c1">// ... backup logic</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Step 2: Inventory current state</span>
+  <span class="kd">const</span> <span class="nx">inventory</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">docketFiles</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">_data/docket</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">f</span> <span class="o">=&gt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">.yml</span><span class="dl">'</span><span class="p">)),</span>
+    <span class="na">docketIndexFiles</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">_data/docket_index</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">f</span> <span class="o">=&gt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">.yml</span><span class="dl">'</span><span class="p">)),</span>
+    <span class="na">casesWithDocketFolder</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="na">casesWithFilingsFolder</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">};</span>
+  
+  <span class="c1">// ... migration logic</span>
+  
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="s1">✅ Migration complete</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-summary--next-steps">7. Summary &amp; Next Steps</h2>
+
+<h3 id="immediate-actions-this-week">Immediate Actions (This Week)</h3>
+
+<ol>
+  <li><strong>Create backup</strong> of current <code class="language-plaintext highlighter-rouge">_data/docket*</code> and <code class="language-plaintext highlighter-rouge">cases/*/filings/</code></li>
+  <li><strong>Run inventory script</strong> to document current state</li>
+  <li><strong>Consolidate</strong> <code class="language-plaintext highlighter-rouge">_data/docket/</code> and <code class="language-plaintext highlighter-rouge">_data/docket_index/</code></li>
+  <li><strong>Remove duplicate</strong> PDFs in <code class="language-plaintext highlighter-rouge">cases/*/docket/</code> (after verification)</li>
+</ol>
+
+<h3 id="short-term-2-weeks">Short-term (2 Weeks)</h3>
+
+<ol>
+  <li>Implement JSON Schema validation</li>
+  <li>Create GitHub Actions intake workflow</li>
+  <li>Add pre-commit validation hooks</li>
+  <li>Document new intake process</li>
+</ol>
+
+<h3 id="long-term-1-month">Long-term (1 Month)</h3>
+
+<ol>
+  <li>Implement full audit trail</li>
+  <li>Automated integrity verification</li>
+  <li>Enhanced court stamp extraction</li>
+  <li>Intake dashboard for monitoring</li>
+</ol>
+
+<hr />
+
+<h2 id="appendix-a-file-inventory-summary">Appendix A: File Inventory Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directory</th>
+      <th>Files</th>
+      <th>Size</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/docket/</code></td>
+      <td>13 YAML</td>
+      <td>~50KB</td>
+      <td>Legacy, to merge</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/docket_index/</code></td>
+      <td>13 YAML</td>
+      <td>~60KB</td>
+      <td>Current, keep</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/checksums/</code></td>
+      <td>9 YAML</td>
+      <td>~15KB</td>
+      <td>Keep, enhance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cases/*/filings/</code></td>
+      <td>~200 PDFs</td>
+      <td>~150MB</td>
+      <td>Canonical</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cases/*/docket/</code></td>
+      <td>~100 PDFs</td>
+      <td>~75MB</td>
+      <td>Duplicate, remove</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="appendix-b-supported-docket-patterns">Appendix B: Supported Docket Patterns</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">patterns</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="sr">/</span><span class="se">\b(\d</span><span class="sr">:</span><span class="se">\d{2}</span><span class="sr">-cv-</span><span class="se">\d{5}(?:</span><span class="sr">-</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]{3}(?:</span><span class="sr">-</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]{3})?)?)\b</span><span class="sr">/i</span><span class="p">,</span>  <span class="c1">// Federal</span>
+  <span class="sr">/</span><span class="se">\b(</span><span class="sr">ATL-</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]{1,2}</span><span class="sr">-</span><span class="se">\d{6}</span><span class="sr">-</span><span class="se">\d{2})\b</span><span class="sr">/i</span><span class="p">,</span>                      <span class="c1">// NJ Law Division</span>
+  <span class="sr">/</span><span class="se">\b(</span><span class="sr">ATL-</span><span class="se">\d{2}</span><span class="sr">-</span><span class="se">\d{6})\b</span><span class="sr">/i</span><span class="p">,</span>                                  <span class="c1">// NJ Legacy</span>
+  <span class="sr">/</span><span class="se">\b(</span><span class="sr">A-</span><span class="se">\d{6}</span><span class="sr">-</span><span class="se">\d{2})\b</span><span class="sr">/</span><span class="p">,</span>                                     <span class="c1">// NJ Appellate</span>
+  <span class="sr">/</span><span class="se">\b(</span><span class="sr">MER-</span><span class="se">[</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">-</span><span class="se">\d{6}</span><span class="sr">-</span><span class="se">\d{2})\b</span><span class="sr">/i</span><span class="p">,</span>                            <span class="c1">// Mercer County</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><em>Report generated by Design &amp; Architecture Agent for BarberX.info</em><br />
+<em>Last updated: January 19, 2026</em></p>
+
+  </section><footer class="page-footer u-mt-xl u-pt-lg" style="
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  ">
+    
+
+    
+
+    
+
+    
+  </footer>
+
+</article><style media="print">
+  .page-header { background: none !important; border: none !important; }
+  .page-cta, .page-footer, .btn { display: none !important; }
+  .page-body { color: #000 !important; }
+</style>
+
+    </main>
+      <footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <picture>
+            <source
+              srcset="/assets/img/logo/barbercam-footer-min.dark.svg"
+              media="(prefers-color-scheme: dark)"
+            />
+            <source
+              srcset="/assets/img/logo/barbercam-footer-min.light.svg"
+              media="(prefers-color-scheme: light)"
+            />
+            <img
+              src="/assets/img/logo/barbercam-footer-min.svg"
+              alt="Barber Cam"
+              width="220"
+              height="44"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+
+        <p class="footer-tagline">Precision. Patience. Virtue. Honor.</p>
+        <p class="footer-description">
+          Citizen accountability through record, dignity, and due process.
+        </p>
+
+        <div class="footer-contact">
+          <a
+            href="mailto:BarberCamX@ProtonMail.com"
+            class="contact-link"
+          >
+            <span>BarberCamX@ProtonMail.com</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+  <h4>Navigate</h4>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-nav-list">
+      <li><a href="/cases/">Cases</a></li>
+      <li><a href="/#preview">Preview</a></li>
+      <li><a href="/#principles">Principles</a></li>
+      <li><a href="/#status">Status</a></li>
+      <li><a href="/#connect">Connect</a></li>
+      <li><a href="/faq/">FAQ</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="footer-links">
+  <h4>Documentation</h4>
+  <nav aria-label="Documentation navigation">
+    <ul class="footer-nav-list">
+      <li><a href="/docs/vision/">Vision</a></li>
+      <li>
+        <a href="/docs/governance-ethics/"
+          >Governance &amp; Ethics</a
+        >
+      </li>
+      <li>
+        <a href="/docs/status/">Development Status</a>
+      </li>
+      <li><a href="/LICENSE">License</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+      <div class="footer-notice">
+        <h4>Public Notice</h4>
+        <p>
+          Under active development. No operational software, internal systems,
+          or proprietary methods are published on this site.
+        </p>
+        <div class="footer-compliance">
+          <span>Privacy-First</span><span>•</span><span>No Tracking</span
+          ><span>•</span><span>No Data Sales</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>
+          &copy; <span id="year">2026</span> Barber Cam.
+          All rights reserved.
+        </p>
+        <p class="footer-legal">Built with precision in New York.</p>
+      </div>
+
+      <div class="footer-legal-links">
+        <a href="/LICENSE">License</a>
+        <span>•</span>
+        <a href="mailto:BarberCamX@ProtonMail.com"
+          >Contact</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+      
+    
+    <script src="/assets/js/main.js" defer></script>
+    
+
+  </body>
+</html>

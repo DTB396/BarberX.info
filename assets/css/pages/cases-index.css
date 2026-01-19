@@ -129,34 +129,25 @@
   cursor: pointer;
 }
 
+/* Buttons - use global dark theme from components.css */
 .btn-primary {
-  background: var(--brass-500);
-  color: var(--text-on-brass);
-  border: 2px solid var(--brass-500);
-  box-shadow: 0 2px 8px rgb(212 165 116 / 30%);
+  /* Defined in components.css - red glow */
 }
 
 .btn-secondary {
-  background: transparent;
-  border: 2px solid var(--text-on-dark);
-  color: var(--text-on-dark);
+  /* Defined in components.css - blue glow */
 }
 
 .btn-cases:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgb(0 0 0 / 40%);
+  /* Inherit transform from global button styles */
 }
 
 .btn-primary:hover {
-  background: var(--brass-700);
-  border-color: var(--brass-700);
-  box-shadow: 0 4px 16px rgb(212 165 116 / 40%);
+  /* Defined in components.css */
 }
 
 .btn-secondary:hover {
-  background: rgb(255 255 255 / 12%);
-  border-color: var(--brass-500);
-  color: var(--brass-500);
+  /* Defined in components.css */
 }
 
 /* ============================================
@@ -235,6 +226,8 @@
   letter-spacing: -0.01em;
 }
 
+.case-tag {
+  padding: 0.25rem 0.75rem;
   background: rgb(212 165 116 / 12%);
   border: 1px solid rgb(212 165 116 / 25%);
   border-radius: 20px;
@@ -243,6 +236,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.02em;
   transition: all 0.2s ease;
+}
 
 .case-tag:hover {
   background: rgb(212 165 116 / 18%);
@@ -402,14 +396,10 @@
 }
 
 /* ============================================
-   SECTION HEADINGS
+   SECTION HEADINGS (extends .section-heading from above)
    ============================================ */
 
-.section-heading {
-  font-size: 1.75rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-text, #f9fafb);
-}
+/* Note: Primary .section-heading is defined above in CASE CARDS GRID section */
 
 /* ============================================
    TRANSPARENCY STATEMENT
@@ -678,4 +668,108 @@
 [data-theme="light"] .filter-label {
   color: var(--ink-900);
 }
+
+/* ============================================
+   LARGE SCREEN ENHANCEMENTS (1400px+)
+   ============================================ */
+
+@media (min-width: 1400px) {
+  .cases-hero {
+    padding: 4rem 3rem;
+    border-radius: 16px;
+  }
+
+  .cases-hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .cases-hero-lead {
+    font-size: 1.35rem;
+    max-width: 900px;
+  }
+
+  .cases-stats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .case-stat {
+    padding: var(--space-lg);
+  }
+
+  .case-stat-number {
+    font-size: 3rem;
+  }
+
+  .cases-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .why-matters-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .why-matters-card {
+    padding: 2rem;
+  }
+
+  .transparency-section,
+  .opra-section {
+    padding: 3rem;
+    border-radius: 16px;
+  }
+}
+
+/* ============================================
+   ULTRA-WIDE SCREEN (1800px+)
+   ============================================ */
+
+@media (min-width: 1800px) {
+  .cases-hero {
+    padding: 5rem 4rem;
+  }
+
+  .cases-hero h1 {
+    font-size: 4rem;
+  }
+
+  .cases-hero-lead {
+    font-size: 1.5rem;
+    max-width: 1000px;
+  }
+
+  .case-stat-number {
+    font-size: 3.5rem;
+  }
+
+  .cases-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2xl);
+  }
+
+  .section-heading {
+    font-size: 2.25rem;
+  }
+}
+
+/* ============================================
+   4K SCREEN (2560px+)
+   ============================================ */
+
+@media (min-width: 2560px) {
+  .cases-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .cases-hero h1 {
+    font-size: 4.5rem;
+  }
+
+  .cases-stats {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

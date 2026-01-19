@@ -127,30 +127,67 @@ h6 {
 }
 
 .section-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  padding: 0.4rem 1rem;
-  background: rgb(8 99 39);
-  border-radius: 100px;
+  letter-spacing: 0.2em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  border: 2px solid #dc2626;
+  border-radius: 4px;
+  box-shadow: 
+    0 0 20px rgb(220 38 38 / 40%),
+    0 4px 12px rgb(0 0 0 / 60%),
+    inset 0 1px 0 rgb(255 255 255 / 20%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-tag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.section-tag::after {
+  content: "▸";
+  font-size: 0.8em;
+  opacity: 0.8;
 }
 
 .section-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   margin-bottom: 1rem;
-  color: var(--ink);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 0%, #e5e7eb 100%);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 12px rgb(0 0 0 / 40%);
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
   font-size: 1.25rem;
-  color: var(--muted);
+  color: #d1d5db;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.7;
+  font-weight: 400;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -234,6 +271,19 @@ h6 {
   align-items: center;
 }
 
+.main-nav .nav-list {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav .nav-list li {
+  display: inline-flex;
+}
+
 .main-nav a {
   color: rgb(255 255 255 / 80%);
   font-size: 0.9rem;
@@ -260,7 +310,8 @@ h6 {
   cursor: pointer;
 }
 
-.nav-toggle span {
+.nav-toggle span,
+.nav-toggle .nav-toggle-bar {
   width: 22px;
   height: 2px;
   background: rgb(255 255 255 / 90%);
@@ -289,6 +340,18 @@ h6 {
     border-bottom: 1px solid rgb(255 255 255 / 8%);
   }
 
+  .main-nav .nav-list {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-nav .nav-list li {
+    width: 100%;
+    justify-content: center;
+  }
+
   .site-header.nav-open .main-nav {
     transform: translateY(0);
     opacity: 1;
@@ -305,73 +368,25 @@ h6 {
   }
 }
 
-═══════════════════════════════════════════════════════════════════════════
-  BUTTONS
-  ═══════════════════════════════════════════════════════════════════════════
-  */
-  .btn {
-  display: inline-flex;
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTONS - See components/components.css for full button system
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Additional button utilities for this file only */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition-base);
-  text-decoration: none;
+  margin-top: 2rem;
 }
 
-.btn svg {
-  transition: transform var(--transition-base);
-}
-
-.btn:hover svg {
-  transform: translateX(4px);
-}
-
-.btn-primary {
-  background: var(--gradient-warm);
-  color: #fff;
-  box-shadow: 0 4px 20px rgb(196 30 58 / 30%);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgb(196 30 58 / 40%);
-}
-
-.btn-secondary {
-  background: var(--card);
-  color: var(--ink);
-  border: 2px solid rgb(0 0 0 / 10%);
-}
-
-.btn-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--ink);
-  border: 2px solid var(--ink);
-}
-
-.btn-ghost:hover {
-  background: var(--ink);
-  color: #fff;
-}
-
-.btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-}
-
-.btn-block {
-  width: 100%;
+.hero-actions .btn {
+  flex: 0 1 auto;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -414,17 +429,17 @@ h6 {
   top: 50%;
   left: -50%;
   background: var(--accent-blue);
-  animation: slideStripe 25s linear infinite reverse;
+  animation: slide-stripe 25s linear infinite reverse;
 }
 
 .stripe-3 {
   top: 80%;
   left: -50%;
   background: var(--ink);
-  animation: slideStripe 22s linear infinite;
+  animation: slide-stripe 22s linear infinite;
 }
 
-@keyframes slideStripe {
+@keyframes slide-stripe {
   0% {
     transform: translateX(-10%) rotate(-5deg);
   }
@@ -525,8 +540,28 @@ h6 {
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.hero-actions .btn {
+  flex: 0 1 auto;
+  min-width: 180px;
+}
+
+@media (width <= 640px) {
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+    min-width: 100%;
+  }
 }
 
 /* Hero Visual */
@@ -602,21 +637,22 @@ h6 {
   height: auto;
   display: block;
   filter: drop-shadow(0 4px 12px rgb(0 0 0 / 30%));
+  overflow: visible;
 }
 
+/* Traditional NYC barber pole spiral spin animation */
 .pole-spin {
-  animation: rotatePole 4s linear infinite;
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
+  animation: nyc-barber-spin 1.5s linear infinite;
+  transform-origin: center center;
 }
 
-@keyframes rotatePole {
+@keyframes nyc-barber-spin {
   0% {
-    transform: rotateZ(0deg);
+    transform: skewY(25deg) translateY(0);
   }
 
   100% {
-    transform: rotateZ(360deg);
+    transform: skewY(25deg) translateY(-24px);
   }
 }
 
@@ -669,10 +705,10 @@ h6 {
   width: 1px;
   height: 40px;
   background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
+  animation: scroll-pulse 2s ease-in-out infinite;
 }
 
-@keyframes scrollPulse {
+@keyframes scroll-pulse {
   0%,
   100% {
     opacity: 1;
@@ -682,6 +718,394 @@ h6 {
   50% {
     opacity: 0.5;
     height: 30px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   A CUT ABOVE BOX — Traditional Barber Pole with Police Lights
+   Classic barbershoppe spinning pole with red/blue emergency lights
+═══════════════════════════════════════════════════════════════════════════ */
+
+.barber-hero-unified {
+  background: linear-gradient(180deg, #fafafa 0%, #f0f0f5 100%);
+}
+
+.cut-above-box {
+  position: relative;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+  border: 2px solid var(--accent-gold, #d4af37);
+  box-shadow:
+    0 8px 40px rgb(0 0 0 / 20%),
+    0 0 60px rgb(212 175 55 / 10%),
+    inset 0 1px 0 rgb(255 255 255 / 5%);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  overflow: hidden;
+}
+
+.cut-above-box:hover {
+  box-shadow:
+    0 12px 50px rgb(0 0 0 / 25%),
+    0 0 80px rgb(212 175 55 / 15%),
+    inset 0 1px 0 rgb(255 255 255 / 8%);
+  transform: translateY(-4px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   POLICE RED/BLUE LIGHTS — Emergency light effect behind barber pole
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIREN LIGHTS — Red/Blue emergency lights behind barber pole
+═══════════════════════════════════════════════════════════════════════════ */
+
+.siren-lights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.siren-light {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0;
+}
+
+.siren-red {
+  background: radial-gradient(circle, rgb(239 68 68 / 90%) 0%, rgb(220 38 38 / 50%) 40%, transparent 70%);
+  left: -40%;
+  top: -10%;
+  animation: siren-flash-red 0.8s ease-in-out infinite;
+}
+
+.siren-blue {
+  background: radial-gradient(circle, rgb(59 130 246 / 90%) 0%, rgb(37 99 235 / 50%) 40%, transparent 70%);
+  right: -40%;
+  top: -10%;
+  animation: siren-flash-blue 0.8s ease-in-out infinite;
+}
+
+@keyframes siren-flash-red {
+  0%, 49% {
+    opacity: 0.8;
+  }
+
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes siren-flash-blue {
+  0%, 49% {
+    opacity: 0;
+  }
+
+  50%, 100% {
+    opacity: 0.8;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AUTHENTIC 1920s AMERICAN BARBER POLE
+   Real barber poles have a helical spiral inside a stationary glass cylinder.
+   The inner cylinder ROTATES, making diagonal stripes appear to scroll upward.
+   This replicates what Americans saw outside barbershops in the 1920s.
+═══════════════════════════════════════════════════════════════════════════ */
+
+.cut-above-box .visual-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cut-above-box .barber-pole-container.glass-pole {
+  width: 70px;
+  height: 180px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Brass end caps - authentic 1920s style with ball finials */
+.pole-cap {
+  position: absolute;
+  width: 54px;
+  height: 16px;
+  background: linear-gradient(180deg, 
+    #B8860B 0%, 
+    #DAA520 20%, 
+    #FFD700 40%, 
+    #FFF8DC 50%, 
+    #FFD700 60%, 
+    #DAA520 80%, 
+    #B8860B 100%);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 
+    0 2px 4px rgb(0 0 0 / 50%),
+    inset 0 1px 2px rgb(255 255 255 / 50%);
+  z-index: 10;
+}
+
+.top-cap {
+  top: 0;
+}
+
+/* Top brass ball finial */
+.top-cap::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 35% 35%, 
+    #FFF8DC 0%, 
+    #FFD700 30%, 
+    #DAA520 60%, 
+    #B8860B 100%);
+  border-radius: 50%;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 40%);
+}
+
+.bottom-cap {
+  bottom: 0;
+}
+
+/* Bottom brass ball finial */
+.bottom-cap::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 35% 35%, 
+    #FFF8DC 0%, 
+    #FFD700 30%, 
+    #DAA520 60%, 
+    #B8860B 100%);
+  border-radius: 50%;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 40%);
+}
+
+/* Glass outer cylinder - stationary, with authentic glass look */
+.glass-cylinder {
+  width: 48px;
+  height: 160px;
+  background: rgb(255 255 255 / 15%);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    inset 3px 0 8px rgb(255 255 255 / 40%),
+    inset -3px 0 8px rgb(0 0 0 / 20%),
+    0 4px 20px rgb(0 0 0 / 30%);
+}
+
+/* Inner rotating helix - this is what actually spins */
+.stripe-cylinder {
+  position: absolute;
+
+  /* Start above the visible area to prevent gaps at top */
+  top: -100%;
+  left: 0;
+  width: 100%;
+
+  /* Triple height ensures full coverage during entire animation */
+  height: 300%;
+
+  /* The repeating diagonal stripe pattern - authentic red/white/blue helix */
+  background: repeating-linear-gradient(
+    -35deg,
+    #FFF 0,
+    #FFF 8px,
+    #DC2626 8px,
+    #DC2626 16px,
+    #FFF 16px,
+    #FFF 24px,
+    #1E40AF 24px,
+    #1E40AF 32px
+  );
+
+  /* The magic - animate upward to simulate rotation */
+  animation: barber-pole-rotate 1.5s linear infinite;
+}
+
+/* Hide the individual stripe divs - we use CSS gradient instead */
+.stripe-cylinder .stripe {
+  display: none;
+}
+
+/* Authentic 1920s rotation - stripes scroll UPWARD as helix rotates */
+@keyframes barber-pole-rotate {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    /* Move up by exactly one pattern repeat (32px) for seamless loop */
+    transform: translateY(-32px);
+  }
+}
+
+/* Glass cylinder reflection - gives authentic glass tube appearance */
+.glass-cylinder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgb(0 0 0 / 15%) 0%,
+    transparent 15%,
+    rgb(255 255 255 / 50%) 30%,
+    rgb(255 255 255 / 70%) 35%,
+    rgb(255 255 255 / 30%) 45%,
+    transparent 55%,
+    rgb(0 0 0 / 10%) 100%);
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Additional glass highlight for realism */
+.glass-cylinder::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 8px;
+  height: 90%;
+  background: linear-gradient(180deg,
+    rgb(255 255 255 / 60%) 0%,
+    rgb(255 255 255 / 30%) 50%,
+    rgb(255 255 255 / 60%) 100%);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* A CUT ABOVE text styling */
+.cut-above-box .visual-text .tagline {
+  font-family: "Bebas Neue", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.75rem;
+  letter-spacing: 0.15em;
+  color: #fff;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 30%);
+}
+
+.cut-above-box .visual-text .est {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold, #d4af37);
+  font-weight: 600;
+}
+
+/* Frame corners enhanced */
+.cut-above-box .frame-corner {
+  border-color: var(--accent-gold, #d4af37);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.cut-above-box:hover .frame-corner {
+  opacity: 1;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .siren-light {
+    animation: none;
+    opacity: 0.3;
+  }
+  
+  .stripe-cylinder {
+    animation: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .barber-hero-unified {
+    background: linear-gradient(180deg, #0a0a0f 0%, #121218 100%);
+  }
+
+  .barber-hero-unified .hero-title {
+    color: #f5f5f7;
+  }
+
+  .barber-hero-unified .hero-lead {
+    color: rgb(255 255 255 / 70%);
+  }
+
+  .barber-hero-unified .value-text {
+    color: rgb(255 255 255 / 80%);
+  }
+
+  .barber-hero-unified .hero-badge {
+    background: rgb(196 30 58 / 15%);
+  }
+}
+
+/* Responsive adjustments for unified hero */
+@media (width <= 900px) {
+  .barber-hero-unified .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .barber-hero-unified .hero-visual {
+    order: -1;
+  }
+
+  .cut-above-box {
+    width: 280px;
+    height: 350px;
+    margin: 0 auto;
+  }
+
+  .cut-above-box .barber-pole-container {
+    max-width: 80px;
+  }
+
+  .cut-above-box .visual-text .tagline {
+    font-size: 1.4rem;
+  }
+  
+  .police-light {
+    filter: blur(40px);
+  }
+}
+
+@media (width <= 480px) {
+  .barber-hero-unified {
+    padding: 6rem 0 4rem;
+  }
+
+  .cut-above-box {
+    width: 240px;
+    height: 300px;
+  }
+
+  .cut-above-box .barber-pole-container {
+    max-width: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .cut-above-box .visual-text .tagline {
+    font-size: 1.2rem;
+  }
+
+  .cut-above-box .visual-text .est {
+    font-size: 0.7rem;
   }
 }
 
@@ -839,10 +1263,10 @@ h6 {
   height: 100%;
   background: var(--gradient-warm);
   border-radius: 2px;
-  animation: progressPulse 2s ease-in-out infinite;
+  animation: progress-pulse 2s ease-in-out infinite;
 }
 
-@keyframes progressPulse {
+@keyframes progress-pulse {
   0%,
   100% {
     width: 40%;
@@ -905,9 +1329,28 @@ h6 {
 
 .preview-cta {
   display: flex;
-  justify-content: center;
   gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
   flex-wrap: wrap;
+}
+
+.preview-cta .btn {
+  flex: 0 1 auto;
+  min-width: 200px;
+}
+
+@media (width <= 640px) {
+  .preview-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .preview-cta .btn {
+    width: 100%;
+    min-width: 100%;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -916,7 +1359,18 @@ h6 {
 
 .principles-section {
   padding: 8rem 0;
-  background: var(--alt);
+  background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%);
+  position: relative;
+}
+
+.principles-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgb(220 38 38 / 8%), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgb(37 99 235 / 8%), transparent 50%);
+  pointer-events: none;
 }
 
 .principles-grid {
@@ -927,18 +1381,25 @@ h6 {
 
 .principle-card {
   position: relative;
-  background: var(--card);
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
   padding: 2.5rem 2rem;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgb(0 0 0 / 5%);
+  box-shadow: 
+    0 8px 24px rgb(0 0 0 / 60%),
+    inset 0 1px 0 rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 10%);
   transition: var(--transition-base);
   overflow: hidden;
+  color: #e5e7eb;
 }
 
 .principle-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 
+    0 0 30px rgb(220 38 38 / 40%),
+    0 12px 32px rgb(0 0 0 / 70%),
+    inset 0 1px 0 rgb(255 255 255 / 10%);
+  border-color: rgb(220 38 38 / 50%);
 }
 
 .card-number {
@@ -947,8 +1408,12 @@ h6 {
   right: 1.5rem;
   font-family: "Bebas Neue", sans-serif;
   font-size: 3rem;
-  color: rgb(255 215 0);
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
+  opacity: 0.8;
+  font-weight: 900;
 }
 
 .card-icon {
@@ -958,21 +1423,27 @@ h6 {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  color: var(--accent);
+  color: #dc2626;
+  filter: drop-shadow(0 0 8px rgb(220 38 38 / 60%));
 }
 
 .principle-card h3 {
   font-family: Inter, sans-serif;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .principle-card p {
   font-size: 0.95rem;
-  color: var(--muted);
   line-height: 1.7;
+  color: #d1d5db;
 }
+
+  line-height: 1.7;
 
 .principles-footer {
   margin-top: 4rem;
@@ -1015,7 +1486,18 @@ h6 {
 
 .status-section {
   padding: 8rem 0;
-  background: var(--bg);
+  background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0f 100%);
+  position: relative;
+}
+
+.status-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 40%, rgb(37 99 235 / 8%), transparent 50%),
+    radial-gradient(circle at 70% 60%, rgb(220 38 38 / 8%), transparent 50%);
+  pointer-events: none;
 }
 
 .status-content {
@@ -1030,18 +1512,45 @@ h6 {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.25rem;
-  background: rgb(40 200 64 / 10%);
-  border-radius: 100px;
+  background: linear-gradient(135deg, rgb(220 38 38 / 20%), rgb(220 38 38 / 10%));
+  border: 2px solid rgb(220 38 38 / 40%);
+  border-radius: 8px;
   margin-bottom: 1.5rem;
+  box-shadow: 
+    0 0 20px rgb(220 38 38 / 30%),
+    inset 0 1px 0 rgb(255 255 255 / 10%);
 }
 
 .indicator-pulse {
   width: 10px;
   height: 10px;
-  background: #28c840;
+  background: #dc2626;
   border-radius: 50%;
+  box-shadow: 0 0 10px #dc2626;
   animation: pulse 2s ease-in-out infinite;
 }
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #dc2626;
+  }
+
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px #dc2626, 0 0 30px rgb(220 38 38 / 50%);
+  }
+}
+
+.indicator-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+  animation: pulse 2s ease-in-out infinite;
 
 .indicator-text {
   font-size: 0.875rem;
@@ -1051,7 +1560,7 @@ h6 {
 
 .status-description {
   font-size: 1.125rem;
-  color: var(--muted);
+  color: #d1d5db;
   line-height: 1.8;
   margin-bottom: 3rem;
 }
@@ -1069,13 +1578,15 @@ h6 {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: rgb(0 0 0 / 10%);
+  background: linear-gradient(180deg, rgb(220 38 38 / 40%), rgb(37 99 235 / 40%));
+  box-shadow: 0 0 8px rgb(220 38 38 / 30%);
 }
 
 .timeline-item {
   position: relative;
   padding-bottom: 2rem;
   padding-left: 1.5rem;
+  color: #e5e7eb;
 }
 
 .timeline-item:last-child {
@@ -1088,22 +1599,38 @@ h6 {
   top: 0;
   width: 14px;
   height: 14px;
-  background: var(--bg);
-  border: 2px solid rgb(0 0 0 / 20%);
+  background: #1a1a2e;
+  border: 2px solid rgb(255 255 255 / 20%);
   border-radius: 50%;
   transform: translateX(-6px);
+  box-shadow: 0 0 8px rgb(0 0 0 / 60%);
 }
 
 .timeline-item.completed .timeline-marker {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #dc2626;
+  border-color: #dc2626;
+  box-shadow: 0 0 12px rgb(220 38 38 / 60%);
 }
 
 .timeline-item.active .timeline-marker {
-  background: var(--bg);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgb(196 30 58 / 20%);
+  background: #2563eb;
+  border-color: #2563eb;
+  box-shadow: 0 0 15px rgb(37 99 235 / 80%);
+  animation: pulse 2s ease-in-out infinite;
 }
+
+.timeline-item h4 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item p {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+  box-shadow: 0 0 0 4px rgb(196 30 58 / 20%);
 
 .timeline-content h4 {
   font-family: Inter, sans-serif;
@@ -1125,11 +1652,13 @@ h6 {
 }
 
 .sidebar-card {
-  background: var(--card);
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
   padding: 1.5rem;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgb(0 0 0 / 5%);
+  box-shadow: 
+    0 8px 24px rgb(0 0 0 / 60%),
+    inset 0 1px 0 rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 10%);
 }
 
 .sidebar-card h4 {
@@ -1139,8 +1668,32 @@ h6 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
-  color: var(--ink);
+  color: #fff;
 }
+
+.sidebar-card li {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.sidebar-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.sidebar-card .not-list li::before {
+  content: "✕";
+  color: #dc2626;
+}
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 
 .sidebar-card ul {
   display: flex;
@@ -1173,8 +1726,19 @@ h6 {
 ═══════════════════════════════════════════════════════════════════════════ */
 
 .connect-section {
-  padding: 0.5rem 0;
-  background: var(--alt);
+  padding: 8rem 0;
+  background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%);
+  position: relative;
+}
+
+.connect-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 40% 30%, rgb(37 99 235 / 10%), transparent 50%),
+    radial-gradient(circle at 60% 70%, rgb(220 38 38 / 10%), transparent 50%);
+  pointer-events: none;
 }
 
 .connect-grid {
@@ -1186,7 +1750,7 @@ h6 {
 
 .connect-lead {
   font-size: 1.125rem;
-  color: var(--muted);
+  color: #d1d5db;
   line-height: 1.8;
   margin-bottom: 2.5rem;
 }
@@ -1209,31 +1773,38 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--card);
+  background: linear-gradient(135deg, #1a1a2e, #0f172a);
   border-radius: var(--radius-sm);
-  color: var(--accent);
+  color: #2563eb;
   flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgb(37 99 235 / 30%);
+  box-shadow: 
+    0 0 15px rgb(37 99 235 / 30%),
+    0 4px 12px rgb(0 0 0 / 60%);
 }
 
 .way-content h4 {
   font-family: Inter, sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.25rem;
+  color: #fff;
 }
 
 .way-content p {
   font-size: 0.9rem;
-  color: var(--muted);
+  color: #9ca3af;
 }
 
 /* Connect Form */
 .connect-form-wrapper {
-  background: var(--card);
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
   padding: 2.5rem;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: 
+    0 12px 32px rgb(0 0 0 / 70%),
+    inset 0 1px 0 rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 12%);
 }
 
 .form-header {
@@ -1243,9 +1814,21 @@ h6 {
 .form-header h3 {
   font-family: Inter, sans-serif;
   font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.form-header p {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-}
 
 .form-header p {
   font-size: 0.9rem;
@@ -1259,8 +1842,11 @@ h6 {
 .form-group label {
   display: block;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .connect-form input,
@@ -1269,13 +1855,33 @@ h6 {
   padding: 0.875rem 1rem;
   font-size: 1rem;
   font-family: inherit;
+  border: 2px solid rgb(255 255 255 / 20%);
+  border-radius: var(--radius-sm);
+  background: rgb(0 0 0 / 30%);
+  color: #fff;
+  transition: var(--transition-base);
+  outline: none;
+}
+
+.connect-form input:focus,
+.connect-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 
+    0 0 0 4px rgb(37 99 235 / 20%),
+    0 0 20px rgb(37 99 235 / 40%);
+  background: rgb(0 0 0 / 40%);
+}
+
+.connect-form input::placeholder {
+  color: #6b7280;
+}
+
   border: 2px solid rgb(0 0 0 / 10%);
   border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--ink);
   transition: var(--transition-base);
   outline: none;
-}
 
 .connect-form input:focus,
 .connect-form select:focus {
@@ -1299,6 +1905,15 @@ h6 {
 .form-notice svg {
   color: #28c840;
   flex-shrink: 0;
+}
+
+/* Connect Form Button Overrides */
+.connect-form .btn {
+  margin-top: 0.5rem;
+}
+
+.connect-form .btn-block {
+  margin-top: 1rem;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1347,6 +1962,20 @@ h6 {
   letter-spacing: 0.1em;
   color: rgb(255 255 255 / 40%);
   margin-bottom: 1.25rem;
+}
+
+.footer-links nav {
+  display: block;
+}
+
+.footer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav-list li {
+  display: block;
 }
 
 .footer-links a {

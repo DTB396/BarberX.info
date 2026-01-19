@@ -4,30 +4,31 @@
   --text: #e9eefc;
   --muted: #9aa6c2;
   --accent: #6aa3ff;
-  --border: rgba(255, 255, 255, 0.1);
+  --border: rgb(255 255 255 / 10%);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --bg: #fafbff;
-    --card: #ffffff;
+    --card: #fff;
     --text: #101526;
     --muted: #53607a;
     --accent: #2a6bff;
-    --border: rgba(0, 0, 0, 0.12);
+    --border: rgb(0 0 0 / 12%);
   }
 }
 
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family:
     ui-sans-serif,
     system-ui,
     -apple-system,
-    Segoe UI,
+    "Segoe UI",
     Roboto,
     Arial,
     "Apple Color Emoji",
@@ -47,15 +48,18 @@ body {
   gap: 14px;
   align-items: center;
 }
+
 .kicker {
   font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--muted);
 }
+
 h1 {
   margin: 2px 0 4px;
   font-size: 22px;
 }
+
 .sub {
   color: var(--muted);
   font-size: 14px;
@@ -64,9 +68,10 @@ h1 {
 .search {
   margin-top: 14px;
 }
+
 .search input {
   width: 100%;
-  padding: 14px 14px;
+  padding: 14px;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--card);
@@ -75,11 +80,13 @@ h1 {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+
 .search input:focus-visible {
   border-color: var(--accent);
   outline-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(106, 163, 255, 0.35);
+  box-shadow: 0 0 0 2px rgb(106 163 255 / 35%);
 }
+
 .hint {
   margin-top: 8px;
   color: var(--muted);
@@ -97,22 +104,26 @@ h1 {
   gap: 12px;
   margin-top: 12px;
 }
+
 .card {
   border: 1px solid var(--border);
   background: var(--card);
   border-radius: 16px;
   padding: 14px;
 }
+
 .card h3 {
   margin: 0;
   font-size: 16px;
 }
+
 .badges {
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
+
 .badge {
   font-size: 12px;
   padding: 6px 10px;
@@ -120,6 +131,7 @@ h1 {
   border: 1px solid var(--border);
   color: var(--muted);
 }
+
 .snip {
   margin-top: 10px;
   color: var(--text);
@@ -127,12 +139,14 @@ h1 {
   font-size: 13px;
   line-height: 1.4;
 }
+
 .actions {
   margin-top: 10px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
+
 a.btn {
   display: inline-block;
   padding: 10px 12px;
@@ -141,9 +155,11 @@ a.btn {
   text-decoration: none;
   color: var(--text);
 }
+
 a.btn.primary {
-  border-color: rgba(106, 163, 255, 0.5);
+  border-color: rgb(106 163 255 / 50%);
 }
+
 .footer {
   color: var(--muted);
   font-size: 12px;
@@ -158,19 +174,21 @@ a.btn.primary {
   border: 1px solid var(--border);
   background: repeating-linear-gradient(
     45deg,
-    rgba(255, 0, 60, 0.75) 0 10px,
-    rgba(255, 255, 255, 0.8) 10px 20px,
-    rgba(50, 130, 255, 0.75) 20px 30px,
-    rgba(255, 255, 255, 0.8) 30px 40px
+    rgb(255 0 60 / 75%) 0 10px,
+    rgb(255 255 255 / 80%) 10px 20px,
+    rgb(50 130 255 / 75%) 20px 30px,
+    rgb(255 255 255 / 80%) 30px 40px
   );
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
   animation: spin 2.4s linear infinite;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .pole {
     animation: none;
   }
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

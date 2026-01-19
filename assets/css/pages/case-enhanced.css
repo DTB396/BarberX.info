@@ -596,6 +596,7 @@
   0% {
     box-shadow: 0 0 0 6px rgb(16 92 74 / 40%);
   }
+
   100% {
     box-shadow: 0 0 0 3px var(--ff-primary);
   }
@@ -645,5 +646,129 @@
 
   .case-quick-nav {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   LARGE SCREEN ENHANCEMENTS (1400px+)
+   ========================================================================== */
+
+@media (min-width: 1400px) {
+  .case-record--enhanced {
+    max-width: 100rem;
+    padding: 3rem;
+  }
+
+  .case-caption {
+    padding-bottom: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .case-title {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+  }
+
+  .case-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .case-meta {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-section {
+    margin: 4rem 0;
+    padding: 2.5rem 0;
+  }
+
+  .case-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .docket-entry {
+    padding: 1.25rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .filing-item {
+    padding: 1.5rem;
+  }
+
+  .case-involvement,
+  .case-current-status {
+    padding: 2.5rem;
+    border-radius: 12px;
+  }
+
+  .timeline-list {
+    padding-left: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   ULTRA-WIDE SCREEN (1800px+)
+   ========================================================================== */
+
+@media (min-width: 1800px) {
+  .case-record--enhanced {
+    max-width: 120rem;
+    padding: 4rem;
+  }
+
+  .case-title {
+    font-size: clamp(2.75rem, 3.5vw, 4rem);
+  }
+
+  .case-meta {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+
+  .case-section {
+    margin: 5rem 0;
+  }
+
+  .case-section h2 {
+    font-size: 2rem;
+  }
+
+  .case-section h3 {
+    font-size: 1.35rem;
+  }
+
+  .docket-stats {
+    padding: 1.5rem 2rem;
+    gap: 3rem;
+  }
+
+  .case-involvement,
+  .case-current-status,
+  .case-posture .posture-narrative {
+    padding: 3rem;
+    border-radius: 16px;
+  }
+}
+
+/* ==========================================================================
+   4K SCREEN (2560px+)
+   ========================================================================== */
+
+@media (min-width: 2560px) {
+  .case-record--enhanced {
+    max-width: 160rem;
+    padding: 5rem;
+  }
+
+  .case-title {
+    font-size: 4rem;
+  }
+
+  .case-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .case-meta {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

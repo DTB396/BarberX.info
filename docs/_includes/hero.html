@@ -1,9 +1,10 @@
 <!-- ═══════════════════════════════════════════════════════════════════════════
      HERO SECTION — The Fresh Fade Philosophy
-     NY Barbershop inspired landing section
+     NY Barbershop inspired landing section with scroll & spin barber pole
 ═══════════════════════════════════════════════════════════════════════════ -->
+{%- assign uid = page.url | default: "docs-hero" | slugify | replace: "-", "" | truncate: 12, "" -%}
 
-<section class="hero">
+<section class="hero barber-hero-unified">
   <div class="hero-bg">
     <div class="stripe stripe-1"></div>
     <div class="stripe stripe-2"></div>
@@ -65,15 +66,41 @@
       </div>
     </div>
 
+    <!-- A CUT ABOVE Visual Frame — 1920's Glass Barber Pole with Siren Lights -->
     <div class="hero-visual">
-      <div class="visual-frame">
+      <div class="visual-frame cut-above-box">
         <div class="frame-corner tl"></div>
         <div class="frame-corner tr"></div>
         <div class="frame-corner bl"></div>
         <div class="frame-corner br"></div>
+
+        <!-- Siren Lights Behind Pole -->
+        <div class="siren-lights">
+          <div class="siren-light siren-red"></div>
+          <div class="siren-light siren-blue"></div>
+        </div>
+
         <div class="visual-content">
-          <div class="barber-pole">
-            <div class="pole-stripes"></div>
+          <!-- Old School 1920's Glass Cylinder Barber Pole -->
+          <div class="barber-pole-container glass-pole">
+            <!-- Outer Glass Cylinder -->
+            <div class="glass-cylinder">
+              <!-- Inner rotating stripe cylinder -->
+              <div class="stripe-cylinder">
+                <div class="stripe red"></div>
+                <div class="stripe white"></div>
+                <div class="stripe blue"></div>
+                <div class="stripe white"></div>
+                <div class="stripe red"></div>
+                <div class="stripe white"></div>
+                <div class="stripe blue"></div>
+                <div class="stripe white"></div>
+              </div>
+            </div>
+            <!-- Top brass cap -->
+            <div class="pole-cap top-cap"></div>
+            <!-- Bottom brass cap -->
+            <div class="pole-cap bottom-cap"></div>
           </div>
           <div class="visual-text">
             <span class="est">EST. 2024</span>

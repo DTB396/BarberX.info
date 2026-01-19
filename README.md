@@ -1,9 +1,9 @@
-# Barber Cam® (Preview)
+# BarberX.info
 
-**Record clean. Store safe. Share fair.**
+**Documenting truth. Exposing bad actors. Helping the good bunch.**
 
-This is the _public preview_ repository for Barber Cam. It exists to communicate direction,
-safeguards, and design intent — not to grant reuse rights.
+This is a personal documentation site sharing real experiences with bureaucratic dysfunction, 
+bad-faith actors, and systemic issues. It exists to shine light on problems honestly and productively.
 
 ## License / Permissions (Read This First)
 
