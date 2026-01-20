@@ -3,6 +3,32 @@
   <head>
     {% include layout/head/head.html %}
     
+    {%- comment -%} Page-specific CSS based on layout type {%- endcomment -%}
+    {% if page.layout == 'case' or page.layout == 'case-enhanced' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/cases.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/pages/case-enhanced.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/pages/case-analysis.css' | relative_url }}" />
+    {% elsif page.layout == 'essay' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/essays.css' | relative_url }}" />
+    {% elsif page.layout == 'article' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/articles.css' | relative_url }}" />
+    {% endif %}
+    
+    {%- comment -%} Collection-based CSS {%- endcomment -%}
+    {% if page.collection == 'cases' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/cases.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/pages/case-enhanced.css' | relative_url }}" />
+    {% elsif page.collection == 'essays' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/essays.css' | relative_url }}" />
+    {% elsif page.collection == 'opra' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/opra.css' | relative_url }}" />
+    {% endif %}
+    
+    {%- comment -%} Body class-based CSS {%- endcomment -%}
+    {% if page.body_class contains 'case' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages/cases.css' | relative_url }}" />
+    {% endif %}
+    
     {%- comment -%} Custom CSS per page {%- endcomment -%}
     {% unless page.hide_barber_pole %}
     <link rel="stylesheet" href="{{ '/assets/css/components/barber-pole-spinner.css' | relative_url }}" />
@@ -18,7 +44,7 @@
     {% if page.custom_head %}{{ page.custom_head }}{% endif %}
   </head>
 
-  <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}{% if page.data_theme %} data-theme="{{ page.data_theme }}"{% endif %}>
+  <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}{% if page.data_theme %} data-theme="{{ page.data_theme }}"{% endif %} data-layout="{{ page.layout | default: 'default' }}"{% if page.collection %} data-collection="{{ page.collection }}"{% endif %}>
     
     {%- comment -%} Skip to main content link for accessibility {%- endcomment -%}
     <a href="#main" class="skip-to-main" style="
@@ -26,7 +52,7 @@
       left: -9999px;
       z-index: 999;
       padding: 1rem;
-      background: var(--color-primary);
+      background: var(--color-primary, #dc2626);
       color: white;
       text-decoration: none;
     ">Skip to main content</a>
@@ -41,8 +67,8 @@
       {% include components/navigation/header.html %}
     {% endunless %}
 
-    {%- comment -%} Main content area {%- endcomment -%}
-    <main id="main" tabindex="-1"{% if page.main_class %} class="{{ page.main_class }}"{% endif %}{% if page.main_role %} role="{{ page.main_role }}"{% endif %}>
+    {%- comment -%} Main content area with layout-specific classes {%- endcomment -%}
+    <main id="main" tabindex="-1"{% if page.main_class %} class="{{ page.main_class }}"{% elsif page.layout == 'case' or page.layout == 'case-enhanced' %} class="case-main"{% elsif page.layout == 'page' %} class="page-main"{% elsif page.layout == 'essay' %} class="essay-main"{% endif %}{% if page.main_role %} role="{{ page.main_role }}"{% endif %}>
       {{ content }}
     </main>
 
@@ -63,6 +89,12 @@
       {% for js in page.extra_js %}
     <script src="{{ js | relative_url }}" defer></script>
       {% endfor %}
+    {% endif %}
+    
+    {%- comment -%} Layout-specific JavaScript {%- endcomment -%}
+    {% if page.layout == 'case' or page.layout == 'case-enhanced' %}
+    <script src="{{ '/assets/js/case-nav.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/docket-navigator.js' | relative_url }}" defer></script>
     {% endif %}
     
     {%- comment -%} Main site JavaScript {%- endcomment -%}
