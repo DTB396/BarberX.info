@@ -262,13 +262,43 @@ Content...
 ## 🔧 Tips
 
 1. **Use `page.html` for content pages** - It provides the most flexibility
-2. **Use `default.html` for custom layouts** - When you need full control
-3. **Use `doc.html` for simple docs** - Clean and minimal
-4. **Enable TOC for long pages** - Improves navigation
-5. **Add related pages** - Helps users discover content
-6. **Use alerts sparingly** - Only for important messages
-7. **Set reading time** - Or let it auto-calculate
-8. **Always set title and description** - Important for SEO
+2. **Use `case.html` for legal cases** - Structured with proper metadata
+3. **Use `default.html` for custom layouts** - When you need full control
+4. **Use `doc.html` for simple docs** - Clean and minimal
+5. **CSS loads automatically** - Based on layout and collection type
+6. **Enable TOC for long pages** - Improves navigation
+7. **Add related pages** - Helps users discover content
+8. **Use alerts sparingly** - Only for important messages
+9. **Set reading time** - Or let it auto-calculate
+10. **Always set title and description** - Important for SEO
+
+---
+
+## 🎨 Automatic CSS Loading
+
+The default layout automatically loads page-specific CSS based on:
+
+### By Layout Type
+```yaml
+layout: case          # Loads cases.css, case-enhanced.css, case-analysis.css
+layout: case-enhanced # Loads cases.css, case-enhanced.css, case-analysis.css
+layout: essay         # Loads essays.css
+layout: article       # Loads articles.css
+```
+
+### By Collection
+```yaml
+collection: cases     # Loads cases.css, case-enhanced.css
+collection: essays    # Loads essays.css
+collection: opra      # Loads opra.css
+```
+
+### By Body Class
+```yaml
+body_class: "page-case"  # Loads cases.css (if contains 'case')
+```
+
+You don't need to manually add extra_css for these - it's automatic!
 
 ---
 

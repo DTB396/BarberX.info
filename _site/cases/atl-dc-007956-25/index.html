@@ -12,7 +12,7 @@
 <meta name="description" content="Personal Documentation &amp; Accountability Journal" />
 <meta name="robots" content="index, follow" />
 
-<link rel="canonical" href="https://barberx.info/cases/atl-dc-007956-25/" />
+<link rel="canonical" href="http://localhost:4000/cases/atl-dc-007956-25/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -22,17 +22,17 @@
 />
 <meta property="og:title" content="ATL-DC-007956-25 – Toll Enforcement" />
 <meta property="og:description" content="Personal Documentation &amp; Accountability Journal" />
-<meta property="og:url" content="https://barberx.info/cases/atl-dc-007956-25/" /><meta property="og:image" content="https://barberx.info/assets/img/og/og-faithfrontier-default.png" />
+<meta property="og:url" content="http://localhost:4000/cases/atl-dc-007956-25/" /><meta property="og:image" content="http://localhost:4000/assets/img/og/og-faithfrontier-default.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" /><!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="ATL-DC-007956-25 – Toll Enforcement" />
-<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="https://barberx.info/assets/img/og/og-faithfrontier-default.png" /> <script type="application/ld+json">
+<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="http://localhost:4000/assets/img/og/og-faithfrontier-default.png" /> <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BarberX.info",
-    "url": "https://barberx.info/",
+    "url": "http://localhost:4000/",
     "description": "Personal Documentation &amp; Accountability Journal",
     "email": "BarberCamX@ProtonMail.com",
     "foundingDate": "2024"
@@ -44,7 +44,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "BarberX.info",
-    "url": "https://barberx.info/",
+    "url": "http://localhost:4000/",
     "inLanguage": "en-US"
   }
 </script>
@@ -66,18 +66,25 @@
   href="/assets/img/apple-touch-icon.png"
 />
 
+    <link rel="stylesheet" href="/assets/css/pages/cases.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-enhanced.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-analysis.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pages/cases.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-enhanced.css" />
+    
     <link rel="stylesheet" href="/assets/css/components/barber-pole-spinner.css" />
     
     
     
   </head>
 
-  <body><a href="#main" class="skip-to-main" style="
+  <body data-layout="case" data-collection="cases"><a href="#main" class="skip-to-main" style="
       position: absolute;
       left: -9999px;
       z-index: 999;
       padding: 1rem;
-      background: var(--color-primary);
+      background: var(--color-primary, #dc2626);
       color: white;
       text-decoration: none;
     ">Skip to main content</a>
@@ -114,8 +121,8 @@
   </div>
 </header>
 
-    <main id="main" tabindex="-1">
-      <article class="case-record shell u-max-w-4xl u-mx-auto">
+    <main id="main" tabindex="-1" class="case-main">
+      <article class="case-record shell u-max-w-4xl u-mx-auto" itemscope itemtype="https://schema.org/LegalCase">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol
     class="breadcrumbs__list"
@@ -155,33 +162,152 @@
         >Atl dc 007956 25 – toll enforcement</span
       ><meta itemprop="position" content="3" /></li></ol>
 </nav>
-
-  <header class="case-header u-mb-xl u-p-md">
-    
-    <p class="case-eyebrow u-text-accent">
+  <header class="case-header u-mb-xl u-p-md" style="
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg, 8px);
+  ">
+    <p class="case-eyebrow u-text-accent" style="
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: rgba(220, 38, 38, 0.9);
+    " itemprop="court">
       Superior Court of New Jersey, Special Civil Part — Atlantic County
     </p>
     
-
-    <h1 class="case-title u-mb-sm u-text-highlight">ATL-DC-007956-25 – Toll Enforcement</h1>
-
+    <h1 class="case-title u-mb-sm u-text-highlight" style="
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    " itemprop="name">ATL-DC-007956-25 – Toll Enforcement</h1>
     
-    <p class="case-subtitle u-text-muted">
-      ATL-DC-007956-25 · Docket ATL-DC-007956-25
+    <p class="case-subtitle u-text-muted" style="
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+    ">
+      ATL-DC-007956-25 · <span itemprop="identifier">Docket ATL-DC-007956-25</span>
     </p>
     
-
-    
-    <dl class="case-meta u-mt-md u-mb-md">
-      <div><dt>Case Type</dt><dd>Civil Collection (Toll Enforcement)</dd></div>
-      <div><dt>Status</dt><dd>active</dd></div>
+    <dl class="case-meta u-mt-md u-mb-md" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      font-size: 0.9rem;
+    ">
       
-      <div><dt>Forum</dt><dd>Trial Court</dd></div>
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Case Type</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Civil Collection (Toll Enforcement)</dd>
+      </div>
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Status</dt>
+        <dd style="margin: 0;">
+          <span class="case-status case-status--active" style="
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            
+            background: rgba(220, 38, 38, 0.15);
+            color: rgba(220, 38, 38, 1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            
+          ">Active</span>
+        </dd>
+      </div>
+      
+      
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Forum</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Trial Court</dd>
+      </div>
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Role</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Defendant / Counterclaimant</dd>
+      </div>
+      
+      
+      
     </dl>
     
+    <div class="case-tags" style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    ">
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">toll-enforcement</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">discovery</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">accessibility</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">due-process</span>
+      
+    </div>
+    
   </header>
+  <section class="case-overview u-mb-xl" style="
+    padding: 1.5rem;
+    background: rgba(37, 99, 235, 0.05);
+    border-left: 4px solid rgba(37, 99, 235, 0.5);
+    border-radius: var(--radius-md, 6px);
+    line-height: 1.7;
+  ">
+    <h2 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem; color: rgba(37, 99, 235, 1);">Case Overview</h2>
+    <div class="overview-content">
+      <p>Active Special Civil Part action arising from alleged unpaid toll assessments. Defendant asserts counterclaims and defenses challenging process integrity, notice, data accuracy, and accessibility, including the need for reasonable accommodations to ensure meaningful participation.</p>
 
-  <section class="case-body u-pb-xl"><h2 id="case-overview">Case Overview</h2>
+    </div>
+  </section>
+  
+  <section class="case-body u-pb-xl" style="
+    line-height: 1.8;
+    font-size: 1rem;
+  ">
+    <h2 id="case-overview">Case Overview</h2>
 
 <p>This Special Civil Part matter involves toll-enforcement collection claims brought against the Defendant. Notably, the New Jersey Turnpike Authority (NJTA) has raised its claimed damages to over $8,000 for an alleged $365 in unpaid tolls, asserting authority to collect under New Jersey law and citing the appellate case Long v. NJTA. However, this case is not applicable to the Defendant’s situation, as the Defendant is not Long, but Devon, who is enrolled in EA and government assistance programs and is actively engaged in sustained efforts to live a civil, lawful life. The Defendant asserts that actions by certain state actors in New Jersey have made this extremely difficult.</p>
 
@@ -205,246 +331,471 @@
 
 <h2 id="docket">Docket</h2>
 
-</section>
 
+  </section>
   
-  <section class="docket">
-    <h2>Docket</h2><ul class="docket-list">
+  <section class="docket u-mb-xl" style="
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 6px);
+  ">
+    <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Docket</h2><ul class="docket-list" style="list-style: none; padding: 0; display: grid; gap: 1rem;">
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251215-order-granted-in-error.pdf" target="_blank" rel="noopener">12 15 2025 order granted in error</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251215-order-granted-in-error.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">12 15 2025 order granted in error</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251215-letter-correspondence-on-error-in-order.pdf" target="_blank" rel="noopener">12 15 2025 letter correspondence on error in order</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251215-letter-correspondence-on-error-in-order.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">12 15 2025 letter correspondence on error in order</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251215-generic-schedule-notice-for-order-on-pending-motion.pdf" target="_blank" rel="noopener">12 15 2025 generic schedule notice for order on pending motion</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251215-generic-schedule-notice-for-order-on-pending-motion.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">12 15 2025 generic schedule notice for order on pending motion</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251206-supplemental-motion-to-compel-discovery.pdf" target="_blank" rel="noopener">12 06 2025 supplemental motion to compel discovery</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251206-supplemental-motion-to-compel-discovery.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">12 06 2025 supplemental motion to compel discovery</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251201-motion-to-compel-discovery-in-opposition-of-plaintiffs-motion.pdf" target="_blank" rel="noopener">12 01 25 motion to compel discovery in opposition of plaintiffs motion</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251201-motion-to-compel-discovery-in-opposition-of-plaintiffs-motion.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">12 01 25 motion to compel discovery in opposition of plaintiffs motion</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-njtas-motion-to-squash-dsicovery.pdf" target="_blank" rel="noopener">11 26 25 njta's motion to squash dsicovery</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-njtas-motion-to-squash-dsicovery.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">11 26 25 njta's motion to squash dsicovery</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251115-defendants-notice-of-intent-to-seek-sanctions.pdf" target="_blank" rel="noopener">11 15 25 defendants notice of intent to seek sanctions</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251115-defendants-notice-of-intent-to-seek-sanctions.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">11 15 25 defendants notice of intent to seek sanctions</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251105-njtas-answer-to-counterclaim-and-affirmative-defenses.pdf" target="_blank" rel="noopener">11 05 25 njta's answer to counterclaim and affirmative defenses</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251105-njtas-answer-to-counterclaim-and-affirmative-defenses.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">11 05 25 njta's answer to counterclaim and affirmative defenses</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251103-correspondence-by-devon-barber.pdf" target="_blank" rel="noopener">11 03 25 correspondence by devon barber</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251103-correspondence-by-devon-barber.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">11 03 25 correspondence by devon barber</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251028-generic-proceed-notice.pdf" target="_blank" rel="noopener">10 28 25 generic proceed notice</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251028-generic-proceed-notice.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">10 28 25 generic proceed notice</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-proceeding-documents.pdf" target="_blank" rel="noopener">10 27 25 proceeding documents</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-proceeding-documents.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">10 27 25 proceeding documents</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-court-order.pdf" target="_blank" rel="noopener">10 27 25 court order</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-court-order.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">10 27 25 court order</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-request-to-enter-default-judgment.pdf" target="_blank" rel="noopener">10 08 25 request to enter default judgment</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-request-to-enter-default-judgment.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">10 08 25 request to enter default judgment</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-proposed-order-granting-relief.pdf" target="_blank" rel="noopener">10 08 25 proposed order granting relief</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-proposed-order-granting-relief.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">10 08 25 proposed order granting relief</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-new-jersey-constitution.pdf" target="_blank" rel="noopener">10 08 25 new jersey constitution</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-new-jersey-constitution.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">10 08 25 new jersey constitution</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250915-njta-object-to-defendants-motion-to-dismiss.pdf" target="_blank" rel="noopener">09 15 25 njta object to defendants motion to dismiss</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250915-njta-object-to-defendants-motion-to-dismiss.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">09 15 25 njta object to defendants motion to dismiss</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250906-motion-to-dismiss.pdf" target="_blank" rel="noopener">09 06 25 motion to dismiss</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250906-motion-to-dismiss.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">09 06 25 motion to dismiss</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250903-answer-first-appearance-by-devon-barber.pdf" target="_blank" rel="noopener">09 03 25 answer first appearance by devon barber</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250903-answer-first-appearance-by-devon-barber.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">09 03 25 answer first appearance by devon barber</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250819-complaint-and-summons-by-njta.pdf" target="_blank" rel="noopener">08 19 25 complaint and summons by njta</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250819-complaint-and-summons-by-njta.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">08 19 25 complaint and summons by njta</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-correspondence-by-barber.pdf" target="_blank" rel="noopener">2026 01 10 Filing correspondence by barber</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-correspondence-by-barber.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Filing correspondence by barber</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-further-certification-and-opposition-to-plaintiffs-motion.pdf" target="_blank" rel="noopener">2026 01 10 Motion further certification and opposition to plaintiffs motion</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-further-certification-and-opposition-to-plaintiffs-motion.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Motion further certification and opposition to plaintiffs motion</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-motion-proposing-class-action-service-and-memorilization-of-mediation.pdf" target="_blank" rel="noopener">2026 01 10 Motion motion proposing class action service and memorilization of mediation</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-motion-proposing-class-action-service-and-memorilization-of-mediation.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Motion motion proposing class action service and memorilization of mediation</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-motion-to-squash.pdf" target="_blank" rel="noopener">2026 01 10 Motion motion to squash</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-motion-to-squash.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Motion motion to squash</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-plaintiffs-motion-to-squash-discovery.pdf" target="_blank" rel="noopener">2026 01 10 Motion plaintiffs motion to squash discovery</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-plaintiffs-motion-to-squash-discovery.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Motion plaintiffs motion to squash discovery</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-opposition-to-plaintiffs-motion-for-protective-order.pdf" target="_blank" rel="noopener">2026 01 10 Order opposition to plaintiffs motion for protective order</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-opposition-to-plaintiffs-motion-for-protective-order.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Order opposition to plaintiffs motion for protective order</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-order-waiving-fees.pdf" target="_blank" rel="noopener">2026 01 10 Order order waiving fees</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-order-waiving-fees.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Order order waiving fees</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-10</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-barber-ada-request.pdf" target="_blank" rel="noopener">2026 01 10 Filing barber ada request</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 10, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20260110-barber-ada-request.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">2026 01 10 Filing barber ada request</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-01</time> — 
-        <strong>Brief:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251201-bench-summary-not-a-formal-brief.pdf" target="_blank" rel="noopener">20251201 bench summary not a formal brief</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 1, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Brief:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251201-bench-summary-not-a-formal-brief.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251201 bench summary not a formal brief</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-01</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251201-objection-to-plaintiffs-motion-to-squash.pdf" target="_blank" rel="noopener">20251201 objection to plaintiffs motion to squash</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 1, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251201-objection-to-plaintiffs-motion-to-squash.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251201 objection to plaintiffs motion to squash</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-26</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-generic-schedule-notice.pdf" target="_blank" rel="noopener">20251126 generic schedule notice</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 26, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-generic-schedule-notice.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251126 generic schedule notice</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-26</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-plaintiffs-motion-to-squash-discovery-requests.pdf" target="_blank" rel="noopener">20251126 plaintiffs motion to squash discovery requests</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 26, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-plaintiffs-motion-to-squash-discovery-requests.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251126 plaintiffs motion to squash discovery requests</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-26</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-njta-s-motion-to-squash-dsicovery.pdf" target="_blank" rel="noopener">20251126 njta s motion to squash dsicovery</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 26, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251126-njta-s-motion-to-squash-dsicovery.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251126 njta s motion to squash dsicovery</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-15</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251115-letter-correspondence-by-dtb.pdf" target="_blank" rel="noopener">20251115 letter correspondence by dtb</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 15, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251115-letter-correspondence-by-dtb.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251115 letter correspondence by dtb</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-06</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251106-fee-waiver-order-granted.pdf" target="_blank" rel="noopener">20251106 fee waiver order granted</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 6, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251106-fee-waiver-order-granted.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251106 fee waiver order granted</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-05</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251105-response-to-counterclaim.pdf" target="_blank" rel="noopener">20251105 response to counterclaim</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 5, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251105-response-to-counterclaim.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251105 response to counterclaim</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-05</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251105-njta-s-answer-to-counterclaim-and-affirmative-defenses.pdf" target="_blank" rel="noopener">20251105 njta s answer to counterclaim and affirmative defenses</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 5, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251105-njta-s-answer-to-counterclaim-and-affirmative-defenses.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251105 njta s answer to counterclaim and affirmative defenses</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-11-03</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251103-ada-correspondence.pdf" target="_blank" rel="noopener">20251103 ada correspondence</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">November 3, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251103-ada-correspondence.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251103 ada correspondence</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-discovery-interrogatories-admissions.pdf" target="_blank" rel="noopener">20251027 discovery interrogatories admissions</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-discovery-interrogatories-admissions.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251027 discovery interrogatories admissions</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-discovery-requests.pdf" target="_blank" rel="noopener">20251027 discovery requests</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251027-discovery-requests.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251027 discovery requests</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-08</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-proposed-order.pdf" target="_blank" rel="noopener">20251008 proposed order</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 8, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-proposed-order.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251008 proposed order</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-08</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-counterclaim.pdf" target="_blank" rel="noopener">20251008 counterclaim</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 8, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20251008-counterclaim.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251008 counterclaim</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-09-03</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250903-answer-firstappearance.pdf" target="_blank" rel="noopener">20250903 answer firstappearance</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">September 3, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250903-answer-firstappearance.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250903 answer firstappearance</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-08-19</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250819-complaint.pdf" target="_blank" rel="noopener">20250819 complaint</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">August 19, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250819-complaint.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250819 complaint</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-08-19</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250819-summons.pdf" target="_blank" rel="noopener">20250819 summons</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">August 19, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250819-summons.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250819 summons</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-03-28</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250328-gottheimer-letter.pdf" target="_blank" rel="noopener">20250328 gottheimer letter</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">March 28, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/atl-dc-007956-25/docket/20250328-gottheimer-letter.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250328 gottheimer letter</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
     </ul>
   </section>
-  
-
-  
-
-  
-
       
+
 
 </article>
 
@@ -557,6 +908,9 @@
 
     
       
+    
+    <script src="/assets/js/case-nav.js" defer></script>
+    <script src="/assets/js/docket-navigator.js" defer></script>
     
     <script src="/assets/js/main.js" defer></script>
     

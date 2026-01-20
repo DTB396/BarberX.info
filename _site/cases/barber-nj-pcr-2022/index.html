@@ -12,7 +12,7 @@
 <meta name="description" content="Personal Documentation &amp; Accountability Journal" />
 <meta name="robots" content="index, follow" />
 
-<link rel="canonical" href="https://barberx.info/cases/barber-nj-pcr-2022/" />
+<link rel="canonical" href="http://localhost:4000/cases/barber-nj-pcr-2022/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -22,17 +22,17 @@
 />
 <meta property="og:title" content="Barber PCR (2022) – State v. Barber (Hardemon matters)" />
 <meta property="og:description" content="Personal Documentation &amp; Accountability Journal" />
-<meta property="og:url" content="https://barberx.info/cases/barber-nj-pcr-2022/" /><meta property="og:image" content="https://barberx.info/assets/img/og/og-faithfrontier-default.png" />
+<meta property="og:url" content="http://localhost:4000/cases/barber-nj-pcr-2022/" /><meta property="og:image" content="http://localhost:4000/assets/img/og/og-faithfrontier-default.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" /><!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Barber PCR (2022) – State v. Barber (Hardemon matters)" />
-<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="https://barberx.info/assets/img/og/og-faithfrontier-default.png" /> <script type="application/ld+json">
+<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="http://localhost:4000/assets/img/og/og-faithfrontier-default.png" /> <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BarberX.info",
-    "url": "https://barberx.info/",
+    "url": "http://localhost:4000/",
     "description": "Personal Documentation &amp; Accountability Journal",
     "email": "BarberCamX@ProtonMail.com",
     "foundingDate": "2024"
@@ -44,7 +44,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "BarberX.info",
-    "url": "https://barberx.info/",
+    "url": "http://localhost:4000/",
     "inLanguage": "en-US"
   }
 </script>
@@ -66,18 +66,25 @@
   href="/assets/img/apple-touch-icon.png"
 />
 
+    <link rel="stylesheet" href="/assets/css/pages/cases.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-enhanced.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-analysis.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pages/cases.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-enhanced.css" />
+    
     <link rel="stylesheet" href="/assets/css/components/barber-pole-spinner.css" />
     
     
     
   </head>
 
-  <body><a href="#main" class="skip-to-main" style="
+  <body data-layout="case" data-collection="cases"><a href="#main" class="skip-to-main" style="
       position: absolute;
       left: -9999px;
       z-index: 999;
       padding: 1rem;
-      background: var(--color-primary);
+      background: var(--color-primary, #dc2626);
       color: white;
       text-decoration: none;
     ">Skip to main content</a>
@@ -114,8 +121,8 @@
   </div>
 </header>
 
-    <main id="main" tabindex="-1">
-      <article class="case-record shell u-max-w-4xl u-mx-auto">
+    <main id="main" tabindex="-1" class="case-main">
+      <article class="case-record shell u-max-w-4xl u-mx-auto" itemscope itemtype="https://schema.org/LegalCase">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol
     class="breadcrumbs__list"
@@ -155,33 +162,161 @@
         >Barber pcr (2022) – state v. barber (hardemon matters)</span
       ><meta itemprop="position" content="3" /></li></ol>
 </nav>
-
-  <header class="case-header u-mb-xl u-p-md">
-    
-    <p class="case-eyebrow u-text-accent">
+  <header class="case-header u-mb-xl u-p-md" style="
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg, 8px);
+  ">
+    <p class="case-eyebrow u-text-accent" style="
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: rgba(220, 38, 38, 0.9);
+    " itemprop="court">
       Superior Court of New Jersey, Law Division, Criminal Part — Atlantic County
     </p>
     
-
-    <h1 class="case-title u-mb-sm u-text-highlight">Barber PCR (2022) – State v. Barber (Hardemon matters)</h1>
-
+    <h1 class="case-title u-mb-sm u-text-highlight" style="
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    " itemprop="name">Barber PCR (2022) – State v. Barber (Hardemon matters)</h1>
     
-    <p class="case-subtitle u-text-muted">
-      Barber PCR (2022) · Docket ATL-22-002292
+    <p class="case-subtitle u-text-muted" style="
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+    ">
+      Barber PCR (2022) · <span itemprop="identifier">Docket ATL-22-002292</span>
     </p>
     
-
-    
-    <dl class="case-meta u-mt-md u-mb-md">
-      <div><dt>Case Type</dt><dd>Post-Conviction Relief (R. 3:22)</dd></div>
-      <div><dt>Status</dt><dd>active</dd></div>
+    <dl class="case-meta u-mt-md u-mb-md" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      font-size: 0.9rem;
+    ">
       
-      <div><dt>Forum</dt><dd>Trial Court</dd></div>
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Case Type</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Post-Conviction Relief (R. 3:22)</dd>
+      </div>
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Status</dt>
+        <dd style="margin: 0;">
+          <span class="case-status case-status--active" style="
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            
+            background: rgba(220, 38, 38, 0.15);
+            color: rgba(220, 38, 38, 1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            
+          ">Active</span>
+        </dd>
+      </div>
+      
+      
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Forum</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Trial Court</dd>
+      </div>
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Role</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Petitioner</dd>
+      </div>
+      
+      
+      
     </dl>
     
+    <div class="case-tags" style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    ">
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">post-conviction-relief</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">pcr</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">criminal</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">due-process</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">ineffective-assistance</span>
+      
+    </div>
+    
   </header>
+  <section class="case-overview u-mb-xl" style="
+    padding: 1.5rem;
+    background: rgba(37, 99, 235, 0.05);
+    border-left: 4px solid rgba(37, 99, 235, 0.5);
+    border-radius: var(--radius-md, 6px);
+    line-height: 1.7;
+  ">
+    <h2 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem; color: rgba(37, 99, 235, 1);">Case Overview</h2>
+    <div class="overview-content">
+      <p>Consolidated post-conviction relief proceedings challenging a 2022 conviction and related proceedings. The petition asserts violations of due process, ineffective assistance of counsel, lack of notice, and record integrity failures arising from the handling of the underlying prosecution and sentencing. Verified petitions and supporting certifications were filed in October 2025, with requests for record supplementation and assignment of counsel pending.</p>
 
-  <section class="case-body u-pb-xl"><h2 id="case-overview">Case Overview</h2>
+    </div>
+  </section>
+  
+  <section class="case-body u-pb-xl" style="
+    line-height: 1.8;
+    font-size: 1rem;
+  ">
+    <h2 id="case-overview">Case Overview</h2>
 
 <p>This matter consists of consolidated <strong>Post-Conviction Relief (PCR)</strong> proceedings brought by <strong>Devon Tyler Barber</strong> under <strong>Rule 3:22</strong>, challenging a 2022 conviction adjudicated in Atlantic County. The origins of this case trace back to a wage dispute between Barber and his former employers. The PCR petitions relate to matters commonly referenced as the <em>Hardemon</em> cases and are consolidated here to ensure a unified record and consistent judicial review.</p>
 
@@ -199,251 +334,481 @@
 </ul>
 
 <p>These claims are asserted pursuant to <strong>Rule 3:22-2(a)</strong> and related provisions.</p>
-</section>
 
+  </section>
   
-  <section class="docket">
-    <h2>Docket</h2><ul class="docket-list">
+  <section class="docket u-mb-xl" style="
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 6px);
+  ">
+    <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Docket</h2><ul class="docket-list" style="list-style: none; padding: 0; display: grid; gap: 1rem;">
       
-      <li>
-        <time>2025-12-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-supplemental-certification-of-petitioner-dtb.pdf" target="_blank" rel="noopener">20251218 supplemental certification of petitioner dtb</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-supplemental-certification-of-petitioner-dtb.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251218 supplemental certification of petitioner dtb</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-supplemental-certification-of-devon-tyler-barber.pdf" target="_blank" rel="noopener">20251218 supplemental certification of devon tyler barber</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-supplemental-certification-of-devon-tyler-barber.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251218 supplemental certification of devon tyler barber</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-proof-of-service.pdf" target="_blank" rel="noopener">20251218 proof of service</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-proof-of-service.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251218 proof of service</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-gtpd-report-2022-false-accusations.pdf" target="_blank" rel="noopener">20251218 gtpd report 2022 false accusations</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-gtpd-report-2022-false-accusations.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251218 gtpd report 2022 false accusations</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-critical-legal-analysis-of-police-bias.pdf" target="_blank" rel="noopener">20251218 critical legal analysis of police bias</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-critical-legal-analysis-of-police-bias.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251218 critical legal analysis of police bias</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-certification-of-service.pdf" target="_blank" rel="noopener">20251218 certification of service</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251218-certification-of-service.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251218 certification of service</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-17</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-certifications.pdf" target="_blank" rel="noopener">20251217 certifications</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 17, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-certifications.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251217 certifications</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-17</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-unified-pcr-administrative-motion.pdf" target="_blank" rel="noopener">20251217 unified pcr administrative motion</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 17, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-unified-pcr-administrative-motion.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251217 unified pcr administrative motion</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-17</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-proposed-order.pdf" target="_blank" rel="noopener">20251217 proposed order</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 17, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-proposed-order.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251217 proposed order</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-17</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-proof-of-service-on-criminal-division-manager-and-acpo.pdf" target="_blank" rel="noopener">20251217 proof of service on criminal division manager and acpo</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 17, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-proof-of-service-on-criminal-division-manager-and-acpo.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251217 proof of service on criminal division manager and acpo</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-12-17</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-motion-to-compel-assignment-and-consolidation.pdf" target="_blank" rel="noopener">20251217 motion to compel assignment and consolidation</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">December 17, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251217-motion-to-compel-assignment-and-consolidation.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251217 motion to compel assignment and consolidation</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-29</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251029-notice-of-pendency.pdf" target="_blank" rel="noopener">20251029 notice of pendency</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 29, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251029-notice-of-pendency.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251029 notice of pendency</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251027-njsc-atl-22-002292-barber-certification-of-supplementalrecord-and-request-for-transmittal-to-appdiv.pdf" target="_blank" rel="noopener">20251027 njsc atl 22 002292 barber certification of supplementalrecord and request for transmittal to appdiv</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251027-njsc-atl-22-002292-barber-certification-of-supplementalrecord-and-request-for-transmittal-to-appdiv.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251027 njsc atl 22 002292 barber certification of supplementalrecord and request for transmittal to appdiv</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251027-supplemental-record-request-for-transmittal.pdf" target="_blank" rel="noopener">20251027 supplemental record request for transmittal</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251027-supplemental-record-request-for-transmittal.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251027 supplemental record request for transmittal</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-26</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251026-barber-post-conviction-relief-petition-october-2025.pdf" target="_blank" rel="noopener">20251026 barber post conviction relief petition october 2025</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 26, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251026-barber-post-conviction-relief-petition-october-2025.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251026 barber post conviction relief petition october 2025</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-26</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251026-njsc-atl-22-002292-barber-petition-for-postconvictionrelief-with-certification-and-memorandum.pdf" target="_blank" rel="noopener">20251026 njsc atl 22 002292 barber petition for postconvictionrelief with certification and memorandum</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 26, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251026-njsc-atl-22-002292-barber-petition-for-postconvictionrelief-with-certification-and-memorandum.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251026 njsc atl 22 002292 barber petition for postconvictionrelief with certification and memorandum</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-20</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251020-wage-complaint-369572.pdf" target="_blank" rel="noopener">20251020 wage complaint 369572</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 20, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251020-wage-complaint-369572.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251020 wage complaint 369572</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-20</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251020-offenderwatch-summary-for-joseph-hardemon-sr.pdf" target="_blank" rel="noopener">20251020 offenderwatch summary for joseph hardemon sr</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 20, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251020-offenderwatch-summary-for-joseph-hardemon-sr.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251020 offenderwatch summary for joseph hardemon sr</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-20</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251020-motion-to-vacate-plea.pdf" target="_blank" rel="noopener">20251020 motion to vacate plea</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 20, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251020-motion-to-vacate-plea.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251020 motion to vacate plea</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-15</time> — 
-        <strong>Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-exhibit-ag.pdf" target="_blank" rel="noopener">20251015 exhibit ag</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 15, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-exhibit-ag.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251015 exhibit ag</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-15</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-verified-petition-unified.pdf" target="_blank" rel="noopener">20251015 verified petition unified</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 15, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-verified-petition-unified.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251015 verified petition unified</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-15</time> — 
-        <strong>Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-exhibit-h-declaration-pcr.pdf" target="_blank" rel="noopener">20251015 exhibit h declaration pcr</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 15, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-exhibit-h-declaration-pcr.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251015 exhibit h declaration pcr</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-10-15</time> — 
-        <strong>Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-exhibit-b.pdf" target="_blank" rel="noopener">20251015 exhibit b</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 15, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20251015-exhibit-b.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20251015 exhibit b</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-08-26</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250826-notice-of-motion-to-vacate-plea.pdf" target="_blank" rel="noopener">20250826 notice of motion to vacate plea</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">August 26, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250826-notice-of-motion-to-vacate-plea.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250826 notice of motion to vacate plea</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-07-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-certificate-of-service.pdf" target="_blank" rel="noopener">20250727 certificate of service</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">July 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-certificate-of-service.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250727 certificate of service</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-07-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-verified-petition-for-post-conviction-relief-compressed.pdf" target="_blank" rel="noopener">20250727 verified petition for post conviction relief compressed</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">July 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-verified-petition-for-post-conviction-relief-compressed.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250727 verified petition for post conviction relief compressed</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-07-27</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-proposed-order-to-show-cause.pdf" target="_blank" rel="noopener">20250727 proposed order to show cause</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">July 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-proposed-order-to-show-cause.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250727 proposed order to show cause</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-07-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-memorandum-of-law.pdf" target="_blank" rel="noopener">20250727 memorandum of law</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">July 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-memorandum-of-law.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250727 memorandum of law</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-07-27</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-certification-of-devon-tyler-in-support-of-pc-relief.pdf" target="_blank" rel="noopener">20250727 certification of devon tyler in support of pc relief</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">July 27, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250727-certification-of-devon-tyler-in-support-of-pc-relief.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250727 certification of devon tyler in support of pc relief</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-06-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-supplemental-certification-unsworn-declaration.pdf" target="_blank" rel="noopener">20250618 supplemental certification unsworn declaration</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">June 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-supplemental-certification-unsworn-declaration.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250618 supplemental certification unsworn declaration</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-06-18</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-proposed-form-of-order-22-002313-002292.pdf" target="_blank" rel="noopener">20250618 proposed form of order 22 002313 002292</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">June 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-proposed-form-of-order-22-002313-002292.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250618 proposed form of order 22 002313 002292</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-06-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-proof-of-service-002292-002313.pdf" target="_blank" rel="noopener">20250618 proof of service 002292 002313</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">June 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-proof-of-service-002292-002313.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250618 proof of service 002292 002313</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-06-18</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-notice-of-motion-pcr-atl-22-002313-002292.pdf" target="_blank" rel="noopener">20250618 notice of motion pcr atl 22 002313 002292</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">June 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-notice-of-motion-pcr-atl-22-002313-002292.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250618 notice of motion pcr atl 22 002313 002292</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-06-18</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-certificate-in-affidavit-form.pdf" target="_blank" rel="noopener">20250618 certificate in affidavit form</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">June 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-certificate-in-affidavit-form.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250618 certificate in affidavit form</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-06-18</time> — 
-        <strong>Brief:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-brief-in-support-002292-002313.pdf" target="_blank" rel="noopener">20250618 brief in support 002292 002313</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">June 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Brief:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250618-brief-in-support-002292-002313.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250618 brief in support 002292 002313</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-21</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250521-affidavit-testimonial-file-as-evidence-002313.pdf" target="_blank" rel="noopener">20250521 affidavit testimonial file as evidence 002313</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 21, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250521-affidavit-testimonial-file-as-evidence-002313.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250521 affidavit testimonial file as evidence 002313</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-21</time> — 
-        <strong>Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250521-exhibit-hardemon-accusers-crime-history.pdf" target="_blank" rel="noopener">20250521 exhibit hardemon accusers crime history</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 21, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Exhibit:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250521-exhibit-hardemon-accusers-crime-history.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250521 exhibit hardemon accusers crime history</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-21</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250521-cover-letter-to-clerk.pdf" target="_blank" rel="noopener">20250521 cover letter to clerk</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 21, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250521-cover-letter-to-clerk.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250521 cover letter to clerk</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-18</time> — 
-        <strong>Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250518-2313-notice-of-tort.pdf" target="_blank" rel="noopener">20250518 2313 notice of tort</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Notice:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250518-2313-notice-of-tort.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250518 2313 notice of tort</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-18</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250518-proposed-order-2313.pdf" target="_blank" rel="noopener">20250518 proposed order 2313</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 18, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250518-proposed-order-2313.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250518 proposed order 2313</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-16</time> — 
-        <strong>Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250516-supplemental-clarification-and-motion-for-dismissal.pdf" target="_blank" rel="noopener">20250516 supplemental clarification and motion for dismissal</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 16, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Motion:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250516-supplemental-clarification-and-motion-for-dismissal.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250516 supplemental clarification and motion for dismissal</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2025-05-07</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250507-post-conviction-relief-and-legal-memorand.pdf" target="_blank" rel="noopener">20250507 post conviction relief and legal memorand</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">May 7, 2025</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20250507-post-conviction-relief-and-legal-memorand.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20250507 post conviction relief and legal memorand</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2023-01-12</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20230112-atl-22-002292.pdf" target="_blank" rel="noopener">20230112 atl 22 002292</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 12, 2023</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20230112-atl-22-002292.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20230112 atl 22 002292</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2023-01-12</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20230112-atl-22-002313.pdf" target="_blank" rel="noopener">20230112 atl 22 002313</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 12, 2023</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20230112-atl-22-002313.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20230112 atl 22 002313</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2022-10-09</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20221009-civil-rights-complaint.pdf" target="_blank" rel="noopener">20221009 civil rights complaint</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">October 9, 2022</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20221009-civil-rights-complaint.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20221009 civil rights complaint</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2022-07-10</time> — 
-        <strong>Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20220710-messages-with-oak-tree-investments-llc.pdf" target="_blank" rel="noopener">20220710 messages with oak tree investments llc</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">July 10, 2022</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Filing:</strong> <a href="/assets/cases/barber-nj-pcr-2022/docket/20220710-messages-with-oak-tree-investments-llc.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">20220710 messages with oak tree investments llc</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
     </ul>
   </section>
-  
-
-  
-
-  
-
       
+
 
 </article>
 
@@ -556,6 +921,9 @@
 
     
       
+    
+    <script src="/assets/js/case-nav.js" defer></script>
+    <script src="/assets/js/docket-navigator.js" defer></script>
     
     <script src="/assets/js/main.js" defer></script>
     

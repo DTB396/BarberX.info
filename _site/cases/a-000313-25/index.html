@@ -12,7 +12,7 @@
 <meta name="description" content="Personal Documentation &amp; Accountability Journal" />
 <meta name="robots" content="index, follow" />
 
-<link rel="canonical" href="https://barberx.info/cases/a-000313-25/" />
+<link rel="canonical" href="http://localhost:4000/cases/a-000313-25/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -22,17 +22,17 @@
 />
 <meta property="og:title" content="A-000313-25 – Street Crossing Appeal" />
 <meta property="og:description" content="Personal Documentation &amp; Accountability Journal" />
-<meta property="og:url" content="https://barberx.info/cases/a-000313-25/" /><meta property="og:image" content="https://barberx.info/assets/img/og/og-faithfrontier-default.png" />
+<meta property="og:url" content="http://localhost:4000/cases/a-000313-25/" /><meta property="og:image" content="http://localhost:4000/assets/img/og/og-faithfrontier-default.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" /><!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="A-000313-25 – Street Crossing Appeal" />
-<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="https://barberx.info/assets/img/og/og-faithfrontier-default.png" /> <script type="application/ld+json">
+<meta name="twitter:description" content="Personal Documentation &amp; Accountability Journal" /><meta name="twitter:image" content="http://localhost:4000/assets/img/og/og-faithfrontier-default.png" /> <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BarberX.info",
-    "url": "https://barberx.info/",
+    "url": "http://localhost:4000/",
     "description": "Personal Documentation &amp; Accountability Journal",
     "email": "BarberCamX@ProtonMail.com",
     "foundingDate": "2024"
@@ -44,7 +44,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "BarberX.info",
-    "url": "https://barberx.info/",
+    "url": "http://localhost:4000/",
     "inLanguage": "en-US"
   }
 </script>
@@ -66,18 +66,25 @@
   href="/assets/img/apple-touch-icon.png"
 />
 
+    <link rel="stylesheet" href="/assets/css/pages/cases.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-enhanced.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-analysis.css" />
+    
+    <link rel="stylesheet" href="/assets/css/pages/cases.css" />
+    <link rel="stylesheet" href="/assets/css/pages/case-enhanced.css" />
+    
     <link rel="stylesheet" href="/assets/css/components/barber-pole-spinner.css" />
     
     
     
   </head>
 
-  <body><a href="#main" class="skip-to-main" style="
+  <body data-layout="case" data-collection="cases"><a href="#main" class="skip-to-main" style="
       position: absolute;
       left: -9999px;
       z-index: 999;
       padding: 1rem;
-      background: var(--color-primary);
+      background: var(--color-primary, #dc2626);
       color: white;
       text-decoration: none;
     ">Skip to main content</a>
@@ -114,8 +121,8 @@
   </div>
 </header>
 
-    <main id="main" tabindex="-1">
-      <article class="case-record shell u-max-w-4xl u-mx-auto">
+    <main id="main" tabindex="-1" class="case-main">
+      <article class="case-record shell u-max-w-4xl u-mx-auto" itemscope itemtype="https://schema.org/LegalCase">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol
     class="breadcrumbs__list"
@@ -155,33 +162,143 @@
         >A 000313 25 – street crossing appeal</span
       ><meta itemprop="position" content="3" /></li></ol>
 </nav>
-
-  <header class="case-header u-mb-xl u-p-md">
-    
-    <p class="case-eyebrow u-text-accent">
+  <header class="case-header u-mb-xl u-p-md" style="
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg, 8px);
+  ">
+    <p class="case-eyebrow u-text-accent" style="
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: rgba(220, 38, 38, 0.9);
+    " itemprop="court">
       Superior Court of New Jersey, Appellate Division — Atlantic County (originating matter)
     </p>
     
-
-    <h1 class="case-title u-mb-sm u-text-highlight">A-000313-25 – Street Crossing Appeal</h1>
-
+    <h1 class="case-title u-mb-sm u-text-highlight" style="
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    " itemprop="name">A-000313-25 – Street Crossing Appeal</h1>
     
-    <p class="case-subtitle u-text-muted">
-      A-000313-25 · Docket A-000313-25
+    <p class="case-subtitle u-text-muted" style="
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+    ">
+      A-000313-25 · <span itemprop="identifier">Docket A-000313-25</span>
     </p>
     
-
-    
-    <dl class="case-meta u-mt-md u-mb-md">
-      <div><dt>Case Type</dt><dd>Appeal (Appellate Division)</dd></div>
-      <div><dt>Status</dt><dd>active</dd></div>
+    <dl class="case-meta u-mt-md u-mb-md" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      font-size: 0.9rem;
+    ">
       
-      <div><dt>Forum</dt><dd>Appellate Division</dd></div>
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Case Type</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Appeal (Appellate Division)</dd>
+      </div>
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Status</dt>
+        <dd style="margin: 0;">
+          <span class="case-status case-status--active" style="
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            
+            background: rgba(220, 38, 38, 0.15);
+            color: rgba(220, 38, 38, 1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            
+          ">Active</span>
+        </dd>
+      </div>
+      
+      
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Forum</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Appellate Division</dd>
+      </div>
+      
+      
+      
+      <div>
+        <dt style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.25rem;">Role</dt>
+        <dd style="margin: 0; color: rgba(255, 255, 255, 0.9);">Appellant</dd>
+      </div>
+      
+      
+      
     </dl>
     
+    <div class="case-tags" style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    ">
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">appellate</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">street-crossing</span>
+      
+      <span class="case-tag" style="
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+      ">due-process</span>
+      
+    </div>
+    
   </header>
+  <section class="case-overview u-mb-xl" style="
+    padding: 1.5rem;
+    background: rgba(37, 99, 235, 0.05);
+    border-left: 4px solid rgba(37, 99, 235, 0.5);
+    border-radius: var(--radius-md, 6px);
+    line-height: 1.7;
+  ">
+    <h2 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem; color: rgba(37, 99, 235, 1);">Case Overview</h2>
+    <div class="overview-content">
+      <p>This is an Appellate Division matter stemming from a municipal street-crossing enforcement encounter in Atlantic County, New Jersey, and the resulting conviction. The appeal concerns the legality and procedural handling of the stop, subsequent enforcement actions, and post-conviction consequences.</p>
 
-  <section class="case-body u-pb-xl"><h2 id="case-overview">Case Overview</h2>
+    </div>
+  </section>
+  
+  <section class="case-body u-pb-xl" style="
+    line-height: 1.8;
+    font-size: 1rem;
+  ">
+    <h2 id="case-overview">Case Overview</h2>
 
 <p>This case record maintains a factual, chronological archive for <strong>A-000313-25</strong>, an Appellate Division matter arising from an encounter in Atlantic County involving an alleged jaywalking violation and subsequent law enforcement actions.</p>
 
@@ -202,31 +319,41 @@
 <ul>
   <li><strong>Forum:</strong> Superior Court of New Jersey, Appellate Division</li>
 </ul>
-</section>
 
+  </section>
   
-  <section class="docket">
-    <h2>Docket</h2><ul class="docket-list">
+  <section class="docket u-mb-xl" style="
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 6px);
+  ">
+    <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Docket</h2><ul class="docket-list" style="list-style: none; padding: 0; display: grid; gap: 1rem;">
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/a-000313-25/docket/order-granted.pdf" target="_blank" rel="noopener">order granted</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/a-000313-25/docket/order-granted.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">order granted</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
-      <li>
-        <time>2026-01-11</time> — 
-        <strong>Order:</strong> <a href="/assets/cases/a-000313-25/docket/order-granted-ifp.pdf" target="_blank" rel="noopener">order granted ifp</a><div class="notes">Repaired: auto-registered</div>
+      <li style="
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm, 4px);
+      ">
+        <time style="display: block; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">January 11, 2026</time>
+        <strong style="color: rgba(220, 38, 38, 0.9);">Order:</strong> <a href="/assets/cases/a-000313-25/docket/order-granted-ifp.pdf" target="_blank" rel="noopener" style="color: rgba(37, 99, 235, 1); text-decoration: underline;">order granted ifp</a><div class="notes" style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Repaired: auto-registered</div>
       </li>
       
     </ul>
   </section>
-  
-
-  
-
-  
-
       
+
 
 </article>
 
@@ -339,6 +466,9 @@
 
     
       
+    
+    <script src="/assets/js/case-nav.js" defer></script>
+    <script src="/assets/js/docket-navigator.js" defer></script>
     
     <script src="/assets/js/main.js" defer></script>
     
