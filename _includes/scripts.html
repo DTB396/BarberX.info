@@ -67,6 +67,13 @@ page.performance_monitor == true or site.performance_monitor == true -%}
   src="{{ '/assets/js/main.js' | relative_url }}?v={{ v }}"
 ></script>
 
+{%- comment -%} Premium App Features (PWA, bottom nav, FAB, etc.) {%- endcomment -%}
+<script
+  defer
+  class="u-hidden-print"
+  src="{{ '/assets/js/premium-features.js' | relative_url }}?v={{ v }}"
+></script>
+
 {%- comment -%} Per-page scripts Supports both: - page.page_js (preferred;
 matches your layout) - page.scripts (legacy alias) {%- endcomment -%} {%- assign
 page_js = page.page_js | default: page.scripts -%} {%- if page_js -%} {%- for

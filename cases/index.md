@@ -3,7 +3,9 @@ layout: default
 title: "Case Records & Legal Archive"
 permalink: /cases/
 description: "Complete archive of Faith Frontier's legal proceedings—documenting competence, transparency, and constitutional literacy through public court records."
-stylesheet: /assets/css/cases-index.css
+stylesheet: /assets/css/pages/cases-index.css
+extra_css:
+  - /assets/css/pages/opra.css
 ---
 
 {%- comment -%}
@@ -65,6 +67,37 @@ Resources Include: _includes/case-resources.html
 
 <!-- ==================== MAIN CONTENT ==================== -->
 <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;">
+  
+  <!-- ==================== SEARCH & FILTER BAR ==================== -->
+  <section class="search-filter-section" style="margin-bottom: 2rem;">
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search cases by name, court, or topic..." aria-label="Search cases">
+      <span class="search-icon">🔍</span>
+      <button class="search-clear" aria-label="Clear search">✕</button>
+    </div>
+    
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">
+        All Cases
+        <span class="filter-pill__count">{{ total_cases }}</span>
+      </button>
+      <button class="filter-pill" data-filter="active">
+        <span class="status-dot status-dot--active"></span>
+        Active
+        <span class="filter-pill__count">{{ active_cases }}</span>
+      </button>
+      <button class="filter-pill" data-filter="pending">
+        <span class="status-dot status-dot--pending"></span>
+        Pending
+        <span class="filter-pill__count">{{ pending_cases }}</span>
+      </button>
+      <button class="filter-pill" data-filter="closed">
+        <span class="status-dot status-dot--closed"></span>
+        Closed
+        <span class="filter-pill__count">{{ closed_cases }}</span>
+      </button>
+    </div>
+  </section>
   
   <!-- ==================== WHY THIS MATTERS ==================== -->
   <section class="why-matters-section">
@@ -203,21 +236,21 @@ Resources Include: _includes/case-resources.html
       factual foundations through official government documents.
     </p>
     
-    {% assign opra_count = site.opra | size %}
-    {% assign active_opra = site.opra | where: "status", "Active" | size %}
-    {% assign pending_opra = site.opra | where: "status", "Awaiting Response" | size %}
+    {% assign opra_all = site.opra | where_exp: "item", "item.slug != 'template'" %}
+    {% assign opra_active = site.opra | where: "status", "Active" | where_exp: "item", "item.slug != 'template'" %}
+    {% assign opra_awaiting = site.opra | where: "status", "Awaiting Response" | where_exp: "item", "item.slug != 'template'" %}
     
     <div class="opra-stats">
       <div class="opra-stat-card">
-        <div class="opra-stat-number">{{ opra_count }}</div>
+        <div class="opra-stat-number">{{ opra_all.size }}</div>
         <div class="opra-stat-label">Total OPRA Records</div>
       </div>
       <div class="opra-stat-card">
-        <div class="opra-stat-number">{{ active_opra }}</div>
+        <div class="opra-stat-number">{{ opra_active.size }}</div>
         <div class="opra-stat-label">Active Requests</div>
       </div>
       <div class="opra-stat-card">
-        <div class="opra-stat-number">{{ pending_opra }}</div>
+        <div class="opra-stat-number">{{ opra_awaiting.size }}</div>
         <div class="opra-stat-label">Pending Responses</div>
       </div>
     </div>

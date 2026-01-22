@@ -34,7 +34,8 @@
 
 /* Size */
 .barber-pole-spinner--small { --pole-width: 24px; --pole-height: 64px; --cap-height: 7px; --finial-size: 10px; }
-.barber-pole-spinner--large { --pole-width: 48px; --pole-height: 140px; --cap-height: 14px; --finial-size: 18px; }
+.barber-pole-spinner--large { --pole-width: 56px; --pole-height: 180px; --cap-height: 16px; --finial-size: 22px; }
+.barber-pole-spinner--hero { --pole-width: 70px; --pole-height: 220px; --cap-height: 20px; --finial-size: 28px; }
 
 /* Visibility */
 .barber-pole-spinner--desktop-only { display: none; }

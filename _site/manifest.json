@@ -1,0 +1,103 @@
+{
+  "name": "BarberX Legal Case Management",
+  "short_name": "BarberX Legal",
+  "description": "Professional legal case management and OPRA records tracking platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#d4a574",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home Dashboard"
+    },
+    {
+      "src": "/assets/screenshots/cases.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Case Management"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Cases",
+      "short_name": "Cases",
+      "description": "Browse all legal cases",
+      "url": "/cases/",
+      "icons": [{ "src": "/assets/icons/cases-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "OPRA Records",
+      "short_name": "OPRA",
+      "description": "View OPRA administrative records",
+      "url": "/opra/",
+      "icons": [{ "src": "/assets/icons/opra-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Essays",
+      "short_name": "Essays",
+      "description": "Read legal essays and analysis",
+      "url": "/essays/",
+      "icons": [{ "src": "/assets/icons/essays-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

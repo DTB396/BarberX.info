@@ -66,9 +66,17 @@
   href="/assets/img/apple-touch-icon.png"
 />
 
+    <link rel="stylesheet" href="/assets/css/pages/cases-index.css" />
+    
+    <link rel="stylesheet" href="/assets/css/components/case-cards.css" />
+    
     <link rel="stylesheet" href="/assets/css/components/barber-pole-spinner.css" />
     
     
+    
+      
+    <link rel="stylesheet" href="/assets/css/pages/opra.css" />
+      
     
   </head>
 
@@ -160,6 +168,37 @@
 
 <!-- ==================== MAIN CONTENT ==================== -->
 <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;">
+  
+  <!-- ==================== SEARCH & FILTER BAR ==================== -->
+  <section class="search-filter-section" style="margin-bottom: 2rem;">
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search cases by name, court, or topic..." aria-label="Search cases" />
+      <span class="search-icon">🔍</span>
+      <button class="search-clear" aria-label="Clear search">✕</button>
+    </div>
+    
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">
+        All Cases
+        <span class="filter-pill__count">10</span>
+      </button>
+      <button class="filter-pill" data-filter="active">
+        <span class="status-dot status-dot--active"></span>
+        Active
+        <span class="filter-pill__count">7</span>
+      </button>
+      <button class="filter-pill" data-filter="pending">
+        <span class="status-dot status-dot--pending"></span>
+        Pending
+        <span class="filter-pill__count">1</span>
+      </button>
+      <button class="filter-pill" data-filter="closed">
+        <span class="status-dot status-dot--closed"></span>
+        Closed
+        <span class="filter-pill__count">2</span>
+      </button>
+    </div>
+  </section>
   
   <!-- ==================== WHY THIS MATTERS ==================== -->
   <section class="why-matters-section">
@@ -254,9 +293,12 @@
       
       
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="superior court of new jersey, appellate division" data-docket="A-000313-25">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="superior court of new jersey, appellate division" data-docket="A-000313-25" data-searchable="a-000313-25 – street crossing appeal a-000313-25 superior court of new jersey, appellate division atlantic county (originating matter)  appeal (appellate division) this is an appellate division matter stemming from a municipal street-crossing enforcement encounter in atlantic county, new jersey, and the resulting conviction. the appeal concerns the legality and procedural handling of the stop, subsequent enforcement actions, and post-conviction consequences.
+ ">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -282,7 +324,7 @@
 
     
     <p class="case-card__summary">
-      This is an Appellate Division matter stemming from a municipal street-crossing enforcement encounter in Atlantic County, New Jersey, and the result...
+      This is an Appellate Division matter stemming from a municipal street-crossing enforcement encounter in Atlantic Coun...
     </p>
     
   </div>
@@ -311,9 +353,9 @@
     </div>
     
 
-    <a href="/cases/a-000313-25/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/a-000313-25/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -322,9 +364,12 @@
 </article>
 
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="superior court of new jersey, special civil part" data-docket="ATL-DC-007956-25">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="superior court of new jersey, special civil part" data-docket="ATL-DC-007956-25" data-searchable="atl-dc-007956-25 – toll enforcement atl-dc-007956-25 superior court of new jersey, special civil part atlantic county  civil collection (toll enforcement) active special civil part action arising from alleged unpaid toll assessments. defendant asserts counterclaims and defenses challenging process integrity, notice, data accuracy, and accessibility, including the need for reasonable accommodations to ensure meaningful participation.
+ ">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -350,7 +395,7 @@
 
     
     <p class="case-card__summary">
-      Active Special Civil Part action arising from alleged unpaid toll assessments. Defendant asserts counterclaims and defenses challenging process int...
+      Active Special Civil Part action arising from alleged unpaid toll assessments. Defendant asserts counterclaims and de...
     </p>
     
   </div>
@@ -379,9 +424,9 @@
     </div>
     
 
-    <a href="/cases/atl-dc-007956-25/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/atl-dc-007956-25/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -390,9 +435,11 @@
 </article>
 
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="superior court of new jersey, law division" data-docket="ATL-L-002869-25">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="superior court of new jersey, law division" data-docket="ATL-L-002869-25" data-searchable="atl-l-002869-25 – barber v. carmax atl-l-002869-25 superior court of new jersey, law division atlantic county  civil action – declaratory and equitable relief (vehicle ownership and indemnity) active law division civil action seeking declaratory and equitable relief concerning disputed vehicle ownership, title status, and indemnity obligations arising from vehicle sale and registration records. plaintiff challenges inaccurate or conflicting records used for enforcement purposes and seeks judi...">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -413,12 +460,12 @@
       </a>
     </h3>
     <p class="case-card__subtitle">
-      Civil Action – Declaratory and Equitable Relief (Vehicle Ownership and Indemnity)
+      Civil Action – Declaratory and Equitable R...
     </p>
 
     
     <p class="case-card__summary">
-      Active Law Division civil action seeking declaratory and equitable relief concerning disputed vehicle ownership, title status, and indemnity obliga...
+      Active Law Division civil action seeking declaratory and equitable relief concerning disputed vehicle ownership, titl...
     </p>
     
   </div>
@@ -447,9 +494,9 @@
     </div>
     
 
-    <a href="/cases/atl-l-002869-25/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/atl-l-002869-25/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -458,9 +505,11 @@
 </article>
 
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="superior court of new jersey, law division, criminal part" data-docket="ATL-22-002292">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="superior court of new jersey, law division, criminal part" data-docket="ATL-22-002292" data-searchable="barber pcr (2022) – state v. barber (hardemon matters) barber pcr (2022) superior court of new jersey, law division, criminal part atlantic county  post-conviction relief (r. 3:22) consolidated post-conviction relief proceedings challenging a 2022 conviction and related proceedings. the petition asserts violations of due process, ineffective assistance of counsel, lack of notice, and record integrity failures arising from the handling of the underlying prosecution and sentencing. verified pet...">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -486,7 +535,7 @@
 
     
     <p class="case-card__summary">
-      Consolidated post-conviction relief proceedings challenging a 2022 conviction and related proceedings. The petition asserts violations of due proce...
+      Consolidated post-conviction relief proceedings challenging a 2022 conviction and related proceedings. The petition a...
     </p>
     
   </div>
@@ -515,9 +564,9 @@
     </div>
     
 
-    <a href="/cases/barber-nj-pcr-2022/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/barber-nj-pcr-2022/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -526,9 +575,11 @@
 </article>
 
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="superior court of new jersey, law division, civil part" data-docket="MER-L-002371-25">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="superior court of new jersey, law division, civil part" data-docket="MER-L-002371-25" data-searchable="mer-l-002371-25 – emergency injunction (mercer) mer-l-002371-25 superior court of new jersey, law division, civil part mercer county  civil action – verified complaint &amp; order to show cause (emergency injunctive relief) active law division civil action seeking emergent equitable and declaratory relief under r. 4:52-1 and r. 4:67-1. the action challenges the warrantless seizure and continued retention of plaintiff's vehicle without statutory authority, judicial process, or due process, and see...">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -549,12 +600,12 @@
       </a>
     </h3>
     <p class="case-card__subtitle">
-      Civil Action – Verified Complaint &amp; Order to Show Cause (Emergency Injunctive Relief)
+      Civil Action – Verified Complaint &amp; Order ...
     </p>
 
     
     <p class="case-card__summary">
-      Active Law Division civil action seeking emergent equitable and declaratory relief under R. 4:52-1 and R. 4:67-1. The action challenges the warrant...
+      Active Law Division civil action seeking emergent equitable and declaratory relief under R. 4:52-1 and R. 4:67-1. The...
     </p>
     
   </div>
@@ -583,9 +634,9 @@
     </div>
     
 
-    <a href="/cases/mer-l-002371-25/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/mer-l-002371-25/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -594,9 +645,11 @@
 </article>
 
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="" data-docket="04-CA-361301">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="" data-docket="04-CA-361301" data-searchable="hard rock cafe international (n.j.) inc. and boardwalk 1000, llc as single/joint employers    04-ca-361301 nlrb unfair labor practice  ">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -613,7 +666,7 @@
   <div class="case-card__body">
     <h3 class="case-card__title">
       <a href="/cases/nlrb-04-ca-361301/">
-        Hard Rock Cafe International (N.J.) Inc. and Boardwalk 1000, LLC as single/joint employers
+        Hard Rock Cafe International (N.J.) I...
       </a>
     </h3>
     <p class="case-card__subtitle">
@@ -645,9 +698,9 @@
     <div class="case-card__tags"></div>
     
 
-    <a href="/cases/nlrb-04-ca-361301/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/nlrb-04-ca-361301/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -656,9 +709,12 @@
 </article>
 
         
-           
+          
 
-<article class="case-card case-card--active" data-status="active" data-court="united states district court, district of new jersey" data-docket="1:25-cv-15641">
+
+
+<article class="case-card case-card--active premium-card haptic-tap" data-status="active" data-court="united states district court, district of new jersey" data-docket="1:25-cv-15641" data-searchable="usdj-1-25-cv-15641 – federal civil rights (2025) usdj-1-25-cv-15641 united states district court, district of new jersey camden vicinage  federal civil rights (42 u.s.c. § 1983) federal civil rights action under 42 u.s.c. § 1983, alleging ongoing violations of constitutional rights by state and local officials. the case is currently pending in the united states district court for the district of new jersey.
+ ">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -684,7 +740,7 @@
 
     
     <p class="case-card__summary">
-      Federal civil rights action under 42 U.S.C. § 1983, alleging ongoing violations of constitutional rights by state and local officials. The case is ...
+      Federal civil rights action under 42 U.S.C. § 1983, alleging ongoing violations of constitutional rights by state and...
     </p>
     
   </div>
@@ -713,9 +769,9 @@
     </div>
     
 
-    <a href="/cases/usdj-1-25-cv-15641/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/usdj-1-25-cv-15641/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -735,9 +791,12 @@
     <h2 class="section-heading">Pending Decisions</h2>
     <div class="cases-grid">
       
-         
+        
 
-<article class="case-card case-card--pending" data-status="pending" data-court="united states district court, district of new jersey" data-docket="1:22-cv-06206">
+
+
+<article class="case-card case-card--pending premium-card haptic-tap" data-status="pending" data-court="united states district court, district of new jersey" data-docket="1:22-cv-06206" data-searchable="usdj-1-22-cv-06206 – federal civil rights usdj-1-22-cv-06206 united states district court, district of new jersey camden vicinage  federal civil rights (42 u.s.c. § 1983) federal civil rights action under 42 u.s.c. § 1983, alleging violations of constitutional rights by state and local officials. the case was dismissed without prejudice following initial pleadings and pretrial motions.
+ ">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -763,7 +822,7 @@
 
     
     <p class="case-card__summary">
-      Federal civil rights action under 42 U.S.C. § 1983, alleging violations of constitutional rights by state and local officials. The case was dismiss...
+      Federal civil rights action under 42 U.S.C. § 1983, alleging violations of constitutional rights by state and local o...
     </p>
     
   </div>
@@ -797,9 +856,9 @@
     </div>
     
 
-    <a href="/cases/usdj-1-22-cv-06206/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/usdj-1-22-cv-06206/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -819,9 +878,11 @@
     <h2 class="section-heading">Closed Cases</h2>
     <div class="cases-grid">
       
-         
+        
 
-<article class="case-card case-card--closed" data-status="closed" data-court="superior court of new jersey, law division" data-docket="ATL-L-002794-25">
+
+
+<article class="case-card case-card--closed premium-card haptic-tap" data-status="closed" data-court="superior court of new jersey, law division" data-docket="ATL-L-002794-25" data-searchable="atl-l-002794-25 – barber v. tumelty atl-l-002794-25 superior court of new jersey, law division atlantic county  civil action (attorney misconduct / contract and tort claims) this law division civil action was closed gracefully by hon. sarah b. johnson, j.s.c. on 2026-01-09. the court advised plaintiff that, once plaintiff's post-conviction relief (pcr) is adjudicated, plaintiff may refile the complaint against john w. tumelty, esq. and the law offices of john w. tumelty. the matter originally...">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -842,12 +903,12 @@
       </a>
     </h3>
     <p class="case-card__subtitle">
-      Civil Action (Attorney Misconduct / Contract and Tort Claims)
+      Civil Action (Attorney Misconduct / Contra...
     </p>
 
     
     <p class="case-card__summary">
-      This Law Division civil action was closed gracefully by Hon. Sarah B. Johnson, J.S.C. on 2026-01-09. The Court advised Plaintiff that, once Plainti...
+      This Law Division civil action was closed gracefully by Hon. Sarah B. Johnson, J.S.C. on 2026-01-09. The Court advise...
     </p>
     
   </div>
@@ -881,9 +942,9 @@
     </div>
     
 
-    <a href="/cases/atl-l-002794-25/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/atl-l-002794-25/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -892,9 +953,11 @@
 </article>
 
       
-         
+        
 
-<article class="case-card case-card--closed" data-status="closed" data-court="superior court of new jersey, law division, civil part" data-docket="ATL-L-003252-25">
+
+
+<article class="case-card case-card--closed premium-card haptic-tap" data-status="closed" data-court="superior court of new jersey, law division, civil part" data-docket="ATL-L-003252-25" data-searchable="atl-l-003252-25 – equitable relief atl-l-003252-25 superior court of new jersey, law division, civil part atlantic county  civil action – verified complaint &amp; order to show cause (emergency injunctive relief) this law division civil action was dismissed without prejudice. the action originally sought emergent equitable and declaratory relief under r. 4:52-1 and r. 4:67-1, challenging the warrantless seizure and continued retention of plaintiff's vehicle without statutory authority, judicial p...">
   <!-- Card Header: Court, Docket, Status -->
   <header class="case-card__header">
     <div class="case-card__eyebrow">
@@ -915,12 +978,12 @@
       </a>
     </h3>
     <p class="case-card__subtitle">
-      Civil Action – Verified Complaint &amp; Order to Show Cause (Emergency Injunctive Relief)
+      Civil Action – Verified Complaint &amp; Order ...
     </p>
 
     
     <p class="case-card__summary">
-      This Law Division civil action was dismissed without prejudice. The action originally sought emergent equitable and declaratory relief under R. 4:5...
+      This Law Division civil action was dismissed without prejudice. The action originally sought emergent equitable and d...
     </p>
     
   </div>
@@ -949,9 +1012,9 @@
     </div>
     
 
-    <a href="/cases/atl-l-003252-25/" class="case-card__link">
-      View Case
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <a href="/cases/atl-l-003252-25/" class="case-card__btn">
+      <span>View Case</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
@@ -998,15 +1061,15 @@
     
     <div class="opra-stats">
       <div class="opra-stat-card">
-        <div class="opra-stat-number">0</div>
+        <div class="opra-stat-number">16</div>
         <div class="opra-stat-label">Total OPRA Records</div>
       </div>
       <div class="opra-stat-card">
-        <div class="opra-stat-number">0</div>
+        <div class="opra-stat-number">1</div>
         <div class="opra-stat-label">Active Requests</div>
       </div>
       <div class="opra-stat-card">
-        <div class="opra-stat-number">0</div>
+        <div class="opra-stat-number">4</div>
         <div class="opra-stat-label">Pending Responses</div>
       </div>
     </div>
@@ -1208,7 +1271,27 @@
 </footer>
 
     
-      
+      <div class="barber-pole-spinner barber-pole-spinner--fixed barber-pole-spinner--medium " aria-hidden="true">
+  <div class="barber-pole-spinner__wrapper">
+    <!-- Top Finial (brass ball) -->
+    <div class="barber-pole-spinner__finial barber-pole-spinner__finial--top"></div>
+    
+    <!-- Top Cap (brass rim) -->
+    <div class="barber-pole-spinner__cap"></div>
+    
+    <!-- Glass Cylinder with Rotating Helix -->
+    <div class="barber-pole-spinner__glass">
+      <div class="barber-pole-spinner__helix"></div>
+    </div>
+    
+    <!-- Bottom Cap (brass rim) -->
+    <div class="barber-pole-spinner__cap"></div>
+    
+    <!-- Bottom Finial (brass ball) -->
+    <div class="barber-pole-spinner__finial barber-pole-spinner__finial--bottom"></div>
+  </div>
+</div>
+
     
     <script src="/assets/js/main.js" defer></script>
     

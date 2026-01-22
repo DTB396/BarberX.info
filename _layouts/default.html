@@ -3,6 +3,16 @@
   <head>
     {% include layout/head/head.html %}
     
+    {%- comment -%} Page-specific stylesheet from front matter {%- endcomment -%}
+    {% if page.stylesheet %}
+    <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}" />
+    {% endif %}
+    
+    {%- comment -%} Case cards component - load when using case-cards {%- endcomment -%}
+    {% if page.permalink == '/cases/' or page.collection == 'cases' or page.layout == 'case' or page.layout == 'case-enhanced' %}
+    <link rel="stylesheet" href="{{ '/assets/css/components/case-cards.css' | relative_url }}" />
+    {% endif %}
+    
     {%- comment -%} Page-specific CSS based on layout type {%- endcomment -%}
     {% if page.layout == 'case' or page.layout == 'case-enhanced' %}
     <link rel="stylesheet" href="{{ '/assets/css/pages/cases.css' | relative_url }}" />
@@ -77,11 +87,9 @@
       {% include layout/footer/footer.html %}
     {% endunless %}
 
-    {%- comment -%} Barber pole spinner - decorative element {%- endcomment -%}
-    {% unless page.hide_barber_pole %}
-      {% if page.use_barber_spinner %}
-        {% include components/barber-pole-spinner.html position=page.barber_pole_position size=page.barber_pole_size show_on=page.barber_pole_show_on %}
-      {% endif %}
+    {%- comment -%} Barber pole spinner - decorative 1920s element (hidden on homepage which has its own in hero) {%- endcomment -%}
+    {% unless page.hide_barber_pole or page.url == '/' %}
+      {% include components/barber-pole-spinner.html position=page.barber_pole_position size=page.barber_pole_size show_on=page.barber_pole_show_on %}
     {% endunless %}
 
     {%- comment -%} JavaScript includes {%- endcomment -%}

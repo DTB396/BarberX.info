@@ -115,7 +115,13 @@
 </header>
 
     <main id="main" tabindex="-1">
-      <section class="hero hero-wrapper" aria-labelledby="hero-heading">
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+     UNIFIED BARBER HERO — A CUT ABOVE
+     Classic 1920's Barbershoppe animation with spinning glass pole
+     Red/Blue siren lights for civil rights documentation theme
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<section class="hero hero-wrapper barber-hero-unified" aria-labelledby="hero-heading-">
   <!-- Background stripes (pure CSS) -->
   <div class="hero-bg" aria-hidden="true">
     <div class="stripe stripe-1"></div>
@@ -130,34 +136,30 @@
         <span>Under Development</span>
       </div>
 
-      <h1 class="hero-title" id="hero-heading">
+      <h1 class="hero-title" id="hero-heading-">
         <span class="title-line">Citizen</span>
         <span class="title-line accent">Accountability</span>
         <span class="title-line">Through Record</span>
       </h1>
 
-      <p class="hero-lead">
-        Like a fresh fade — precision, patience, and the right tools make all
-        the difference. Barber Cam is citizen-led documentation built on
-        dignity, restraint, and due process.
-      </p>
+      <p class="hero-lead">Like a fresh fade — precision, patience, and the right tools make all the difference. Barber Cam is citizen-led documentation built on dignity, restraint, and due process.</p>
 
       <div class="hero-values" aria-label="Core values">
         <div class="value">
-          <span class="value-icon" aria-hidden="true">◆</span
-          ><span class="value-text">Precision</span>
+          <span class="value-icon" aria-hidden="true">◆</span>
+          <span class="value-text">Precision</span>
         </div>
         <div class="value">
-          <span class="value-icon" aria-hidden="true">◆</span
-          ><span class="value-text">Patience</span>
+          <span class="value-icon" aria-hidden="true">◆</span>
+          <span class="value-text">Patience</span>
         </div>
         <div class="value">
-          <span class="value-icon" aria-hidden="true">◆</span
-          ><span class="value-text">Virtue</span>
+          <span class="value-icon" aria-hidden="true">◆</span>
+          <span class="value-text">Virtue</span>
         </div>
         <div class="value">
-          <span class="value-icon" aria-hidden="true">◆</span
-          ><span class="value-text">Honor</span>
+          <span class="value-icon" aria-hidden="true">◆</span>
+          <span class="value-text">Honor</span>
         </div>
       </div>
 
@@ -181,37 +183,40 @@
       </div>
     </div>
 
-    <!-- VISUAL -->
-
+    <!-- A CUT ABOVE VISUAL FRAME — 1920's Glass Barber Pole with Siren Lights -->
     <div class="hero-visual" aria-hidden="true">
-      <div class="visual-frame">
+      <div class="visual-frame cut-above-box">
         <div class="frame-corner tl"></div>
         <div class="frame-corner tr"></div>
         <div class="frame-corner bl"></div>
         <div class="frame-corner br"></div>
 
+        <!-- Siren Lights Behind Pole (Red/Blue civil rights theme) -->
+        <div class="siren-lights">
+          <div class="siren-light siren-red"></div>
+          <div class="siren-light siren-blue"></div>
+        </div>
+
         <div class="visual-content">
-          <div class="barber-pole-container">
-            <picture>
-              <source
-                srcset="/assets/img/logo/barbercam-hero-emblem-animated.dark.svg"
-                media="(prefers-color-scheme: dark)"
-              />
-              <source
-                srcset="/assets/img/logo/barbercam-hero-emblem-animated.light.svg"
-                media="(prefers-color-scheme: light)"
-              />
-              <img
-                src="/assets/img/logo/barbercam-hero-emblem-animated.svg"
-                alt="Barber Cam Hero Emblem"
-                width="100"
-                height="100"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+          <!-- 1920's Vintage Barber Pole Spinner — Beautiful Hero Size -->
+          <div class="barber-pole-spinner barber-pole-spinner--static barber-pole-spinner--hero" aria-hidden="true">
+            <div class="barber-pole-spinner__wrapper">
+              <!-- Top Finial (brass ball) -->
+              <div class="barber-pole-spinner__finial barber-pole-spinner__finial--top"></div>
+              <!-- Top Cap (brass rim) -->
+              <div class="barber-pole-spinner__cap"></div>
+              <!-- Glass Cylinder with Rotating Helix -->
+              <div class="barber-pole-spinner__glass">
+                <div class="barber-pole-spinner__helix"></div>
+              </div>
+              <!-- Bottom Cap (brass rim) -->
+              <div class="barber-pole-spinner__cap"></div>
+              <!-- Bottom Finial (brass ball) -->
+              <div class="barber-pole-spinner__finial barber-pole-spinner__finial--bottom"></div>
+            </div>
           </div>
 
+          <!-- A CUT ABOVE Branding Text -->
           <div class="visual-text">
             <span class="est">EST. 2024</span>
             <span class="tagline">A CUT ABOVE</span>
@@ -221,12 +226,401 @@
     </div>
   </div>
 
-  <!-- Scroll indicator (mobile only; hide via CSS on desktop) -->
+  <!-- Scroll Indicator with animated line -->
   <div class="scroll-indicator" aria-hidden="true">
     <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
+
+
+<!-- Premium Dashboard Section -->
+<div style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+  
+
+
+
+
+<section class="dashboard premium-dashboard" aria-label="Dashboard">
+  
+  <!-- Quick Stats Row -->
+  <div class="dashboard__full">
+    <div class="quick-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
+      
+      <div class="stat-card glass-card">
+        <div class="stat-card__icon">📁</div>
+        <div class="stat-card__content">
+          <div class="stat-card__value">10</div>
+          <div class="stat-card__label">Total Cases</div>
+        </div>
+      </div>
+      
+      <div class="stat-card glass-card">
+        <div class="stat-card__icon">⚖️</div>
+        <div class="stat-card__content">
+          <div class="stat-card__value">
+            7
+            <span class="stat-card__trend stat-card__trend--up">●</span>
+          </div>
+          <div class="stat-card__label">Active Litigation</div>
+        </div>
+      </div>
+      
+      <div class="stat-card glass-card">
+        <div class="stat-card__icon">📋</div>
+        <div class="stat-card__content">
+          <div class="stat-card__value">16</div>
+          <div class="stat-card__label">OPRA Records</div>
+        </div>
+      </div>
+      
+      <div class="stat-card glass-card">
+        <div class="stat-card__icon">📝</div>
+        <div class="stat-card__content">
+          <div class="stat-card__value">0</div>
+          <div class="stat-card__label">Essays</div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Quick Actions -->
+  <div class="dashboard__full">
+    <h2 style="font-size: 1.25rem; color: var(--premium-brass, #d4a574); margin-bottom: 1rem; font-weight: 600;">Quick Actions</h2>
+    <div class="quick-actions">
+      <a href="/cases/" class="quick-action haptic-tap">
+        <span class="quick-action__icon">📁</span>
+        <span class="quick-action__label">Browse Cases</span>
+      </a>
+      <a href="/opra/" class="quick-action haptic-tap">
+        <span class="quick-action__icon">📋</span>
+        <span class="quick-action__label">OPRA Records</span>
+      </a>
+      <a href="/essays/" class="quick-action haptic-tap">
+        <span class="quick-action__icon">📝</span>
+        <span class="quick-action__label">Read Essays</span>
+      </a>
+      <a href="/stewardship/" class="quick-action haptic-tap">
+        <span class="quick-action__icon">🌱</span>
+        <span class="quick-action__label">Stewardship</span>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Recent Activity & Featured Cases -->
+  <div class="activity-feed glass-panel">
+    <div class="activity-feed__header">
+      <h3 class="activity-feed__title">Recent Cases</h3>
+      <span class="activity-feed__badge">7</span>
+    </div>
+    <ul class="activity-feed__list">
+      
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/usdj-1-25-cv-15641/" style="color: inherit; text-decoration: none;">USDJ-1-25-cv-15641</a></strong>
+            <br>Camden Vicinage
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/usdj-1-22-cv-06206/" style="color: inherit; text-decoration: none;">USDJ-1-22-cv-06206</a></strong>
+            <br>Camden Vicinage
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/nlrb-04-ca-361301/" style="color: inherit; text-decoration: none;">Hard Rock Cafe International (N.J.) I...</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/mer-l-002371-25/" style="color: inherit; text-decoration: none;">MER-L-002371-25</a></strong>
+            <br>Mercer County
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/barber-nj-pcr-2022/" style="color: inherit; text-decoration: none;">Barber PCR (2022)</a></strong>
+            <br>Atlantic County
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/atl-l-003252-25/" style="color: inherit; text-decoration: none;">ATL-L-003252-25</a></strong>
+            <br>Atlantic County
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/atl-l-002869-25/" style="color: inherit; text-decoration: none;">ATL-L-002869-25</a></strong>
+            <br>Atlantic County
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/atl-l-002794-25/" style="color: inherit; text-decoration: none;">ATL-L-002794-25</a></strong>
+            <br>Atlantic County
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/atl-dc-007956-25/" style="color: inherit; text-decoration: none;">ATL-DC-007956-25</a></strong>
+            <br>Atlantic County
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--case">📁</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/cases/a-000313-25/" style="color: inherit; text-decoration: none;">A-000313-25</a></strong>
+            <br>Atlantic County (originatin...
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+  
+  <!-- Recent OPRA -->
+  <div class="activity-feed glass-panel">
+    <div class="activity-feed__header">
+      <h3 class="activity-feed__title">Recent OPRA</h3>
+      <span class="activity-feed__badge">16</span>
+    </div>
+    <ul class="activity-feed__list">
+      
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/galloway-leo-bond-insurance-2025/" style="color: inherit; text-decoration: none;">Galloway Township — Law Enforcement O...</a></strong>
+            <br>Galloway Township Clerk
+          </p>
+          <time class="activity-feed__time">Dec 19, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/atlantic-county-acjf-vendors-2025/" style="color: inherit; text-decoration: none;">Atlantic County Justice Facility — Ve...</a></strong>
+            <br>Atlantic County Sheriff's O...
+          </p>
+          <time class="activity-feed__time">Dec 19, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/hamilton-police-bond-insurance-2025/" style="color: inherit; text-decoration: none;">Hamilton Township Police Department —...</a></strong>
+            <br>Hamilton Township Police De...
+          </p>
+          <time class="activity-feed__time">Dec 19, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/njtpa-toll-infrastructure-planning-2025/" style="color: inherit; text-decoration: none;">NJTPA — Toll Infrastructure Planning ...</a></strong>
+            <br>North Jersey Transportation...
+          </p>
+          <time class="activity-feed__time">Dec 18, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/njta-toll-enforcement-data-security-2025/" style="color: inherit; text-decoration: none;">NJ Turnpike Authority — Toll Enforcem...</a></strong>
+            <br>New Jersey Turnpike Authority
+          </p>
+          <time class="activity-feed__time">Dec 18, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/governor-clemency-public-safety-2025/" style="color: inherit; text-decoration: none;">Office of the Governor — Executive Cl...</a></strong>
+            <br>Office of the Governor
+          </p>
+          <time class="activity-feed__time">Dec 18, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/njdot-toll-infrastructure-camera-systems-2025/" style="color: inherit; text-decoration: none;">NJDOT — Toll-Related Infrastructure a...</a></strong>
+            <br>New Jersey Department of Tr...
+          </p>
+          <time class="activity-feed__time">Dec 18, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/governor-toll-policy-vendor-oversight-2025/" style="color: inherit; text-decoration: none;">Office of the Governor — Toll Enforce...</a></strong>
+            <br>Office of the Governor
+          </p>
+          <time class="activity-feed__time">Dec 18, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/opra-template/" style="color: inherit; text-decoration: none;">AGENCY — Request Title (OPRA)</a></strong>
+            <br>Records Custodian / Agency ...
+          </p>
+          <time class="activity-feed__time">Jan 01, 2025</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/hamilton-bodycam-oaths-2024/" style="color: inherit; text-decoration: none;">Hamilton Township — Body Camera Foota...</a></strong>
+            <br>Hamilton Township
+          </p>
+          <time class="activity-feed__time">May 28, 2024</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/opra-template/notes/" style="color: inherit; text-decoration: none;">Notes — OPRA Administrative Record</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/notes/" style="color: inherit; text-decoration: none;">Notes (Non-Findings) — NJDOT Toll Inf...</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/notes/" style="color: inherit; text-decoration: none;">Notes (Non-Findings) — Galloway Towns...</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/notes/" style="color: inherit; text-decoration: none;">Notes (Non-Findings) — NJTPA Toll Inf...</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/notes/" style="color: inherit; text-decoration: none;">Notes (Non-Findings) — ACJF Vendor & ...</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+      <li class="activity-feed__item">
+        <div class="activity-feed__icon activity-feed__icon--opra">📋</div>
+        <div class="activity-feed__content">
+          <p class="activity-feed__text">
+            <strong><a href="/opra/" style="color: inherit; text-decoration: none;">OPRA Administrative Records</a></strong>
+            <br>
+          </p>
+          <time class="activity-feed__time">Pending</time>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+  
+</section>
+
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      PREVIEW SECTION — Barber Cam Live Preview Component
@@ -1015,8 +1409,6 @@
   </div>
 </footer>
 
-    
-      
     
     <script src="/assets/js/main.js" defer></script>
     
