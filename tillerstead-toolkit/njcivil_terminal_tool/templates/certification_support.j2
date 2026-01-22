@@ -1,0 +1,49 @@
+SUPERIOR COURT OF NEW JERSEY
+LAW DIVISION - CIVIL PART
+{{ court.county | upper }} COUNTY
+
+{{ plaintiff.name | upper }},
+Plaintiff, Pro Se
+
+v.
+
+{{ defendants.caption_block | upper }},
+Defendants.
+
+Civil Action
+CERTIFICATION OF {{ plaintiff.name | upper }} IN SUPPORT OF INTERIM RELIEF
+(R. 1:6-6)
+Docket No.: {{ case.docket_new }}
+
+I, {{ plaintiff.name }}, of full age, certify as follows:
+
+1. I am the Plaintiff in this action. I submit this Certification based on my personal knowledge and, where stated, based on my review of documents and discovery produced in the prior related proceeding.
+
+2. This action arises from a motor-vehicle stop on {{ facts.stop_date }}, my custodial arrest, the towing/seizure of my vehicle, and its continued retention under fee-based and administrative conditions without post-seizure notice or a meaningful opportunity to be heard.
+
+3. Vehicle: {{ facts.vehicle_year }} {{ facts.vehicle_make }} {{ facts.vehicle_model }}, VIN {{ facts.vehicle_vin }}, plate {{ facts.vehicle_plate }}.
+
+4. Release after midnight and lack of transportation: I was released from the Hamilton Township Police Department at approximately {{ facts.release_time }} without my vehicle and without reliable transportation to my destination.
+
+5. Lack of notice/hearing: I did not receive an impoundment notice, tow authorization, inventory, or written instructions describing how to request or obtain a post-seizure hearing.
+
+6. Financial barriers: Release has been conditioned on towing and storage charges and additional administrative requirements. I do not have the present financial ability to satisfy the combined demands, and the vehicle remains effectively inaccessible.
+
+7. Context and reliance: At the time of the stop, I was in a housing transition period and relied on the vehicle for transportation, access to personal property and tools, and attendance at appointments and work-related commitments.
+
+8. OPRA/prosecutor record response: I requested records relating to any 911 call, CAD entry, dispatch record, or call-for-service relating to my vehicle and the stop. I received a written response from the Atlantic County Prosecutor's Office stating that the agency possessed no responsive records.
+
+9. Body-worn camera discovery: In the related proceeding, I received body-worn camera footage and reviewed portions relevant to the stop, officers' statements, and towing activity. My motion does not ask the Court to decide disputed factual issues now; it requests interim relief to prevent ongoing deprivation and escalation of storage fees pending adjudication.
+
+10. Exhibits: I attach the following exhibits as true and accurate copies:
+    Exhibit A: Prosecutor's written record response (no responsive records).
+    Exhibit B: Prior certification identifying body-worn camera timestamps and quoted officer statements.
+    Exhibit C: Prior supplemental certification addressing release conditions and location hardship.
+    Exhibit D: Prior supplemental certification addressing housing transition and vehicle reliance.
+    Exhibit E: Court order(s) reflecting dismissal without prejudice of the prior OTSC proceeding.
+
+I certify that the foregoing statements are true. I am aware that if any statement is willfully false, I am subject to punishment.
+
+Dated: {{ case.motion_date }}
+/s/ {{ plaintiff.name }}
+{{ plaintiff.name }}, Plaintiff Pro Se

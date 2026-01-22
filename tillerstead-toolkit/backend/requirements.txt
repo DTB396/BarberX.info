@@ -1,0 +1,92 @@
+# ============================================================
+# BarberX Legal Case Management Pro Suite
+# Backend Dependencies
+# ============================================================
+
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+python-dotenv==1.0.0
+
+# Database
+sqlalchemy==2.0.25
+alembic==1.13.1
+aiosqlite==0.19.0
+psycopg2-binary==2.9.9
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+cryptography>=41.0.0
+
+# HTTP Client
+httpx==0.26.0
+
+# Background Jobs
+redis==5.0.1
+rq==1.16.0
+
+# ============================================================
+# Document Processing
+# ============================================================
+# PDF Processing & OCR
+PyMuPDF==1.23.8  # fitz - PDF manipulation
+pdf2image==1.17.0
+pytesseract==0.3.10
+pillow>=10.0.0
+
+# ============================================================
+# Video/Audio Processing
+# ============================================================
+moviepy==1.0.3
+pydub==0.25.1
+librosa==0.10.1
+soundfile==0.12.1
+ffmpeg-python==0.2.0
+
+# ============================================================
+# NLP & Analysis
+# ============================================================
+spacy==3.7.2
+# Download model: python -m spacy download en_core_web_sm
+transformers==4.36.2
+torch>=2.0.0  # For transformers
+scikit-learn==1.4.0
+nltk==3.8.1
+
+# ============================================================
+# AI / OpenAI Integration
+# ============================================================
+openai>=1.10.0  # GPT-5.2 API client
+
+# ============================================================
+# Data Processing
+# ============================================================
+pandas==2.2.0
+numpy>=1.24.0
+openpyxl==3.1.2
+
+# ============================================================
+# Reporting & Export
+# ============================================================
+reportlab==4.0.9
+python-docx==1.1.0
+jinja2>=3.1.0
+
+# ============================================================
+# Text Matching & Search
+# ============================================================
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.24.2
+whoosh==2.7.4  # Full-text search
+
+# ============================================================
+# File Utilities
+# ============================================================
+python-magic==0.4.27
+watchdog==3.0.0
+aiofiles==23.2.1
+
