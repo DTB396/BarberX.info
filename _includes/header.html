@@ -1,32 +1,177 @@
-<header id="siteHeader" class="site-header" role="banner">
-  <div class="container header-inner">
-    <a class="brand" href="{{ "/" | relative_url }}" aria-label="Barber Cam home">
+<!-- 
+  Premium Mobile Navigation System
+  - Smooth slide-from-right animation
+  - High contrast brass/gold accents
+  - Nested dropdown support
+  - Accessible (ARIA, focus trap, keyboard nav)
+  - SEO-friendly semantic markup
+-->
+<header id="siteHeader" class="site-header premium-header" role="banner">
+  <div class="container header-inner premium-header__inner">
+    <!-- Brand / Logo -->
+    <a class="brand premium-brand" href="{{ "/" | relative_url }}" aria-label="Barber Cam home">
       <picture>
         <source srcset="{{ '/assets/img/logo/barbercam-header-lockup.dark.svg' | relative_url }}" media="(prefers-color-scheme: dark)">
         <source srcset="{{ '/assets/img/logo/barbercam-header-lockup.light.svg' | relative_url }}" media="(prefers-color-scheme: light)">
-        <img class="brand-logo" src="{{ '/assets/img/logo/barbercam-header-lockup.svg' | relative_url }}" alt="Barber Cam" width="320" height="84" loading="eager" decoding="async">
+        <img class="brand-logo premium-brand__mark" src="{{ '/assets/img/logo/barbercam-header-lockup.svg' | relative_url }}" alt="Barber Cam" width="320" height="84" loading="eager" decoding="async">
       </picture>
     </a>
 
-    <button class="nav-toggle" type="button"
-      aria-expanded="false"
-      aria-controls="primaryNav"
-      aria-label="Open menu"
-      data-nav-toggle>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
-
-    <nav id="primaryNav" class="main-nav" aria-label="Primary" data-nav>
-      <ul class="nav-list">
-        <li><a href="{{ '/cases/' | relative_url }}">Cases</a></li>
-        <li><a href="{{ '/' | relative_url }}#preview">Preview</a></li>
-        <li><a href="{{ '/' | relative_url }}#principles">Principles</a></li>
-        <li><a href="{{ '/' | relative_url }}#status">Status</a></li>
-        <li><a href="{{ '/' | relative_url }}#connect">Connect</a></li>
-        <li><a href="{{ '/faq/' | relative_url }}">FAQ</a></li>
+    <!-- Desktop Navigation - Left Side -->
+    <nav class="premium-nav premium-nav--left" aria-label="Primary navigation left">
+      <ul class="premium-nav__list">
+        <li class="premium-nav__item">
+          <a href="{{ '/cases/' | relative_url }}" class="premium-nav__link">
+            <span>Cases</span>
+          </a>
+        </li>
+        <li class="premium-nav__item premium-nav__item--has-dropdown">
+          <button class="premium-nav__link premium-nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            <span>Legal Tools</span>
+            <svg class="premium-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="premium-nav__dropdown" role="menu">
+            <li role="none"><a href="{{ '/' | relative_url }}#preview" class="premium-nav__dropdown-link" role="menuitem">Case Preview</a></li>
+            <li role="none"><a href="{{ '/tools/docket-search/' | relative_url }}" class="premium-nav__dropdown-link" role="menuitem">Docket Search</a></li>
+            <li role="none"><a href="{{ '/tools/document-analysis/' | relative_url }}" class="premium-nav__dropdown-link" role="menuitem">Document Analysis</a></li>
+            <li role="none"><a href="{{ '/tools/deadline-calculator/' | relative_url }}" class="premium-nav__dropdown-link" role="menuitem">Deadline Calculator</a></li>
+          </ul>
+        </li>
+        <li class="premium-nav__item">
+          <a href="{{ '/' | relative_url }}#principles" class="premium-nav__link">
+            <span>Principles</span>
+          </a>
+        </li>
       </ul>
     </nav>
+
+    <!-- Desktop Navigation - Right Side -->
+    <nav class="premium-nav premium-nav--right" aria-label="Primary navigation right">
+      <ul class="premium-nav__list">
+        <li class="premium-nav__item">
+          <a href="{{ '/' | relative_url }}#status" class="premium-nav__link">
+            <span>Status</span>
+          </a>
+        </li>
+        <li class="premium-nav__item">
+          <a href="{{ '/' | relative_url }}#connect" class="premium-nav__link">
+            <span>Connect</span>
+          </a>
+        </li>
+        <li class="premium-nav__item">
+          <a href="{{ '/faq/' | relative_url }}" class="premium-nav__link premium-nav__link--highlight">
+            <span>FAQ</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Navigation Toggle (Hamburger) -->
+    <button class="premium-nav-toggle" type="button"
+      aria-expanded="false"
+      aria-controls="premium-nav-mobile"
+      aria-label="Open navigation menu">
+      <span class="premium-nav-toggle__bar"></span>
+      <span class="premium-nav-toggle__bar"></span>
+      <span class="premium-nav-toggle__bar"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile Navigation Drawer (slides from right) -->
+<nav id="premium-nav-mobile" class="premium-nav--mobile" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="premium-nav__header">
+    <button class="premium-nav__close" type="button" aria-label="Close navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+  
+  <ul class="premium-nav__list">
+    <!-- Cases -->
+    <li class="premium-nav__item">
+      <a href="{{ '/cases/' | relative_url }}" class="premium-nav__link">
+        <svg class="premium-nav__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>Cases</span>
+      </a>
+    </li>
+    
+    <!-- Legal Tools (Nested) -->
+    <li class="premium-nav__item premium-nav__item--has-children">
+      <button class="premium-nav__link premium-nav__submenu-toggle" aria-expanded="false">
+        <svg class="premium-nav__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 6V4M12 6C10.8954 6 10 6.89543 10 8C10 9.10457 10.8954 10 12 10M12 6C13.1046 6 14 6.89543 14 8C14 9.10457 13.1046 10 12 10M6 18C7.10457 18 8 17.1046 8 16C8 14.8954 7.10457 14 6 14M6 18C4.89543 18 4 17.1046 4 16C4 14.8954 4.89543 14 6 14M6 18V20M6 14V4M12 10V20M18 18C19.1046 18 20 17.1046 20 16C20 14.8954 19.1046 14 18 14M18 18C16.8954 18 16 17.1046 16 16C16 14.8954 16.8954 14 18 14M18 18V20M18 14V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Legal Tools</span>
+        <svg class="premium-nav__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="premium-nav__submenu">
+        <li><a href="{{ '/' | relative_url }}#preview" class="premium-nav__sublink">Case Preview</a></li>
+        <li><a href="{{ '/tools/docket-search/' | relative_url }}" class="premium-nav__sublink">Docket Search</a></li>
+        <li><a href="{{ '/tools/document-analysis/' | relative_url }}" class="premium-nav__sublink">Document Analysis</a></li>
+        <li><a href="{{ '/tools/deadline-calculator/' | relative_url }}" class="premium-nav__sublink">Deadline Calculator</a></li>
+      </ul>
+    </li>
+    
+    <!-- Principles -->
+    <li class="premium-nav__item">
+      <a href="{{ '/' | relative_url }}#principles" class="premium-nav__link">
+        <svg class="premium-nav__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span>Principles</span>
+      </a>
+    </li>
+    
+    <!-- Status -->
+    <li class="premium-nav__item">
+      <a href="{{ '/' | relative_url }}#status" class="premium-nav__link">
+        <svg class="premium-nav__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Status</span>
+      </a>
+    </li>
+    
+    <!-- Connect -->
+    <li class="premium-nav__item">
+      <a href="{{ '/' | relative_url }}#connect" class="premium-nav__link">
+        <svg class="premium-nav__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span>Connect</span>
+      </a>
+    </li>
+    
+    <!-- FAQ (Highlighted) -->
+    <li class="premium-nav__item">
+      <a href="{{ '/faq/' | relative_url }}" class="premium-nav__link premium-nav__link--highlight">
+        <svg class="premium-nav__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9C15 10.3062 14.1652 11.4175 13 11.8293V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="17" r="1" fill="currentColor"/>
+        </svg>
+        <span>FAQ</span>
+      </a>
+    </li>
+  </ul>
+  
+  <!-- Mobile Footer Links -->
+  <div class="premium-nav__footer">
+    <p class="premium-nav__tagline">Civil Rights Litigation Platform</p>
+  </div>
+</nav>
+
+<!-- Backdrop overlay for mobile nav -->

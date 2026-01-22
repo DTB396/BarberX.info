@@ -1,0 +1,36 @@
+court:
+  county: Atlantic
+
+plaintiff:
+  name: Devon Tyler Barber
+  address: "3536 Pacific Avenue, Apt. A5\nAtlantic City, New Jersey 08401"
+  city: "Atlantic City"
+  phone: "(609) 862-8808"
+  email: "dTb33@pm.me"
+
+defendants:
+  caption_block: |
+    TOWNSHIP OF HAMILTON,
+    HAMILTON TOWNSHIP POLICE DEPARTMENT,
+    DIRKES AUTO LLC d/b/a DIRKES USED AUTO PARTS / DIRKES TOWING,
+    SERGEANT GARY CLUNE, individually and in his official capacity,
+    OFFICER KYLE MCKNIGHT, individually and in his official capacity,
+    OFFICER EDWARD RUIZ, individually and in his official capacity,
+    OFFICER BRYAN MERRITT, individually and in his official capacity,
+    OFFICER STEPHEN BOYD, individually and in his official capacity,
+    John/Jane Doe Defendants 1-10
+
+case:
+  docket_new: "__________ (NEW ACTION)"
+  verification_date: "January __, 2026"
+  motion_date: "January __, 2026"
+  related_actions_statement: "No other actions are known at this time, except as disclosed above, and Plaintiff will promptly supplement if that changes."
+
+facts:
+  stop_date: "November 29, 2025"
+  release_time: "12:15-12:30 a.m. (approx.)"
+  vehicle_year: 2019
+  vehicle_make: Volkswagen
+  vehicle_model: Passat
+  vehicle_vin: "1VWLA7A36KC002247"
+  vehicle_plate: "F35-VLP"

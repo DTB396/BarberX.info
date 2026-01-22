@@ -1,0 +1,29 @@
+SUPERIOR COURT OF NEW JERSEY
+LAW DIVISION - CIVIL PART
+{{ court.county | upper }} COUNTY
+
+{{ plaintiff.name | upper }},
+Plaintiff, Pro Se
+
+v.
+
+{{ defendants.caption_block | upper }},
+Defendants.
+
+Civil Action
+NOTICE OF MOTION FOR INTERIM RELIEF
+Docket No.: {{ case.docket_new }}
+
+PLEASE TAKE NOTICE that Plaintiff will apply to the Superior Court of New Jersey, Law Division - Civil Part, {{ court.county }} County, for entry of an Order granting interim relief under R. 4:52-1 and R. 1:6-6, on the grounds stated in the accompanying Certification and Brief (if filed), at the date and time set by the Court.
+
+RELIEF REQUESTED
+1. An Order requiring immediate release of Plaintiff's vehicle ({{ facts.vehicle_year }} {{ facts.vehicle_make }} {{ facts.vehicle_model }}, VIN {{ facts.vehicle_vin }}) to Plaintiff, or alternatively requiring Defendants to provide a prompt post-seizure hearing and prohibiting further accrual of storage fees attributable to the challenged retention pending that hearing;
+2. An Order directing Defendants and their agents to preserve evidence identified in Plaintiff's preservation notice; and
+3. Such other relief as the Court deems just.
+
+Dated: {{ case.motion_date }}
+/s/ {{ plaintiff.name }}
+{{ plaintiff.name }}, Plaintiff Pro Se
+{{ plaintiff.address }}
+{{ plaintiff.phone }}
+{{ plaintiff.email }}
