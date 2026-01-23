@@ -1,4 +1,10 @@
 {
+  "type": "module",
+  "scripts": {
+    "setup:agents": "node scripts/setup-copilot-agents.mjs",
+    "test": "playwright test",
+    "lint:css": "stylelint '**/*.css'"
+  },
   "devDependencies": {
     "@copilot-extensions/preview-sdk": "^5.0.1",
     "@playwright/test": "^1.57.0",

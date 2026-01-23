@@ -263,7 +263,8 @@ button:focus-visible {
 }
 
 /* Print styles */
-@media print {  .btn,
+@media print {
+  .btn,
   button {
     display: none;
   }

@@ -107,11 +107,11 @@
     #2563eb 60px,
     #2563eb 80px
   );
-  animation: barberPoleRotate 3s linear infinite;
+  animation: barber-pole-rotate 3s linear infinite;
   opacity: 0.9;
 }
 
-@keyframes barberPoleRotate {
+@keyframes barber-pole-rotate {
   0% {
     transform: translateY(0);
   }
@@ -152,10 +152,10 @@
     transparent 70%
   );
   z-index: -1;
-  animation: goldenPulse 3s ease-in-out infinite;
+  animation: golden-pulse 3s ease-in-out infinite;
 }
 
-@keyframes goldenPulse {
+@keyframes golden-pulse {
   0%, 100% {
     opacity: 0.6;
     transform: translate(-50%, -50%) scale(1);
