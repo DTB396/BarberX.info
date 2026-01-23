@@ -35,6 +35,28 @@
 
 ---
 
+## 🤖 Custom AI Development Agents
+
+**NEW: 7 specialized GitHub Copilot agents** built for this platform - accelerate development by 50%!
+
+```bash
+npm install
+npm run setup:agents
+```
+
+Then use in GitHub Copilot Chat:
+- `@legal-compliance` - Copyright & data rights expert
+- `@bwc-forensics` - BWC video analysis specialist  
+- `@flask-backend` - Flask API & backend developer
+- `@frontend-dev` - React/UI component expert
+- `@database-architect` - Database schema designer
+- `@security-devops` - Security & deployment expert
+- `@documentation` - Technical writing specialist
+
+**📖 Full Guide:** [COPILOT-AGENTS-GUIDE.md](COPILOT-AGENTS-GUIDE.md)
+
+---
+
 ## 🎯 What is BarberX Legal Tech?
 
 Professional-grade AI forensic analysis platform for civil rights attorneys, legal discovery teams, law enforcement oversight, and forensic analysts.
