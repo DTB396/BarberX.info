@@ -537,19 +537,6 @@ h6 {
   font-size: 0.625rem;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.hero-actions .btn {
-  flex: 0 1 auto;
-  min-width: 180px;
-}
-
 @media (width <= 640px) {
   .hero-actions {
     flex-direction: column;
@@ -1442,8 +1429,6 @@ h6 {
   color: #d1d5db;
 }
 
-  line-height: 1.7;
-
 .principles-footer {
   margin-top: 4rem;
   text-align: center;
@@ -1547,14 +1532,7 @@ h6 {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
   animation: pulse 2s ease-in-out infinite;
-
-.indicator-text {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #28c840;
 }
 
 .status-description {
@@ -1825,10 +1803,6 @@ h6 {
   color: #9ca3af;
 }
 
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-
 .form-header p {
   font-size: 0.9rem;
   color: var(--muted);
@@ -1874,13 +1848,6 @@ h6 {
 .connect-form input::placeholder {
   color: #6b7280;
 }
-
-  border: 2px solid rgb(0 0 0 / 10%);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  color: var(--ink);
-  transition: var(--transition-base);
-  outline: none;
 
 .connect-form input:focus,
 .connect-form select:focus {
@@ -2200,7 +2167,6 @@ h6 {
     --shadow-sm: 0 2px 8px rgb(0 0 0 / 30%);
     --shadow-md: 0 4px 20px rgb(0 0 0 / 40%);
     --shadow-lg: 0 8px 40px rgb(0 0 0 / 50%);
-    --border: rgb(255 255 255 / 5%);
   }
 
   body {
@@ -2426,26 +2392,6 @@ h6 {
 
 .site-header.is-scrolled .nav-toggle span {
   background: rgb(255 255 255 / 85%);
-}
-
-.brand-picture {
-  display: inline-flex;
-  align-items: center;
-}
-
-.brand-logo {
-  display: block;
-  height: 34px;
-  width: auto;
-  max-width: 240px;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgb(0 0 0 / 18%));
-}
-
-@media (width <= 480px) {
-  .brand-logo {
-    height: 30px;
-  }
 }
 
 /* ==========================================================================

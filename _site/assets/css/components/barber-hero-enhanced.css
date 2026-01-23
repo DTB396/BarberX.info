@@ -42,8 +42,15 @@
 }
 
 @keyframes hero-ambient {
-  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.6; }
-  50% { transform: rotate(5deg) scale(1.05); opacity: 0.8; }
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: rotate(5deg) scale(1.05);
+    opacity: 0.8;
+  }
 }
 
 /* Subtle noise texture */
@@ -126,8 +133,15 @@
 }
 
 @keyframes hero-content-fade {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Badge */
@@ -187,8 +201,15 @@
 .barber-hero-unified .hero-title .title-line:nth-child(3) { animation-delay: 0.5s; }
 
 @keyframes title-slide {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .barber-hero-unified .hero-title .accent {
@@ -320,8 +341,15 @@
 }
 
 @keyframes hero-visual-float {
-  from { opacity: 0; transform: translateY(40px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .cut-above-box {
@@ -375,10 +403,33 @@
   height: 50px;
 }
 
-.cut-above-box .frame-corner.tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
-.cut-above-box .frame-corner.tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
-.cut-above-box .frame-corner.bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
-.cut-above-box .frame-corner.br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+.cut-above-box .frame-corner.tl {
+  top: 16px;
+  left: 16px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cut-above-box .frame-corner.tr {
+  top: 16px;
+  right: 16px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cut-above-box .frame-corner.bl {
+  bottom: 16px;
+  left: 16px;
+  border-right: none;
+  border-top: none;
+}
+
+.cut-above-box .frame-corner.br {
+  bottom: 16px;
+  right: 16px;
+  border-left: none;
+  border-top: none;
+}
 
 /* ============================================
    SIREN LIGHTS — Enhanced glow effect
@@ -415,13 +466,27 @@
 }
 
 @keyframes siren-glow-red {
-  0%, 40% { opacity: 0.7; transform: scale(1); }
-  50%, 100% { opacity: 0; transform: scale(0.9); }
+  0%, 40% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50%, 100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 }
 
 @keyframes siren-glow-blue {
-  0%, 40% { opacity: 0; transform: scale(0.9); }
-  50%, 100% { opacity: 0.7; transform: scale(1); }
+  0%, 40% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  50%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
 }
 
 /* ============================================
@@ -484,8 +549,15 @@
 }
 
 @keyframes scroll-indicator-fade {
-  from { opacity: 0; transform: translate(-50%, 20px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .barber-hero-unified .scroll-line {
@@ -496,8 +568,15 @@
 }
 
 @keyframes scroll-line-pulse {
-  0%, 100% { opacity: 1; height: 50px; }
-  50% { opacity: 0.4; height: 35px; }
+  0%, 100% {
+    opacity: 1;
+    height: 50px;
+  }
+
+  50% {
+    opacity: 0.4;
+    height: 35px;
+  }
 }
 
 /* ============================================
