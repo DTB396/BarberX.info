@@ -2,9 +2,9 @@
   
     
     {
-      "title": "404 - Page Not Found | BarberX",
+      "title": "Page Not Found",
       "url": "/404.html",
-      "content": "    404    Page Not Found        Looks like this page took a wrong turn at the barber shop. The page you're looking for doesn't exist or may have been moved.                🏠 Go Home              💰 View Pricing              Popular Pages                        💈        Homepage                          📚        Installation                          💰        Pricing                          ⚖️        Cases                          🔐        Login                          📝        Sign Up       ...",
+      "content": "                                                Error 404 • Page Not Found                  Page Not Found                    The page you're looking for doesn't exist. Let us help you find what you need.                                                                    Return Home                                                          View Sitemap                          404    Page Not Found        Looks like this page took a wrong turn at the barber shop. The page you're looking for do...",
       "type": "page"
       
     },
@@ -22,9 +22,9 @@
   
     
     {
-      "title": "Admin Login | BarberX Legal Tech",
+      "title": "BarberX Admin Panel",
       "url": "/admin/",
-      "content": "            🔐 Admin Panel      BarberX Legal Tech Platform Administration              ⚠️ Local Development Only      The admin panel requires the Flask backend running locally.      Start with: python app.py              Admin Panel URL:                    Default Admin Email:                    Open Admin Panel →                      Admin Features:        ✅ User Management (CRUD)        ✅ Settings Configuration (29 defaults)        ✅ System Monitoring        ✅ Audit Logs        ✅ Analysis ...",
+      "content": "                                                Authorized Personnel Only                  BarberX Admin Panel                    Secure administrative access for BarberX Legal Technologies platform management                                                                    Dashboard Overview                                                          Documentation                                  🔐 Admin Panel      BarberX Legal Tech Platform Administration              ⚠️ Local Development O...",
       "type": "page"
       
     },
@@ -72,9 +72,9 @@
   
     
     {
-      "title": "BarberX Legal Tech | AI-Powered eDiscovery Platform",
+      "title": "BarberX Legal Technologies",
       "url": "/",
-      "content": "                                                                                            Est. 2024 • Precision & Honor • 100% American Craftsmanship                          BarberX Legal Technologies        Citizen Accountability in the Tradition of America's Golden Age                          Professional-grade AI-powered eDiscovery platform built with the precision and integrity of the 1920s.         Process body-worn camera footage, police reports, and legal documents with 100% local ...",
+      "content": "                                                                                              Est. 2024 • Precision & Honor • 100% American Craftsmanship                  BarberX Legal Technologies                    Professional-grade AI-powered eDiscovery platform built with the precision and integrity of the 1920s. Process body-worn camera footage, police reports, and legal documents with 100% local AI—no cloud, no subscriptions, crafted with excellence.                                    ...",
       "type": "page"
       
     },

@@ -68,6 +68,22 @@
           <a href="{{ '/faq/' | relative_url }}" class="premium-nav__link">FAQ</a>
         </li>
         
+        <!-- Search Button -->
+        <li class="premium-nav__item">
+          <button 
+            id="header-search-toggle"
+            class="premium-nav__link premium-nav__link--icon" 
+            aria-label="Open search"
+            title="Search (Ctrl+K)"
+            style="background: none; cursor: pointer;"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+        </li>
+        
         <!-- Login Button -->
         <li class="premium-nav__item">
           <a href="{{ '/admin/' | relative_url }}" class="premium-nav__link premium-nav__link--cta">
