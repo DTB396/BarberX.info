@@ -184,7 +184,7 @@
   border-left-color: #8b5cf6;
 }
 
-.opra-record--referred---no-records-maintained {
+.opra-record--referred-no-records {
   border-left-color: #6b7280;
 }
 
@@ -239,7 +239,7 @@
   color: #a78bfa;
 }
 
-.opra-record__status--referred---no-records-maintained {
+.opra-record__status--referred-no-records {
   background: rgb(107 114 128 / 20%);
   color: #9ca3af;
 }

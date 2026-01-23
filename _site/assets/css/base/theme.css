@@ -725,7 +725,7 @@
    FOOTER LARGE SCREEN ENHANCEMENTS (1400px+)
 ====================================== */
 
-@media (min-width: 1400px) {
+@media (width >= 1400px) {
   .site-footer {
     padding: var(--space-4xl) 0 var(--space-2xl);
   }
@@ -774,7 +774,7 @@
    FOOTER ULTRA-WIDE (1800px+)
 ====================================== */
 
-@media (min-width: 1800px) {
+@media (width >= 1800px) {
   .site-footer {
     padding: var(--space-4xl) 0 var(--space-3xl);
     font-size: 1rem;
@@ -811,7 +811,7 @@
    FOOTER 4K (2560px+)
 ====================================== */
 
-@media (min-width: 2560px) {
+@media (width >= 2560px) {
   .footer-inner {
     max-width: 140rem;
   }

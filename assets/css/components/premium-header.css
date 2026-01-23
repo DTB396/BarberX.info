@@ -591,8 +591,7 @@
   flex-direction: column;
   transform: translateX(105%);
   transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden auto;
   z-index: 10003;
   -webkit-overflow-scrolling: touch;
 }
@@ -746,7 +745,6 @@
 
 .premium-nav__submenu {
   list-style: none;
-  margin: 0;
   padding: 0;
   max-height: 0;
   overflow: hidden;
@@ -997,7 +995,7 @@ body {
    LARGE SCREEN HEADER ENHANCEMENTS (1400px+)
    ============================================ */
 
-@media (min-width: 1400px) {
+@media (width >= 1400px) {
   .premium-header__inner {
     max-width: 1600px;
     padding: 1.75rem 3rem;
@@ -1040,7 +1038,7 @@ body {
    ULTRA-WIDE HEADER (1800px+)
    ============================================ */
 
-@media (min-width: 1800px) {
+@media (width >= 1800px) {
   .premium-header__inner {
     max-width: 1900px;
     padding: 2rem 4rem;
@@ -1087,7 +1085,7 @@ body {
    4K HEADER (2560px+)
    ============================================ */
 
-@media (min-width: 2560px) {
+@media (width >= 2560px) {
   .premium-header__inner {
     max-width: 2400px;
     padding: 2.25rem 5rem;

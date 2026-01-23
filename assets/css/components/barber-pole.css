@@ -9,7 +9,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 8px 24px rgb(0 0 0 / 30%));
 }
 
 .barber-pole {
@@ -29,8 +29,8 @@
   position: relative;
   z-index: 2;
   box-shadow: 
-    0 4px 12px rgba(212, 175, 55, 0.4),
-    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    0 4px 12px rgb(212 175 55 / 40%),
+    inset 0 2px 4px rgb(255 255 255 / 30%);
 }
 
 .pole-ornament.top {
@@ -49,8 +49,8 @@
   background: radial-gradient(circle, #FFD700, #D4AF37);
   border-radius: 50%;
   box-shadow: 
-    0 0 8px rgba(255, 215, 0, 0.8),
-    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    0 0 8px rgb(255 215 0 / 80%),
+    inset 0 1px 2px rgb(255 255 255 / 50%);
 }
 
 .pole-ornament.bottom {
@@ -69,7 +69,7 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-top: 12px solid #D4AF37;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 30%));
 }
 
 /* Pole Cylinder */
@@ -79,14 +79,14 @@
   position: relative;
   background: linear-gradient(90deg, 
     #e8e8e8 0%, 
-    #ffffff 50%, 
+    #fff 50%, 
     #e8e8e8 100%
   );
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 
-    inset -4px 0 8px rgba(0, 0, 0, 0.15),
-    inset 4px 0 8px rgba(255, 255, 255, 0.5);
+    inset -4px 0 8px rgb(0 0 0 / 15%),
+    inset 4px 0 8px rgb(255 255 255 / 50%);
 }
 
 /* Animated Stripes */
@@ -115,6 +115,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(25%);
   }
@@ -129,8 +130,8 @@
   width: 40%;
   height: 100%;
   background: linear-gradient(90deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
+    rgb(255 255 255 / 40%) 0%,
+    rgb(255 255 255 / 10%) 50%,
     transparent 100%
   );
   pointer-events: none;
@@ -147,7 +148,7 @@
   height: 105%;
   background: radial-gradient(
     ellipse at center,
-    rgba(212, 175, 55, 0.15) 0%,
+    rgb(212 175 55 / 15%) 0%,
     transparent 70%
   );
   z-index: -1;
@@ -159,6 +160,7 @@
     opacity: 0.6;
     transform: translate(-50%, -50%) scale(1);
   }
+
   50% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.1);
@@ -166,14 +168,14 @@
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .barber-pole-container {
     right: 1rem;
     transform: translateY(-50%) scale(0.8);
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .barber-pole-container {
     display: none;
   }

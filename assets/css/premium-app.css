@@ -57,7 +57,7 @@ body {
 }
 
 /* Add padding for bottom nav on mobile */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   body {
     padding-bottom: calc(var(--bottom-nav-height) + var(--safe-bottom));
   }
@@ -75,7 +75,7 @@ body {
 .glass-card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   box-shadow: var(--shadow-md);
@@ -88,7 +88,7 @@ body {
     rgb(255 255 255 / 3%) 100%
   );
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 20px;
 }
@@ -111,12 +111,12 @@ body {
     rgb(10 10 10 / 98%) 100%
   );
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   border-top: 1px solid rgb(212 165 116 / 20%);
   box-shadow: 0 -4px 20px rgb(0 0 0 / 40%);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .bottom-nav {
     display: flex;
   }
@@ -208,7 +208,7 @@ body {
   justify-content: center;
 }
 
-@media (min-width: 769px) {
+@media (width >= 769px) {
   .fab {
     bottom: 24px;
     right: 24px;
@@ -510,6 +510,7 @@ body {
     opacity: 0;
     transform: translateY(-20px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -585,6 +586,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -609,6 +611,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -626,6 +629,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -687,6 +691,7 @@ body {
   0%, 100% {
     box-shadow: 0 0 8px var(--premium-emerald);
   }
+
   50% {
     box-shadow: 0 0 16px var(--premium-emerald), 0 0 24px var(--premium-emerald);
   }
@@ -857,7 +862,7 @@ body {
   box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
-@media (min-width: 769px) {
+@media (width >= 769px) {
   .install-banner {
     left: auto;
     right: 24px;

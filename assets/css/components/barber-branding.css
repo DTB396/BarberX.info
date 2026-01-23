@@ -63,7 +63,7 @@
    RESPONSIVE ADJUSTMENTS
    ═══════════════════════════════════════════════════════════════════════ */
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .brand-pole {
     display: none; /* Hide on mobile to save space */
   }

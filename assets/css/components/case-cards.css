@@ -50,21 +50,25 @@
 /* Status variants */
 .case-card--active {
   --card-border-accent: #10b981;
+
   border-left-color: #10b981;
 }
 
 .case-card--pending {
   --card-border-accent: #d4a574;
+
   border-left-color: #d4a574;
 }
 
 .case-card--closed {
   --card-border-accent: #6b7280;
+
   border-left-color: #6b7280;
 }
 
 .case-card--appeal {
   --card-border-accent: #8b5cf6;
+
   border-left-color: #8b5cf6;
 }
 
@@ -161,7 +165,6 @@
   background: linear-gradient(135deg, rgb(139 92 246 / 25%) 0%, rgb(139 92 246 / 15%) 100%);
   color: #a78bfa;
   border: 1px solid rgb(139 92 246 / 40%);
-}
 }
 
 /* ===== CARD BODY ===== */
@@ -510,4 +513,5 @@
   .case-cards-grid {
     grid-template-columns: 1fr;
   }
+}
 }

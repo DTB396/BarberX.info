@@ -24,8 +24,8 @@
   --barberx-hero-gradient: radial-gradient(ellipse at top, #2d2d3a, #1a1a2e);
   
   /* Typography - Golden Age Fonts */
-  --barberx-font-display: 'Playfair Display', Georgia, serif;
-  --barberx-font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --barberx-font-display: 'Playfair Display', georgia, serif;
+  --barberx-font-sans: 'Montserrat', 'Helvetica Neue', arial, sans-serif;
   --barberx-font-mono: 'Courier Prime', 'Courier New', monospace;
 }
 
@@ -34,9 +34,9 @@
    ============================================ */
 
 .barberx-golden-header {
-  background: linear-gradient(to bottom, rgba(26, 26, 46, 0.98), rgba(26, 26, 46, 0.95));
+  background: linear-gradient(to bottom, rgb(26 26 46 / 98%), rgb(26 26 46 / 95%));
   border-bottom: 3px solid var(--barberx-gold);
-  box-shadow: 0 2px 12px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 2px 12px rgb(212 175 55 / 15%);
   position: relative;
 }
 
@@ -60,7 +60,7 @@
 
 .barberx-brand:hover .barberx-logo__text {
   color: var(--barberx-brass) !important;
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  text-shadow: 0 0 20px rgb(212 175 55 / 40%);
 }
 
 .barberx-logo {
@@ -132,7 +132,7 @@
   padding: 0.5rem 1.25rem;
   border-radius: 4px;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 2px 8px rgb(212 175 55 / 30%);
   transition: all 0.3s ease;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .premium-nav__link--cta:hover {
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 4px 16px rgb(212 175 55 / 50%);
   transform: translateY(-1px);
   background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
 }
@@ -152,18 +152,18 @@
   padding: 0.5rem 1.25rem;
   border-radius: 4px;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 2px 8px rgb(212 175 55 / 30%);
 }
 
 .premium-nav__link--highlight:hover {
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 4px 16px rgb(212 175 55 / 50%);
   transform: translateY(-1px);
 }
 
 .premium-nav__dropdown {
   border: 1px solid var(--barberx-gold);
   background: linear-gradient(135deg, #1a1a2e 0%, #2d2d3a 100%);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 32px rgb(212 175 55 / 20%);
 }
 
 .premium-nav__dropdown-link {
@@ -173,7 +173,7 @@
 }
 
 .premium-nav__dropdown-link:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgb(212 175 55 / 10%);
   border-left-color: var(--barberx-gold);
   padding-left: 1.25rem;
 }
@@ -219,7 +219,7 @@
 
 .footer-contact .contact-link:hover {
   color: var(--barberx-brass);
-  text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+  text-shadow: 0 0 12px rgb(212 175 55 / 30%);
   transform: translateX(4px);
 }
 
@@ -240,12 +240,12 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 16px rgb(212 175 55 / 30%);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 8px 24px rgb(212 175 55 / 50%);
   transform: translateY(-2px);
   background: linear-gradient(135deg, #B8941C 0%, #D4AF37 100%);
 }
@@ -264,7 +264,7 @@
 .btn-ghost:hover {
   background: var(--barberx-gold);
   color: var(--barberx-navy);
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 16px rgb(212 175 55 / 40%);
   transform: translateY(-2px);
 }
 
@@ -297,7 +297,7 @@
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 12px 40px rgb(212 175 55 / 20%);
 }
 
 /* ============================================
@@ -338,22 +338,19 @@ h2::after {
 .cta-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: 
     repeating-linear-gradient(90deg, 
       transparent, 
       transparent 50px, 
-      rgba(212, 175, 55, 0.03) 50px, 
-      rgba(212, 175, 55, 0.03) 51px
+      rgb(212 175 55 / 3%) 50px, 
+      rgb(212 175 55 / 3%) 51px
     ),
     repeating-linear-gradient(0deg, 
       transparent, 
       transparent 50px, 
-      rgba(212, 175, 55, 0.03) 50px, 
-      rgba(212, 175, 55, 0.03) 51px
+      rgb(212 175 55 / 3%) 50px, 
+      rgb(212 175 55 / 3%) 51px
     );
   pointer-events: none;
 }
@@ -362,7 +359,7 @@ h2::after {
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .barberx-logo__text {
     font-size: 1.5rem !important;
   }

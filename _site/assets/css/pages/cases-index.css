@@ -819,7 +819,7 @@
    LARGE SCREEN ENHANCEMENTS (1400px+)
    ============================================ */
 
-@media (min-width: 1400px) {
+@media (width >= 1400px) {
   .cases-hero {
     padding: 4rem 3rem;
     border-radius: 16px;
@@ -872,7 +872,7 @@
    ULTRA-WIDE SCREEN (1800px+)
    ============================================ */
 
-@media (min-width: 1800px) {
+@media (width >= 1800px) {
   .cases-hero {
     padding: 5rem 4rem;
   }
@@ -904,7 +904,7 @@
    4K SCREEN (2560px+)
    ============================================ */
 
-@media (min-width: 2560px) {
+@media (width >= 2560px) {
   .cases-grid {
     grid-template-columns: repeat(5, 1fr);
   }
