@@ -10,7 +10,7 @@ uvicorn[standard]==0.27.0
 sqlalchemy==2.0.25
 pydantic==2.5.3
 pydantic-settings==2.1.0
-python-multipart==0.0.6
+python-multipart==0.0.18
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 python-dotenv==1.0.0
@@ -53,8 +53,8 @@ spacy-lookups-data==1.0.5
 blackstone==0.1.20
 
 # Transformers & BERT
-transformers==4.37.2
-torch==2.2.0
+transformers==4.53.0
+torch==2.8.0
 sentence-transformers==2.3.1
 
 # Legal text generation
@@ -62,15 +62,15 @@ openai==1.10.0  # For GPT API if needed
 anthropic==0.8.1  # For Claude API if needed
 
 # Summarization
-sentencepiece==0.1.99
-protobuf==4.25.2
+sentencepiece==0.2.1
+protobuf==7.34.0rc1
 
 # Semantic search
 faiss-cpu==1.7.4
 hnswlib==0.8.0
 
 # Contract analysis
-nltk==3.8.1
+nltk==3.9
 textblob==0.17.1
 
 # Named Entity Recognition
@@ -111,7 +111,7 @@ libpff-python==20211114
 hashlib-wrapper==1.0.0
 
 # Threading and clustering
-scikit-learn==1.4.0
+scikit-learn==1.5.0
 hdbscan==0.8.33
 
 # ============================================================================
@@ -177,14 +177,14 @@ pandas==2.2.0
 numpy==1.26.3
 
 # PDF generation
-weasyprint==60.2
+weasyprint==68.0
 reportlab==4.0.9
-pypdf==4.0.1
+pypdf==6.6.0
 
 # Dashboards
 dash==2.14.2
 dash-bootstrap-components==1.5.0
-streamlit==1.30.0
+streamlit==1.37.0
 
 # Excel reports
 xlsxwriter==3.1.9
@@ -221,7 +221,7 @@ anonymizeip==1.0.0
 # ============================================================================
 # Document comparison
 diff-match-patch==20230430
-deepdiff==6.7.1
+deepdiff==8.6.1
 textdistance==4.6.1
 
 # Document fingerprinting
@@ -241,7 +241,7 @@ hypothesis-python==6.98.3
 pytesseract==0.3.10
 easyocr==1.7.1
 paddleocr==2.7.0.3
-paddlepaddle==2.6.0
+paddlepaddle==3.3.0
 
 # Handwriting recognition
 # (uses transformers from Phase 2)
@@ -292,7 +292,7 @@ scispacy==0.5.4
 # en_core_sci_sm model installed separately
 
 # Medical databases
-biopython==1.83
+biopython==1.86
 pubchempy==1.0.4
 
 # ICD codes
@@ -337,7 +337,7 @@ pillow-heif==0.15.0
 
 # Web archival
 waybackpy==3.0.6
-internetarchive==3.7.0
+internetarchive==5.5.1
 
 # Screenshot
 pyppeteer==2.0.0
@@ -389,7 +389,7 @@ pacer-tools==0.1.0
 
 # Court scraping
 cloudscraper==1.2.71
-scrapy==2.11.1
+scrapy==2.13.4
 
 # PDF processing for filings
 # (uses PyMuPDF from Phase 6)
@@ -458,7 +458,7 @@ arrow==1.3.0
 pendulum==3.0.0
 
 # Progress bars
-tqdm==4.66.1
+tqdm==4.67.1
 rich==13.7.0
 
 # Configuration

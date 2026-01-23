@@ -58,7 +58,7 @@ ray==2.9.0                  # Distributed computing framework (Modin backend)
 # ============================================================================
 
 # Core ML Libraries
-scikit-learn==1.4.0         # Industry-standard ML library (classification, regression, clustering)
+scikit-learn==1.5.0         # Industry-standard ML library (classification, regression, clustering)
 numpy==1.26.3               # Numerical computing (required by all ML libs)
 scipy==1.11.4               # Scientific computing (stats, optimization)
 
@@ -113,7 +113,7 @@ jsonschema==4.20.0          # JSON schema validation
 marshmallow==3.20.1         # Object serialization and validation
 
 # Data Comparison & Diffing
-deepdiff==6.7.1             # Deep comparison of data structures
+deepdiff==8.6.1             # Deep comparison of data structures
 data-diff==0.9.0            # Database and DataFrame diffing
 diff-match-patch==20230430  # Text diffing (for document comparison)
 
@@ -229,7 +229,7 @@ lz4==4.3.3                  # LZ4 compression (extremely fast)
 # Adding advanced visualization tools
 
 # Interactive Dashboards
-streamlit==1.29.0           # Create web apps quickly
+streamlit==1.37.0           # Create web apps quickly
 dash==2.14.2                # Plotly's dashboard framework
 dash-bootstrap-components==1.5.0  # Bootstrap themes for Dash
 panel==1.3.8                # Holoviz's dashboard tool
@@ -285,7 +285,7 @@ arviz==0.17.0               # Bayesian visualization
 # Text Extraction & Parsing
 textract==1.6.5             # Extract text from any document
 pdfplumber==0.10.3          # PDF text extraction (better than PyPDF2)
-pypdf==3.17.4               # PDF manipulation (merger, splitter)
+pypdf==6.6.0               # PDF manipulation (merger, splitter)
 python-docx==1.1.0          # Word document manipulation
 
 # Text Cleaning & Normalization
@@ -296,7 +296,7 @@ texthero==1.1.0             # Text preprocessing pipeline
 
 # Natural Language Processing
 textblob==0.17.1            # Simple NLP (sentiment, POS tagging)
-nltk==3.8.1                 # Natural Language Toolkit
+nltk==3.9                 # Natural Language Toolkit
 gensim==4.3.2               # Topic modeling, doc2vec, word2vec
 fuzzywuzzy==0.18.0          # Fuzzy string matching
 python-Levenshtein==0.24.0  # Fast string distance calculations
@@ -313,12 +313,12 @@ regex==2023.12.25           # Better regex than built-in re module
 requests==2.31.0            # HTTP library (standard)
 httpx==0.26.0               # Async HTTP client
 urllib3==2.1.0              # HTTP client with pooling
-aiohttp==3.9.1              # Async HTTP client/server
+aiohttp==3.13.3              # Async HTTP client/server
 
 # Web Scraping
 beautifulsoup4==4.12.2      # HTML/XML parsing
 lxml==5.0.0                 # Already included above
-scrapy==2.11.0              # Web crawling framework
+scrapy==2.13.4              # Web crawling framework
 selenium==4.16.0            # Browser automation
 playwright==1.40.0          # Modern browser automation (better than Selenium)
 
@@ -407,7 +407,7 @@ tenacity==8.2.3             # Retry library with exponential backoff
 backoff==2.2.1              # Function decoration for backoff
 
 # Progress Bars
-tqdm==4.66.1                # Progress bar library
+tqdm==4.67.1                # Progress bar library
 rich==13.7.0                # Rich text and beautiful formatting
 
 # File Operations

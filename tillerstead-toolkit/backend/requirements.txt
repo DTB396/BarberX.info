@@ -8,7 +8,7 @@ fastapi==0.109.0
 uvicorn[standard]==0.27.0
 pydantic==2.5.3
 pydantic-settings==2.1.0
-python-multipart==0.0.6
+python-multipart==0.0.18
 python-dotenv==1.0.0
 
 # Database
@@ -52,10 +52,10 @@ ffmpeg-python==0.2.0
 # ============================================================
 spacy==3.7.2
 # Download model: python -m spacy download en_core_web_sm
-transformers==4.36.2
+transformers==4.53.0
 torch>=2.0.0  # For transformers
-scikit-learn==1.4.0
-nltk==3.8.1
+scikit-learn==1.5.0
+nltk==3.9
 
 # ============================================================
 # AI / OpenAI Integration
