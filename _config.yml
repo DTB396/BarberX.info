@@ -1,15 +1,16 @@
-# _config.yml — Barber Cam (GitHub Pages + custom domain)
+# _config.yml — BarberX Legal Technologies (GitHub Pages + custom domain)
 
-title: "BarberX.info"
-description: "Personal Documentation & Accountability Journal"
+title: "BarberX Legal Technologies"
+description: "AI-Powered Civil Rights eDiscovery Platform | Precision & Honor in the Tradition of America's Golden Age"
+tagline: "Precision. Excellence. Honor. Justice."
 
 # Custom domain (root)
 url: "https://barberx.info"
 baseurl: "" # MUST be empty for root custom domain
 
 # Branding / contact
-theme_color: "#c41e3a"
-email: "BarberCamX@ProtonMail.com"
+theme_color: "#D4AF37" # Golden age gold
+email: "contact@barberx.info"
 
 # Build settings
 markdown: kramdown

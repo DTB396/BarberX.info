@@ -1,9 +1,15 @@
 <!doctype html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}"{% if page.dir %} dir="{{ page.dir }}"{% endif %}>
   <head>
-    {%- comment -%} Brand Tokens - Load First {%- endcomment -%}
+    {%- comment -%} BarberX Golden Age Branding - Load First {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/barberx-golden-age.css' | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/brand-tokens.css' | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/components/barber-branding.css' | relative_url }}" />
+    
+    {%- comment -%} Google Fonts - 1920's Typography {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     {%- comment -%} UX Enhancements {%- endcomment -%}
     <link rel="stylesheet" href="{{ '/assets/css/components/ux-enhancements.css' | relative_url }}" />
