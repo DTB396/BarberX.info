@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BWC Multi-Camera Interactive Player - Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            font-size: 14px;
+            color: #bbdefb;
+        }
+
+        .stats span {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr 350px;
+            height: calc(100vh - 100px);
+            gap: 15px;
+            padding: 15px;
+        }
+
+        /* Left Panel - Camera List */
+        .camera-list {
+            background: #1a1f3a;
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .camera-list h2 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #64b5f6;
+            border-bottom: 2px solid #1976d2;
+            padding-bottom: 10px;
+        }
+
+        .camera-item {
+            background: #252b4a;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid #1976d2;
+        }
+
+        .camera-item:hover {
+            background: #2d3558;
+            transform: translateX(5px);
+        }
+
+        .camera-item.active {
+            background: #1976d2;
+            border-left-color: #64b5f6;
+        }
+
+        .camera-item .officer {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .camera-item .time {
+            font-size: 12px;
+            color: #90caf9;
+        }
+
+        .camera-item .status {
+            font-size: 11px;
+            color: #4caf50;
+            margin-top: 5px;
+        }
+
+        /* Center Panel - Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            background: #1a1f3a;
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .video-container {
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 10px;
+            color: #fff;
+        }
+
+        .video-overlay .officer-name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .video-overlay .timestamp {
+            font-size: 12px;
+            color: #90caf9;
+        }
+
+        /* Right Panel - Transcript & Analysis */
+        .transcript-panel {
+            background: #1a1f3a;
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1976d2;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: #90caf9;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: #fff;
+            border-bottom-color: #64b5f6;
+        }
+
+        .tab-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .transcript-item {
+            background: #252b4a;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #1976d2;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .transcript-item:hover {
+            background: #2d3558;
+        }
+
+        .transcript-item.evidence {
+            border-left-color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+        }
+
+        .transcript-item .time-speaker {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .transcript-item .time {
+            color: #64b5f6;
+            font-weight: bold;
+        }
+
+        .transcript-item .speaker {
+            color: #90caf9;
+        }
+
+        .transcript-item .emotion {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .emotion.DISTRESSED {
+            background: #f44336;
+            color: #fff;
+        }
+
+        .emotion.ANGRY {
+            background: #ff5722;
+            color: #fff;
+        }
+
+        .emotion.CALM {
+            background: #4caf50;
+            color: #fff;
+        }
+
+        .transcript-item .text {
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .transcript-item .key-phrase {
+            background: #f44336;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+        }
+
+        /* Timeline Controls */
+        .timeline-controls {
+            background: #252b4a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .timeline-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #1976d2;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .timeline-progress {
+            height: 100%;
+            background: #64b5f6;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background: #f44336;
+            top: -2px;
+            cursor: pointer;
+        }
+
+        .playback-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .playback-controls button {
+            background: #1976d2;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .playback-controls button:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+        }
+
+        .playback-controls .time-display {
+            color: #64b5f6;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* Evidence Highlights */
+        .evidence-list {
+            list-style: none;
+        }
+
+        .evidence-item {
+            background: rgba(244, 67, 54, 0.1);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 3px solid #f44336;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .evidence-item:hover {
+            background: rgba(244, 67, 54, 0.2);
+        }
+
+        .evidence-item .badge {
+            background: #f44336;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Analysis Panel */
+        .analysis-card {
+            background: #252b4a;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #4caf50;
+        }
+
+        .analysis-card h3 {
+            color: #64b5f6;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .analysis-card .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .analysis-card .metric .value {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #64b5f6;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎥 BWC Multi-Camera Interactive Player - PREMIUM</h1>
+        <div class="stats">
+            <span id="total-cameras">📹 Loading cameras...</span>
+            <span id="total-duration">⏱️ Total: --:--:--</span>
+            <span id="evidence-count">⚠️ Evidence: 0 items</span>
+            <span id="speakers-count">👥 Speakers: 0</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Left: Camera List -->
+        <div class="camera-list">
+            <h2>📹 Body-Worn Cameras</h2>
+            <div id="camera-list-content" class="loading">
+                Loading cameras
+            </div>
+        </div>
+
+        <!-- Center: Video Grid -->
+        <div class="video-grid" id="video-grid">
+            <div class="loading">Loading videos...</div>
+        </div>
+
+        <!-- Right: Transcript & Analysis -->
+        <div class="transcript-panel">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('transcript')">📝 Transcript</button>
+                <button class="tab" onclick="switchTab('evidence')">⚠️ Evidence</button>
+                <button class="tab" onclick="switchTab('analysis')">📊 Analysis</button>
+            </div>
+
+            <div class="tab-content" id="transcript-tab">
+                <div id="transcript-content" class="loading">
+                    Loading transcript
+                </div>
+            </div>
+
+            <div class="tab-content" id="evidence-tab" style="display: none;">
+                <ul id="evidence-content" class="evidence-list">
+                    <!-- Evidence items populated by JS -->
+                </ul>
+            </div>
+
+            <div class="tab-content" id="analysis-tab" style="display: none;">
+                <div id="analysis-content">
+                    <!-- Analysis cards populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-controls">
+        <div class="timeline-slider" id="timeline-slider">
+            <div class="timeline-progress" id="timeline-progress" style="width: 0%"></div>
+            <!-- Timeline markers added by JS -->
+        </div>
+        <div class="playback-controls">
+            <button onclick="skipBackward()">⏪ -10s</button>
+            <button onclick="playPause()" id="play-btn">▶️ Play</button>
+            <button onclick="skipForward()">⏩ +10s</button>
+            <div class="time-display" id="time-display">00:00:00 / 00:00:00</div>
+            <button onclick="syncAll()">🔄 Sync All</button>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let cameras = [];
+        let transcripts = [];
+        let currentTime = 0;
+        let isPlaying = false;
+        let evidenceItems = [];
+
+        // Initialize
+        async function init() {
+            // Load camera data (in production, load from JSON)
+            await loadCameras();
+            await loadTranscripts();
+            populateUI();
+            setupEventListeners();
+        }
+
+        async function loadCameras() {
+            // Simulated data - replace with actual JSON load
+            cameras = [
+                { id: 1, officer: "Bryan Merritt", file: "BryanMerritt_202511292257_BWL7137497-0.mp4", startTime: "22:57:00", duration: 1122 },
+                { id: 2, officer: "Edward Ruiz", file: "EdwardRuiz_202511292318_BWL7139078-0.mp4", startTime: "23:18:00", duration: 985 },
+                { id: 3, officer: "NiJon Isom", file: "NiJonIsom_202511292312_BWL7139126-0.mp4", startTime: "23:12:00", duration: 1456 },
+                { id: 4, officer: "Gary Clune", file: "GaryClune_202511292317_BWL7139083-0.mp4", startTime: "23:17:00", duration: 823 }
+            ];
+        }
+
+        async function loadTranscripts() {
+            // Simulated transcript data
+            transcripts = [
+                { time: 19.75, speaker: "Officer Merritt", text: "Good? Let's get started.", emotion: "CALM", camera: 1, evidence: false },
+                { time: 35.2, speaker: "Subject", text: "What did I do? I didn't do anything!", emotion: "ANXIOUS", camera: 1, evidence: true, keyPhrases: ["⚠️ LACK_OF_PROBABLE_CAUSE"] },
+                { time: 45.8, speaker: "Officer Ruiz", text: "Step out of the vehicle NOW!", emotion: "ANGRY", camera: 2, evidence: false },
+                { time: 62.3, speaker: "Subject", text: "I CAN'T BREATHE! STOP!", emotion: "DISTRESSED", camera: 1, evidence: true, keyPhrases: ["⚠️ EXCESSIVE_FORCE_INDICATOR", "🚨 MEDICAL_DISTRESS"] },
+                { time: 78.5, speaker: "Officer Merritt", text: "We need to restrain him.", emotion: "CALM", camera: 1, evidence: false }
+            ];
+
+            evidenceItems = transcripts.filter(t => t.evidence);
+        }
+
+        function populateUI() {
+            // Update header stats
+            document.getElementById('total-cameras').textContent = `📹 ${cameras.length} cameras`;
+            document.getElementById('evidence-count').textContent = `⚠️ Evidence: ${evidenceItems.length} items`;
+            document.getElementById('speakers-count').textContent = `👥 Speakers: ${new Set(transcripts.map(t => t.speaker)).size}`;
+
+            // Populate camera list
+            const cameraList = document.getElementById('camera-list-content');
+            cameraList.innerHTML = cameras.map(cam => `
+                <div class="camera-item" onclick="selectCamera(${cam.id})">
+                    <div class="officer">${cam.officer}</div>
+                    <div class="time">Start: ${cam.startTime}</div>
+                    <div class="status">✅ Ready</div>
+                </div>
+            `).join('');
+
+            // Populate transcript
+            const transcriptContent = document.getElementById('transcript-content');
+            transcriptContent.innerHTML = transcripts.map(t => `
+                <div class="transcript-item ${t.evidence ? 'evidence' : ''}" onclick="seekTo(${t.time})">
+                    <div class="time-speaker">
+                        <span class="time">${formatTime(t.time)}</span>
+                        <span class="speaker">${t.speaker} <span class="emotion ${t.emotion}">${t.emotion}</span></span>
+                    </div>
+                    <div class="text">${t.text}</div>
+                    ${t.keyPhrases ? t.keyPhrases.map(kp => `<span class="key-phrase">${kp}</span>`).join('') : ''}
+                </div>
+            `).join('');
+
+            // Populate evidence list
+            const evidenceContent = document.getElementById('evidence-content');
+            evidenceContent.innerHTML = evidenceItems.map((item, idx) => `
+                <li class="evidence-item" onclick="seekTo(${item.time})">
+                    <span class="badge">#${idx + 1}</span>
+                    <strong>${formatTime(item.time)}</strong> - ${item.speaker}
+                    <br><em>"${item.text}"</em>
+                    ${item.keyPhrases ? '<br>' + item.keyPhrases.map(kp => `<span class="key-phrase">${kp}</span>`).join('') : ''}
+                </li>
+            `).join('');
+
+            // Populate analysis
+            const analysisContent = document.getElementById('analysis-content');
+            analysisContent.innerHTML = `
+                <div class="analysis-card">
+                    <h3>📊 Audio Quality Metrics</h3>
+                    <div class="metric"><span>SNR Improvement:</span> <span class="value">+16.4 dB</span></div>
+                    <div class="metric"><span>Voice Clarity:</span> <span class="value">94%</span></div>
+                    <div class="metric"><span>Intelligibility:</span> <span class="value">89%</span></div>
+                </div>
+                <div class="analysis-card">
+                    <h3>🎤 Speaker Statistics</h3>
+                    <div class="metric"><span>Officer Speaking Time:</span> <span class="value">68%</span></div>
+                    <div class="metric"><span>Subject Speaking Time:</span> <span class="value">32%</span></div>
+                    <div class="metric"><span>Total Speakers:</span> <span class="value">${new Set(transcripts.map(t => t.speaker)).size}</span></div>
+                </div>
+                <div class="analysis-card" style="border-left-color: #f44336;">
+                    <h3>⚠️ Constitutional Concerns</h3>
+                    <div class="metric"><span>Excessive Force Indicators:</span> <span class="value" style="color: #f44336;">${evidenceItems.filter(e => e.keyPhrases && e.keyPhrases.some(p => p.includes('EXCESSIVE_FORCE'))).length}</span></div>
+                    <div class="metric"><span>Medical Distress Events:</span> <span class="value" style="color: #f44336;">${evidenceItems.filter(e => e.keyPhrases && e.keyPhrases.some(p => p.includes('MEDICAL_DISTRESS'))).length}</span></div>
+                    <div class="metric"><span>Probable Cause Issues:</span> <span class="value" style="color: #f44336;">${evidenceItems.filter(e => e.keyPhrases && e.keyPhrases.some(p => p.includes('PROBABLE_CAUSE'))).length}</span></div>
+                </div>
+            `;
+        }
+
+        function setupEventListeners() {
+            // Timeline click
+            document.getElementById('timeline-slider').addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                const maxDuration = Math.max(...cameras.map(c => c.duration));
+                seekTo(percent * maxDuration);
+            });
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none');
+            
+            event.target.classList.add('active');
+            document.getElementById(tab + '-tab').style.display = 'block';
+        }
+
+        function selectCamera(id) {
+            document.querySelectorAll('.camera-item').forEach(c => c.classList.remove('active'));
+            event.target.closest('.camera-item').classList.add('active');
+            // Load video player for this camera
+        }
+
+        function seekTo(time) {
+            currentTime = time;
+            updateTimeline();
+            // Update all video players
+        }
+
+        function playPause() {
+            isPlaying = !isPlaying;
+            document.getElementById('play-btn').textContent = isPlaying ? '⏸️ Pause' : '▶️ Play';
+        }
+
+        function skipBackward() {
+            seekTo(Math.max(0, currentTime - 10));
+        }
+
+        function skipForward() {
+            seekTo(currentTime + 10);
+        }
+
+        function syncAll() {
+            // Synchronize all video players to current time
+            alert('All cameras synchronized to current time!');
+        }
+
+        function updateTimeline() {
+            const maxDuration = Math.max(...cameras.map(c => c.duration));
+            const percent = (currentTime / maxDuration) * 100;
+            document.getElementById('timeline-progress').style.width = percent + '%';
+            document.getElementById('time-display').textContent = formatTime(currentTime) + ' / ' + formatTime(maxDuration);
+        }
+
+        function formatTime(seconds) {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = Math.floor(seconds % 60);
+            return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        // Initialize on load
+        init();
+
+        // Auto-update timeline
+        setInterval(() => {
+            if (isPlaying) {
+                currentTime += 0.1;
+                updateTimeline();
+            }
+        }, 100);
+    </script>
+</body>
+</html>

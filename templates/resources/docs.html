@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | BarberX Legal Tech</title>
+    <link rel="stylesheet" href="/assets/css/legal-tech-platform.css">
+    <style>
+        body { background: var(--bg-color); margin: 0; padding: 0; }
+        
+        .docs-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-navy-dark));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .docs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+        }
+        
+        .docs-sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        
+        .docs-nav-section {
+            margin-bottom: 2rem;
+        }
+        
+        .docs-nav-section h4 {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        
+        .docs-nav-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+            transition: all 0.2s;
+        }
+        
+        .docs-nav-link:hover, .docs-nav-link.active {
+            background: var(--primary-navy-10);
+            color: var(--accent-blue);
+        }
+        
+        .docs-content {
+            background: var(--surface-color);
+            padding: 3rem;
+            border-radius: 12px;
+        }
+        
+        .doc-card {
+            background: var(--bg-color);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+            }
+            .docs-sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="docs-header">
+        <h1 style="margin: 0 0 1rem 0;">📚 Documentation</h1>
+        <p style="margin: 0; opacity: 0.9; font-size: 1.125rem;">
+            Everything you need to master BarberX Legal Tech
+        </p>
+    </div>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <div class="docs-nav-section">
+                <h4>Getting Started</h4>
+                <a href="#quick-start" class="docs-nav-link active">Quick Start</a>
+                <a href="#installation" class="docs-nav-link">Installation</a>
+                <a href="#first-analysis" class="docs-nav-link">First Analysis</a>
+            </div>
+            
+            <div class="docs-nav-section">
+                <h4>Core Features</h4>
+                <a href="#bwc-analysis" class="docs-nav-link">BWC Analysis</a>
+                <a href="#transcription" class="docs-nav-link">Transcription</a>
+                <a href="#entity-extraction" class="docs-nav-link">Entity Extraction</a>
+                <a href="#discrepancies" class="docs-nav-link">Discrepancy Finding</a>
+            </div>
+            
+            <div class="docs-nav-section">
+                <h4>Advanced</h4>
+                <a href="#batch-processing" class="docs-nav-link">Batch Processing</a>
+                <a href="#api-integration" class="docs-nav-link">API Integration</a>
+                <a href="#chain-of-custody" class="docs-nav-link">Chain of Custody</a>
+            </div>
+            
+            <div class="docs-nav-section">
+                <h4>Reference</h4>
+                <a href="/api" class="docs-nav-link">API Reference</a>
+                <a href="/guides" class="docs-nav-link">User Guides</a>
+                <a href="/faq" class="docs-nav-link">FAQ</a>
+            </div>
+        </aside>
+        
+        <main class="docs-content">
+            <div id="quick-start" class="doc-card">
+                <h2>🚀 Quick Start</h2>
+                <p>Get up and running with BarberX Legal Tech in under 15 minutes:</p>
+                <ol>
+                    <li><strong>Create Account:</strong> <a href="/register">Sign up</a> for free (no credit card required)</li>
+                    <li><strong>Install AI Tools:</strong> Follow our <a href="/LOCAL-AI-GUIDE.html">Local AI Installation Guide</a></li>
+                    <li><strong>Upload Evidence:</strong> Drag & drop your first BWC video to the <a href="/analyzer">Analyzer</a></li>
+                    <li><strong>Review Results:</strong> Get transcripts, entities, and discrepancy reports in minutes</li>
+                </ol>
+            </div>
+            
+            <div id="installation" class="doc-card">
+                <h2>💻 Installation</h2>
+                <h3>System Requirements</h3>
+                <ul>
+                    <li>Windows 10/11, macOS 10.15+, or Linux</li>
+                    <li>Python 3.8 or higher</li>
+                    <li>8GB RAM minimum (16GB recommended)</li>
+                    <li>10GB free disk space</li>
+                    <li>GPU optional (CUDA-enabled for faster processing)</li>
+                </ul>
+                
+                <h3>Install Python Dependencies</h3>
+                <pre style="background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code>pip install flask flask-sqlalchemy flask-login
+pip install openai-whisper pyannote.audio spacy
+pip install torch torchvision torchaudio
+python -m spacy download en_core_web_sm</code></pre>
+                
+                <p><a href="/LOCAL-AI-GUIDE.html" class="btn btn-primary">View Complete Installation Guide →</a></p>
+            </div>
+            
+            <div id="first-analysis" class="doc-card">
+                <h2>📹 Your First Analysis</h2>
+                <p>Running your first BWC analysis is simple:</p>
+                
+                <h3>Step 1: Upload Video</h3>
+                <p>Navigate to the <a href="/analyzer">BWC Analyzer</a> and drag-and-drop your MP4/MOV file.</p>
+                
+                <h3>Step 2: Add Metadata</h3>
+                <p>Fill in case information (case number, acquired by, source).</p>
+                
+                <h3>Step 3: Start Processing</h3>
+                <p>Click "Analyze Video" and wait for AI processing to complete (5-15 minutes for typical BWC footage).</p>
+                
+                <h3>Step 4: Review Results</h3>
+                <p>View full transcript with speaker identification, extracted entities (names, dates, locations), and discrepancy reports.</p>
+            </div>
+            
+            <div id="bwc-analysis" class="doc-card">
+                <h2>🎥 BWC Analysis Features</h2>
+                <ul>
+                    <li><strong>Audio Transcription:</strong> Whisper AI converts speech to text with 99%+ accuracy</li>
+                    <li><strong>Speaker Diarization:</strong> Automatically identifies who spoke when</li>
+                    <li><strong>Entity Recognition:</strong> Extracts names, dates, locations, organizations</li>
+                    <li><strong>Chain of Custody:</strong> SHA-256 checksums for evidence integrity</li>
+                    <li><strong>Export Options:</strong> PDF, DOCX, JSON, TXT formats</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Need help? Our team is here to assist.
+                </p>
+                <a href="/contact" class="btn btn-primary">Contact Support</a>
+                <a href="/faq" class="btn btn-secondary" style="margin-left: 1rem;">View FAQ</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

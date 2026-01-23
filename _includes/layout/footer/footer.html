@@ -3,6 +3,10 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
+          {%- comment -%} Small pole for footer branding {%- endcomment -%}
+          <div class="footer-pole" aria-hidden="true">
+            {% include components/barber-pole-spinner.html position="static" size="small" %}
+          </div>
           <picture>
             <source
               srcset="{{ '/assets/img/logo/barbercam-footer-min.dark.svg' | relative_url }}"
@@ -24,6 +28,7 @@
         </div>
 
         <p class="footer-tagline">Precision. Patience. Virtue. Honor.</p>
+        <p class="footer-est">EST. 2024 | A CUT ABOVE</p>
         <p class="footer-description">
           Citizen accountability through record, dignity, and due process.
         </p>
@@ -56,10 +61,10 @@
     <div class="footer-bottom">
       <div class="footer-copyright">
         <p>
-          &copy; <span id="year">{{ site.time | date: '%Y' }}</span> Barber Cam.
+          &copy; <span id="year">{{ site.time | date: '%Y' }}</span> BarberX.
           All rights reserved.
         </p>
-        <p class="footer-legal">Built with precision in New York.</p>
+        <p class="footer-legal">Built with precision in NYC. Like a fresh fade — clean, rounded, crisp.</p>
       </div>
 
       <div class="footer-legal-links">

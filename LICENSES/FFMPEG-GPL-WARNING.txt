@@ -1,0 +1,53 @@
+⚠️ CRITICAL FFMPEG GPL LICENSE ISSUE
+
+FFmpeg Build Configuration Detected:
+--enable-gpl --enable-version3
+
+This means the installed FFmpeg is GPL-licensed, NOT LGPL.
+
+ISSUE:
+GPL (General Public License) has "copyleft" requirements:
+- Any software that links to GPL libraries must also be GPL
+- Proprietary software CANNOT use GPL libraries without releasing source code
+- This conflicts with BarberX's proprietary license
+
+SOLUTIONS:
+
+Option 1: USE LGPL BUILD (RECOMMENDED)
+- Download LGPL FFmpeg build (without --enable-gpl flag)
+- LGPL allows dynamic linking in proprietary software
+- No source code disclosure required
+- Download from: https://github.com/BtbN/FFmpeg-Builds/releases
+  Look for: ffmpeg-master-latest-win64-lgpl.zip
+
+Option 2: COMPLY WITH GPL
+- Release BarberX source code under GPL license
+- Allow anyone to use, modify, and redistribute
+- Not compatible with current proprietary licensing
+
+Option 3: REMOVE FFMPEG DEPENDENCY
+- Use alternative libraries (moviepy with LGPL backend, or native Python)
+- More limited functionality
+- No GPL conflicts
+
+CURRENT STATUS:
+⚠️ Using GPL FFmpeg with proprietary software = LICENSE VIOLATION
+⚠️ Must resolve before production deployment
+
+ACTION REQUIRED:
+1. Download LGPL FFmpeg build
+2. Replace current FFmpeg installation
+3. Verify with: ffmpeg -version (should NOT show --enable-gpl)
+4. Update THIRD-PARTY-LICENSES.md to reflect LGPL version
+
+LEGAL RISK:
+- GPL violation could result in copyright infringement claims
+- Must provide source code OR switch to LGPL build
+- Priority: HIGH (blocks production launch)
+
+---
+
+For reference, LGPL (Lesser General Public License) text:
+(This is what we NEED to use)
+
+See: https://www.gnu.org/licenses/lgpl-2.1.html

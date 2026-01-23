@@ -1,6 +1,10 @@
 <header id="siteHeader" class="site-header" role="banner">
   <div class="container header-inner">
     <a class="brand" href="{{ "/" | relative_url }}" aria-label="Barber Cam home">
+      {%- comment -%} Nav-sized pole inline with logo {%- endcomment -%}
+      <div class="brand-pole" aria-hidden="true">
+        {% include components/barber-pole-spinner.html position="static" size="nav" %}
+      </div>
       <picture>
         <source srcset="{{ '/assets/img/logo/barbercam-header-lockup.dark.svg' | relative_url }}" media="(prefers-color-scheme: dark)">
         <source srcset="{{ '/assets/img/logo/barbercam-header-lockup.light.svg' | relative_url }}" media="(prefers-color-scheme: light)">

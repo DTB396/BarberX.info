@@ -1,0 +1,43 @@
+---
+layout: null
+---
+[
+  {% for page in site.pages %}
+    {% unless page.exclude_from_search %}
+    {
+      "title": {{ page.title | jsonify }},
+      "url": {{ page.url | jsonify }},
+      "content": {{ page.content | strip_html | strip_newlines | truncate: 500 | jsonify }},
+      "type": "page"
+      {% if page.tags %}, "tags": {{ page.tags | jsonify }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {% endunless %}
+  {% endfor %}
+  {% for case in site.cases %}
+  ,{
+    "title": {{ case.title | jsonify }},
+    "url": {{ case.url | jsonify }},
+    "content": {{ case.content | strip_html | strip_newlines | truncate: 500 | jsonify }},
+    "type": "case"
+    {% if case.tags %}, "tags": {{ case.tags | jsonify }}{% endif %}
+  }
+  {% endfor %}
+  {% for essay in site.essays %}
+  ,{
+    "title": {{ essay.title | jsonify }},
+    "url": {{ essay.url | jsonify }},
+    "content": {{ essay.content | strip_html | strip_newlines | truncate: 500 | jsonify }},
+    "type": "essay"
+    {% if essay.tags %}, "tags": {{ essay.tags | jsonify }}{% endif %}
+  }
+  {% endfor %}
+  {% for opra in site.opra %}
+  ,{
+    "title": {{ opra.title | jsonify }},
+    "url": {{ opra.url | jsonify }},
+    "content": {{ opra.content | strip_html | strip_newlines | truncate: 500 | jsonify }},
+    "type": "opra"
+    {% if opra.tags %}, "tags": {{ opra.tags | jsonify }}{% endif %}
+  }
+  {% endfor %}
+]

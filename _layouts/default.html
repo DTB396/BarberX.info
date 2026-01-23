@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}"{% if page.dir %} dir="{{ page.dir }}"{% endif %}>
   <head>
+    {%- comment -%} Brand Tokens - Load First {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/brand-tokens.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/components/barber-branding.css' | relative_url }}" />
+    
+    {%- comment -%} UX Enhancements {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/components/ux-enhancements.css' | relative_url }}" />
+    
+    {%- comment -%} Enhanced Animation System {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/enhanced-animations.css' | relative_url }}" />
+    
+    {%- comment -%} SEO & Social Meta Tags {%- endcomment -%}
+    {% include components/seo-meta.html %}
+    
     {% include layout/head/head.html %}
     
     {%- comment -%} Page-specific stylesheet from front matter {%- endcomment -%}
@@ -56,16 +69,16 @@
 
   <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}{% if page.data_theme %} data-theme="{{ page.data_theme }}"{% endif %} data-layout="{{ page.layout | default: 'default' }}"{% if page.collection %} data-collection="{{ page.collection }}"{% endif %}>
     
+    {%- comment -%} Reading Progress Bar {%- endcomment -%}
+    {% unless page.hide_progress_bar %}
+    {% include components/reading-progress.html %}
+    {% endunless %}
+    
     {%- comment -%} Skip to main content link for accessibility {%- endcomment -%}
-    <a href="#main" class="skip-to-main" style="
-      position: absolute;
-      left: -9999px;
-      z-index: 999;
-      padding: 1rem;
-      background: var(--color-primary, #dc2626);
-      color: white;
-      text-decoration: none;
-    ">Skip to main content</a>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    {%- comment -%} Cookie Consent Banner {%- endcomment -%}
+    {% include components/cookie-consent.html %}
 
     {%- comment -%} Maintenance banner - sitewide {%- endcomment -%}
     {% if site.maintenance_mode or page.maintenance_banner %}
@@ -87,6 +100,11 @@
       {% include layout/footer/footer.html %}
     {% endunless %}
 
+    {%- comment -%} Back to Top Button {%- endcomment -%}
+    {% unless page.hide_back_to_top %}
+    {% include components/back-to-top.html %}
+    {% endunless %}
+
     {%- comment -%} Barber pole spinner - decorative 1920s element (hidden on homepage which has its own in hero) {%- endcomment -%}
     {% unless page.hide_barber_pole or page.url == '/' %}
       {% include components/barber-pole-spinner.html position=page.barber_pole_position size=page.barber_pole_size show_on=page.barber_pole_show_on %}
@@ -105,9 +123,16 @@
     <script src="{{ '/assets/js/docket-navigator.js' | relative_url }}" defer></script>
     {% endif %}
     
+    {%- comment -%} UX Enhancements JavaScript {%- endcomment -%}
+    <script src="{{ '/assets/js/ux-enhancements.js' | relative_url }}" defer></script>
+    
+    {%- comment -%} Enhanced Animation & Theme System {%- endcomment -%}
+    <script src="{{ '/assets/js/enhanced-animations.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/theme-toggle-upgraded.js' | relative_url }}" defer></script>
+    
     {%- comment -%} Main site JavaScript {%- endcomment -%}
     {% unless page.no_main_js %}
-    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/main-upgraded.js' | relative_url }}" defer></script>
     {% endunless %}
     
     {%- comment -%} Page-specific inline scripts {%- endcomment -%}
@@ -117,10 +142,8 @@
     </script>
     {% endif %}
 
-    {%- comment -%} Analytics or tracking (if configured) {%- endcomment -%}
-    {% if site.analytics_id and page.track_analytics != false %}
-    <!-- Analytics code would go here -->
-    {% endif %}
+    {%- comment -%} Analytics & Performance Tracking {%- endcomment -%}
+    {% include components/analytics.html %}
 
   </body>
 </html>

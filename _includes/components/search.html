@@ -1,0 +1,276 @@
+{%- comment -%}
+SEARCH COMPONENT
+Client-side search with instant results
+Requires search index (see search.json template)
+{%- endcomment -%}
+
+<div class="search-container" style="position: relative; width: 100%; max-width: {{ include.max_width | default: '600px' }}; margin: {{ include.margin | default: '0 auto' }};">
+  
+  <div style="position: relative;">
+    <input 
+      type="search"
+      id="search-input"
+      class="search-input"
+      placeholder="{{ include.placeholder | default: 'Search articles, cases, and more...' }}"
+      aria-label="Search site content"
+      autocomplete="off"
+      style="
+        width: 100%;
+        padding: 1rem 1rem 1rem 3.5rem;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-lg, 12px);
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s;
+      "
+      onfocus="this.style.borderColor='var(--color-primary, #dc2626)'; this.style.background='rgba(0, 0, 0, 0.5)'; this.style.boxShadow='0 4px 20px rgba(220, 38, 38, 0.3)'"
+      onblur="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.background='rgba(0, 0, 0, 0.3)'; this.style.boxShadow='none'"
+    >
+    
+    <!-- Search icon -->
+    <svg 
+      class="search-icon"
+      width="20" 
+      height="20" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+      style="
+        position: absolute;
+        left: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--color-text-muted, rgba(255, 255, 255, 0.6));
+        pointer-events: none;
+      "
+    >
+      <circle cx="11" cy="11" r="8"/>
+      <path d="m21 21-4.35-4.35"/>
+    </svg>
+
+    <!-- Clear button -->
+    <button
+      id="search-clear"
+      class="search-clear"
+      aria-label="Clear search"
+      style="
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--color-text-muted, rgba(255, 255, 255, 0.6));
+        cursor: pointer;
+        padding: 0.5rem;
+        display: none;
+        transition: color 0.2s;
+      "
+      onmouseover="this.style.color='white'"
+      onmouseout="this.style.color='var(--color-text-muted, rgba(255, 255, 255, 0.6))'"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="m15 9-6 6M9 9l6 6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Results dropdown -->
+  <div 
+    id="search-results"
+    class="search-results"
+    role="listbox"
+    style="
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      max-height: 400px;
+      overflow-y: auto;
+      background: rgba(17, 24, 39, 0.98);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--color-primary, #dc2626);
+      border-radius: var(--radius-lg, 12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 1000;
+    "
+  >
+    <div id="search-results-content" style="padding: 0.5rem;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const searchInput = document.getElementById('search-input');
+  const searchClear = document.getElementById('search-clear');
+  const searchResults = document.getElementById('search-results');
+  const searchResultsContent = document.getElementById('search-results-content');
+  
+  let searchIndex = [];
+  let debounceTimer;
+
+  // Load search index
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(response => response.json())
+    .then(data => {
+      searchIndex = data;
+    })
+    .catch(err => console.error('Failed to load search index:', err));
+
+  function performSearch(query) {
+    if (!query || query.length < 2) {
+      hideResults();
+      return;
+    }
+
+    const lowerQuery = query.toLowerCase();
+    const results = searchIndex.filter(item => {
+      return (
+        item.title.toLowerCase().includes(lowerQuery) ||
+        item.content.toLowerCase().includes(lowerQuery) ||
+        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(lowerQuery)))
+      );
+    }).slice(0, 10); // Limit to 10 results
+
+    displayResults(results, query);
+  }
+
+  function displayResults(results, query) {
+    if (results.length === 0) {
+      searchResultsContent.innerHTML = `
+        <div style="padding: 1.5rem; text-align: center; color: var(--color-text-muted);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin: 0 auto 1rem; opacity: 0.5;">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <p>No results found for "<strong>${escapeHtml(query)}</strong>"</p>
+        </div>
+      `;
+    } else {
+      searchResultsContent.innerHTML = results.map(result => `
+        <a 
+          href="${result.url}"
+          class="search-result-item"
+          role="option"
+          style="
+            display: block;
+            padding: 1rem;
+            margin: 0.25rem 0;
+            border-radius: var(--radius-md, 8px);
+            text-decoration: none;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+          "
+          onmouseover="this.style.background='rgba(220, 38, 38, 0.15)'; this.style.borderColor='rgba(220, 38, 38, 0.3)'"
+          onmouseout="this.style.background='rgba(255, 255, 255, 0.03)'; this.style.borderColor='rgba(255, 255, 255, 0.05)'"
+        >
+          <div style="font-weight: 600; color: white; margin-bottom: 0.25rem;">
+            ${highlightMatch(result.title, query)}
+          </div>
+          <div style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">
+            ${highlightMatch(truncate(result.content, 120), query)}
+          </div>
+          ${result.type ? `<div style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em;">${result.type}</div>` : ''}
+        </a>
+      `).join('');
+    }
+
+    searchResults.style.display = 'block';
+  }
+
+  function hideResults() {
+    searchResults.style.display = 'none';
+  }
+
+  function highlightMatch(text, query) {
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return escapeHtml(text).replace(regex, '<mark style="background: var(--color-primary); color: white; padding: 0 0.2rem; border-radius: 2px;">$1</mark>');
+  }
+
+  function truncate(str, length) {
+    return str.length > length ? str.substring(0, length) + '...' : str;
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    const value = this.value.trim();
+    
+    searchClear.style.display = value ? 'block' : 'none';
+    
+    debounceTimer = setTimeout(() => {
+      performSearch(value);
+    }, 300);
+  });
+
+  searchClear.addEventListener('click', function() {
+    searchInput.value = '';
+    searchClear.style.display = 'none';
+    hideResults();
+    searchInput.focus();
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-container')) {
+      hideResults();
+    }
+  });
+
+  // Keyboard navigation
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      hideResults();
+      this.blur();
+    }
+  });
+})();
+</script>
+
+<style>
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .search-results::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .search-results::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  .search-results::-webkit-scrollbar-thumb {
+    background: var(--color-primary, #dc2626);
+    border-radius: 4px;
+  }
+
+  .search-results::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent, #2563eb);
+  }
+
+  @media (max-width: 768px) {
+    .search-results {
+      max-height: 300px;
+    }
+  }
+</style>

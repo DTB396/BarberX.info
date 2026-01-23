@@ -1,0 +1,691 @@
+# BarberX Legal Tech - Commercial Software License
+
+**Effective Date:** January 22, 2026  
+**Version:** 1.0
+
+---
+
+## PROPRIETARY SOFTWARE LICENSE AGREEMENT
+
+**IMPORTANT – READ CAREFULLY:**
+
+This Commercial Software License Agreement ("Agreement") is a legal agreement between you (either an individual or a legal entity) ("Licensee") and **Faith Frontier Ecclesiastical Trust** (doing business as "BarberX Legal Technologies") ("Licensor") for the BarberX Legal Tech platform software, including all associated code, algorithms, processes, documentation, and updates (collectively, the "Software").
+
+**BY INSTALLING, COPYING, OR USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE, DO NOT INSTALL OR USE THE SOFTWARE.**
+
+---
+
+## 1. GRANT OF LICENSE
+
+### 1.1 License Scope
+
+Subject to your compliance with this Agreement and payment of applicable fees, Licensor grants you a **limited, non-exclusive, non-transferable, revocable** license to:
+
+**(a) Installation:** Install the Software on computer(s) owned or controlled by you  
+**(b) Use:** Use the Software solely for your internal business purposes  
+**(c) Updates:** Receive and install Software updates and patches  
+
+**License Type Based on Subscription Tier:**
+
+| Tier | Installations | Commercial Use | API Access | Source Code |
+|------|---------------|----------------|------------|-------------|
+| **Free** | 1 device | Personal use only | No | No |
+| **Professional** | 3 devices | ✅ Yes | ✅ Yes | No |
+| **Enterprise** | Unlimited | ✅ Yes | ✅ Yes | Limited access* |
+
+*Enterprise clients may receive limited source code access under separate NDA for integration purposes only.
+
+### 1.2 What This License Does NOT Include
+
+You do **NOT** receive rights to:
+- ❌ **Source code** (except Enterprise tier under NDA)
+- ❌ **Modify or create derivatives** of the Software
+- ❌ **Reverse engineer, decompile, or disassemble** the Software
+- ❌ **Redistribute, sublicense, rent, lease, or lend** the Software
+- ❌ **Remove proprietary notices** (copyright, trademarks, disclaimers)
+- ❌ **Use in competing products** or services
+- ❌ **Transfer your license** to another party without written consent
+
+---
+
+## 2. INTELLECTUAL PROPERTY OWNERSHIP
+
+### 2.1 Licensor's Proprietary Rights
+
+The Software and all intellectual property rights therein (including but not limited to copyrights, patents, trade secrets, trademarks, and know-how) are and shall remain the **exclusive property** of Licensor.
+
+**Protected Intellectual Property includes:**
+
+1. **Source Code and Algorithms**
+   - AI model implementations and optimizations
+   - Transcription and speaker diarization pipelines
+   - Entity extraction patterns and methods
+   - Discrepancy detection algorithms
+   - Timeline synchronization logic
+   - Chain of custody verification systems
+
+2. **Proprietary Methods and Processes**
+   - BWC video processing workflows
+   - Audio enhancement techniques
+   - Semantic search implementations
+   - Batch processing architectures
+   - API design and integration patterns
+
+3. **Data Structures and Schemas**
+   - Database designs
+   - File format specifications
+   - Metadata structures
+   - Export templates
+
+4. **User Interface and Experience**
+   - UI/UX designs and layouts
+   - Navigation patterns
+   - Workflow interactions
+   - Visual design elements
+
+5. **Documentation and Training Materials**
+   - User guides and tutorials
+   - API documentation
+   - Technical specifications
+   - Training videos and content
+
+6. **Branding and Trademarks**
+   - "BarberX" name and logo
+   - "BarberX Legal Tech" mark
+   - "Barber Cam" trademark
+   - All related trade dress
+
+### 2.2 No Implied Rights
+
+**ALL RIGHTS NOT EXPRESSLY GRANTED ARE RESERVED BY LICENSOR.**
+
+No license or rights are granted by implication, estoppel, or otherwise, except as explicitly stated in this Agreement.
+
+### 2.3 Licensee's Content
+
+You retain all rights to your evidence files, case materials, and documents. Licensor claims **no ownership or rights** to your content. The Software processes your files **locally on your machine** - we never receive, access, or store your evidence files.
+
+### 2.4 Feedback and Improvements
+
+If you provide suggestions, feature requests, bug reports, or other feedback ("Feedback"), you grant Licensor a **perpetual, irrevocable, royalty-free, worldwide, transferable, sublicensable** license to:
+- Use, modify, and incorporate Feedback into the Software
+- Create derivative works based on Feedback
+- Commercialize and distribute improvements derived from Feedback
+- Patent or copyright improvements incorporating Feedback
+
+**No compensation or attribution is owed for Feedback.**
+
+---
+
+## 3. RESTRICTIONS AND PROHIBITIONS
+
+### 3.1 Technical Restrictions
+
+You shall NOT:
+
+1. **Reverse Engineering**
+   - Decompile, disassemble, or reverse engineer the Software
+   - Attempt to derive source code from object code
+   - Use debugging tools to analyze Software internals
+   - Extract algorithms or proprietary methods
+
+2. **Modification**
+   - Modify, adapt, translate, or create derivatives
+   - Alter, remove, or obscure proprietary notices
+   - Patch, crack, or bypass license validation
+   - Integrate with competing products
+
+3. **Redistribution**
+   - Distribute, sublicense, rent, lease, or lend the Software
+   - Make the Software available on networks accessible to third parties
+   - Provide Software-as-a-Service (SaaS) using the Software
+   - Bundle or resell the Software with other products
+
+4. **Competitive Use**
+   - Use the Software to develop competing products
+   - Benchmark against competing products (without written consent)
+   - Use insights from the Software in competing offerings
+   - Train machine learning models on Software outputs for competing services
+
+### 3.2 Usage Restrictions
+
+You shall NOT:
+
+1. **Exceed License Terms**
+   - Install on more devices than permitted
+   - Share credentials or API keys with unauthorized users
+   - Circumvent usage limits or restrictions
+
+2. **Illegal or Harmful Use**
+   - Use for illegal purposes or evidence tampering
+   - Use to violate third-party rights
+   - Use to create false or fabricated evidence
+   - Use in ways that harm Licensor's reputation
+
+3. **AI and ML Training**
+   - Train competing AI models using Software outputs
+   - Use Software-generated data to build similar tools
+   - Extract training data from Software documentation
+
+### 3.3 Enforcement
+
+Violation of restrictions may result in:
+- Immediate license termination without refund
+- Legal action for breach of contract
+- Claims for injunctive relief
+- Recovery of damages and attorneys' fees
+- Criminal prosecution (where applicable)
+
+---
+
+## 4. SUBSCRIPTION FEES AND PAYMENT
+
+### 4.1 Pricing Tiers
+
+| Tier | Monthly Fee | Annual Fee | Analyses/Month | Max File Size |
+|------|-------------|------------|----------------|---------------|
+| Free | $0 | $0 | 5 | 500MB |
+| Professional | $99 | $990 (save $198) | 100 | 2GB |
+| Enterprise | Custom | Custom | Unlimited | 5GB+ |
+
+### 4.2 Payment Terms
+
+- **Billing Cycle:** Monthly or annual (your choice)
+- **Payment Method:** Credit card via Stripe
+- **Auto-Renewal:** Subscriptions renew automatically unless canceled
+- **Currency:** USD (United States Dollars)
+
+### 4.3 Late Payment
+
+- **Grace Period:** 5 days after payment failure
+- **Service Suspension:** Account suspended after grace period
+- **Reactivation:** Pay past-due amount + $25 reactivation fee
+- **Termination:** Account deleted after 30 days non-payment
+
+### 4.4 Taxes
+
+Fees exclude applicable taxes (sales tax, VAT, GST). You are responsible for all taxes except those based on Licensor's net income.
+
+### 4.5 No Refunds
+
+All fees are **non-refundable**, including:
+- Partial months of service
+- Unused analyses or storage
+- Downgrades mid-billing cycle
+- Termination for cause
+
+**Exception:** 14-day money-back guarantee for first-time Professional/Enterprise subscribers (email support to request).
+
+---
+
+## 5. UPDATES AND SUPPORT
+
+### 5.1 Software Updates
+
+Licensor may provide updates including:
+- **Bug fixes and patches**
+- **Security updates** (critical)
+- **Feature enhancements**
+- **AI model improvements**
+
+**Automatic Updates:** May be installed automatically (configurable in settings).
+
+**No Obligation:** Licensor has no obligation to provide updates but generally does so to improve security and functionality.
+
+### 5.2 Support Levels
+
+| Tier | Support Channels | Response Time | Coverage |
+|------|-----------------|---------------|----------|
+| Free | Email, docs | Best effort | Business hours |
+| Professional | Email, live chat | < 24 hours | 9am-5pm EST M-F |
+| Enterprise | Phone, email, chat, dedicated | < 4 hours | 24/7 priority |
+
+### 5.3 Support Exclusions
+
+Support does **NOT** include:
+- Legal advice or case strategy
+- Custom development or modifications
+- Training on legal procedures
+- Troubleshooting third-party software
+- Issues caused by unauthorized modifications
+
+---
+
+## 6. DATA AND PRIVACY
+
+### 6.1 Local Processing
+
+**Critical Privacy Feature:** All AI processing occurs **100% locally on your computer**. Your evidence files (videos, documents, case materials) **NEVER** leave your machine. Licensor has **zero access** to your case files.
+
+### 6.2 Account Data Collection
+
+Licensor collects minimal account data:
+- Email, name, organization (registration)
+- Analysis metadata (filename, case number, timestamps - **NOT** file contents)
+- Usage stats (analysis count, storage used)
+- Payment information (via Stripe)
+
+See **Privacy Policy** for complete details.
+
+### 6.3 No Data Mining
+
+Licensor does **NOT**:
+- Access your evidence files
+- Read your transcripts or analysis results
+- Sell your data to third parties
+- Use your case information to train AI models
+- Share your data (except as required by law)
+
+### 6.4 Data Security
+
+Licensor implements industry-standard security:
+- TLS encryption in transit
+- AES-256 encryption at rest
+- Password hashing (bcrypt)
+- Regular security audits
+- Breach notification within 72 hours
+
+### 6.5 Compliance
+
+Licensor complies with:
+- **GDPR** (European Union)
+- **CCPA** (California)
+- **PIPEDA** (Canada)
+- Other applicable data protection laws
+
+---
+
+## 7. WARRANTIES AND DISCLAIMERS
+
+### 7.1 Limited Warranty (90 Days)
+
+For **90 days** from your first payment, Licensor warrants that the Software will:
+- Substantially conform to published documentation
+- Be free from material defects
+- Function without critical bugs
+
+**Remedy:** If Software fails to meet warranty, Licensor will (at its option):
+1. Repair or replace the Software, or
+2. Refund fees paid in the 90-day period
+
+**This is your EXCLUSIVE remedy for warranty breach.**
+
+### 7.2 AI Accuracy Disclaimer
+
+**IMPORTANT:** AI-generated outputs (transcripts, entities, discrepancies) are **NOT guaranteed to be 100% accurate**.
+
+- Transcription accuracy: Typically 95-99% (depends on audio quality)
+- Speaker identification: May have errors
+- Entity extraction: May miss or misidentify items
+- Discrepancy detection: May produce false positives/negatives
+
+**YOU MUST VERIFY ALL AI OUTPUTS BEFORE USING IN LEGAL PROCEEDINGS.**
+
+Licensor is **NOT liable** for inaccuracies, errors, or omissions in AI-generated content.
+
+### 7.3 Legal Services Disclaimer
+
+The Software provides **tools, NOT legal advice**.
+
+- We are **NOT a law firm**
+- We do **NOT provide legal counsel**
+- Consult your attorney regarding:
+  - Evidence admissibility
+  - Legal strategy and case preparation
+  - Court rules and procedures
+  - Applicable laws and regulations
+
+**We are NOT responsible for case outcomes or legal consequences.**
+
+### 7.4 General Disclaimer
+
+**EXCEPT AS EXPRESSLY STATED IN SECTION 7.1, THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:**
+
+- ❌ **Merchantability**
+- ❌ **Fitness for a particular purpose**
+- ❌ **Non-infringement of third-party rights**
+- ❌ **Accuracy, reliability, or completeness**
+- ❌ **Uninterrupted or error-free operation**
+- ❌ **Freedom from viruses or harmful code**
+- ❌ **Results or outcomes from Software use**
+
+**SOME JURISDICTIONS DO NOT ALLOW EXCLUSION OF IMPLIED WARRANTIES, SO SOME EXCLUSIONS MAY NOT APPLY TO YOU.**
+
+---
+
+## 8. LIMITATION OF LIABILITY
+
+### 8.1 Exclusion of Consequential Damages
+
+**TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR SHALL NOT BE LIABLE FOR:**
+
+- Lost profits, revenue, or business opportunities
+- Loss of data or information (MAINTAIN BACKUPS!)
+- Loss of goodwill or reputation
+- Cost of substitute products or services
+- Business interruption or downtime
+- Adverse legal outcomes or case losses
+- Consequential, incidental, indirect, special, exemplary, or punitive damages
+
+**EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.**
+
+### 8.2 Cap on Direct Damages
+
+Licensor's **maximum total liability** for all claims arising from this Agreement is limited to the **greater of:**
+
+**(a)** $100 USD, or  
+**(b)** Fees actually paid by you in the 12 months immediately preceding the claim
+
+This cap applies **per incident** and in the **aggregate**.
+
+### 8.3 Exceptions to Limitations
+
+Limitations do **NOT** apply to:
+
+1. **Gross negligence or willful misconduct** by Licensor
+2. **Fraud or fraudulent misrepresentation**
+3. **Death or personal injury** caused by Licensor
+4. **Violations that cannot be limited by law** (consumer protection statutes, etc.)
+5. **Your indemnification obligations** (Section 9)
+
+### 8.4 Essential Remedy
+
+**You acknowledge that:**
+- These limitations reflect the allocation of risk between parties
+- Licensor's pricing reflects these limitations
+- You would not receive the Software at this price without these limitations
+- These limitations are **essential** to this Agreement
+
+---
+
+## 9. INDEMNIFICATION
+
+### 9.1 Your Indemnification Obligations
+
+You agree to **indemnify, defend, and hold harmless** Licensor, its affiliates, officers, directors, employees, agents, and partners from any and all:
+
+- Claims, lawsuits, demands, or legal proceedings
+- Damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees)
+
+**Arising from or related to:**
+
+1. **Your use or misuse** of the Software
+2. **Your evidence files** or case materials (content, ownership, rights)
+3. **Your violation** of this Agreement or applicable laws
+4. **Your negligence** or willful misconduct
+5. **Third-party claims** related to your use of the Software
+6. **False or misleading information** you provide
+
+### 9.2 Defense and Settlement
+
+Licensor may:
+- Assume exclusive defense and control of any indemnified claim
+- Require you to cooperate in the defense
+- Settle claims at its discretion (you may not settle without our consent)
+
+You shall pay all defense costs and settlement amounts.
+
+---
+
+## 10. TERM AND TERMINATION
+
+### 10.1 Term
+
+This Agreement begins when you first install or use the Software and continues until terminated.
+
+### 10.2 Termination by You
+
+You may terminate by:
+- Canceling your subscription from account dashboard
+- Emailing support@barberx.info
+- Uninstalling the Software and ceasing use
+
+**Effect:** Access ends at end of current billing period (no refund for partial months).
+
+### 10.3 Termination by Licensor
+
+Licensor may terminate **immediately** for:
+
+1. **Breach of Agreement** (any material violation)
+2. **Non-payment** (after 30-day grace period)
+3. **Illegal use** or evidence tampering
+4. **Abuse or fraud** (false chargebacks, credential sharing, etc.)
+5. **Reverse engineering** or unauthorized modifications
+6. **Competitive use** or redistribution
+7. **Harm to Licensor** (reputation damage, security threats)
+
+**Effect:** Immediate loss of access, no refund.
+
+### 10.4 Effect of Termination
+
+Upon termination:
+
+1. **License Revoked:** All rights to use Software immediately cease
+2. **Uninstall Required:** You must uninstall and delete all copies
+3. **Account Deleted:** Cloud-stored data (if any) deleted within 30 days
+4. **Local Files Safe:** Your local evidence files remain on your computer (we never had access)
+5. **No Refund:** Fees paid are non-refundable
+6. **Survival:** Sections 2 (IP Ownership), 7 (Disclaimers), 8 (Liability), 9 (Indemnification), 11 (Dispute Resolution), and 12 (General) survive termination
+
+### 10.5 Suspension
+
+Licensor may **suspend** (not terminate) your account pending:
+- Investigation of suspected violations
+- Resolution of payment disputes
+- Compliance with court orders
+- Security incident response
+
+You will be notified unless prohibited by law.
+
+---
+
+## 11. DISPUTE RESOLUTION
+
+### 11.1 Governing Law
+
+This Agreement is governed by the laws of the **State of New Jersey, USA**, excluding:
+- Conflict of law principles
+- United Nations Convention on Contracts for the International Sale of Goods (CISG)
+
+### 11.2 Jurisdiction and Venue
+
+**Exclusive Jurisdiction:** Any legal action or proceeding must be brought in state or federal courts located in **New Jersey**.
+
+**Consent to Jurisdiction:** You irrevocably consent to personal jurisdiction and venue in New Jersey courts.
+
+### 11.3 Arbitration (Optional for Small Claims)
+
+For claims under **$10,000**, either party may elect **binding arbitration** instead of court litigation.
+
+**Arbitration Rules:**
+- Administered by: **American Arbitration Association (AAA)**
+- Rules: AAA Commercial Arbitration Rules
+- Location: New Jersey or virtual/telephonic (your choice)
+- Arbitrator: Single neutral arbitrator
+- Fees: Split equally (unless arbitrator awards costs to prevailing party)
+
+**Arbitration Decision:** Final and binding. Enforceable in any court of competent jurisdiction.
+
+### 11.4 Class Action Waiver
+
+**YOU AGREE TO RESOLVE DISPUTES INDIVIDUALLY, NOT AS PART OF ANY:**
+- Class action
+- Collective action
+- Representative proceeding
+- Mass arbitration
+
+**Opt-Out:** You may opt out of this waiver by emailing legal@barberx.info within **30 days** of first use.
+
+### 11.5 Injunctive Relief
+
+Notwithstanding arbitration, Licensor may seek **injunctive or equitable relief** in any court for:
+- Intellectual property violations
+- Breach of confidentiality
+- Unauthorized use or redistribution
+- Irreparable harm
+
+### 11.6 Attorneys' Fees
+
+In any dispute, the **prevailing party** is entitled to recover:
+- Reasonable attorneys' fees
+- Court costs and expenses
+- Expert witness fees
+
+---
+
+## 12. GENERAL PROVISIONS
+
+### 12.1 Entire Agreement
+
+This Agreement, together with:
+- **Terms of Service**
+- **Privacy Policy**
+- **Any order forms or invoices**
+
+...constitutes the **entire agreement** between parties and supersedes all prior understandings, agreements, or representations (oral or written).
+
+### 12.2 Amendments
+
+Licensor may amend this Agreement at any time by:
+- Posting updated version on website
+- Emailing notice to your registered address
+- Providing in-app notification
+
+**Material changes** effective 30 days after notice. **Non-material changes** effective immediately.
+
+**Continued use** after changes constitutes acceptance. If you disagree, terminate within 30 days for refund of current month.
+
+### 12.3 Assignment
+
+**You may NOT** assign or transfer this Agreement or your license without Licensor's prior written consent.
+
+**Licensor may** assign to:
+- Affiliates or subsidiaries
+- Acquirer in a merger, acquisition, or sale of assets
+- Successor entity in a business transfer
+
+### 12.4 Severability
+
+If any provision is found **invalid, illegal, or unenforceable**, the rest of the Agreement remains in full force and effect.
+
+The invalid provision will be **reformed** to the minimum extent necessary to make it enforceable while preserving intent.
+
+### 12.5 No Waiver
+
+Licensor's failure to enforce any right does not waive that right. Waiver of one violation does not waive future violations.
+
+**All waivers** must be **in writing and signed** by an authorized Licensor representative.
+
+### 12.6 Force Majeure
+
+Licensor is **not liable** for delays or failures caused by events beyond its reasonable control, including:
+- Natural disasters (earthquakes, floods, hurricanes)
+- War, terrorism, civil unrest
+- Government actions or regulations
+- Internet or telecommunications outages
+- Strikes or labor disputes
+- Pandemics or public health emergencies
+- Cyber attacks or security incidents
+
+### 12.7 Export Compliance
+
+You agree to comply with all applicable export control laws, including:
+- U.S. Export Administration Regulations (EAR)
+- Office of Foreign Assets Control (OFAC) sanctions
+
+**You may NOT** export the Software to:
+- Embargoed countries (Cuba, Iran, North Korea, Syria, etc.)
+- Denied parties or restricted end-users
+- For prohibited end-uses (weapons, nuclear, etc.)
+
+### 12.8 U.S. Government Rights
+
+If you are a **U.S. government entity**, the Software is:
+- "Commercial Computer Software" per FAR 12.212 and DFARS 227.7202
+- Provided with **Restricted Rights**
+- Subject to this Agreement (not government acquisition regulations)
+
+### 12.9 Third-Party Components
+
+The Software may include **open-source components** (Whisper, pyannote, spaCy, etc.) governed by their own licenses:
+- **OpenAI Whisper:** MIT License
+- **pyannote.audio:** MIT License
+- **spaCy:** MIT License
+- **PyTorch:** BSD License
+- **Flask:** BSD License
+
+See **THIRD-PARTY-LICENSES.md** for complete list and license texts.
+
+**Licensor's proprietary code** remains subject to this Agreement.
+
+### 12.10 Notices
+
+**To Licensor:**  
+Faith Frontier Ecclesiastical Trust  
+Email: legal@barberx.info  
+Address: [Business address to be updated]
+
+**To You:**  
+Email address in your account
+
+Notices effective upon email delivery or 3 days after mailing.
+
+### 12.11 Relationship of Parties
+
+You and Licensor are **independent contractors**. This Agreement does NOT create:
+- Partnership
+- Joint venture
+- Agency
+- Employment relationship
+- Franchise
+
+Neither party may bind the other or incur obligations on the other's behalf.
+
+### 12.12 Survival
+
+The following sections **survive termination**:
+- Section 2 (IP Ownership)
+- Section 6 (Data/Privacy - where applicable)
+- Section 7 (Disclaimers)
+- Section 8 (Limitation of Liability)
+- Section 9 (Indemnification)
+- Section 11 (Dispute Resolution)
+- Section 12 (General Provisions)
+
+---
+
+## 13. CONTACT INFORMATION
+
+**Faith Frontier Ecclesiastical Trust**  
+Doing Business As: **BarberX Legal Technologies**
+
+**General Inquiries:** info@barberx.info  
+**Support:** support@barberx.info  
+**Legal/Licensing:** legal@barberx.info  
+**Privacy:** privacy@barberx.info  
+**Sales:** sales@barberx.info
+
+**Mailing Address:**  
+[To be updated with registered business address]
+
+---
+
+## ACKNOWLEDGMENT
+
+**BY INSTALLING, COPYING, OR USING THE SOFTWARE, YOU ACKNOWLEDGE THAT:**
+
+1. You have **read and understood** this Agreement
+2. You **agree to be bound** by all terms and conditions
+3. You have **authority** to enter into this Agreement
+4. You understand the **limitations and disclaimers**
+5. You accept the **intellectual property restrictions**
+
+**IF YOU DO NOT AGREE, DO NOT USE THE SOFTWARE.**
+
+---
+
+**Version 1.0**  
+**Effective Date:** January 22, 2026  
+**Last Updated:** January 22, 2026
+
+© 2026 Faith Frontier Ecclesiastical Trust. All Rights Reserved.

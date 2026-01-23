@@ -139,6 +139,11 @@ Supports:
     {{ content }}
   </section>
 
+  {%- comment -%} SOCIAL SHARE BUTTONS {%- endcomment -%}
+  {% unless page.hide_social_share %}
+  {% include components/social-share.html %}
+  {% endunless %}
+
   {%- comment -%} CALL TO ACTION - Optional {%- endcomment -%}
   {% if page.cta_text and page.cta_link %}
   <div class="page-cta u-text-center u-py-lg" style="
@@ -243,6 +248,14 @@ Supports:
     </div>
     {% endif %}
   </footer>
+
+  {%- comment -%} NEWSLETTER SIGNUP {%- endcomment -%}
+  {% if page.show_newsletter or site.page_newsletter_enabled %}
+  {% include components/newsletter-signup.html %}
+  {% endif %}
+
+  {%- comment -%} COMMENTS {%- endcomment -%}
+  {% include components/comments.html %}
 
 </article>
 

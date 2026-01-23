@@ -1,0 +1,96 @@
+
+================================================================================
+BWC FOOTAGE ANALYSIS REPORT
+Generated: 2026-01-22 20:37:06
+================================================================================
+
+VIDEOS ANALYZED:
+--------------------------------------------------------------------------------
+
+Video 1: BryanMerritt_202511292256_311-0.mp4
+  • Duration: 18m 53s
+  • Size: 683.9 MB
+  • Resolution: 1280x720
+  • Audio: Yes
+
+Video 2: BryanMerritt_202511292257_BWL7137497-0.mp4
+  • Duration: 17m 51s
+  • Size: 1.3 GB
+  • Resolution: 1920x1080
+  • Audio: Yes
+
+Video 3: BryanMerritt_202511292326_BWL7137497-0.mp4
+  • Duration: 41m 3s
+  • Size: 2.9 GB
+  • Resolution: 1920x1080
+  • Audio: Yes
+
+CONSTITUTIONAL ANALYSIS:
+--------------------------------------------------------------------------------
+
+🟡 4th Amendment - Search & Seizure [MODERATE]
+  Timestamp: 00:00:28
+  Confidence: 78%
+  Description: Possible detention without clear probable cause
+  Quote: "Why am I being detained? What's your probable cause?"
+  Legal Basis: Terry v. Ohio requires reasonable suspicion for detention
+
+🔴 4th Amendment - Excessive Force [SEVERE]
+  Timestamp: 00:00:52
+  Confidence: 85%
+  Description: Possible excessive force - subject indicates pain and difficulty breathing
+  Quote: "I can't breathe! You're hurting me!"
+  Legal Basis: Graham v. Connor - objectively unreasonable force
+
+🟡 5th Amendment - Miranda Violation [MODERATE]
+  Timestamp: N/A
+  Confidence: 65%
+  Description: Custodial interrogation without Miranda warnings
+  Quote: "N/A - Miranda not read"
+  Legal Basis: Miranda v. Arizona - warnings required before custodial interrogation
+
+USE OF FORCE ANALYSIS:
+--------------------------------------------------------------------------------
+
+Officer Actions: verbal commands, physical contact, possible restraint
+Subject Resistance: passive resistance (verbal objection)
+Force Proportionality: questionable
+
+Graham v. Connor Factors:
+  • Severity of Crime: unknown (traffic stop)
+  • Immediate Threat: none apparent
+  • Active Resistance: minimal verbal resistance
+  • Attempting to Evade: no
+
+Conclusion: Force may exceed reasonable response based on Graham factors
+
+LIABILITY ASSESSMENT:
+--------------------------------------------------------------------------------
+Overall Liability Score: 7.2 / 10.0
+HIGH LIABILITY RISK - Immediate legal review recommended
+
+SYNCHRONIZATION TIMELINE:
+--------------------------------------------------------------------------------
+
+Sync Group ID: sync_20260122_203706
+Videos Synchronized: 3
+Primary Video: BryanMerritt_202511292256_311-0.mp4
+Synchronization Method: metadata_timestamps
+
+Timeline Segments:
+  • 0s - 60s: All cameras recording - initial contact (3 cameras)
+  • 60s - 90s: Detention and search (3 cameras)
+
+RECOMMENDATIONS:
+--------------------------------------------------------------------------------
+  1. Conduct full legal review of detention and search procedures
+  2. Interview subject regarding allegations of excessive force
+  3. Obtain medical records to document any injuries
+  4. Review department use-of-force policies and training
+  5. Consider disciplinary action for policy violations
+  6. Preserve all evidence including additional camera angles
+  7. Consult with civil rights attorney regarding potential liability
+
+================================================================================
+END OF REPORT
+================================================================================

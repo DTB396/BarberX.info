@@ -1,0 +1,85 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BARBER POLE BRANDING — Header & Footer Integration
+   Clean NYC fade aesthetic with smooth transitions
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HEADER BRANDING
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 0.75rem);
+  transition: var(--transition-base);
+}
+
+.brand-pole {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  transition: var(--transition-base);
+}
+
+.brand:hover .brand-pole {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FOOTER BRANDING
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 1rem);
+  margin-bottom: var(--space-4, 1rem);
+}
+
+.footer-pole {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.footer-est {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold, 600);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--barber-red, #c41e3a);
+  margin: var(--space-2, 0.5rem) 0;
+  opacity: 0.9;
+}
+
+.footer-tagline {
+  font-weight: var(--font-weight-medium, 500);
+  color: inherit;
+  margin-bottom: var(--space-2, 0.5rem);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .brand-pole {
+    display: none; /* Hide on mobile to save space */
+  }
+  
+  .footer-pole {
+    display: none; /* Optional: hide on mobile footer too */
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media print {
+  .brand-pole,
+  .footer-pole {
+    display: none !important;
+  }
+}

@@ -1,22 +1,219 @@
 ---
 layout: default
 permalink: /
-title: "BarberX.info | Personal Accountability Journal"
-description: "Honest experiences. Real documentation. Shining light on bad actors to help the good bunch navigate better."
+title: "BarberX Legal Tech | AI-Powered eDiscovery Platform"
+description: "Professional-grade evidence processing with 100% local AI tools. Process BWC footage, documents, and legal records without cloud costs or subscriptions."
 image: /assets/img/og-image.png
 ---
 
-{% include components/heroes/barber-hero.html cta_label="View Preview" cta_href="#preview" badge="Under Development" %}
+<!-- Legal Tech Platform Styles & Scripts -->
+<link rel="stylesheet" href="{{ '/assets/css/legal-tech-platform.css' | relative_url }}">
+<script src="{{ '/assets/js/platform.js' | relative_url }}" defer></script>
 
-<!-- Premium Dashboard Section -->
-<div style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
-  {% include premium-dashboard.html %}
-</div>
+<!-- Hero Section -->
+{% include components/heroes/legal-tech-hero.html %}
 
-{% include sections/home/preview.html %}
-{% include sections/home/principles.html %}
-{% include sections/home/status.html %}
-{% include components/forms/connect.html %}
-{% include sections/home/compliance.html %}
+<!-- Main Content -->
+<main id="main-content">
+  
+  <!-- AI-Powered Features -->
+  {% include components/features/ai-ediscovery-features.html %}
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section">
+    <div class="container-narrow">
+      
+      <div style="text-align: center; margin-bottom: var(--space-12);" class="slide-up">
+        <h2>From Evidence to Analysis in Four Steps</h2>
+        <p style="color: var(--text-secondary); font-size: 1.125rem;">
+          Our streamlined workflow takes you from raw evidence files to 
+          court-ready exhibits with minimal manual intervention.
+        </p>
+      </div>
+
+      <div style="display: grid; gap: var(--space-8);">
+        
+        <!-- Step 1 -->
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-6); align-items: start;" class="slide-left" data-delay="0">
+          <div style="width: 48px; height: 48px; background: var(--accent-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0;">1</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Upload Evidence</h3>
+            <p style="color: var(--text-secondary);">
+              Drag and drop BWC videos, police reports, CAD logs, photos, or any discovery documents. 
+              SHA-256 checksums are generated immediately to preserve chain of custody. 
+              Supports MP4, MOV, PDF, JPG, PNG, CSV, JSON, DOCX, and more.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-6); align-items: start;" class="slide-left" data-delay="100">
+          <div style="width: 48px; height: 48px; background: var(--accent-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0;">2</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">AI Processing</h3>
+            <p style="color: var(--text-secondary);">
+              Our local AI tools run automatically: Whisper transcribes audio, pyannote identifies speakers, 
+              Tesseract extracts text from documents, spaCy finds names and dates, YOLOv8 detects objects. 
+              All processing happens on your machine—nothing sent to cloud servers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-6); align-items: start;" class="slide-left" data-delay="200">
+          <div style="width: 48px; height: 48px; background: var(--accent-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0;">3</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Search & Analyze</h3>
+            <p style="color: var(--text-secondary);">
+              Use semantic search to find relevant passages across thousands of pages. 
+              Query by natural language ("when did Officer Smith arrive?") instead of exact keywords. 
+              Build timelines, cross-reference evidence, identify contradictions automatically.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-6); align-items: start;" class="slide-left" data-delay="300">
+          <div style="width: 48px; height: 48px; background: var(--accent-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0;">4</div>
+          <div>
+            <h3 style="margin-bottom: var(--space-2);">Export Court-Ready Exhibits</h3>
+            <p style="color: var(--text-secondary);">
+              Generate professional evidence packages with transcripts, enhanced media, 
+              annotated timelines, and chain of custody documentation. Export to PDF, 
+              Word, or structured JSON. All exports include verification checksums.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Real Cases -->
+  <section id="cases" class="section" style="background-color: var(--bg-secondary);">
+    <div class="container">
+      
+      <div style="text-align: center; margin-bottom: var(--space-12);">
+        <h2>Real Cases, Real Impact</h2>
+        <p style="color: var(--text-secondary); font-size: 1.125rem;">
+          See how our platform is being used in actual civil rights litigation.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
+        
+        <!-- Case 1 -->
+        <div class="card">
+          <div style="margin-bottom: var(--space-4);">
+            <span class="badge badge-info">Active Litigation</span>
+          </div>
+          <h3 style="font-size: 1.125rem; margin-bottom: var(--space-2);">
+            <a href="/cases/atl-l-002794-25.html" style="color: var(--text-primary);">
+              ATL-L-002794-25
+            </a>
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: var(--space-4);">
+            Atlantic County Superior Court • Civil Rights Violation
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.875rem;">
+            Used Whisper AI to transcribe 8 hours of BWC footage, identified 
+            contradictions between officer statements and video evidence using 
+            semantic search across police reports.
+          </p>
+          <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-light);">
+            <a href="/cases/atl-l-002794-25.html" style="font-size: 0.875rem; font-weight: 600;">
+              View Case Details →
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="card">
+          <div style="margin-bottom: var(--space-4);">
+            <span class="badge badge-success">Evidence Published</span>
+          </div>
+          <h3 style="font-size: 1.125rem; margin-bottom: var(--space-2);">
+            <a href="/cases/usdj-1-25-cv-15641.html" style="color: var(--text-primary);">
+              USDJ 1:25-cv-15641
+            </a>
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: var(--space-4);">
+            U.S. District Court, District of New Jersey • Federal Civil Rights
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.875rem;">
+            Processed 2,400 pages of discovery documents with Tesseract OCR, 
+            extracted 340 officer names and 150 incident dates automatically 
+            using spaCy entity recognition.
+          </p>
+          <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-light);">
+            <a href="/cases/usdj-1-25-cv-15641.html" style="font-size: 0.875rem; font-weight: 600;">
+              View Case Details →
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="card">
+          <div style="margin-bottom: var(--space-4);">
+            <span class="badge badge-warning">OPRA Appeal</span>
+          </div>
+          <h3 style="font-size: 1.125rem; margin-bottom: var(--space-2);">
+            <a href="/cases/barber-nj-pcr-2022.html" style="color: var(--text-primary);">
+              Barber NJ PCR 2022
+            </a>
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: var(--space-4);">
+            New Jersey Post-Conviction Relief • Public Records Request
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.875rem;">
+            Built comprehensive timeline from CAD logs, arrest records, and 
+            court transcripts. Cross-referenced 45 evidence sources to identify 
+            12 Brady violations automatically.
+          </p>
+          <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-light);">
+            <a href="/cases/barber-nj-pcr-2022.html" style="font-size: 0.875rem; font-weight: 600;">
+              View Case Details →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-8);">
+        <a href="/cases" class="btn btn-secondary">View All Cases</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="container-narrow">
+      <h2>Ready to Process Your Evidence?</h2>
+      <p>
+        Install our open-source AI tools in 15 minutes. No subscriptions, no cloud APIs, 
+        no recurring costs. Your data never leaves your machine.
+      </p>
+      <div class="cta-buttons">
+        <a href="/docs/installation" class="btn btn-primary btn-lg">
+          Get Started Free
+        </a>
+        <a href="/LOCAL-AI-GUIDE.html" class="btn btn-ghost btn-lg">
+          Read Installation Guide
+        </a>
+      </div>
+      <p style="font-size: 0.875rem; color: rgba(255, 255, 255, 0.7); margin-top: var(--space-6); margin-bottom: 0;">
+        Open-source MIT/Apache/BSD licenses • Windows, macOS, Linux • Python 3.8+
+      </p>
+    </div>
+  </section>
+
+  <!-- Legacy Sections (Preserved) -->
+  {% include sections/home/principles.html %}
+  {% include components/forms/connect.html %}
+  {% include sections/home/compliance.html %}
+
+</main>
 
 <script src="{{ "/assets/js/header.js" | relative_url }}" defer></script>

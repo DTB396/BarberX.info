@@ -2,54 +2,53 @@
    BARBER CAM — NY Barbershop Style
    Precision. Patience. Virtue. Honor.
    Modern, Clean, Smooth with 90s Nostalgia
-═══════════════════════════════════════════════════════════════════════════ */
+   
+   Brand tokens imported from brand-tokens.css
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Core Colors - Classic Barbershop */
-  --ink: #0a0a0f;
-  --ink-light: #1a1a2e;
-  --muted: #6b7280;
-  --bg: #fafafa;
-  --alt: #f0f0f5;
-  --card: #fff;
-  --surface: #fff;
+  /* Alias legacy variables to brand tokens for backwards compatibility */
+  --ink: var(--ink, #0a0a0f);
+  --ink-light: var(--ink-light, #1a1a2e);
+  --muted: var(--muted, #6b7280);
+  --bg: var(--bg, #fafafa);
+  --alt: var(--alt, #f0f0f5);
+  --card: var(--card, #fff);
+  --surface: var(--surface, #fff);
 
-  /* Barber Pole Accent Colors */
-  --accent: #c41e3a; /* Classic barber red */
-  --accent-hover: #a01830;
-  --accent-blue: #1e40af; /* Deep blue */
-  --accent-gold: #d4a574; /* Vintage gold */
+  /* Accent colors from brand tokens */
+  --accent: var(--barber-red, #c41e3a);
+  --accent-hover: var(--barber-red-dark, #a01830);
+  --accent-blue: var(--barber-blue, #1e40af);
+  --accent-gold: var(--brass-mid, #d4a574);
 
-  /* 90s Nostalgia Gradients */
-  --gradient-warm: linear-gradient(135deg, #c41e3a 0%, #ff6b6b 100%);
-  --gradient-cool: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  --gradient-gold: linear-gradient(135deg, #d4a574 0%, #f0d9b5 100%);
-  --gradient-dark: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  /* Gradients */
+  --gradient-warm: linear-gradient(135deg, var(--barber-red) 0%, #ff6b6b 100%);
+  --gradient-cool: linear-gradient(135deg, var(--barber-blue) 0%, var(--barber-blue-light) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--brass-mid) 0%, #f0d9b5 100%);
+  --gradient-dark: linear-gradient(135deg, var(--ink) 0%, var(--ink-light) 100%);
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgb(0 0 0 / 6%);
-  --shadow-md: 0 4px 20px rgb(0 0 0 / 8%);
-  --shadow-lg: 0 8px 40px rgb(0 0 0 / 12%);
-  --shadow-glow: 0 0 40px rgb(196 30 58 / 15%);
+  /* Shadows from brand tokens */
+  --shadow-sm: var(--shadow-sm, 0 2px 8px rgb(0 0 0 / 6%));
+  --shadow-md: var(--shadow-md, 0 4px 20px rgb(0 0 0 / 8%));
+  --shadow-lg: var(--shadow-lg, 0 8px 40px rgb(0 0 0 / 12%));
+  --shadow-glow: var(--shadow-glow-red, 0 0 40px rgb(196 30 58 / 15%));
 
   /* Border */
   --border: rgb(0 0 0 / 5%);
 
-  /* Spacing & Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
+  /* Spacing & Radius from brand tokens */
+  --radius-sm: var(--radius-sm, 8px);
+  --radius-md: var(--radius-md, 12px);
+  --radius-lg: var(--radius-lg, 20px);
+  --radius-xl: var(--radius-xl, 32px);
 
-  /* Transitions */
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --transition-fast: 0.2s var(--ease-smooth);
-  --transition-base: 0.3s var(--ease-smooth);
-  --transition-slow: 0.5s var(--ease-smooth);
-
-  /* Borders */
-  --border: rgb(0 0 0 / 5%);
+  /* Transitions from brand tokens */
+  --ease-smooth: var(--ease-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  --ease-bounce: var(--ease-bounce, cubic-bezier(0.68, -0.55, 0.265, 1.55));
+  --transition-fast: var(--transition-fast, 0.2s var(--ease-smooth));
+  --transition-base: var(--transition-base, 0.3s var(--ease-smooth));
+  --transition-slow: var(--transition-slow, 0.5s var(--ease-smooth));
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
