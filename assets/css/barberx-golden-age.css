@@ -125,6 +125,27 @@
   width: 100%;
 }
 
+/* Golden Login/CTA Button */
+.premium-nav__link--cta {
+  background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+  color: #1a1a2e !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.premium-nav__link--cta::before {
+  display: none;
+}
+
+.premium-nav__link--cta:hover {
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+}
+
 .premium-nav__link--highlight {
   background: var(--barberx-gold-gradient);
   color: var(--barberx-navy) !important;
