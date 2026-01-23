@@ -276,10 +276,6 @@
   mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
@@ -298,7 +294,6 @@
 .text-gradient {
   background: var(--gradient-accent);
   background-size: 200% auto;
-  background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 3s ease infinite;
@@ -360,7 +355,6 @@
 /* Glass morphism card */
 .card--glass {
   background: rgb(15 23 42 / 60%);
-  backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border: 1px solid rgb(255 255 255 / 10%);
 }
@@ -792,11 +786,6 @@
 /* ============================================================================
    SELECTION STYLING
    ============================================================================ */
-
-::selection {
-  background: var(--ff-primary);
-  color: var(--text-on-emerald);
-}
 
 ::selection {
   background: var(--ff-primary);

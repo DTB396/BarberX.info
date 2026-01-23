@@ -242,7 +242,6 @@ code {
 
 .hero-legal-tech h1 .accent {
   background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
-  background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }

@@ -449,10 +449,6 @@
     width: 100%;
   }
 
-  .cases-grid {
-    grid-template-columns: 1fr;
-  }
-
   .case-meta {
     grid-template-columns: 1fr;
   }

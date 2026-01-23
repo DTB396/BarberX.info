@@ -33,7 +33,6 @@
     rgb(255 255 255 / 3%) 100%
   );
   backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 20px;
   padding: 1.5rem;
@@ -463,7 +462,6 @@
    ============================================ */
 .text-premium {
   background: linear-gradient(135deg, #d4a574 0%, #e8c9a8 100%);
-  background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
@@ -489,7 +487,6 @@
 }
 
 .backdrop-blur {
-  backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
 
