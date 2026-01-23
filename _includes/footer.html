@@ -2,38 +2,25 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">
-          <picture>
-            <source
-              srcset="{{ '/assets/img/logo/barbercam-footer-min.dark.svg' | relative_url }}"
-              media="(prefers-color-scheme: dark)"
-            />
-            <source
-              srcset="{{ '/assets/img/logo/barbercam-footer-min.light.svg' | relative_url }}"
-              media="(prefers-color-scheme: light)"
-            />
-            <img
-              src="{{ '/assets/img/logo/barbercam-footer-min.svg' | relative_url }}"
-              alt="Barber Cam"
-              width="220"
-              height="44"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+        <div class="footer-logo barberx-footer-logo">
+          <div class="barberx-logo" style="margin-bottom: var(--space-4);">
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 2rem; color: #D4AF37; letter-spacing: 0.1em; display: block;">BARBER<span style="color: #8B0000;">X</span></span>
+            <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; color: #888; display: block; margin-top: 4px;">LEGAL TECHNOLOGIES</span>
+          </div>
         </div>
 
-        <p class="footer-tagline">Precision. Patience. Virtue. Honor.</p>
+        <p class="footer-tagline" style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: #D4AF37;">Precision. Excellence. Honor. Justice.</p>
         <p class="footer-description">
-          Citizen accountability through record, dignity, and due process.
+          AI-Powered Civil Rights eDiscovery in the Tradition of America's Golden Age.
+          Professional-grade tools built with the craftsmanship and integrity of the 1920s.
         </p>
 
         <div class="footer-contact">
           <a
-            href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}"
+            href="mailto:{{ site.email | default: 'contact@barberx.info' }}"
             class="contact-link"
           >
-            <span>{{ site.email | default: 'BarberCamX@ProtonMail.com' }}</span>
+            <span>{{ site.email | default: 'contact@barberx.info' }}</span>
           </a>
         </div>
       </div>
@@ -56,18 +43,20 @@
     <div class="footer-bottom">
       <div class="footer-copyright">
         <p>
-          &copy; <span id="year">{{ site.time | date: '%Y' }}</span> Barber Cam.
+          &copy; <span id="year">{{ site.time | date: '%Y' }}</span> BarberX Legal Technologies.
           All rights reserved.
         </p>
-        <p class="footer-legal">Built with precision in New York.</p>
+        <p class="footer-legal" style="font-family: 'Playfair Display', Georgia, serif; font-style: italic;">Crafted with Precision & Honor | Est. 2024</p>
       </div>
 
       <div class="footer-legal-links">
         <a href="{{ '/LICENSE' | relative_url }}">License</a>
         <span>•</span>
-        <a href="mailto:{{ site.email | default: 'BarberCamX@ProtonMail.com' }}"
+        <a href="mailto:{{ site.email | default: 'contact@barberx.info' }}"
           >Contact</a
         >
+        <span>•</span>
+        <a href="{{ '/PRIVACY-POLICY.html' | relative_url }}">Privacy</a>
       </div>
     </div>
   </div>
