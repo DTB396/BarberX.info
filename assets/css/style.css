@@ -1,3 +1,110 @@
+/* MODERN CLASSICAL EDGE REFINEMENTS */
+.case-card,
+.system-card {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 16px rgb(212 175 55 / 10%), 0 1px 0 rgb(255 255 255 / 5%) inset;
+  background: linear-gradient(135deg, #f8f5ef 90%, #e5e7eb 100%);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  color: #23233a;
+  transition: box-shadow 0.18s, border-color 0.18s, background 0.18s;
+}
+.case-card:hover,
+.system-card:hover {
+  box-shadow: 0 8px 32px #d4af37, 0 8px 32px rgb(0 0 0 / 18%);
+  border-color: #d4af37;
+  background: linear-gradient(135deg, #fffbe6 80%, #f8f5ef 100%);
+}
+.case-card h2,
+.system-card h3 {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #c41e3a;
+  margin-bottom: 0.5rem;
+}
+.case-card ul,
+.system-card ul {
+  font-size: 1.05rem;
+  color: #23233a;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.case-card li,
+.system-card li {
+  border-left: 2px solid #d4af37;
+  padding-left: 1em;
+  margin-bottom: 0.5em;
+}
+.cases-grid,
+.system-cards-grid {
+  gap: 2.5rem;
+}
+.system-cards-section {
+  background: linear-gradient(180deg, #f8f5ef 0%, #e5e7eb 100%);
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+/* MOBILE GRID & NAV IMPROVEMENTS */
+@media screen and (max-width: 700px) {
+  .cases-grid,
+  .system-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  .case-card,
+  .system-card {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    min-width: 0;
+    font-size: 1.08rem;
+    margin-bottom: 0.7rem;
+  }
+  .case-card h2,
+  .system-card h3 {
+    font-size: 1.15rem;
+  }
+  .case-card ul,
+  .system-card ul {
+    font-size: 1rem;
+  }
+  .system-cards-section {
+    padding: 1.5rem 0 1rem 0;
+  }
+  .system-card {
+    min-height: 0;
+  }
+  .sticky-mobile-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: #23233a;
+    box-shadow: 0 -2px 16px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 56px;
+    padding: 0 1rem;
+    border-radius: 18px 18px 0 0;
+  }
+  .sticky-mobile-nav a {
+    color: #fff;
+    font-size: 1.15rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: background 0.18s;
+  }
+  .sticky-mobile-nav a.active,
+  .sticky-mobile-nav a:active {
+    background: #c41e3a;
+    color: #fff;
+  }
+}
 /* Signup Pricing Layout: Center Enterprise Plan */
 
 .tier-selection {

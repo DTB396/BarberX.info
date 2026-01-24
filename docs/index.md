@@ -10,13 +10,28 @@ Welcome to the official documentation for BarberX Legal Technologies, the profes
 
 ---
 
+## For All Users
+
+**Access BarberX via the main website:**
+- Go to [https://barberx.info](https://barberx.info)
+- No installation or download required for standard users.
+- All features are available securely through the web app.
+
+---
+
+## For Enterprise Customers Only
+
+**Enterprise customers may download and run the local library:**
+- Contact support@barberx.info for access to the enterprise package and installation instructions.
+- Local install instructions and source code are provided only to verified enterprise clients.
+- All proprietary code and advanced AI modules are protected and not distributed publicly.
+
+---
+
 ## Table of Contents
 
 - [Overview](#overview)
-- [Quick Start](#quick-start)
-- [Installation Guide](#installation-guide)
 - [User Guide](#user-guide)
-- [Admin Guide](#admin-guide)
 - [API Reference](#api-reference)
 - [FAQ](#faq)
 - [Troubleshooting](#troubleshooting)
@@ -35,59 +50,10 @@ BarberX is a local-first, privacy-focused legal tech platform for processing bod
 
 ---
 
-## Quick Start
-
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/DTB396/BarberX.info.git
-   cd BarberX.info
-   ```
-2. **Set up Python environment:**
-   ```sh
-   python -m venv .venv
-   & .venv/Scripts/Activate.ps1  # Windows
-   # or
-   source .venv/bin/activate     # macOS/Linux
-   ```
-3. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. **Run the app:**
-   ```sh
-   python app.py
-   ```
-5. **Access the web app:**
-   Open [http://localhost:5000](http://localhost:5000) in your browser.
-
----
-
-## Installation Guide
-
-### Requirements
-
-- Python 3.9+
-- Git
-- (Optional) PostgreSQL for production
-- (Optional) ffmpeg for media processing
-
-### Environment Variables
-
-Create a `.env` file in the project root with:
-
-```
-SECRET_KEY=your-secret-key
-DATABASE_URL=sqlite:///instance/barberx_auth.db  # or your PostgreSQL URI
-CORS_ORIGINS=http://localhost:5000
-```
-
----
-
 ## User Guide
 
 ### Logging In
 
-- Default admin: `admin@barberx.info`
 - Use the password you set or reset via the admin panel.
 
 ### Uploading Evidence
@@ -104,14 +70,6 @@ CORS_ORIGINS=http://localhost:5000
 
 - Use semantic search to find relevant evidence.
 - Export court-ready exhibits as PDF, DOCX, or JSON.
-
----
-
-## Admin Guide
-
-- Manage users, roles, and subscription tiers from the admin panel (`/admin`).
-- View audit logs and chain of custody for all evidence.
-- Configure system settings and integrations.
 
 ---
 
