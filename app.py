@@ -2710,9 +2710,9 @@ import tempfile
 import shutil
 
 # Video placeholder (future: add video transcript extraction)
-@app.route('/api/upload/pdf', methods=['POST'])
+@app.route('/api/upload/pdf/secure', methods=['POST'])
 @login_required
-def upload_pdf():
+def upload_pdf_secure():
     if 'file' not in request.files:
         return jsonify({'error': 'No file uploaded'}), 400
     file = request.files['file']
@@ -2772,8 +2772,8 @@ def ai_chat():
 
     return jsonify({'answer': answer})
 
-@app.route('/health')
-def health_check():
+@app.route('/healthz')
+def health_check_status():
     """Health check endpoint for monitoring"""
     return jsonify({
         'status': 'healthy',
