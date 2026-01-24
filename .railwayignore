@@ -36,3 +36,50 @@ build/
 *.7z
 
 # Add more as needed for your project
+
+instance/
+logs/
+.vscode/
+exports/
+reports/
+tillerstead-toolkit/
+docs/
+/.venv/
+tillerstead-toolkit/
+assets/
+templates/
+uploads/
+_site/
+_inbox/
+_cases/
+_data/
+_includes/
+_layouts/
+_opra/
+_pages/
+
+# Exclude everything by default
+/*
+
+# Allow only backend essentials
+!app.py
+!requirements.txt
+!Procfile
+!render.yaml
+!auth_routes.py
+!models_auth.py
+!models_data_rights.py
+!bwc_forensic_analyzer.py
+!bwc_web_app.py
+!integration_example.py
+!init_auth.py
+!init_database.py
+!data_rights.py
+!rename_user_table.py
+!add_missing_columns.py
+!add_settings_table.py
+!migrate_add_pdf_uploads.py
+!migrate_add_role.py
+!migrate_add_tier.py
+!scripts/
+!tests/
