@@ -1,9 +1,7 @@
-{%- comment -%}
-READING PROGRESS BAR
-Visual indicator of scroll progress through article
-{%- endcomment -%}
+{%- comment -%} READING PROGRESS BAR Visual indicator of scroll progress through
+article {%- endcomment -%}
 
-<div 
+<div
   id="reading-progress"
   class="reading-progress"
   role="progressbar"
@@ -17,7 +15,12 @@ Visual indicator of scroll progress through article
     left: 0;
     width: 0%;
     height: 4px;
-    background: linear-gradient(90deg, var(--color-primary, #dc2626), var(--color-accent, #2563eb), var(--color-success, #10b981));
+    background: linear-gradient(
+      90deg,
+      var(--color-primary, #dc2626),
+      var(--color-accent, #2563eb),
+      var(--color-success, #10b981)
+    );
     z-index: 9998;
     transition: width 0.1s linear;
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.5);
@@ -25,34 +28,37 @@ Visual indicator of scroll progress through article
 ></div>
 
 <script>
-(function() {
-  const progressBar = document.getElementById('reading-progress');
-  let ticking = false;
+  (function () {
+    const progressBar = document.getElementById("reading-progress");
+    let ticking = false;
 
-  function updateReadingProgress() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    
-    progressBar.style.width = scrollPercent + '%';
-    progressBar.setAttribute('aria-valuenow', Math.round(scrollPercent));
-    
-    ticking = false;
-  }
+    function updateReadingProgress() {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
 
-  function requestTick() {
-    if (!ticking) {
-      window.requestAnimationFrame(updateReadingProgress);
-      ticking = true;
+      progressBar.style.width = scrollPercent + "%";
+      progressBar.setAttribute("aria-valuenow", Math.round(scrollPercent));
+
+      ticking = false;
     }
-  }
 
-  window.addEventListener('scroll', requestTick, { passive: true });
-  window.addEventListener('resize', requestTick, { passive: true });
+    function requestTick() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateReadingProgress);
+        ticking = true;
+      }
+    }
 
-  // Initial update
-  updateReadingProgress();
-})();
+    window.addEventListener("scroll", requestTick, { passive: true });
+    window.addEventListener("resize", requestTick, { passive: true });
+
+    // Initial update
+    updateReadingProgress();
+  })();
 </script>
 
 <style>
@@ -64,7 +70,7 @@ Visual indicator of scroll progress through article
 
   /* Glow effect on progress */
   .reading-progress::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
@@ -75,7 +81,11 @@ Visual indicator of scroll progress through article
   }
 
   @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
 </style>

@@ -37,7 +37,10 @@
           "prompt": "Ensure this database schema prevents Westlaw content republishing",
           "context": "Designing new case materials database table",
           "expected_response": "Implements Pattern 2 (segregate proprietary layers): separate tables for citations vs. full text, enforces NEVER export proprietary content",
-          "files_referenced": ["models_data_rights.py", "COPYRIGHT-ARCHITECTURE.txt"],
+          "files_referenced": [
+            "models_data_rights.py",
+            "COPYRIGHT-ARCHITECTURE.txt"
+          ],
           "risk_level": "critical"
         }
       ],
@@ -94,7 +97,10 @@
           "prompt": "Create chain of custody logging for evidence files",
           "context": "Court requires full audit trail of video file handling",
           "expected_response": "Logs: upload timestamp, uploader identity, file hash, every access event, analysis actions, export events with attorney certification",
-          "files_referenced": ["bwc_forensic_analyzer.py", "models_data_rights.py"],
+          "files_referenced": [
+            "bwc_forensic_analyzer.py",
+            "models_data_rights.py"
+          ],
           "risk_level": "critical"
         },
         {
@@ -217,28 +223,41 @@
           "prompt": "Create responsive case list component with pagination",
           "context": "Attorneys need mobile-friendly case list on dashboard",
           "expected_response": "Builds React component with: grid/list toggle, pagination (10/page), mobile-first breakpoints, loading skeleton, search/filter UI",
-          "files_referenced": ["admin.html", "assets/css/style.css", "components/"],
+          "files_referenced": [
+            "admin.html",
+            "assets/css/style.css",
+            "components/"
+          ],
           "risk_level": "low"
         },
         {
           "prompt": "Build accessible file upload interface with drag-drop",
           "context": "Attorneys upload BWC videos from desktop/mobile",
           "expected_response": "Creates drag-drop zone with: keyboard fallback (Enter to browse), progress bar, file type validation, ARIA labels, mobile camera integration",
-          "files_referenced": ["bwc-analyzer.html", "PROFESSIONAL-COMPONENTS-GUIDE.md"],
+          "files_referenced": [
+            "bwc-analyzer.html",
+            "PROFESSIONAL-COMPONENTS-GUIDE.md"
+          ],
           "risk_level": "medium"
         },
         {
           "prompt": "Optimize hero animation to 60fps GPU-accelerated",
           "context": "Homepage animation causing lag on mobile devices",
           "expected_response": "Uses transform/opacity only (GPU), will-change hint, reduces repaints, implements prefers-reduced-motion, monitors Performance API",
-          "files_referenced": ["index.html", "assets/css/barber-hero-enhanced.css"],
+          "files_referenced": [
+            "index.html",
+            "assets/css/barber-hero-enhanced.css"
+          ],
           "risk_level": "low"
         },
         {
           "prompt": "Design mobile-first evidence gallery with keyboard nav",
           "context": "Show BWC screenshots in accessible grid gallery",
           "expected_response": "Implements responsive grid, arrow key navigation, focus indicators, lightbox modal with Escape key, WCAG AA contrast, lazy loading",
-          "files_referenced": ["assets/css/components/", "FRONTEND-COMPLETE.md"],
+          "files_referenced": [
+            "assets/css/components/",
+            "FRONTEND-COMPLETE.md"
+          ],
           "risk_level": "low"
         }
       ],
@@ -304,7 +323,11 @@
           "prompt": "Plan SQLite to PostgreSQL migration strategy",
           "context": "Moving from dev SQLite to production PostgreSQL",
           "expected_response": "Creates: data export script, PostgreSQL schema DDL, data import script, connection string updates, backup/rollback plan, testing checklist",
-          "files_referenced": ["app.py", "models_auth.py", "DEPLOYMENT-COMPLETE.md"],
+          "files_referenced": [
+            "app.py",
+            "models_auth.py",
+            "DEPLOYMENT-COMPLETE.md"
+          ],
           "risk_level": "critical"
         }
       ],
@@ -436,7 +459,10 @@
           "prompt": "Update deployment checklist with new compliance steps",
           "context": "Added new copyright validation - need deployment docs updated",
           "expected_response": "Updates LAUNCH-CHECKLIST.md with: copyright audit steps, attribution manifest testing, export validation procedures, attorney certification workflow",
-          "files_referenced": ["LAUNCH-CHECKLIST.md", "COPYRIGHT-QUICK-START.md"],
+          "files_referenced": [
+            "LAUNCH-CHECKLIST.md",
+            "COPYRIGHT-QUICK-START.md"
+          ],
           "risk_level": "medium"
         }
       ],

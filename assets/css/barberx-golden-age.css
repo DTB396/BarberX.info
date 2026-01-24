@@ -6,27 +6,32 @@
 
 :root {
   /* Golden Age Color Palette */
-  --barberx-gold: #D4AF37;
-  --barberx-dark-gold: #B8941C;
-  --barberx-brass: #B5A642;
-  --barberx-copper: #B87333;
-  --barberx-crimson: #8B0000;
-  --barberx-deep-red: #C41E3A;
+  --barberx-gold: #d4af37;
+  --barberx-dark-gold: #b8941c;
+  --barberx-brass: #b5a642;
+  --barberx-copper: #b87333;
+  --barberx-crimson: #8b0000;
+  --barberx-deep-red: #c41e3a;
   --barberx-navy: #1a1a2e;
   --barberx-charcoal: #2d2d3a;
-  --barberx-cream: #FFF8DC;
-  --barberx-ivory: #FFFFF0;
-  --barberx-silver: #C0C0C0;
-  
+  --barberx-cream: #fff8dc;
+  --barberx-ivory: #fffff0;
+  --barberx-silver: #c0c0c0;
+
   /* Art Deco Gradients */
-  --barberx-gold-gradient: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
-  --barberx-deco-gradient: linear-gradient(135deg, #1a1a2e 0%, #2d2d3a 50%, #1a1a2e 100%);
+  --barberx-gold-gradient: linear-gradient(135deg, #d4af37 0%, #b8941c 100%);
+  --barberx-deco-gradient: linear-gradient(
+    135deg,
+    #1a1a2e 0%,
+    #2d2d3a 50%,
+    #1a1a2e 100%
+  );
   --barberx-hero-gradient: radial-gradient(ellipse at top, #2d2d3a, #1a1a2e);
-  
+
   /* Typography - Golden Age Fonts */
-  --barberx-font-display: 'Playfair Display', georgia, serif;
-  --barberx-font-sans: 'Montserrat', 'Helvetica Neue', arial, sans-serif;
-  --barberx-font-mono: 'Courier Prime', 'Courier New', monospace;
+  --barberx-font-display: "Playfair Display", georgia, serif;
+  --barberx-font-sans: "Montserrat", "Helvetica Neue", arial, sans-serif;
+  --barberx-font-mono: "Courier Prime", "Courier New", monospace;
 }
 
 /* ============================================
@@ -34,22 +39,27 @@
    ============================================ */
 
 .barberx-golden-header {
-  background: linear-gradient(to bottom, rgb(26 26 46 / 98%), rgb(26 26 46 / 95%));
+  background: linear-gradient(
+    to bottom,
+    rgb(26 26 46 / 98%),
+    rgb(26 26 46 / 95%)
+  );
   border-bottom: 3px solid var(--barberx-gold);
   box-shadow: 0 2px 12px rgb(212 175 55 / 15%);
   position: relative;
 }
 
 .barberx-golden-header::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--barberx-gold) 50%, 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--barberx-gold) 50%,
     transparent 100%
   );
 }
@@ -76,15 +86,16 @@
 }
 
 .barberx-logo__text::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    var(--barberx-gold) 0%, 
-    var(--barberx-crimson) 50%, 
+  background: linear-gradient(
+    90deg,
+    var(--barberx-gold) 0%,
+    var(--barberx-crimson) 50%,
     var(--barberx-gold) 100%
   );
   opacity: 0.6;
@@ -109,7 +120,7 @@
 }
 
 .premium-nav__link::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -127,7 +138,7 @@
 
 /* Golden Login/CTA Button */
 .premium-nav__link--cta {
-  background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
   color: #1a1a2e !important;
   padding: 0.5rem 1.25rem;
   border-radius: 4px;
@@ -143,7 +154,7 @@
 .premium-nav__link--cta:hover {
   box-shadow: 0 4px 16px rgb(212 175 55 / 50%);
   transform: translateY(-1px);
-  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
 }
 
 .premium-nav__link--highlight {
@@ -188,7 +199,7 @@
 }
 
 .barberx-footer-logo::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -247,7 +258,7 @@
 .btn-primary:hover {
   box-shadow: 0 8px 24px rgb(212 175 55 / 50%);
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #B8941C 0%, #D4AF37 100%);
+  background: linear-gradient(135deg, #b8941c 0%, #d4af37 100%);
 }
 
 .btn-ghost {
@@ -279,7 +290,7 @@
 }
 
 .card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -304,7 +315,9 @@
    SECTION HEADERS - GOLDEN AGE TYPOGRAPHY
    ============================================ */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--barberx-font-display);
 }
 
@@ -314,7 +327,7 @@ h2 {
 }
 
 h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -336,20 +349,22 @@ h2::after {
 
 .hero::before,
 .cta-section::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: 
-    repeating-linear-gradient(90deg, 
-      transparent, 
-      transparent 50px, 
-      rgb(212 175 55 / 3%) 50px, 
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 50px,
+      rgb(212 175 55 / 3%) 50px,
       rgb(212 175 55 / 3%) 51px
     ),
-    repeating-linear-gradient(0deg, 
-      transparent, 
-      transparent 50px, 
-      rgb(212 175 55 / 3%) 50px, 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      rgb(212 175 55 / 3%) 50px,
       rgb(212 175 55 / 3%) 51px
     );
   pointer-events: none;
@@ -363,11 +378,11 @@ h2::after {
   .barberx-logo__text {
     font-size: 1.5rem !important;
   }
-  
+
   .barberx-logo__tagline {
     font-size: 0.55rem !important;
   }
-  
+
   .premium-nav__link {
     font-size: 0.95rem;
   }

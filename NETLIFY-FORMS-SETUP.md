@@ -7,19 +7,23 @@ The early access form at `_includes/connect.html` is properly configured for Net
 ### Form Setup Checklist
 
 ✅ **Form Attributes:**
+
 - `name="early-access"` - Unique form identifier
 - `method="POST"` - Required for Netlify Forms
 - `data-netlify="true"` - Enables Netlify form detection
 - `netlify-honeypot="bot-field"` - Spam protection
 
 ✅ **Hidden Fields:**
+
 - `<input type="hidden" name="form-name" value="early-access" />` - Required for Netlify
 
 ✅ **Spam Protection:**
+
 - Honeypot field (`bot-field`) hidden with CSS
 - Bots will fill it out, humans won't see it
 
 ✅ **Form Fields:**
+
 - `email` (required) - Email address input
 - `interest` (required) - Role selection dropdown with 4 options:
   - Just Curious
@@ -28,6 +32,7 @@ The early access form at `_includes/connect.html` is properly configured for Net
   - Ethics / Security Reviewer
 
 ✅ **Dynamic Redirects:**
+
 - JavaScript updates action URL based on selected role
 - Redirects to role-specific thank you pages:
   - `/thank-you/curious/`

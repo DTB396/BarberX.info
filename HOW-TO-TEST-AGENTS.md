@@ -14,6 +14,7 @@ python scripts/validate-agents.py
 ```
 
 **Expected Output:**
+
 - ✅ All 7 agents properly configured
 - ✅ Instruction sets ~3,000 chars each
 - ✅ All key files referenced correctly
@@ -27,6 +28,7 @@ python scripts/test-agents.py
 ```
 
 **Expected Output:**
+
 - Total Tests: 21
 - Passed: 21
 - Failed: 0
@@ -40,6 +42,7 @@ python scripts/simulate-agents.py
 ```
 
 **Expected Output:**
+
 - Simulations Run: 7
 - Improvements Identified: 2 (down from 5 in v1.0)
 
@@ -72,9 +75,10 @@ python scripts/simulate-agents.py
 
 1. Open Copilot Chat
 2. Type:
+
    ```
    @legal-compliance Review this export function for copyright violations
-   
+
    [Paste your export code]
    ```
 
@@ -104,7 +108,7 @@ python scripts/simulate-agents.py
 5. Suggested Tests:
    - Test export blocks full text >200 words
    - Test attribution manifest generation
-   
+
 For API implementation, collaborate with @flask-backend
 ```
 
@@ -118,9 +122,10 @@ For API implementation, collaborate with @flask-backend
 
 1. Open Copilot Chat
 2. Type:
+
    ```
    @bwc-forensics Add SHA-256 hash verification to video upload function
-   
+
    [Paste your upload_video() function]
    ```
 
@@ -140,7 +145,7 @@ def upload_video(file, user_id):
     # GOOD: Hash file for integrity
     file_hash = hashlib.sha256(file.read()).hexdigest()
     file.seek(0)  # Reset for storage
-    
+
     evidence = Evidence(
         filename=file.filename,
         sha256_hash=file_hash,
@@ -187,7 +192,7 @@ def get_case(case_id):
     case = Case.query.get_or_404(case_id)
     if case.attorney_id != current_user.id and not current_user.is_admin:
         raise Forbidden("You don't have access to this case")
-    
+
     # GOOD: Don't expose proprietary data
     return jsonify(case.to_dict(exclude_proprietary=True))
 
@@ -228,7 +233,7 @@ def get_case(case_id):
     Case Number
     <span class="required" aria-label="required">*</span>
   </label>
-  <input 
+  <input
     id="caseNumber"
     type="text"
     required
@@ -282,12 +287,12 @@ def get_case(case_id):
 ```python
 class Case(db.Model):
     __tablename__ = 'cases'
-    
+
     id = Column(Integer, primary_key=True)
     case_number = Column(String(50), unique=True, nullable=False, index=True)
     attorney_id = Column(Integer, ForeignKey('users.id'), nullable=False, index=True)
     created_at = Column(DateTime, nullable=False, index=True)
-    
+
     # GOOD: Composite index for common queries
     __table_args__ = (
         Index('ix_case_attorney_date', 'attorney_id', 'created_at'),
@@ -333,7 +338,7 @@ load_dotenv()
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     DATABASE_URL = os.environ.get('DATABASE_URL')
-    
+
     # GOOD: Validate secrets exist
     if not SECRET_KEY:
         raise ValueError("SECRET_KEY environment variable not set")
@@ -380,6 +385,7 @@ class Config:
 **Authentication:** Required (Bearer token)
 
 **Request:**
+
 ```bash
 curl -X POST \
   https://barberx.info/api/cases \
@@ -392,6 +398,7 @@ curl -X POST \
 ```
 
 **Response (Success):**
+
 ```json
 {
   "id": 12345,
@@ -402,6 +409,7 @@ curl -X POST \
 ```
 
 **Error Codes:**
+
 - `400` - Invalid request data
 - `401` - Missing or invalid authentication token
 - `409` - Case number already exists
@@ -416,27 +424,35 @@ The enhanced agents now suggest collaboration with other agents for complex task
 ### Workflow Example: Copyright-Compliant Export Feature
 
 **Step 1:** Start with @legal-compliance
+
 ```
 @legal-compliance What are the requirements for a compliant PDF export?
 ```
+
 → Agent provides 3 compliance patterns and suggests collaborating with @flask-backend
 
 **Step 2:** Switch to @flask-backend
+
 ```
 @flask-backend Implement export endpoint following the compliance patterns from @legal-compliance
 ```
+
 → Agent creates secure API endpoint and suggests collaborating with @database-architect for schema
 
 **Step 3:** Switch to @database-architect
+
 ```
 @database-architect Create ExportManifest table for attorney certification tracking
 ```
+
 → Agent creates schema with indexes and suggests collaborating with @documentation
 
 **Step 4:** Switch to @documentation
+
 ```
 @documentation Document the export workflow for attorneys
 ```
+
 → Agent creates step-by-step user guide
 
 **Result:** Complete feature with compliance, API, database, and documentation all working together!
@@ -476,6 +492,7 @@ Monitor agent effectiveness:
 ### Agent not appearing in Copilot Chat
 
 **Solution:**
+
 1. Ensure `.github/copilot-agents.yml` exists in workspace root
 2. Reload VS Code window (Ctrl+Shift+P → "Reload Window")
 3. Check GitHub Copilot subscription is active
@@ -483,6 +500,7 @@ Monitor agent effectiveness:
 ### Agent provides generic responses
 
 **Solution:**
+
 1. Be specific in your prompt (include file names, line numbers)
 2. Paste relevant code context
 3. Specify desired output format
@@ -490,6 +508,7 @@ Monitor agent effectiveness:
 ### Agent doesn't suggest collaboration
 
 **Solution:**
+
 1. Ask for complete implementation (not just code snippet)
 2. Mention you're working on a complex feature
 3. Use v2.0 enhanced agents (check `copilot-agents.yml` has ~3,000 char instruction sets)

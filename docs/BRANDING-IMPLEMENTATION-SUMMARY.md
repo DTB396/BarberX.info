@@ -7,6 +7,7 @@ Successfully unified the classic 1920s barber pole branding across the entire Ba
 ## Files Created
 
 ### CSS Files
+
 1. **`assets/css/brand-tokens.css`** (6.7 KB)
    - Global design system with all brand colors, spacing, transitions
    - Smooth easing functions and duration variables
@@ -19,6 +20,7 @@ Successfully unified the classic 1920s barber pole branding across the entire Ba
    - Print styles (hides decorative poles)
 
 ### Enhanced Files
+
 3. **`assets/css/components/barber-pole-spinner.css`**
    - Updated to use brand tokens
    - Added new "nav" size variant (18px × 48px)
@@ -26,6 +28,7 @@ Successfully unified the classic 1920s barber pole branding across the entire Ba
    - Improved rounded corners using `--radius-full`
 
 ### Documentation
+
 4. **`docs/BRAND-GUIDE.md`** (5.7 KB)
    - Comprehensive brand guidelines
    - Color palette with hex values
@@ -42,6 +45,7 @@ Successfully unified the classic 1920s barber pole branding across the entire Ba
    - Live demonstration of all features
 
 ### Updated Files
+
 6. **`_layouts/default.html`**
    - Added brand-tokens.css as first stylesheet
    - Added barber-branding.css
@@ -63,11 +67,13 @@ Successfully unified the classic 1920s barber pole branding across the entire Ba
 ## Brand System Features
 
 ### Color Palette
+
 - **Barber Trio**: Red (#c41e3a), White (#ffffff), Blue (#1e40af)
 - **Brass Accents**: Light (#FFF8DC), Gold (#FFD700), Mid (#d4a574), Dark (#DAA520)
 - **Neutrals**: Ink (#0a0a0f), Muted (#6b7280), Background (#fafafa)
 
 ### Pole Size Variants
+
 - **Nav**: 18px × 48px (header navigation)
 - **Small**: 24px × 64px (footer, compact areas)
 - **Medium**: 36px × 100px (default, page corners)
@@ -75,12 +81,15 @@ Successfully unified the classic 1920s barber pole branding across the entire Ba
 - **Hero**: 70px × 220px (homepage hero)
 
 ### Spacing System
+
 4px grid: 4px → 8px → 12px → 16px → 24px → 32px → 48px → 64px → 96px
 
 ### Border Radius (Rounded Like a Fade)
+
 - XS: 4px → SM: 8px → MD: 12px → LG: 16px → XL: 24px → 2XL: 32px → Full: 9999px
 
 ### Transitions (Crisp & Clean)
+
 - **Instant**: 100ms (micro-interactions)
 - **Fast**: 200ms (hover states)
 - **Base**: 300ms (default)
@@ -107,6 +116,7 @@ All using smooth easing: `cubic-bezier(0.4, 0, 0.2, 1)`
 ## Brand Messaging
 
 ### Consistent Taglines
+
 - **"EST. 2024 | A CUT ABOVE"** - Brand establishment and quality promise
 - **"Precision. Patience. Virtue. Honor."** - Core values
 - **"Built with precision in NYC. Like a fresh fade — clean, rounded, crisp."** - NYC authenticity
@@ -114,19 +124,21 @@ All using smooth easing: `cubic-bezier(0.4, 0, 0.2, 1)`
 ## How to Use
 
 ### Enable on New Pages
+
 The branding is automatically included on all pages via `default.html` layout. To customize:
 
 ```yaml
 ---
 layout: default
-hide_barber_pole: true          # Hide fixed corner pole
-barber_pole_position: fixed     # fixed, absolute, or static
-barber_pole_size: medium        # nav, small, medium, large, hero
-barber_pole_show_on: all        # all, desktop, or mobile
+hide_barber_pole: true # Hide fixed corner pole
+barber_pole_position: fixed # fixed, absolute, or static
+barber_pole_size: medium # nav, small, medium, large, hero
+barber_pole_show_on: all # all, desktop, or mobile
 ---
 ```
 
 ### Manual Pole Integration
+
 ```liquid
 {% include components/barber-pole-spinner.html position="static" size="small" %}
 ```
@@ -134,6 +146,7 @@ barber_pole_show_on: all        # all, desktop, or mobile
 ## Testing
 
 Open `branding-test.html` in any browser to see:
+
 - All pole size variants side-by-side
 - Complete color palette
 - Brand values showcase

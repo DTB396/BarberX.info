@@ -2,266 +2,338 @@
 layout: default
 ---
 
-{%- comment -%}
-PAGE LAYOUT
-Enhanced page template with all useful conditionals for flexible page creation.
+{%- comment -%} PAGE LAYOUT Enhanced page template with all useful conditionals
+for flexible page creation. Supports: - Page hero/header with title,
+description, image - Breadcrumbs navigation - Table of contents (if enabled) -
+Reading time estimate - Author info and metadata - Tags and categories - Last
+updated timestamp - Related pages/links - Custom CTAs - Alert/notice banners -
+Side navigation - Print-friendly formatting {%- endcomment -%}
 
-Supports:
-- Page hero/header with title, description, image
-- Breadcrumbs navigation
-- Table of contents (if enabled)
-- Reading time estimate
-- Author info and metadata
-- Tags and categories
-- Last updated timestamp
-- Related pages/links
-- Custom CTAs
-- Alert/notice banners
-- Side navigation
-- Print-friendly formatting
-{%- endcomment -%}
-
-<article class="page{% if page.page_class %} {{ page.page_class }}{% endif %} shell u-max-w-4xl u-mx-auto">
-  
-  {%- comment -%} BREADCRUMBS - Optional navigation trail {%- endcomment -%}
-  {% if page.show_breadcrumbs %}
-  {% include components/navigation/breadcrumbs.html %}
-  {% endif %}
-
-  {%- comment -%} ALERT/NOTICE BANNER - For important messages {%- endcomment -%}
-  {% if page.alert %}
-  <div class="page-alert page-alert--{{ page.alert_type | default: 'info' }}" role="alert" style="
+<article
+  class="page{% if page.page_class %} {{ page.page_class }}{% endif %} shell u-max-w-4xl u-mx-auto"
+>
+  {%- comment -%} BREADCRUMBS - Optional navigation trail {%- endcomment -%} {%
+  if page.show_breadcrumbs %} {% include components/navigation/breadcrumbs.html
+  %} {% endif %} {%- comment -%} ALERT/NOTICE BANNER - For important messages
+  {%- endcomment -%} {% if page.alert %}
+  <div
+    class="page-alert page-alert--{{ page.alert_type | default: 'info' }}"
+    role="alert"
+    style="
     padding: 1rem 1.5rem;
     margin-bottom: 2rem;
     border-radius: var(--radius-md);
     border-left: 4px solid {% if page.alert_type == 'warning' %}var(--color-warning){% elsif page.alert_type == 'error' %}var(--color-error){% elsif page.alert_type == 'success' %}var(--color-success){% else %}var(--color-info){% endif %};
     background: rgba(255, 255, 255, 0.05);
-  ">
-    {% if page.alert_title %}<strong>{{ page.alert_title }}</strong><br>{% endif %}
-    {{ page.alert | markdownify }}
+  "
+  >
+    {% if page.alert_title %}<strong>{{ page.alert_title }}</strong><br />{%
+    endif %} {{ page.alert | markdownify }}
   </div>
-  {% endif %}
-
-  {%- comment -%} PAGE HEADER {%- endcomment -%}
-  <header class="page-header u-mb-xl u-p-md" style="
+  {% endif %} {%- comment -%} PAGE HEADER {%- endcomment -%}
+  <header
+    class="page-header u-mb-xl u-p-md"
+    style="
     {% if page.header_background %}background: {{ page.header_background }};{% else %}border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);{% endif %}
     border-radius: var(--radius-lg);
-  ">
-    
-    {%- comment -%} Category/Type label {%- endcomment -%}
-    {% if page.category or page.type %}
-    <p class="page-kicker u-text-accent" style="
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.95rem;
-      margin: 0 0 0.5rem 0;
-    ">
+  "
+  >
+    {%- comment -%} Category/Type label {%- endcomment -%} {% if page.category
+    or page.type %}
+    <p
+      class="page-kicker u-text-accent"
+      style="
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.95rem;
+        margin: 0 0 0.5rem 0;
+      "
+    >
       {{ page.category | default: page.type }}
     </p>
-    {% endif %}
-
-    {%- comment -%} Page Title {%- endcomment -%}
-    {% if page.title %}
-    <h1 class="page-title u-mb-sm u-text-highlight" style="font-size: clamp(2rem, 3vw, 3rem)">
+    {% endif %} {%- comment -%} Page Title {%- endcomment -%} {% if page.title
+    %}
+    <h1
+      class="page-title u-mb-sm u-text-highlight"
+      style="font-size: clamp(2rem, 3vw, 3rem)"
+    >
       {{ page.title }}
     </h1>
-    {% endif %}
-
-    {%- comment -%} Page Description/Subtitle {%- endcomment -%}
-    {% if page.description or page.subtitle %}
-    <p class="page-description u-mb-sm u-text-muted" style="font-size: 1.1rem; line-height: 1.7">
+    {% endif %} {%- comment -%} Page Description/Subtitle {%- endcomment -%} {%
+    if page.description or page.subtitle %}
+    <p
+      class="page-description u-mb-sm u-text-muted"
+      style="font-size: 1.1rem; line-height: 1.7"
+    >
       {{ page.description | default: page.subtitle }}
     </p>
-    {% endif %}
-
-    {%- comment -%} Page Metadata {%- endcomment -%}
-    {% if page.author or page.date or page.reading_time or page.last_updated %}
-    <div class="page-meta u-flex u-gap-md u-text-muted" style="font-size: 0.95rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
-      
+    {% endif %} {%- comment -%} Page Metadata {%- endcomment -%} {% if
+    page.author or page.date or page.reading_time or page.last_updated %}
+    <div
+      class="page-meta u-flex u-gap-md u-text-muted"
+      style="
+        font-size: 0.95rem;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 1rem;
+      "
+    >
       {% if page.author %}
-      <span><strong class="u-text-accent">Author:</strong> {{ page.author }}</span>
-      {% endif %}
-      
-      {% if page.date %}
-      <span><strong class="u-text-accent">Published:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></span>
-      {% endif %}
-      
-      {% if page.last_updated %}
-      <span><strong class="u-text-accent">Updated:</strong> <time datetime="{{ page.last_updated | date_to_xmlschema }}">{{ page.last_updated | date: "%B %-d, %Y" }}</time></span>
-      {% endif %}
-      
-      {% if page.reading_time %}
-      <span><strong class="u-text-accent">Reading Time:</strong> {{ page.reading_time }}</span>
-      {% elsif content %}
-        {%- assign words = content | number_of_words -%}
-        {%- assign reading_time = words | divided_by: 200 | plus: 1 -%}
-        <span><strong class="u-text-accent">Reading Time:</strong> ~{{ reading_time }} min</span>
+      <span
+        ><strong class="u-text-accent">Author:</strong> {{ page.author }}</span
+      >
+      {% endif %} {% if page.date %}
+      <span
+        ><strong class="u-text-accent">Published:</strong>
+        <time datetime="{{ page.date | date_to_xmlschema }}"
+          >{{ page.date | date: "%B %-d, %Y" }}</time
+        ></span
+      >
+      {% endif %} {% if page.last_updated %}
+      <span
+        ><strong class="u-text-accent">Updated:</strong>
+        <time datetime="{{ page.last_updated | date_to_xmlschema }}"
+          >{{ page.last_updated | date: "%B %-d, %Y" }}</time
+        ></span
+      >
+      {% endif %} {% if page.reading_time %}
+      <span
+        ><strong class="u-text-accent">Reading Time:</strong> {{
+        page.reading_time }}</span
+      >
+      {% elsif content %} {%- assign words = content | number_of_words -%} {%-
+      assign reading_time = words | divided_by: 200 | plus: 1 -%}
+      <span
+        ><strong class="u-text-accent">Reading Time:</strong> ~{{ reading_time
+        }} min</span
+      >
       {% endif %}
     </div>
-    {% endif %}
-
-    {%- comment -%} Tags {%- endcomment -%}
-    {% if page.tags and page.tags.size > 0 %}
-    <div class="page-tags u-flex u-gap-sm" style="margin-top: 1rem; flex-wrap: wrap;">
-      <span class="tags-label u-text-muted" style="font-size: 0.9rem;">Tags:</span>
+    {% endif %} {%- comment -%} Tags {%- endcomment -%} {% if page.tags and
+    page.tags.size > 0 %}
+    <div
+      class="page-tags u-flex u-gap-sm"
+      style="margin-top: 1rem; flex-wrap: wrap"
+    >
+      <span class="tags-label u-text-muted" style="font-size: 0.9rem"
+        >Tags:</span
+      >
       {% for tag in page.tags %}
-      <span class="page-tag" style="
-        padding: 0.2rem 0.6rem;
-        border-radius: 999px;
-        background: rgba(220, 38, 38, 0.1);
-        border: 1px solid rgba(220, 38, 38, 0.3);
-        font-size: 0.85rem;
-        color: var(--color-text-muted);
-      ">{{ tag }}</span>
+      <span
+        class="page-tag"
+        style="
+          padding: 0.2rem 0.6rem;
+          border-radius: 999px;
+          background: rgba(220, 38, 38, 0.1);
+          border: 1px solid rgba(220, 38, 38, 0.3);
+          font-size: 0.85rem;
+          color: var(--color-text-muted);
+        "
+        >{{ tag }}</span
+      >
       {% endfor %}
     </div>
     {% endif %}
-
   </header>
 
-  {%- comment -%} TABLE OF CONTENTS - Optional {%- endcomment -%}
-  {% if page.toc or page.show_toc %}
-  <nav class="page-toc u-mb-lg" style="
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-md);
-  ">
-    <h2 class="toc-title" style="font-size: 1.1rem; margin-top: 0; margin-bottom: 1rem; color: var(--color-accent);">On This Page</h2>
-    <div class="toc-content" style="font-size: 0.95rem;">
+  {%- comment -%} TABLE OF CONTENTS - Optional {%- endcomment -%} {% if page.toc
+  or page.show_toc %}
+  <nav
+    class="page-toc u-mb-lg"
+    style="
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+    "
+  >
+    <h2
+      class="toc-title"
+      style="
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--color-accent);
+      "
+    >
+      On This Page
+    </h2>
+    <div class="toc-content" style="font-size: 0.95rem">
       {{ content | toc_only }}
     </div>
   </nav>
-  {% endif %}
-
-  {%- comment -%} MAIN CONTENT {%- endcomment -%}
-  <section class="page-body u-pb-xl" style="line-height: 1.8;">
+  {% endif %} {%- comment -%} MAIN CONTENT {%- endcomment -%}
+  <section class="page-body u-pb-xl" style="line-height: 1.8">
     {{ content }}
   </section>
 
-  {%- comment -%} SOCIAL SHARE BUTTONS {%- endcomment -%}
-  {% unless page.hide_social_share %}
-  {% include components/social-share.html %}
-  {% endunless %}
-
-  {%- comment -%} CALL TO ACTION - Optional {%- endcomment -%}
-  {% if page.cta_text and page.cta_link %}
-  <div class="page-cta u-text-center u-py-lg" style="
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(37, 99, 235, 0.1));
-    border: 1px solid rgba(220, 38, 38, 0.2);
-    border-radius: var(--radius-lg);
-    margin: 3rem 0;
-  ">
+  {%- comment -%} SOCIAL SHARE BUTTONS {%- endcomment -%} {% unless
+  page.hide_social_share %} {% include components/social-share.html %} {%
+  endunless %} {%- comment -%} CALL TO ACTION - Optional {%- endcomment -%} {%
+  if page.cta_text and page.cta_link %}
+  <div
+    class="page-cta u-text-center u-py-lg"
+    style="
+      padding: 2rem;
+      background: linear-gradient(
+        135deg,
+        rgba(220, 38, 38, 0.1),
+        rgba(37, 99, 235, 0.1)
+      );
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: var(--radius-lg);
+      margin: 3rem 0;
+    "
+  >
     {% if page.cta_title %}
-    <h3 class="cta-title u-mb-sm" style="font-size: 1.5rem;">{{ page.cta_title }}</h3>
-    {% endif %}
-    {% if page.cta_description %}
-    <p class="cta-description u-mb-md u-text-muted">{{ page.cta_description }}</p>
+    <h3 class="cta-title u-mb-sm" style="font-size: 1.5rem">
+      {{ page.cta_title }}
+    </h3>
+    {% endif %} {% if page.cta_description %}
+    <p class="cta-description u-mb-md u-text-muted">
+      {{ page.cta_description }}
+    </p>
     {% endif %}
     <a href="{{ page.cta_link | relative_url }}" class="btn btn-primary">
       {{ page.cta_text }}
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>
     </a>
   </div>
-  {% endif %}
-
-  {%- comment -%} RELATED PAGES/LINKS {%- endcomment -%}
-  {% if page.related_pages and page.related_pages.size > 0 %}
-  <aside class="page-related u-mt-xl" style="
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-md);
-  ">
-    <h3 class="related-title u-mb-md" style="font-size: 1.2rem; color: var(--color-accent);">Related Pages</h3>
-    <ul class="related-list" style="list-style: none; padding: 0; display: grid; gap: 0.75rem;">
+  {% endif %} {%- comment -%} RELATED PAGES/LINKS {%- endcomment -%} {% if
+  page.related_pages and page.related_pages.size > 0 %}
+  <aside
+    class="page-related u-mt-xl"
+    style="
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+    "
+  >
+    <h3
+      class="related-title u-mb-md"
+      style="font-size: 1.2rem; color: var(--color-accent)"
+    >
+      Related Pages
+    </h3>
+    <ul
+      class="related-list"
+      style="list-style: none; padding: 0; display: grid; gap: 0.75rem"
+    >
       {% for item in page.related_pages %}
       <li>
-        <a href="{{ item.url | relative_url }}" class="related-link" style="
-          display: block;
-          padding: 0.75rem 1rem;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: var(--radius-sm);
-          text-decoration: none;
-          transition: all 0.2s ease;
-        ">
+        <a
+          href="{{ item.url | relative_url }}"
+          class="related-link"
+          style="
+            display: block;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all 0.2s ease;
+          "
+        >
           <strong>{{ item.title }}</strong>
-          {% if item.description %}<br><span class="u-text-muted" style="font-size: 0.9rem;">{{ item.description }}</span>{% endif %}
+          {% if item.description %}<br /><span
+            class="u-text-muted"
+            style="font-size: 0.9rem"
+            >{{ item.description }}</span
+          >{% endif %}
         </a>
       </li>
       {% endfor %}
     </ul>
   </aside>
-  {% endif %}
-
-  {%- comment -%} EXTERNAL RESOURCES {%- endcomment -%}
-  {% if page.resources and page.resources.size > 0 %}
-  <aside class="page-resources u-mt-lg" style="
-    padding: 1.5rem;
-    background: rgba(37, 99, 235, 0.05);
-    border: 1px solid rgba(37, 99, 235, 0.2);
-    border-radius: var(--radius-md);
-  ">
-    <h3 class="resources-title u-mb-md" style="font-size: 1.2rem; color: var(--color-accent);">Additional Resources</h3>
-    <ul class="resources-list" style="margin: 0;">
+  {% endif %} {%- comment -%} EXTERNAL RESOURCES {%- endcomment -%} {% if
+  page.resources and page.resources.size > 0 %}
+  <aside
+    class="page-resources u-mt-lg"
+    style="
+      padding: 1.5rem;
+      background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: var(--radius-md);
+    "
+  >
+    <h3
+      class="resources-title u-mb-md"
+      style="font-size: 1.2rem; color: var(--color-accent)"
+    >
+      Additional Resources
+    </h3>
+    <ul class="resources-list" style="margin: 0">
       {% for resource in page.resources %}
       <li>
-        <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer">{{ resource.title }}</a>
-        {% if resource.description %}<span class="u-text-muted"> — {{ resource.description }}</span>{% endif %}
+        <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer"
+          >{{ resource.title }}</a
+        >
+        {% if resource.description %}<span class="u-text-muted">
+          — {{ resource.description }}</span
+        >{% endif %}
       </li>
       {% endfor %}
     </ul>
   </aside>
-  {% endif %}
-
-  {%- comment -%} PAGE FOOTER - Metadata and attribution {%- endcomment -%}
-  <footer class="page-footer u-mt-xl u-pt-lg" style="
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-  ">
+  {% endif %} {%- comment -%} PAGE FOOTER - Metadata and attribution {%-
+  endcomment -%}
+  <footer
+    class="page-footer u-mt-xl u-pt-lg"
+    style="
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    "
+  >
     {% if page.source or page.attribution %}
     <div class="page-source u-mb-md">
       <strong>Source:</strong> {{ page.source | default: page.attribution }}
     </div>
-    {% endif %}
-
-    {% if page.license %}
+    {% endif %} {% if page.license %}
     <div class="page-license u-mb-md">
       <strong>License:</strong> {{ page.license }}
     </div>
-    {% endif %}
-
-    {% if page.version %}
+    {% endif %} {% if page.version %}
     <div class="page-version u-mb-md">
       <strong>Version:</strong> {{ page.version }}
     </div>
-    {% endif %}
-
-    {% if page.changelog_url %}
+    {% endif %} {% if page.changelog_url %}
     <div class="page-changelog">
       <a href="{{ page.changelog_url | relative_url }}">View Changelog</a>
     </div>
     {% endif %}
   </footer>
 
-  {%- comment -%} NEWSLETTER SIGNUP {%- endcomment -%}
-  {% if page.show_newsletter or site.page_newsletter_enabled %}
-  {% include components/newsletter-signup.html %}
-  {% endif %}
-
-  {%- comment -%} COMMENTS {%- endcomment -%}
-  {% include components/comments.html %}
-
+  {%- comment -%} NEWSLETTER SIGNUP {%- endcomment -%} {% if
+  page.show_newsletter or site.page_newsletter_enabled %} {% include
+  components/newsletter-signup.html %} {% endif %} {%- comment -%} COMMENTS {%-
+  endcomment -%} {% include components/comments.html %}
 </article>
 
 {%- comment -%} PRINT STYLES {%- endcomment -%}
 <style media="print">
-  .page-header { background: none !important; border: none !important; }
-  .page-cta, .page-footer, .btn { display: none !important; }
-  .page-body { color: #000 !important; }
+  .page-header {
+    background: none !important;
+    border: none !important;
+  }
+  .page-cta,
+  .page-footer,
+  .btn {
+    display: none !important;
+  }
+  .page-body {
+    color: #000 !important;
+  }
 </style>

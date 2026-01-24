@@ -23,21 +23,22 @@ Subject to your compliance with this Agreement and payment of applicable fees, L
 
 **(a) Installation:** Install the Software on computer(s) owned or controlled by you  
 **(b) Use:** Use the Software solely for your internal business purposes  
-**(c) Updates:** Receive and install Software updates and patches  
+**(c) Updates:** Receive and install Software updates and patches
 
 **License Type Based on Subscription Tier:**
 
-| Tier | Installations | Commercial Use | API Access | Source Code |
-|------|---------------|----------------|------------|-------------|
-| **Free** | 1 device | Personal use only | No | No |
-| **Professional** | 3 devices | ✅ Yes | ✅ Yes | No |
-| **Enterprise** | Unlimited | ✅ Yes | ✅ Yes | Limited access* |
+| Tier             | Installations | Commercial Use    | API Access | Source Code      |
+| ---------------- | ------------- | ----------------- | ---------- | ---------------- |
+| **Free**         | 1 device      | Personal use only | No         | No               |
+| **Professional** | 3 devices     | ✅ Yes            | ✅ Yes     | No               |
+| **Enterprise**   | Unlimited     | ✅ Yes            | ✅ Yes     | Limited access\* |
 
-*Enterprise clients may receive limited source code access under separate NDA for integration purposes only.
+\*Enterprise clients may receive limited source code access under separate NDA for integration purposes only.
 
 ### 1.2 What This License Does NOT Include
 
 You do **NOT** receive rights to:
+
 - ❌ **Source code** (except Enterprise tier under NDA)
 - ❌ **Modify or create derivatives** of the Software
 - ❌ **Reverse engineer, decompile, or disassemble** the Software
@@ -108,6 +109,7 @@ You retain all rights to your evidence files, case materials, and documents. Lic
 ### 2.4 Feedback and Improvements
 
 If you provide suggestions, feature requests, bug reports, or other feedback ("Feedback"), you grant Licensor a **perpetual, irrevocable, royalty-free, worldwide, transferable, sublicensable** license to:
+
 - Use, modify, and incorporate Feedback into the Software
 - Create derivative works based on Feedback
 - Commercialize and distribute improvements derived from Feedback
@@ -170,6 +172,7 @@ You shall NOT:
 ### 3.3 Enforcement
 
 Violation of restrictions may result in:
+
 - Immediate license termination without refund
 - Legal action for breach of contract
 - Claims for injunctive relief
@@ -182,11 +185,11 @@ Violation of restrictions may result in:
 
 ### 4.1 Pricing Tiers
 
-| Tier | Monthly Fee | Annual Fee | Analyses/Month | Max File Size |
-|------|-------------|------------|----------------|---------------|
-| Free | $0 | $0 | 5 | 500MB |
-| Professional | $99 | $990 (save $198) | 100 | 2GB |
-| Enterprise | Custom | Custom | Unlimited | 5GB+ |
+| Tier         | Monthly Fee | Annual Fee       | Analyses/Month | Max File Size |
+| ------------ | ----------- | ---------------- | -------------- | ------------- |
+| Free         | $0          | $0               | 5              | 500MB         |
+| Professional | $99         | $990 (save $198) | 100            | 2GB           |
+| Enterprise   | Custom      | Custom           | Unlimited      | 5GB+          |
 
 ### 4.2 Payment Terms
 
@@ -209,6 +212,7 @@ Fees exclude applicable taxes (sales tax, VAT, GST). You are responsible for all
 ### 4.5 No Refunds
 
 All fees are **non-refundable**, including:
+
 - Partial months of service
 - Unused analyses or storage
 - Downgrades mid-billing cycle
@@ -223,6 +227,7 @@ All fees are **non-refundable**, including:
 ### 5.1 Software Updates
 
 Licensor may provide updates including:
+
 - **Bug fixes and patches**
 - **Security updates** (critical)
 - **Feature enhancements**
@@ -234,15 +239,16 @@ Licensor may provide updates including:
 
 ### 5.2 Support Levels
 
-| Tier | Support Channels | Response Time | Coverage |
-|------|-----------------|---------------|----------|
-| Free | Email, docs | Best effort | Business hours |
-| Professional | Email, live chat | < 24 hours | 9am-5pm EST M-F |
-| Enterprise | Phone, email, chat, dedicated | < 4 hours | 24/7 priority |
+| Tier         | Support Channels              | Response Time | Coverage        |
+| ------------ | ----------------------------- | ------------- | --------------- |
+| Free         | Email, docs                   | Best effort   | Business hours  |
+| Professional | Email, live chat              | < 24 hours    | 9am-5pm EST M-F |
+| Enterprise   | Phone, email, chat, dedicated | < 4 hours     | 24/7 priority   |
 
 ### 5.3 Support Exclusions
 
 Support does **NOT** include:
+
 - Legal advice or case strategy
 - Custom development or modifications
 - Training on legal procedures
@@ -260,6 +266,7 @@ Support does **NOT** include:
 ### 6.2 Account Data Collection
 
 Licensor collects minimal account data:
+
 - Email, name, organization (registration)
 - Analysis metadata (filename, case number, timestamps - **NOT** file contents)
 - Usage stats (analysis count, storage used)
@@ -270,6 +277,7 @@ See **Privacy Policy** for complete details.
 ### 6.3 No Data Mining
 
 Licensor does **NOT**:
+
 - Access your evidence files
 - Read your transcripts or analysis results
 - Sell your data to third parties
@@ -279,6 +287,7 @@ Licensor does **NOT**:
 ### 6.4 Data Security
 
 Licensor implements industry-standard security:
+
 - TLS encryption in transit
 - AES-256 encryption at rest
 - Password hashing (bcrypt)
@@ -288,6 +297,7 @@ Licensor implements industry-standard security:
 ### 6.5 Compliance
 
 Licensor complies with:
+
 - **GDPR** (European Union)
 - **CCPA** (California)
 - **PIPEDA** (Canada)
@@ -300,11 +310,13 @@ Licensor complies with:
 ### 7.1 Limited Warranty (90 Days)
 
 For **90 days** from your first payment, Licensor warrants that the Software will:
+
 - Substantially conform to published documentation
 - Be free from material defects
 - Function without critical bugs
 
 **Remedy:** If Software fails to meet warranty, Licensor will (at its option):
+
 1. Repair or replace the Software, or
 2. Refund fees paid in the 90-day period
 
@@ -391,6 +403,7 @@ Limitations do **NOT** apply to:
 ### 8.4 Essential Remedy
 
 **You acknowledge that:**
+
 - These limitations reflect the allocation of risk between parties
 - Licensor's pricing reflects these limitations
 - You would not receive the Software at this price without these limitations
@@ -419,6 +432,7 @@ You agree to **indemnify, defend, and hold harmless** Licensor, its affiliates, 
 ### 9.2 Defense and Settlement
 
 Licensor may:
+
 - Assume exclusive defense and control of any indemnified claim
 - Require you to cooperate in the defense
 - Settle claims at its discretion (you may not settle without our consent)
@@ -436,6 +450,7 @@ This Agreement begins when you first install or use the Software and continues u
 ### 10.2 Termination by You
 
 You may terminate by:
+
 - Canceling your subscription from account dashboard
 - Emailing support@barberx.info
 - Uninstalling the Software and ceasing use
@@ -470,6 +485,7 @@ Upon termination:
 ### 10.5 Suspension
 
 Licensor may **suspend** (not terminate) your account pending:
+
 - Investigation of suspected violations
 - Resolution of payment disputes
 - Compliance with court orders
@@ -484,6 +500,7 @@ You will be notified unless prohibited by law.
 ### 11.1 Governing Law
 
 This Agreement is governed by the laws of the **State of New Jersey, USA**, excluding:
+
 - Conflict of law principles
 - United Nations Convention on Contracts for the International Sale of Goods (CISG)
 
@@ -498,6 +515,7 @@ This Agreement is governed by the laws of the **State of New Jersey, USA**, excl
 For claims under **$10,000**, either party may elect **binding arbitration** instead of court litigation.
 
 **Arbitration Rules:**
+
 - Administered by: **American Arbitration Association (AAA)**
 - Rules: AAA Commercial Arbitration Rules
 - Location: New Jersey or virtual/telephonic (your choice)
@@ -509,6 +527,7 @@ For claims under **$10,000**, either party may elect **binding arbitration** ins
 ### 11.4 Class Action Waiver
 
 **YOU AGREE TO RESOLVE DISPUTES INDIVIDUALLY, NOT AS PART OF ANY:**
+
 - Class action
 - Collective action
 - Representative proceeding
@@ -519,6 +538,7 @@ For claims under **$10,000**, either party may elect **binding arbitration** ins
 ### 11.5 Injunctive Relief
 
 Notwithstanding arbitration, Licensor may seek **injunctive or equitable relief** in any court for:
+
 - Intellectual property violations
 - Breach of confidentiality
 - Unauthorized use or redistribution
@@ -527,6 +547,7 @@ Notwithstanding arbitration, Licensor may seek **injunctive or equitable relief*
 ### 11.6 Attorneys' Fees
 
 In any dispute, the **prevailing party** is entitled to recover:
+
 - Reasonable attorneys' fees
 - Court costs and expenses
 - Expert witness fees
@@ -538,6 +559,7 @@ In any dispute, the **prevailing party** is entitled to recover:
 ### 12.1 Entire Agreement
 
 This Agreement, together with:
+
 - **Terms of Service**
 - **Privacy Policy**
 - **Any order forms or invoices**
@@ -547,6 +569,7 @@ This Agreement, together with:
 ### 12.2 Amendments
 
 Licensor may amend this Agreement at any time by:
+
 - Posting updated version on website
 - Emailing notice to your registered address
 - Providing in-app notification
@@ -560,6 +583,7 @@ Licensor may amend this Agreement at any time by:
 **You may NOT** assign or transfer this Agreement or your license without Licensor's prior written consent.
 
 **Licensor may** assign to:
+
 - Affiliates or subsidiaries
 - Acquirer in a merger, acquisition, or sale of assets
 - Successor entity in a business transfer
@@ -579,6 +603,7 @@ Licensor's failure to enforce any right does not waive that right. Waiver of one
 ### 12.6 Force Majeure
 
 Licensor is **not liable** for delays or failures caused by events beyond its reasonable control, including:
+
 - Natural disasters (earthquakes, floods, hurricanes)
 - War, terrorism, civil unrest
 - Government actions or regulations
@@ -590,10 +615,12 @@ Licensor is **not liable** for delays or failures caused by events beyond its re
 ### 12.7 Export Compliance
 
 You agree to comply with all applicable export control laws, including:
+
 - U.S. Export Administration Regulations (EAR)
 - Office of Foreign Assets Control (OFAC) sanctions
 
 **You may NOT** export the Software to:
+
 - Embargoed countries (Cuba, Iran, North Korea, Syria, etc.)
 - Denied parties or restricted end-users
 - For prohibited end-uses (weapons, nuclear, etc.)
@@ -601,6 +628,7 @@ You agree to comply with all applicable export control laws, including:
 ### 12.8 U.S. Government Rights
 
 If you are a **U.S. government entity**, the Software is:
+
 - "Commercial Computer Software" per FAR 12.212 and DFARS 227.7202
 - Provided with **Restricted Rights**
 - Subject to this Agreement (not government acquisition regulations)
@@ -608,6 +636,7 @@ If you are a **U.S. government entity**, the Software is:
 ### 12.9 Third-Party Components
 
 The Software may include **open-source components** (Whisper, pyannote, spaCy, etc.) governed by their own licenses:
+
 - **OpenAI Whisper:** MIT License
 - **pyannote.audio:** MIT License
 - **spaCy:** MIT License
@@ -633,6 +662,7 @@ Notices effective upon email delivery or 3 days after mailing.
 ### 12.11 Relationship of Parties
 
 You and Licensor are **independent contractors**. This Agreement does NOT create:
+
 - Partnership
 - Joint venture
 - Agency
@@ -644,6 +674,7 @@ Neither party may bind the other or incur obligations on the other's behalf.
 ### 12.12 Survival
 
 The following sections **survive termination**:
+
 - Section 2 (IP Ownership)
 - Section 6 (Data/Privacy - where applicable)
 - Section 7 (Disclaimers)

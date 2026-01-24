@@ -39,6 +39,7 @@
 ## Option 1: Deploy to Render (Recommended)
 
 **Why Render:**
+
 - ✅ Free tier available
 - ✅ Auto-scaling
 - ✅ PostgreSQL included
@@ -64,6 +65,7 @@ git push origin main
 6. **Click:** "Apply"
 
 **Render creates:**
+
 - Web service (Flask API)
 - PostgreSQL database
 - Auto environment variables
@@ -89,6 +91,7 @@ https://barberx-api.onrender.com
 ```
 
 Custom domain:
+
 ```
 https://api.barberx.info
 ```
@@ -98,6 +101,7 @@ https://api.barberx.info
 ## Option 2: Deploy to Railway (Fastest)
 
 **Why Railway:**
+
 - ✅ $5 free credit monthly
 - ✅ Instant deploys
 - ✅ PostgreSQL with 1 click
@@ -136,6 +140,7 @@ railway open
 ## Option 3: Deploy to Fly.io (Most Control)
 
 **Why Fly.io:**
+
 - ✅ Deploy to multiple regions
 - ✅ Auto-scaling
 - ✅ PostgreSQL clusters
@@ -191,6 +196,7 @@ Run `create_admin.py` on production.
 ## File Storage Strategy (Scale-Ready)
 
 ### Current: Local Storage
+
 ```python
 UPLOAD_FOLDER = './uploads/pdfs'
 ```
@@ -198,11 +204,13 @@ UPLOAD_FOLDER = './uploads/pdfs'
 ### Future: AWS S3 (Unlimited Scale)
 
 **Install:**
+
 ```powershell
 pip install boto3
 ```
 
 **Configure:**
+
 ```python
 import boto3
 from botocore.config import Config
@@ -222,6 +230,7 @@ s3_client.upload_fileobj(
 ```
 
 **Benefits:**
+
 - Unlimited storage
 - Global CDN
 - $0.023/GB
@@ -232,6 +241,7 @@ s3_client.upload_fileobj(
 ## Scaling Roadmap
 
 ### Phase 1: MVP (Now) - FREE
+
 - ✅ Netlify frontend (free)
 - ✅ Render backend (free tier)
 - ✅ PostgreSQL (free tier)
@@ -239,12 +249,14 @@ s3_client.upload_fileobj(
 - **Capacity:** ~100 users, 10GB storage
 
 ### Phase 2: Growth ($50/month)
+
 - ✅ Render Pro ($25/month)
 - ✅ PostgreSQL Pro ($25/month)
 - ✅ S3 storage (~$5/month for 200GB)
 - **Capacity:** ~10,000 users, unlimited storage
 
 ### Phase 3: Scale ($500/month)
+
 - ✅ Multiple regions
 - ✅ Redis caching
 - ✅ CDN for files
@@ -252,6 +264,7 @@ s3_client.upload_fileobj(
 - **Capacity:** ~1M users, petabyte storage
 
 ### Phase 4: Enterprise ($5,000+/month)
+
 - ✅ Kubernetes clusters
 - ✅ Multi-region database
 - ✅ Dedicated support
@@ -419,12 +432,14 @@ def upload_pdf():
 ## Cost Estimates
 
 ### Startup Phase (0-1K users)
+
 - Netlify: **FREE**
 - Render Free Tier: **FREE**
 - PostgreSQL Free: **FREE**
 - **Total: $0/month**
 
 ### Growth Phase (1K-100K users)
+
 - Netlify Pro: **FREE** (generous limits)
 - Render Starter: **$25/month**
 - PostgreSQL: **$25/month**
@@ -432,6 +447,7 @@ def upload_pdf():
 - **Total: ~$60/month**
 
 ### Scale Phase (100K+ users)
+
 - Netlify Enterprise: **$500/month**
 - Render Team: **$250/month**
 - PostgreSQL Pro: **$200/month**
@@ -446,6 +462,7 @@ def upload_pdf():
 ### Fastest Path (5 minutes):
 
 1. **Railway:**
+
    ```powershell
    npm i -g @railway/cli
    railway login
@@ -454,17 +471,19 @@ def upload_pdf():
    ```
 
 2. **Get URL:**
+
    ```
    https://your-app.railway.app
    ```
 
 3. **Update Netlify:**
+
    ```javascript
    // In your frontend forms
-   fetch('https://your-app.railway.app/api/upload/pdf', {
-     method: 'POST',
-     body: formData
-   })
+   fetch("https://your-app.railway.app/api/upload/pdf", {
+     method: "POST",
+     body: formData,
+   });
    ```
 
 4. **Done!** ✅

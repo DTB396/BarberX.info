@@ -1,12 +1,15 @@
 # COPYRIGHT COMPLIANCE QUICK START
+
 **Protect Your Law Firm from Copyright Lawsuits**
 
 ## 🚨 CRITICAL: THREE RULES TO AVOID LAWSUITS
 
 ### ⚖️ RULE 1: POINTER, DON'T REPUBLISH
+
 **NEVER copy full copyrighted content from Westlaw, LexisNexis, Bloomberg Law, or police reports.**
 
 ✅ **ALLOWED:**
+
 ```python
 # Store citation metadata only
 case = {
@@ -19,6 +22,7 @@ case = {
 ```
 
 ❌ **PROHIBITED:**
+
 ```python
 # DO NOT DO THIS - Copyright infringement
 case = {
@@ -35,9 +39,11 @@ case = {
 ---
 
 ### 🔒 RULE 2: KEEP PROPRIETARY LAYERS SEPARATE
+
 **Store Westlaw/Lexis data in separate, non-exportable database tables.**
 
 ✅ **SAFE ARCHITECTURE:**
+
 ```python
 # Public domain table (EXPORTABLE)
 public_case_data:
@@ -59,9 +65,11 @@ Mixing proprietary and public data in same table → Risk of accidental export
 ---
 
 ### 📋 RULE 3: RIGHTS-AWARE EXPORTS
+
 **Every export MUST include attribution and exclude restricted materials.**
 
 ✅ **COMPLIANT EXPORT:**
+
 ```json
 {
   "materials_included": [
@@ -95,21 +103,22 @@ Mixing proprietary and public data in same table → Risk of accidental export
 
 ## 📊 DATA SOURCE CLASSIFICATION
 
-| Source | Type | Can Export? | Max Excerpt |
-|--------|------|-------------|-------------|
-| **CourtListener** | Public domain | ✅ Yes | Full text |
-| **Justia** | Public domain | ✅ Yes | Full text |
-| **OPRA BWC footage** | Public record | ✅ Yes | Full video |
-| **Our AI transcripts** | Our work product | ✅ Yes | Full text |
-| **Westlaw KeyCite** | Proprietary | ❌ NO | Internal use only |
-| **Lexis Shepard's** | Proprietary | ❌ NO | Internal use only |
-| **Police reports** | Copyrighted | ⚠️ Excerpts only | 200 words max |
+| Source                 | Type             | Can Export?      | Max Excerpt       |
+| ---------------------- | ---------------- | ---------------- | ----------------- |
+| **CourtListener**      | Public domain    | ✅ Yes           | Full text         |
+| **Justia**             | Public domain    | ✅ Yes           | Full text         |
+| **OPRA BWC footage**   | Public record    | ✅ Yes           | Full video        |
+| **Our AI transcripts** | Our work product | ✅ Yes           | Full text         |
+| **Westlaw KeyCite**    | Proprietary      | ❌ NO            | Internal use only |
+| **Lexis Shepard's**    | Proprietary      | ❌ NO            | Internal use only |
+| **Police reports**     | Copyrighted      | ⚠️ Excerpts only | 200 words max     |
 
 ---
 
 ## 🛠️ IMPLEMENTATION CHECKLIST
 
 ### Before Launch:
+
 - [ ] **Install data_rights.py module** (Pattern 1-3 enforcement)
 - [ ] **Create database tables** (public vs proprietary separation)
 - [ ] **Update export functions** to validate rights
@@ -117,6 +126,7 @@ Mixing proprietary and public data in same table → Risk of accidental export
 - [ ] **Test export blocking** for Westlaw/Lexis content
 
 ### Code Integration:
+
 ```python
 # 1. Import compliance module
 from data_rights import RightsAwareExport, RIGHTS_PROFILES, Material
@@ -149,6 +159,7 @@ export.finalize_export(
 ```
 
 ### Database Setup:
+
 ```bash
 # Run once to create compliance tables
 python models_data_rights.py

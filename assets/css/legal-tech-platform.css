@@ -5,49 +5,54 @@
 
 :root {
   /* Professional Legal Tech Color Palette */
-  --primary-navy: #0A2540;
-  --primary-blue: #1E3A8A;
-  --accent-blue: #3B82F6;
-  --accent-cyan: #06B6D4;
-  --success-green: #10B981;
-  --warning-amber: #F59E0B;
-  --error-red: #EF4444;
-  
+  --primary-navy: #0a2540;
+  --primary-blue: #1e3a8a;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --success-green: #10b981;
+  --warning-amber: #f59e0b;
+  --error-red: #ef4444;
+
   /* Neutral Scale */
-  --gray-50: #F9FAFB;
-  --gray-100: #F3F4F6;
-  --gray-200: #E5E7EB;
-  --gray-300: #D1D5DB;
-  --gray-400: #9CA3AF;
-  --gray-500: #6B7280;
-  --gray-600: #4B5563;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
   --gray-700: #374151;
-  --gray-800: #1F2937;
+  --gray-800: #1f2937;
   --gray-900: #111827;
-  
+
   /* Semantic Colors */
   --text-primary: var(--gray-900);
   --text-secondary: var(--gray-600);
   --text-muted: var(--gray-500);
-  --bg-primary: #FFF;
+  --bg-primary: #fff;
   --bg-secondary: var(--gray-50);
   --bg-dark: var(--primary-navy);
-  
+
   /* Borders */
   --border-light: var(--gray-200);
   --border-medium: var(--gray-300);
   --border-dark: var(--gray-400);
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
-  
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
+
   /* Typography */
-  --font-sans: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, 'Helvetica Neue', arial, sans-serif;
-  --font-mono: 'SF Mono', monaco, 'Cascadia Code', 'Roboto Mono', consolas, monospace;
-  
+  --font-sans:
+    -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue",
+    arial, sans-serif;
+  --font-mono:
+    "SF Mono", monaco, "Cascadia Code", "Roboto Mono", consolas, monospace;
+
   /* Spacing Scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -57,13 +62,13 @@
   --space-8: 2rem;
   --space-12: 3rem;
   --space-16: 4rem;
-  
+
   /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
-  
+
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -99,7 +104,12 @@ body {
    TYPOGRAPHY
    ============================================================================= */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-4);
@@ -179,18 +189,26 @@ code {
 
 .hero-legal-tech {
   position: relative;
-  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-navy) 0%,
+    var(--primary-blue) 100%
+  );
   color: white;
   padding: var(--space-16) 0;
   overflow: hidden;
 }
 
 .hero-legal-tech::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgb(59 130 246 / 10%) 0%, transparent 50%),
+  background-image:
+    radial-gradient(
+      circle at 20% 50%,
+      rgb(59 130 246 / 10%) 0%,
+      transparent 50%
+    ),
     radial-gradient(circle at 80% 80%, rgb(6 182 212 / 10%) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -224,7 +242,8 @@ code {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
 
@@ -452,7 +471,7 @@ code {
 }
 
 .feature-list li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: var(--success-green);
@@ -495,7 +514,11 @@ code {
    ============================================================================= */
 
 .cta-section {
-  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-navy) 0%,
+    var(--primary-blue) 100%
+  );
   color: white;
   padding: var(--space-16) 0;
   text-align: center;
@@ -558,24 +581,24 @@ code {
   .container {
     padding: 0 var(--space-4);
   }
-  
+
   .hero-legal-tech {
     padding: var(--space-12) 0;
   }
-  
+
   .section {
     padding: var(--space-12) 0;
   }
-  
+
   .feature-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     align-items: stretch;

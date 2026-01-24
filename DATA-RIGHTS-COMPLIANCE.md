@@ -1,4 +1,5 @@
 # COPYRIGHT AND DATA RIGHTS COMPLIANCE FRAMEWORK
+
 **BarberX Legal Tech Platform**  
 **Effective:** January 22, 2026
 
@@ -13,11 +14,13 @@ This document outlines mandatory compliance patterns to protect BarberX Legal Te
 ## PATTERN 1: POINTER, DON'T REPUBLISH
 
 ### Principle
+
 **NEVER republish full copyrighted content.** Store citations, fair-use excerpts, and pointers to authoritative sources only.
 
 ### Implementation Rules
 
 #### ✅ ALLOWED: Citations and Metadata
+
 ```python
 # CORRECT - Store citation metadata only
 case_data = {
@@ -34,6 +37,7 @@ case_data = {
 ```
 
 #### ❌ PROHIBITED: Full Text Republication
+
 ```python
 # WRONG - Do NOT store full opinion text from Westlaw/Lexis
 case_data = {
@@ -44,31 +48,35 @@ case_data = {
 ```
 
 ### Fair Use Guidelines
+
 - **Excerpts:** Maximum 200 words per source
 - **Purpose:** Criticism, comment, news reporting, teaching, research
 - **Attribution:** Always cite source and copyright holder
 - **No Substitution:** Excerpt must not replace need for original
 
 ### Sources Requiring Extra Caution
-| Source | What's Protected | What You Can Use |
-|--------|------------------|------------------|
-| **Westlaw** | Headnotes, KeyCite, synopses, enhanced features | Public domain case text, citations |
-| **LexisNexis** | Shepard's, summaries, editorial enhancements | Public domain case text, citations |
-| **Bloomberg Law** | BCite, summaries, practice tools | Public domain case text, citations |
-| **Pacer** | Free (but terms limit republication) | Case metadata, docket entries (with attribution) |
-| **Police Reports** | Usually copyrighted by department | Fair use excerpts for litigation only |
-| **BWC Footage** | Copyright varies by jurisdiction | Client-owned footage only; cite public records |
+
+| Source             | What's Protected                                | What You Can Use                                 |
+| ------------------ | ----------------------------------------------- | ------------------------------------------------ |
+| **Westlaw**        | Headnotes, KeyCite, synopses, enhanced features | Public domain case text, citations               |
+| **LexisNexis**     | Shepard's, summaries, editorial enhancements    | Public domain case text, citations               |
+| **Bloomberg Law**  | BCite, summaries, practice tools                | Public domain case text, citations               |
+| **Pacer**          | Free (but terms limit republication)            | Case metadata, docket entries (with attribution) |
+| **Police Reports** | Usually copyrighted by department               | Fair use excerpts for litigation only            |
+| **BWC Footage**    | Copyright varies by jurisdiction                | Client-owned footage only; cite public records   |
 
 ---
 
 ## PATTERN 2: KEEP PROPRIETARY LAYERS SEPARATE
 
 ### Principle
+
 **Isolate proprietary data** in non-exportable private tables. Never mix proprietary fields with public domain content.
 
 ### Database Architecture
 
 #### Public Domain Table (SAFE TO EXPORT)
+
 ```sql
 CREATE TABLE public_case_data (
     case_id UUID PRIMARY KEY,
@@ -84,6 +92,7 @@ CREATE TABLE public_case_data (
 ```
 
 #### Proprietary Data Table (NEVER EXPORT)
+
 ```sql
 CREATE TABLE proprietary_source_data (
     id UUID PRIMARY KEY,
@@ -101,6 +110,7 @@ CREATE TABLE proprietary_source_data (
 ```
 
 #### Access Control
+
 ```python
 class CaseData:
     def export_for_court(self):
@@ -112,12 +122,12 @@ class CaseData:
             "our_analysis": self.our_analysis,
             # NEVER include: westlaw_keycite, lexis_shepards, etc.
         }
-    
+
     def internal_research_view(self, user):
         """Internal use only - requires special permission."""
         if not user.has_permission('view_proprietary_research'):
             raise PermissionDenied("Proprietary data access restricted")
-        
+
         return {
             **self.export_for_court(),
             "westlaw_keycite": self.westlaw_keycite,  # Internal only
@@ -127,22 +137,25 @@ class CaseData:
 ```
 
 ### Storage Location Rules
-| Data Type | Storage Location | Export Allowed? |
-|-----------|------------------|-----------------|
-| Public domain case text | `public_case_data` table | ✅ Yes |
-| Our original analysis | `public_case_data` table | ✅ Yes |
-| Client-provided evidence | `user_evidence` table | ✅ Yes (to client only) |
-| Westlaw/Lexis data | `proprietary_source_data` table | ❌ NO - internal use only |
-| Police reports (full text) | Do not store - link only | ❌ NO - fair use excerpts only |
+
+| Data Type                  | Storage Location                | Export Allowed?                |
+| -------------------------- | ------------------------------- | ------------------------------ |
+| Public domain case text    | `public_case_data` table        | ✅ Yes                         |
+| Our original analysis      | `public_case_data` table        | ✅ Yes                         |
+| Client-provided evidence   | `user_evidence` table           | ✅ Yes (to client only)        |
+| Westlaw/Lexis data         | `proprietary_source_data` table | ❌ NO - internal use only      |
+| Police reports (full text) | Do not store - link only        | ❌ NO - fair use excerpts only |
 
 ---
 
 ## PATTERN 3: RIGHTS-AWARE EXPORTS
 
 ### Principle
+
 **Every export must include only materials you're permitted to export, with proper attribution and a source manifest.**
 
 ### Export Manifest Template
+
 ```json
 {
   "export_id": "exp_abc123",
@@ -150,7 +163,7 @@ class CaseData:
   "created_by": "attorney@lawfirm.com",
   "case_number": "ATL-L-002794-25",
   "export_type": "discovery_production",
-  
+
   "materials_included": {
     "bwc_videos": [
       {
@@ -190,13 +203,13 @@ class CaseData:
       }
     ]
   },
-  
+
   "attribution_requirements": [
     "Whisper AI (OpenAI) used for transcription under MIT License",
     "CourtListener used for public domain case law under CC0 License",
     "BarberX Legal Tech platform (proprietary software)"
   ],
-  
+
   "excluded_materials": {
     "reason": "Proprietary or restricted",
     "items": [
@@ -204,7 +217,7 @@ class CaseData:
       "Police report full text (copyrighted - fair use excerpts only in brief)"
     ]
   },
-  
+
   "verification": {
     "all_materials_permitted": true,
     "attorney_certification": "I certify all materials comply with copyright and licensing requirements",
@@ -215,6 +228,7 @@ class CaseData:
 ```
 
 ### Export Validation Code
+
 ```python
 class RightsAwareExport:
     def __init__(self, case_id):
@@ -226,7 +240,7 @@ class RightsAwareExport:
             "attribution_requirements": [],
             "excluded_materials": {"reason": "Proprietary or restricted", "items": []}
         }
-    
+
     def add_material(self, material):
         """Add material only if export rights verified."""
         if not material.export_allowed:
@@ -236,14 +250,14 @@ class RightsAwareExport:
             })
             logger.warning(f"Material excluded from export: {material.filename} - {material.restriction_reason}")
             return False
-        
+
         # Verify copyright compliance
         if material.source_type == "proprietary_legal_database":
             raise ExportViolation(f"Cannot export proprietary data: {material.filename}")
-        
+
         if material.source_type == "copyrighted_document" and not material.is_fair_use:
             raise ExportViolation(f"Full copyrighted document cannot be exported: {material.filename}")
-        
+
         # Add to manifest with full attribution
         self.manifest["materials_included"].setdefault(material.category, []).append({
             "filename": material.filename,
@@ -253,13 +267,13 @@ class RightsAwareExport:
             "acquired_by": material.acquired_by,
             "acquired_date": material.acquired_date.isoformat()
         })
-        
+
         # Add attribution requirement
         if material.attribution_required:
             self.manifest["attribution_requirements"].append(material.attribution_text)
-        
+
         return True
-    
+
     def finalize_export(self, attorney_email):
         """Generate final export package with manifest."""
         self.manifest["verification"] = {
@@ -267,12 +281,12 @@ class RightsAwareExport:
             "certifying_attorney": attorney_email,
             "certification_date": datetime.utcnow().isoformat()
         }
-        
+
         # Write manifest to export directory
         manifest_path = f"exports/{self.manifest['export_id']}/RIGHTS_MANIFEST.json"
         with open(manifest_path, 'w') as f:
             json.dump(self.manifest, f, indent=2)
-        
+
         return manifest_path
 ```
 
@@ -281,6 +295,7 @@ class RightsAwareExport:
 ## ENFORCEMENT CHECKLIST
 
 ### Pre-Export Verification (MANDATORY)
+
 - [ ] All materials have verified export rights
 - [ ] No proprietary database content (Westlaw/Lexis) included
 - [ ] Fair use excerpts under 200 words with attribution
@@ -292,6 +307,7 @@ class RightsAwareExport:
 - [ ] Attorney certification obtained
 
 ### Code Review Requirements
+
 - [ ] No full-text storage of copyrighted materials
 - [ ] Proprietary data in separate, non-exportable tables
 - [ ] Export functions check `export_allowed` flag
@@ -300,6 +316,7 @@ class RightsAwareExport:
 - [ ] Manifest generation tested
 
 ### Audit Trail
+
 - [ ] All exports logged with manifest ID
 - [ ] Attorney certification recorded
 - [ ] Source URLs preserved for verification
@@ -311,12 +328,14 @@ class RightsAwareExport:
 ## CONSEQUENCES OF NON-COMPLIANCE
 
 ### Legal Risks
+
 - **Copyright infringement:** Statutory damages up to $150,000 per work
 - **License violations:** Westlaw/Lexis may terminate access, sue for damages
 - **Malpractice:** Attorney discipline for unauthorized republication
 - **Injunctions:** Court orders to cease operations
 
 ### Company Risks
+
 - **Platform shutdown:** Hosting providers may suspend service
 - **DMCA takedowns:** GitHub/hosting removal
 - **Reputation damage:** Loss of attorney trust

@@ -3,19 +3,21 @@
 **Status:** ✅ READY  
 **Flask App:** Running on http://localhost:5000  
 **Admin Login:** admin@barberx.info  
-**Password:** BxAdm!n#2026$Secur3*P@ssw0rd%33^
+**Password:** BxAdm!n#2026$Secur3\*P@ssw0rd%33^
 
 ---
 
 ## 📄 Upload Court Documents (3 Methods)
 
 ### Method 1: Web Interface (Easiest)
+
 1. Open browser: http://localhost:5000/batch-pdf-upload.html
 2. Drag PDFs into upload zone
 3. Add metadata (case number, doc type, etc.)
 4. Click "Upload All Files"
 
 ### Method 2: API with PowerShell
+
 ```powershell
 # Upload single PDF
 $pdfPath = "C:\path\to\court_document.pdf"
@@ -32,6 +34,7 @@ Invoke-RestMethod -Uri "http://localhost:5000/api/upload/pdf" `
 ```
 
 ### Method 3: Python Script
+
 ```python
 import requests
 
@@ -43,7 +46,7 @@ data = {
     'tags': 'discovery,bwc,compel'
 }
 
-response = requests.post('http://localhost:5000/api/upload/pdf', 
+response = requests.post('http://localhost:5000/api/upload/pdf',
                         files=files, data=data)
 print(response.json())
 ```
@@ -53,6 +56,7 @@ print(response.json())
 ## 🎥 Process BWC Video
 
 ### Upload & Analyze:
+
 ```powershell
 # 1. Upload video
 $videoPath = "C:\path\to\bwc_footage.mp4"
@@ -71,6 +75,7 @@ Invoke-RestMethod -Uri "http://localhost:5000/api/analysis/$uploadId/status"
 ```
 
 **Analysis includes:**
+
 - Complete audio transcript with timestamps
 - Speaker identification (officer vs civilian)
 - Discrepancy detection vs police reports
@@ -82,19 +87,20 @@ Invoke-RestMethod -Uri "http://localhost:5000/api/analysis/$uploadId/status"
 ## 📊 Check Database
 
 ### PowerShell:
+
 ```powershell
 # View all PDFs uploaded today
 sqlite3 instance/barberx_auth.db "
-  SELECT id, original_filename, case_number, document_type, created_at 
-  FROM pdf_uploads 
+  SELECT id, original_filename, case_number, document_type, created_at
+  FROM pdf_uploads
   WHERE date(created_at) = date('now')
 "
 
 # View BWC analyses
 sqlite3 instance/barberx_auth.db "
-  SELECT id, filename, status, created_at 
-  FROM analyses 
-  ORDER BY created_at DESC 
+  SELECT id, filename, status, created_at
+  FROM analyses
+  ORDER BY created_at DESC
   LIMIT 10
 "
 ```
@@ -104,10 +110,12 @@ sqlite3 instance/barberx_auth.db "
 ## 🔐 Admin Access
 
 **Login:** http://localhost:5000/auth/login
+
 - Email: admin@barberx.info
-- Password: BxAdm!n#2026$Secur3*P@ssw0rd%33^
+- Password: BxAdm!n#2026$Secur3\*P@ssw0rd%33^
 
 **Admin Panel:** http://localhost:5000/admin
+
 - View all uploads
 - Manage users
 - Download reports
@@ -123,6 +131,7 @@ python app.py
 ```
 
 Wait for this message:
+
 ```
 🌐 Web Application: http://localhost:5000
 Ready for production deployment!
@@ -143,18 +152,21 @@ Ready for production deployment!
 ## 🆘 Quick Troubleshooting
 
 **PDF Upload Fails?**
+
 ```powershell
 # Check directory exists
 New-Item -ItemType Directory -Force -Path "./uploads/pdfs"
 ```
 
 **Can't Login?**
+
 ```powershell
 # Recreate admin account
 python create_admin.py
 ```
 
 **Database Error?**
+
 ```powershell
 # Reinitialize tables
 python init_database.py
@@ -165,6 +177,7 @@ python init_database.py
 ## ✅ Pre-Flight Check
 
 Before processing documents:
+
 - [ ] Flask app running (check http://localhost:5000)
 - [ ] Can login as admin
 - [ ] `./uploads/pdfs/` directory exists
@@ -176,6 +189,7 @@ Before processing documents:
 ## 📋 Document Types Supported
 
 Use these for `document_type` field:
+
 - `brief` - Legal brief
 - `motion` - Motion or petition
 - `order` - Court order
@@ -192,11 +206,13 @@ Use these for `document_type` field:
 ## 🎯 Tonight's Workflow
 
 1. **Start Flask App:**
+
    ```powershell
    python app.py
    ```
 
 2. **Open Web Interface:**
+
    ```
    http://localhost:5000/batch-pdf-upload.html
    ```
@@ -214,6 +230,7 @@ Use these for `document_type` field:
 6. **Monitor Progress** - Green checkmarks for success
 
 7. **Check Database** to verify:
+
    ```powershell
    python check_db.py
    ```

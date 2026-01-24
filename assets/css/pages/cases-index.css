@@ -139,7 +139,7 @@
   background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
   color: #fff;
   border-color: #dc2626;
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgb(220 38 38 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 20%);
 }
@@ -148,7 +148,7 @@
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   border-color: #ef4444;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 0 30px rgb(220 38 38 / 60%),
     0 8px 20px rgb(220 38 38 / 50%),
     inset 0 1px 0 rgb(255 255 255 / 25%);
@@ -160,7 +160,7 @@
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #fff;
   border-color: #2563eb;
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgb(37 99 235 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 20%);
 }
@@ -169,7 +169,7 @@
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   border-color: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 0 30px rgb(37 99 235 / 60%),
     0 8px 20px rgb(37 99 235 / 50%),
     inset 0 1px 0 rgb(255 255 255 / 25%);
@@ -276,7 +276,7 @@
   background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
   border: 2px solid rgb(212 165 116 / 25%);
   border-radius: 16px;
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgb(0 0 0 / 40%),
     0 2px 8px rgb(0 0 0 / 30%),
     inset 0 1px 0 rgb(255 255 255 / 5%);
@@ -297,7 +297,7 @@
 .cases-grid .case-card:hover {
   transform: translateY(-6px);
   border-color: rgb(212 165 116 / 50%);
-  box-shadow: 
+  box-shadow:
     0 16px 48px rgb(0 0 0 / 50%),
     0 8px 24px rgb(212 165 116 / 15%),
     inset 0 1px 0 rgb(255 255 255 / 8%);
@@ -361,7 +361,7 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: auto;
   border: 2px solid #d4a574;
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgb(212 165 116 / 30%),
     inset 0 1px 0 rgb(255 255 255 / 25%);
 }
@@ -370,7 +370,7 @@
   background: linear-gradient(135deg, #e2c275 0%, #d4a574 100%);
   border-color: #e2c275;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 0 20px rgb(212 165 116 / 50%),
     0 4px 16px rgb(212 165 116 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 30%);
@@ -379,7 +379,7 @@
 
 .view-case-btn:focus {
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgb(212 165 116 / 50%),
     0 4px 16px rgb(212 165 116 / 40%);
 }
@@ -630,7 +630,7 @@
   font-size: 1rem;
   border: 2px solid #d4a574;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgb(212 165 116 / 30%),
     inset 0 1px 0 rgb(255 255 255 / 25%);
 }
@@ -639,7 +639,7 @@
   background: linear-gradient(135deg, #e2c275 0%, #d4a574 100%);
   border-color: #e2c275;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 0 25px rgb(212 165 116 / 50%),
     0 6px 20px rgb(212 165 116 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 30%);
@@ -648,7 +648,7 @@
 
 .opra-btn:focus {
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgb(212 165 116 / 50%),
     0 6px 20px rgb(212 165 116 / 40%);
 }

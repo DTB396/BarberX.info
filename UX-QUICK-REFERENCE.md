@@ -3,9 +3,11 @@
 ## 🎯 Component Usage Guide
 
 ### Usage Meter
+
 Shows visual progress with tier limits:
+
 ```jinja2
-{% include 'components/usage-meter.html' with 
+{% include 'components/usage-meter.html' with
    title='BWC Videos',
    resource_name='bwc_videos',
    current=usage.bwc_videos_processed,
@@ -16,7 +18,9 @@ Shows visual progress with tier limits:
 ```
 
 ### Tier Upgrade Card
+
 Contextual upgrade prompts:
+
 ```jinja2
 {% include 'components/tier-upgrade-card.html' with
    title='Unlock Professional Features',
@@ -26,7 +30,9 @@ Contextual upgrade prompts:
 ```
 
 ### Onboarding Tour
+
 First-time user walkthrough:
+
 ```html
 <!-- Add once per page, usually in dashboard -->
 {% include 'components/onboarding-tour.html' %}
@@ -35,6 +41,7 @@ First-time user walkthrough:
 ## 🔧 Python Helper Functions
 
 ### Number Formatting
+
 ```python
 from ux_helpers import format_number, format_file_size, format_duration
 
@@ -44,6 +51,7 @@ format_duration(90)  # "1m 30s"
 ```
 
 ### Tier Management
+
 ```python
 from ux_helpers import tier_features, tier_pricing, tier_upgrade_suggestion
 
@@ -53,6 +61,7 @@ next_tier = tier_upgrade_suggestion('FREE')  # 'PROFESSIONAL'
 ```
 
 ### Usage Tracking
+
 ```python
 from ux_helpers import usage_percentage, usage_status
 
@@ -62,6 +71,7 @@ status = usage_status(current=8, limit=10)  # 'warning'
 ```
 
 ### Route Protection
+
 ```python
 from ux_helpers import requires_feature
 
@@ -75,6 +85,7 @@ def advanced_tools():
 ## 🎨 Jinja2 Filters
 
 In templates, use these filters:
+
 ```jinja2
 {{ 1500 | format_number }}  <!-- 1,500 -->
 {{ 1048576 | format_file_size }}  <!-- 1.00 MB -->
@@ -86,6 +97,7 @@ In templates, use these filters:
 ## 🔐 Tier Access Control
 
 ### In Routes
+
 ```python
 # Method 1: Decorator
 from auth_routes import tier_required
@@ -107,6 +119,7 @@ def some_route():
 ```
 
 ### In Templates
+
 ```jinja2
 {% if current_user.tier_name == 'PREMIUM' %}
   <div class="premium-features">...</div>
@@ -120,6 +133,7 @@ def some_route():
 ## 💬 Flash Messages
 
 ### Python
+
 ```python
 # Simple message
 flash('Operation successful!', 'success')
@@ -132,6 +146,7 @@ flash('Invalid input', 'danger')
 ```
 
 ### Template Display
+
 ```jinja2
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
@@ -157,20 +172,34 @@ flash('Invalid input', 'danger')
 ## 📱 Responsive Design
 
 ### Breakpoints
+
 ```css
 /* Mobile first */
-.element { /* base styles */ }
+.element {
+  /* base styles */
+}
 
-@media (min-width: 640px) { /* sm */ }
-@media (min-width: 768px) { /* md */ }
-@media (min-width: 1024px) { /* lg */ }
-@media (min-width: 1280px) { /* xl */ }
+@media (min-width: 640px) {
+  /* sm */
+}
+@media (min-width: 768px) {
+  /* md */
+}
+@media (min-width: 1024px) {
+  /* lg */
+}
+@media (min-width: 1280px) {
+  /* xl */
+}
 ```
 
 ### Grid Classes
+
 ```html
 <!-- Auto-fit grid -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+<div
+  style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;"
+>
   <!-- Cards -->
 </div>
 ```
@@ -178,33 +207,32 @@ flash('Invalid input', 'danger')
 ## 🎯 Common Patterns
 
 ### Loading States
+
 ```html
-<button id="submitBtn" onclick="showLoading(this)">
-  Submit
-</button>
+<button id="submitBtn" onclick="showLoading(this)">Submit</button>
 
 <script>
-function showLoading(btn) {
-  btn.disabled = true;
-  btn.innerHTML = '<span>Processing...</span>';
-}
+  function showLoading(btn) {
+    btn.disabled = true;
+    btn.innerHTML = "<span>Processing...</span>";
+  }
 </script>
 ```
 
 ### Empty States
+
 ```html
-{% if items %}
-  {% for item in items %}
-    <!-- Display items -->
-  {% endfor %}
-{% else %}
-  <div class="empty-state">
-    <p>No items found. <a href="/create">Create one</a></p>
-  </div>
+{% if items %} {% for item in items %}
+<!-- Display items -->
+{% endfor %} {% else %}
+<div class="empty-state">
+  <p>No items found. <a href="/create">Create one</a></p>
+</div>
 {% endif %}
 ```
 
 ### Error Handling
+
 ```python
 try:
     # Operation
@@ -217,6 +245,7 @@ except Exception as e:
 ## 🔍 Debugging Tips
 
 ### Check User Tier
+
 ```python
 # In Python
 print(f"User tier: {current_user.tier_name}")
@@ -228,6 +257,7 @@ print(f"Limits: {current_user.get_tier_limits()}")
 ```
 
 ### View Usage Data
+
 ```python
 from models_auth import UsageTracking
 
@@ -239,11 +269,13 @@ print(f"Storage: {usage.storage_used_mb} MB")
 ## 🚀 Performance Tips
 
 1. **Lazy Load Components**
+
    ```html
    <script defer src="/assets/js/heavy-component.js"></script>
    ```
 
 2. **Cache Static Assets**
+
    ```python
    @app.route('/assets/<path:filename>')
    def serve_assets(filename):
@@ -295,6 +327,7 @@ print(f"Storage: {usage.storage_used_mb} MB")
 ## 📞 Support
 
 For questions or issues:
+
 1. Check `UX-IMPROVEMENTS-COMPLETE.md` for detailed docs
 2. Review component examples in `templates/components/`
 3. Test with `ux_helpers.py` functions

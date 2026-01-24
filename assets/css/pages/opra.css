@@ -13,7 +13,7 @@
   border-radius: 16px;
   padding: 2rem;
   margin: 3rem 0;
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgb(0 0 0 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 5%);
 }
@@ -95,7 +95,7 @@
   font-size: 1rem;
   border: 2px solid #d4a574;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgb(212 165 116 / 30%),
     inset 0 1px 0 rgb(255 255 255 / 25%);
 }
@@ -104,7 +104,7 @@
   background: linear-gradient(135deg, #e2c275 0%, #d4a574 100%);
   border-color: #e2c275;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 0 25px rgb(212 165 116 / 50%),
     0 8px 20px rgb(212 165 116 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 30%);
@@ -144,7 +144,7 @@
   .opra-records-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .opra-records-grid .opra-record-card:last-child:nth-child(odd) {
     max-width: 100%;
   }
@@ -166,7 +166,7 @@
 .opra-record-card:hover {
   transform: translateY(-4px);
   border-color: rgb(212 165 116 / 40%);
-  box-shadow: 
+  box-shadow:
     0 12px 36px rgb(0 0 0 / 50%),
     0 4px 16px rgb(212 165 116 / 10%);
 }

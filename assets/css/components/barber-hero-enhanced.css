@@ -27,22 +27,31 @@
 
 /* Animated ambient glow */
 .barber-hero-unified::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgb(212 165 116 / 8%) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgb(196 30 58 / 5%) 0%, transparent 50%),
+  background:
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgb(212 165 116 / 8%) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 80%,
+      rgb(196 30 58 / 5%) 0%,
+      transparent 50%
+    ),
     radial-gradient(ellipse at 50% 50%, rgb(30 64 175 / 3%) 0%, transparent 50%);
   animation: hero-ambient 20s ease-in-out infinite;
   z-index: 0;
 }
 
 @keyframes hero-ambient {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(0deg) scale(1);
     opacity: 0.6;
   }
@@ -55,7 +64,7 @@
 
 /* Subtle noise texture */
 .barber-hero-unified::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -82,18 +91,36 @@
 
 .barber-hero-unified .hero-bg .stripe-1 {
   left: 10%;
-  background: linear-gradient(180deg, transparent 0%, #dc2626 20%, #dc2626 80%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #dc2626 20%,
+    #dc2626 80%,
+    transparent 100%
+  );
 }
 
 .barber-hero-unified .hero-bg .stripe-2 {
   left: 50%;
   transform: translateX(-50%) rotate(-15deg);
-  background: linear-gradient(180deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #fff 20%,
+    #fff 80%,
+    transparent 100%
+  );
 }
 
 .barber-hero-unified .hero-bg .stripe-3 {
   right: 10%;
-  background: linear-gradient(180deg, transparent 0%, #1e40af 20%, #1e40af 80%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #1e40af 20%,
+    #1e40af 80%,
+    transparent 100%
+  );
 }
 
 /* ============================================
@@ -150,7 +177,11 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, rgb(196 30 58 / 15%) 0%, rgb(196 30 58 / 8%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(196 30 58 / 15%) 0%,
+    rgb(196 30 58 / 8%) 100%
+  );
   border: 1px solid rgb(196 30 58 / 30%);
   border-radius: 9999px;
   font-size: 0.75rem;
@@ -171,18 +202,30 @@
 }
 
 @keyframes badge-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgb(196 30 58 / 0%); }
-  50% { box-shadow: 0 0 0 6px rgb(196 30 58 / 10%); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(196 30 58 / 0%);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgb(196 30 58 / 10%);
+  }
 }
 
 @keyframes dot-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 /* Title */
 .barber-hero-unified .hero-title {
-  font-family: 'Bebas Neue', Oswald, system-ui, sans-serif;
+  font-family: "Bebas Neue", Oswald, system-ui, sans-serif;
   font-size: clamp(2.75rem, 8vw, 5.5rem);
   font-weight: 700;
   line-height: 0.95;
@@ -196,9 +239,17 @@
   animation: title-slide 0.6s ease-out both;
 }
 
-.barber-hero-unified .hero-title .title-line:nth-child(1) { animation-delay: 0.3s; }
-.barber-hero-unified .hero-title .title-line:nth-child(2) { animation-delay: 0.4s; }
-.barber-hero-unified .hero-title .title-line:nth-child(3) { animation-delay: 0.5s; }
+.barber-hero-unified .hero-title .title-line:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.barber-hero-unified .hero-title .title-line:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.barber-hero-unified .hero-title .title-line:nth-child(3) {
+  animation-delay: 0.5s;
+}
 
 @keyframes title-slide {
   from {
@@ -301,12 +352,16 @@
   background: linear-gradient(135deg, #d4a574 0%, #c49364 100%);
   color: #0a0a0f;
   border: none;
-  box-shadow: 0 4px 16px rgb(212 165 116 / 30%), 0 0 0 0 rgb(212 165 116 / 0%);
+  box-shadow:
+    0 4px 16px rgb(212 165 116 / 30%),
+    0 0 0 0 rgb(212 165 116 / 0%);
 }
 
 .barber-hero-unified .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgb(212 165 116 / 40%), 0 0 0 4px rgb(212 165 116 / 15%);
+  box-shadow:
+    0 8px 24px rgb(212 165 116 / 40%),
+    0 0 0 4px rgb(212 165 116 / 15%);
 }
 
 .barber-hero-unified .btn-primary:active {
@@ -375,7 +430,9 @@
     0 0 80px rgb(212 165 116 / 15%),
     inset 0 1px 0 rgb(255 255 255 / 8%),
     inset 0 -1px 0 rgb(0 0 0 / 20%);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   overflow: hidden;
 }
 
@@ -452,38 +509,52 @@
 }
 
 .siren-red {
-  background: radial-gradient(circle, rgb(239 68 68 / 80%) 0%, rgb(220 38 38 / 40%) 40%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgb(239 68 68 / 80%) 0%,
+    rgb(220 38 38 / 40%) 40%,
+    transparent 70%
+  );
   left: -50%;
   top: -25%;
   animation: siren-glow-red 1.2s ease-in-out infinite;
 }
 
 .siren-blue {
-  background: radial-gradient(circle, rgb(59 130 246 / 80%) 0%, rgb(37 99 235 / 40%) 40%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgb(59 130 246 / 80%) 0%,
+    rgb(37 99 235 / 40%) 40%,
+    transparent 70%
+  );
   right: -50%;
   top: -25%;
   animation: siren-glow-blue 1.2s ease-in-out infinite;
 }
 
 @keyframes siren-glow-red {
-  0%, 40% {
+  0%,
+  40% {
     opacity: 0.7;
     transform: scale(1);
   }
 
-  50%, 100% {
+  50%,
+  100% {
     opacity: 0;
     transform: scale(0.9);
   }
 }
 
 @keyframes siren-glow-blue {
-  0%, 40% {
+  0%,
+  40% {
     opacity: 0;
     transform: scale(0.9);
   }
 
-  50%, 100% {
+  50%,
+  100% {
     opacity: 0.7;
     transform: scale(1);
   }
@@ -522,7 +593,7 @@
 }
 
 .cut-above-box .visual-text .tagline {
-  font-family: 'Bebas Neue', Oswald, system-ui, sans-serif;
+  font-family: "Bebas Neue", Oswald, system-ui, sans-serif;
   font-size: 2rem;
   letter-spacing: 0.15em;
   color: #fff;
@@ -568,7 +639,8 @@
 }
 
 @keyframes scroll-line-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     height: 50px;
   }

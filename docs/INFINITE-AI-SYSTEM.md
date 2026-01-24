@@ -9,21 +9,25 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 ## 🤖 Enhanced AI Capabilities
 
 ### 1. **Infinite Context Analysis** (`enhanced_ai_service.py`)
+
 - **Conversation Memory**: Persistent memory across unlimited conversations
 - **Document Summarization**: Automatic summarization to maintain context
 - **Cross-Reference**: Links evidence across multiple documents
 - **Streaming Responses**: Real-time AI feedback (no waiting)
 
 ### 2. **Constitutional Analysis** (`constitutional-analysis.js`)
+
 - **Violation Detection**: 4th, 5th, 6th, 8th, 14th Amendment violations
 - **Damages Estimation**: Automatic calculation based on precedent
 - **Legal Citations**: Auto-matching relevant case law
 - **Complaint Generation**: One-click verified complaint drafting
 
 ### 3. **Supreme Law Research** (`supreme_law_service.py`)
+
 **Automated Case Law Research System with:**
 
 #### Data Sources (All Free/Official):
+
 1. **Supreme Court** (supremecourt.gov)
    - Slip opinions monitoring
    - Bound volume tracking
@@ -57,6 +61,7 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 ### Excel Workbook: `data/case_law_database.xlsx`
 
 **Sheet 1: CaseLaw_DB** (Master Database)
+
 - Case_Name
 - Citation_Bluebook (auto-generated)
 - Court
@@ -76,11 +81,13 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 - Case_Hash (deduplication)
 
 **Sheet 2: SupremeLaw_Index** (SCOTUS-Only View)
+
 - Auto-filtered from CaseLaw_DB
 - Shows only U.S. Supreme Court cases
 - Uses Excel FILTER() formula for auto-update
 
 **Sheet 3: SupremeCourt_Raw** (Bulk Import Landing)
+
 - Term
 - Docket_Number
 - Case_Name
@@ -91,11 +98,13 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 - Import_Status
 
 **Sheet 4: Topics_Map** (Claim-to-Authority Mapping)
+
 - Claim_Theory (e.g., "Terry → Mimms stop initiation")
 - Key_Authorities
 - Topic_Tag (for filtering)
 
 **Sheet 5: UpdateLog** (Audit Trail)
+
 - Update_ID
 - Update_Date
 - Source (Manual / Automated / CourtListener)
@@ -105,6 +114,7 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 - Verified_By
 
 **Sheet 6: Automation_Publish** (Configuration)
+
 - Step description
 - Method (API / HTTP Scrape / Internal)
 - Frequency (Daily / Weekly)
@@ -118,6 +128,7 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 ### Scheduler: `research_scheduler.py`
 
 **Daily Schedule:**
+
 - **6:00 AM**: Full automated update (SCOTUS + CourtListener + 3d Cir + NJ)
 - **6:15 AM**: Export database to JSON (`./exports/caselaw.json`)
 - **6:20 AM**: Generate HTML portal (`_site/supreme-law/index.html`)
@@ -125,6 +136,7 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 - **2:00 PM**: Additional SCOTUS slip opinion check
 
 **What Gets Published:**
+
 1. **JSON Export**: `./exports/caselaw.json`
    - Full database in JSON format
    - Used by web APIs
@@ -147,14 +159,14 @@ The BarberX Legal Case Management Pro Suite now includes a **comprehensive autom
 
 The database comes pre-loaded with essential civil rights cases:
 
-| Case | Citation | Topic |
-|------|----------|-------|
-| Terry v. Ohio | 392 U.S. 1 (1968) | Stop initiation, reasonable suspicion |
-| Pennsylvania v. Mimms | 434 U.S. 106 (1977) | Exit orders, officer safety |
-| Graham v. Connor | 490 U.S. 386 (1989) | Excessive force, objective reasonableness |
-| Rodriguez v. United States | 575 U.S. 348 (2015) | Stop duration, mission limits |
-| Monell v. Dept of Social Services | 436 U.S. 658 (1978) | Municipal liability, custom/policy |
-| Brady v. Maryland | 373 U.S. 83 (1963) | Exculpatory evidence, disclosure |
+| Case                              | Citation            | Topic                                     |
+| --------------------------------- | ------------------- | ----------------------------------------- |
+| Terry v. Ohio                     | 392 U.S. 1 (1968)   | Stop initiation, reasonable suspicion     |
+| Pennsylvania v. Mimms             | 434 U.S. 106 (1977) | Exit orders, officer safety               |
+| Graham v. Connor                  | 490 U.S. 386 (1989) | Excessive force, objective reasonableness |
+| Rodriguez v. United States        | 575 U.S. 348 (2015) | Stop duration, mission limits             |
+| Monell v. Dept of Social Services | 436 U.S. 658 (1978) | Municipal liability, custom/policy        |
+| Brady v. Maryland                 | 373 U.S. 83 (1963)  | Exculpatory evidence, disclosure          |
 
 ---
 
@@ -163,15 +175,17 @@ The database comes pre-loaded with essential civil rights cases:
 ### Supreme Law Research (`/api/v1/supreme-law/`)
 
 **GET `/scotus/slip-opinions`**
+
 - Fetch current term SCOTUS slip opinions
 - Query param: `term` (e.g., "25" for 2025-2026)
 - Returns: List of opinions with download URLs
 
 **POST `/search`**
+
 ```json
 {
   "query": "excessive force Graham Connor",
-  "court": "scotus",  // or "ca3", "nj", "all"
+  "court": "scotus", // or "ca3", "nj", "all"
   "topic_tags": ["force_escalation"],
   "filed_after": "2020-01-01",
   "limit": 50
@@ -179,6 +193,7 @@ The database comes pre-loaded with essential civil rights cases:
 ```
 
 **POST `/generate-citation`**
+
 ```json
 {
   "case_name": "Terry v. Ohio",
@@ -188,29 +203,35 @@ The database comes pre-loaded with essential civil rights cases:
   "year": "1968"
 }
 ```
+
 Returns: `"Terry v. Ohio, 392 U.S. 1 (1968)"`
 
 **POST `/add-case`**
+
 - Manually add verified case
 - Requires all fields
 - Auto-deduplicates by case name hash
 
 **POST `/update/run`**
+
 - Trigger automated update manually
 - Runs full update cycle
 - Returns summary of results
 
 **GET `/export/json`**
+
 - Export database to JSON
 - Background task
 - File saved to `./exports/caselaw.json`
 
 **GET `/export/html`**
+
 - Generate HTML portal
 - Background task
 - Pages saved to `_site/supreme-law/`
 
 **GET `/stats`**
+
 - Database statistics
 - Total cases
 - By court (SCOTUS / 3d Cir / NJ)
@@ -218,6 +239,7 @@ Returns: `"Terry v. Ohio, 392 U.S. 1 (1968)"`
 - Last updated timestamp
 
 **GET `/topics`**
+
 - Get topic taxonomy
 - Auto-tagging keywords
 - Topic descriptions
@@ -234,6 +256,7 @@ pip install -r requirements.txt
 ```
 
 **New dependencies needed:**
+
 ```
 aiohttp
 beautifulsoup4
@@ -245,6 +268,7 @@ schedule
 ### 2. Configure API Keys (Optional)
 
 **CourtListener API** (better rate limits):
+
 ```bash
 export COURTLISTENER_API_KEY="your_key_here"
 ```
@@ -356,6 +380,7 @@ Cases are automatically tagged based on content analysis:
 ### Verification Requirements
 
 **Every case entry must include:**
+
 1. **Official URL**: Link to verified source (SupremeCourt.gov, CourtListener, Cornell LII)
 2. **Verification Date**: When the citation was verified
 3. **Source**: Manual / CourtListener / SCOTUS / 3d Circuit
@@ -371,6 +396,7 @@ Cases are automatically tagged based on content analysis:
 **Do NOT guess Westlaw citations or KeyCite flags!**
 
 Only populate Westlaw fields if:
+
 1. You have a Westlaw export (CSV/Excel), OR
 2. You manually verified the cite in Westlaw
 
@@ -381,12 +407,14 @@ Otherwise leave blank. This maintains integrity.
 ## 📈 Scaling & Performance
 
 ### Current Capacity
+
 - **Database**: 10,000+ cases (tested)
 - **Search**: Sub-second query times
 - **Updates**: ~100 cases/day (typical)
 - **Exports**: ~2 seconds for JSON, ~5 seconds for HTML
 
 ### Optimization Tips
+
 1. Use CourtListener API key (10x better rate limits)
 2. Run scheduler during off-peak hours (6 AM)
 3. Enable git auto-commit only if needed
@@ -397,18 +425,23 @@ Otherwise leave blank. This maintains integrity.
 ## 🛠️ Troubleshooting
 
 ### Issue: CourtListener rate limit exceeded
+
 **Solution**: Get free API key from courtlistener.com
 
 ### Issue: SCOTUS slip opinions not found
+
 **Solution**: Check term format (use 2-digit year, e.g., "25" not "2025")
 
 ### Issue: Excel file locked
+
 **Solution**: Close Excel before running updates
 
 ### Issue: Git publish fails
+
 **Solution**: Ensure git configured (`git config user.name`, `git config user.email`)
 
 ### Issue: HTML portal empty
+
 **Solution**: Run automated update first to populate database
 
 ---
@@ -416,18 +449,21 @@ Otherwise leave blank. This maintains integrity.
 ## 🎓 Best Practices
 
 ### For Legal Research
+
 1. **Always verify sources**: Check official URLs
 2. **Use pinpoint cites**: Cite specific pages for propositions
 3. **Tag comprehensively**: Use multiple topic tags for searchability
 4. **Update regularly**: Run daily updates to stay current
 
 ### For Automation
+
 1. **Monitor logs**: Check `logs/research_automation.log`
 2. **Review UpdateLog**: Audit all automated additions
 3. **Test manually first**: Run `manual_full_update()` before enabling scheduler
 4. **Backup database**: Keep versioned backups of Excel file
 
 ### For Integration
+
 1. **Use JSON exports**: Easiest for web apps
 2. **Cache results**: Don't query CourtListener excessively
 3. **Respect rate limits**: Even with API key, be reasonable
@@ -485,6 +521,7 @@ Otherwise leave blank. This maintains integrity.
 **PRODUCTION READY** ✅
 
 All components tested and functional:
+
 - ✅ CourtListener API integration
 - ✅ SCOTUS slip opinion monitoring
 - ✅ Bluebook citation generation

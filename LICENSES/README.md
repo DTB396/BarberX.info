@@ -3,6 +3,7 @@ This directory contains full license texts for all third-party software used in 
 ## Required Licenses
 
 ### MIT License Projects:
+
 - OpenAI Whisper
 - pyannote.audio
 - spaCy
@@ -16,6 +17,7 @@ This directory contains full license texts for all third-party software used in 
 - Stripe Python SDK
 
 ### BSD-3-Clause License Projects:
+
 - Flask
 - Flask-SQLAlchemy
 - Werkzeug
@@ -24,17 +26,21 @@ This directory contains full license texts for all third-party software used in 
 - ReportLab
 
 ### Apache 2.0 License Projects:
+
 - Hugging Face Transformers
 - SentenceTransformers
 - cryptography (dual licensed)
 
 ### LGPL 2.1 License:
+
 - FFmpeg (ensure using LGPL build, not GPL)
 
 ### PostgreSQL License:
+
 - PostgreSQL
 
 ### Public Domain:
+
 - CourtListener (CC0 1.0 Universal)
 
 ---
@@ -55,6 +61,7 @@ When adding a new dependency:
 ## Compliance Verification
 
 Before each release:
+
 - [ ] Verify all dependencies have licenses in this directory
 - [ ] Check for any license changes in updated dependencies
 - [ ] Ensure ATTRIBUTION.md is current
@@ -63,6 +70,7 @@ Before each release:
 ---
 
 See also:
+
 - THIRD-PARTY-LICENSES.md - Complete license documentation
 - ATTRIBUTION.md - Acknowledgments and credits
 - COPYRIGHT-QUICK-START.md - Copyright compliance guide

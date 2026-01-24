@@ -1,15 +1,18 @@
 # Batch PDF Upload Feature
 
 ## Overview
+
 The Batch PDF Upload feature allows users to upload multiple PDF files simultaneously through a drag-and-drop interface. This is useful for uploading case documents, legal briefs, motions, and other PDF files in bulk.
 
 ## Files Created
 
 ### 1. Frontend Pages
+
 - **`batch-pdf-upload.html`** - Main upload interface with drag-and-drop functionality
 - **`pdf-management.html`** - Admin/management interface to view and manage uploaded PDFs
 
 ### 2. Backend Updates
+
 - **`app.py`** - Added PDFUpload model and API endpoints:
   - `PDFUpload` database model (lines ~361-426)
   - `/api/upload/pdf` - Single PDF upload endpoint
@@ -20,11 +23,13 @@ The Batch PDF Upload feature allows users to upload multiple PDF files simultane
   - `/api/pdf/<id>` DELETE - Delete PDF
 
 ### 3. Database Migration
+
 - **`migrate_add_pdf_uploads.py`** - Migration script to add pdf_uploads table
 
 ## Features
 
 ### Upload Interface (`batch-pdf-upload.html`)
+
 - **Drag & Drop** - Drag files directly onto the upload zone
 - **Click to Browse** - Traditional file picker
 - **Batch Processing** - Upload up to 100 PDFs at once
@@ -33,6 +38,7 @@ The Batch PDF Upload feature allows users to upload multiple PDF files simultane
 - **File Management** - Remove files before upload, clear all
 
 ### Management Interface (`pdf-management.html`)
+
 - **Statistics Dashboard** - Total files, size, recent uploads
 - **Search & Filter** - Search by filename, filter by status/type
 - **File Operations** - Download and delete PDFs
@@ -42,6 +48,7 @@ The Batch PDF Upload feature allows users to upload multiple PDF files simultane
 ## Database Schema
 
 ### PDFUpload Model
+
 ```sql
 CREATE TABLE pdf_uploads (
     id INTEGER PRIMARY KEY,
@@ -70,6 +77,7 @@ CREATE TABLE pdf_uploads (
 ## Installation & Setup
 
 ### 1. Run Database Migration
+
 ```bash
 python migrate_add_pdf_uploads.py
 ```
@@ -77,7 +85,9 @@ python migrate_add_pdf_uploads.py
 This will create the `pdf_uploads` table in your database.
 
 ### 2. Create Upload Directory
+
 The upload directory is created automatically, but you can pre-create it:
+
 ```bash
 mkdir -p uploads/pdfs
 ```
@@ -85,14 +95,17 @@ mkdir -p uploads/pdfs
 ### 3. Access the Features
 
 #### Upload PDFs
+
 Navigate to: `http://localhost:5000/batch-pdf-upload.html`
 
 #### Manage PDFs
+
 Navigate to: `http://localhost:5000/pdf-management.html`
 
 ## API Endpoints
 
 ### Upload Single PDF
+
 ```http
 POST /api/upload/pdf
 Content-Type: multipart/form-data
@@ -105,6 +118,7 @@ tags: (optional, comma-separated)
 ```
 
 Response:
+
 ```json
 {
   "success": true,
@@ -117,6 +131,7 @@ Response:
 ```
 
 ### Batch Upload PDFs
+
 ```http
 POST /api/upload/pdf/batch
 Content-Type: multipart/form-data
@@ -125,6 +140,7 @@ files: [<PDF file 1>, <PDF file 2>, ...]
 ```
 
 Response:
+
 ```json
 {
   "success": true,
@@ -142,11 +158,13 @@ Response:
 ```
 
 ### List PDFs
+
 ```http
 GET /api/pdfs?page=1&per_page=50
 ```
 
 Response:
+
 ```json
 {
   "total": 100,
@@ -158,40 +176,50 @@ Response:
 ```
 
 ### Get PDF Info
+
 ```http
 GET /api/pdf/<id>
 ```
 
 ### Download PDF
+
 ```http
 GET /api/pdf/<id>/download
 ```
 
 ### Delete PDF
+
 ```http
 DELETE /api/pdf/<id>
 ```
+
 (Requires authentication)
 
 ## Configuration
 
 ### File Size Limits
+
 Default: 50 MB per file
 Edit in `batch-pdf-upload.html`:
+
 ```javascript
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 ```
 
 ### Max Files
+
 Default: 100 files per batch
 Edit in `batch-pdf-upload.html`:
+
 ```javascript
 const MAX_FILES = 100;
 ```
 
 ### Upload Directory
+
 Default: `./uploads/pdfs`
 Edit in `app.py` if needed:
+
 ```python
 upload_dir = Path('./uploads/pdfs')
 ```
@@ -218,17 +246,20 @@ upload_dir = Path('./uploads/pdfs')
 ## Troubleshooting
 
 ### Upload Fails
+
 - Check file size limits
 - Verify file is a valid PDF
 - Check server storage space
 - Review browser console for errors
 
 ### Files Not Showing in Management
+
 - Ensure database migration ran successfully
 - Check user permissions
 - Verify API endpoint responses
 
 ### Database Errors
+
 - Run migration script again
 - Check database permissions
 - Verify SQLAlchemy configuration
@@ -236,6 +267,7 @@ upload_dir = Path('./uploads/pdfs')
 ## Support
 
 For issues or questions:
+
 1. Check server logs: `logs/barberx.log`
 2. Review browser console
 3. Verify database schema

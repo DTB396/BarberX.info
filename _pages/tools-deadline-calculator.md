@@ -75,6 +75,7 @@ toc: false
       </svg>
       Calculate Deadline
     </button>
+
   </div>
 
   <div class="calculator-result" id="result" style="display:none;">
@@ -123,6 +124,7 @@ toc: false
         Export to Calendar
       </button>
     </div>
+
   </div>
 </div>
 

@@ -9,12 +9,14 @@
 **Current Status:** Using LGPL-only FFmpeg build (GPL-free)
 
 **OLD (GPL - REMOVED):**
+
 ```
 ffmpeg version 2024-11-18-git-322d0c6aa8-full_build-www.gyan.dev
 configuration: --enable-gpl --enable-version3 [...]
 ```
 
 **NEW (LGPL - INSTALLED):**
+
 ```
 ffmpeg version N-122527-g4561fc5e48-20260122
 Installed: C:\ffmpeg-lgpl\
@@ -29,12 +31,14 @@ configuration: --enable-version3 --disable-libx264 --disable-libx265 [...]
 ## ⚖️ LEGAL IMPLICATIONS
 
 ### What GPL Means:
+
 1. **GPL is "viral"** - Any software using GPL libraries must also be GPL
 2. **Incompatible with proprietary software** - Your "ALL RIGHTS RESERVED" license conflicts with GPL
 3. **Source code disclosure required** - GPL requires providing source code to users
 4. **License violation** - Using GPL FFmpeg in proprietary software violates GPL terms
 
 ### Your Current License:
+
 ```
 LICENSE file: "ALL RIGHTS RESERVED"
 TERMS-OF-SERVICE.md: "Proprietary software"
@@ -47,14 +51,17 @@ TERMS-OF-SERVICE.md: "Proprietary software"
 ## 🛠️ SOLUTIONS (Choose One)
 
 ### Option 1: Use LGPL FFmpeg Build (RECOMMENDED)
+
 **Action:** Replace GPL FFmpeg with LGPL-only build
 
 **LGPL Allows:**
+
 - ✅ Use in proprietary software (via dynamic linking)
 - ✅ No source code disclosure requirement
 - ✅ Keep your "ALL RIGHTS RESERVED" license
 
 **How to Get LGPL FFmpeg:**
+
 ```bash
 # Windows - Download LGPL build from:
 https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip
@@ -65,6 +72,7 @@ make
 ```
 
 **Verify LGPL:**
+
 ```bash
 ffmpeg -version | grep -i "gpl"  # Should NOT see --enable-gpl
 ffmpeg -version | grep -i "lgpl"  # Should see --enable-lgpl
@@ -73,9 +81,11 @@ ffmpeg -version | grep -i "lgpl"  # Should see --enable-lgpl
 ---
 
 ### Option 2: Make Your Software GPL (NOT RECOMMENDED)
+
 **Action:** Change your license from "ALL RIGHTS RESERVED" to GPL v3
 
 **GPL Requires:**
+
 - ❌ Source code must be provided to users
 - ❌ Users can redistribute your software
 - ❌ Commercial restrictions (difficult to monetize)
@@ -86,15 +96,18 @@ ffmpeg -version | grep -i "lgpl"  # Should see --enable-lgpl
 ---
 
 ### Option 3: Remove FFmpeg Dependency
+
 **Action:** Use alternative audio processing libraries
 
 **Alternatives:**
+
 - **pydub + built-in codecs** (limited format support)
 - **moviepy** (may also depend on FFmpeg)
 - **soundfile** (for WAV files only)
 - **Cloud APIs** (AWS Transcribe, Google Speech-to-Text)
 
 **Trade-offs:**
+
 - Limited format support (may not handle all BWC formats)
 - Potential cloud dependency (conflicts with "100% local" promise)
 
@@ -103,6 +116,7 @@ ffmpeg -version | grep -i "lgpl"  # Should see --enable-lgpl
 ## 📋 IMMEDIATE ACTION REQUIRED
 
 ### Step 1: Replace FFmpeg (TODAY)
+
 ```powershell
 # Download LGPL build
 Invoke-WebRequest -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip" -OutFile "ffmpeg-lgpl.zip"
@@ -118,13 +132,16 @@ ffmpeg -version
 ```
 
 ### Step 2: Update THIRD-PARTY-LICENSES.md
+
 ```markdown
 ### FFmpeg
+
 **License:** LGPL 2.1 (VERIFIED)
 **Build:** Essentials (LGPL-only, no GPL components)
 ```
 
 ### Step 3: Test Application
+
 ```bash
 # Verify audio processing still works
 python -c "from pydub import AudioSegment; print('OK')"
@@ -134,7 +151,9 @@ python bwc_forensic_analyzer.py --test
 ```
 
 ### Step 4: Update data_rights.py
+
 Change FFmpeg attribution from:
+
 ```python
 {
     "name": "FFmpeg",
@@ -142,6 +161,7 @@ Change FFmpeg attribution from:
 ```
 
 To:
+
 ```python
 {
     "name": "FFmpeg",
@@ -175,6 +195,7 @@ After replacing FFmpeg:
 5. **Client Trust:** Attorneys need assurance your licensing is legitimate
 
 **LGPL vs GPL:**
+
 - **LGPL:** "Lesser GPL" - allows use in proprietary software via dynamic linking
 - **GPL:** "General Public License" - requires entire project to be GPL
 

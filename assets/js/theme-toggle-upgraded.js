@@ -1,7 +1,7 @@
 /**
  * THEME TOGGLE v2.0 - Modern ES6+ Rewrite
  * Advanced dark/light mode with smooth transitions
- * 
+ *
  * Features:
  * - ES6 classes
  * - System preference detection
@@ -14,15 +14,15 @@
 class ThemeManager {
   constructor() {
     this.config = {
-      storageKey: 'barberx-theme',
+      storageKey: "barberx-theme",
       themes: {
-        light: 'light',
-        dark: 'dark'
+        light: "light",
+        dark: "dark",
       },
       metaColors: {
-        light: '#ffffff',
-        dark: '#0a0a0a'
-      }
+        light: "#ffffff",
+        dark: "#0a0a0a",
+      },
     };
 
     this.init();
@@ -37,8 +37,8 @@ class ThemeManager {
     this.applyTheme(initialTheme, false);
 
     // Setup when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.setup());
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => this.setup());
     } else {
       this.setup();
     }
@@ -51,11 +51,13 @@ class ThemeManager {
     this.createToggleButton();
     this.watchSystemTheme();
     this.setupKeyboardShortcut();
-    
+
     // Dispatch ready event
-    document.dispatchEvent(new CustomEvent('theme:ready', {
-      detail: { currentTheme: this.getCurrentTheme() }
-    }));
+    document.dispatchEvent(
+      new CustomEvent("theme:ready", {
+        detail: { currentTheme: this.getCurrentTheme() },
+      }),
+    );
   }
 
   /**
@@ -69,11 +71,11 @@ class ThemeManager {
     }
 
     // Check system preference
-    if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+    if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
       return this.config.themes.dark;
     }
 
-    if (window.matchMedia?.('(prefers-color-scheme: light)').matches) {
+    if (window.matchMedia?.("(prefers-color-scheme: light)").matches) {
       return this.config.themes.light;
     }
 
@@ -85,7 +87,10 @@ class ThemeManager {
    * Get current theme
    */
   getCurrentTheme() {
-    return document.documentElement.getAttribute('data-theme') || this.config.themes.dark;
+    return (
+      document.documentElement.getAttribute("data-theme") ||
+      this.config.themes.dark
+    );
   }
 
   /**
@@ -97,11 +102,11 @@ class ThemeManager {
 
     // Add transition class for smooth theme switching
     if (animate && currentTheme !== theme) {
-      html.classList.add('theme-transitioning');
+      html.classList.add("theme-transitioning");
     }
 
     // Set theme attribute
-    html.setAttribute('data-theme', theme);
+    html.setAttribute("data-theme", theme);
 
     // Update meta theme-color
     this.updateMetaThemeColor(theme);
@@ -113,20 +118,22 @@ class ThemeManager {
     try {
       localStorage.setItem(this.config.storageKey, theme);
     } catch (error) {
-      console.warn('Failed to save theme preference:', error);
+      console.warn("Failed to save theme preference:", error);
     }
 
     // Remove transition class after animation
     if (animate) {
       setTimeout(() => {
-        html.classList.remove('theme-transitioning');
+        html.classList.remove("theme-transitioning");
       }, 300);
     }
 
     // Dispatch theme change event
-    document.dispatchEvent(new CustomEvent('theme:change', {
-      detail: { theme, previousTheme: currentTheme }
-    }));
+    document.dispatchEvent(
+      new CustomEvent("theme:change", {
+        detail: { theme, previousTheme: currentTheme },
+      }),
+    );
   }
 
   /**
@@ -134,9 +141,10 @@ class ThemeManager {
    */
   toggleTheme() {
     const current = this.getCurrentTheme();
-    const next = current === this.config.themes.light 
-      ? this.config.themes.dark 
-      : this.config.themes.light;
+    const next =
+      current === this.config.themes.light
+        ? this.config.themes.dark
+        : this.config.themes.light;
 
     this.applyTheme(next);
     this.announceThemeChange(next);
@@ -147,10 +155,10 @@ class ThemeManager {
    */
   updateMetaThemeColor(theme) {
     let meta = document.querySelector('meta[name="theme-color"]');
-    
+
     if (!meta) {
-      meta = document.createElement('meta');
-      meta.name = 'theme-color';
+      meta = document.createElement("meta");
+      meta.name = "theme-color";
       document.head.appendChild(meta);
     }
 
@@ -161,11 +169,11 @@ class ThemeManager {
    * Create theme toggle button with icons
    */
   createToggleButton() {
-    const button = document.createElement('button');
-    button.className = 'theme-toggle';
-    button.setAttribute('aria-label', 'Toggle theme');
-    button.setAttribute('title', 'Toggle dark/light mode (Ctrl+Shift+D)');
-    button.setAttribute('type', 'button');
+    const button = document.createElement("button");
+    button.className = "theme-toggle";
+    button.setAttribute("aria-label", "Toggle theme");
+    button.setAttribute("title", "Toggle dark/light mode (Ctrl+Shift+D)");
+    button.setAttribute("type", "button");
 
     // SVG icons with smooth transitions
     button.innerHTML = `
@@ -185,10 +193,10 @@ class ThemeManager {
       </svg>
     `;
 
-    button.addEventListener('click', () => this.toggleTheme());
+    button.addEventListener("click", () => this.toggleTheme());
 
     // Add to page (find appropriate location)
-    const header = document.querySelector('.site-header, header, .navbar');
+    const header = document.querySelector(".site-header, header, .navbar");
     if (header) {
       header.appendChild(button);
     } else {
@@ -205,32 +213,34 @@ class ThemeManager {
   updateToggleButton(theme) {
     if (!this.toggleButton) return;
 
-    this.toggleButton.setAttribute('aria-label', 
-      theme === this.config.themes.light 
-        ? 'Switch to dark mode' 
-        : 'Switch to light mode'
+    this.toggleButton.setAttribute(
+      "aria-label",
+      theme === this.config.themes.light
+        ? "Switch to dark mode"
+        : "Switch to light mode",
     );
 
-    this.toggleButton.setAttribute('data-theme', theme);
+    this.toggleButton.setAttribute("data-theme", theme);
   }
 
   /**
    * Announce theme change to screen readers
    */
   announceThemeChange(theme) {
-    const message = theme === this.config.themes.light 
-      ? 'Light mode activated' 
-      : 'Dark mode activated';
+    const message =
+      theme === this.config.themes.light
+        ? "Light mode activated"
+        : "Dark mode activated";
 
-    let announcer = document.getElementById('theme-announcer');
-    
+    let announcer = document.getElementById("theme-announcer");
+
     if (!announcer) {
-      announcer = document.createElement('div');
-      announcer.id = 'theme-announcer';
-      announcer.className = 'sr-only';
-      announcer.setAttribute('role', 'status');
-      announcer.setAttribute('aria-live', 'polite');
-      announcer.setAttribute('aria-atomic', 'true');
+      announcer = document.createElement("div");
+      announcer.id = "theme-announcer";
+      announcer.className = "sr-only";
+      announcer.setAttribute("role", "status");
+      announcer.setAttribute("aria-live", "polite");
+      announcer.setAttribute("aria-atomic", "true");
       document.body.appendChild(announcer);
     }
 
@@ -238,7 +248,7 @@ class ThemeManager {
 
     // Clear after announcement
     setTimeout(() => {
-      announcer.textContent = '';
+      announcer.textContent = "";
     }, 1000);
   }
 
@@ -246,22 +256,24 @@ class ThemeManager {
    * Watch for system theme changes
    */
   watchSystemTheme() {
-    const darkModeQuery = window.matchMedia?.('(prefers-color-scheme: dark)');
-    
+    const darkModeQuery = window.matchMedia?.("(prefers-color-scheme: dark)");
+
     if (!darkModeQuery) return;
 
     const handleChange = (e) => {
       // Only auto-switch if user hasn't manually set a preference
       if (!localStorage.getItem(this.config.storageKey)) {
-        const newTheme = e.matches ? this.config.themes.dark : this.config.themes.light;
+        const newTheme = e.matches
+          ? this.config.themes.dark
+          : this.config.themes.light;
         this.applyTheme(newTheme);
       }
     };
 
     // Modern API
     if (darkModeQuery.addEventListener) {
-      darkModeQuery.addEventListener('change', handleChange);
-    } 
+      darkModeQuery.addEventListener("change", handleChange);
+    }
     // Legacy API
     else if (darkModeQuery.addListener) {
       darkModeQuery.addListener(handleChange);
@@ -272,8 +284,8 @@ class ThemeManager {
    * Setup keyboard shortcut (Ctrl+Shift+D)
    */
   setupKeyboardShortcut() {
-    document.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "D") {
         e.preventDefault();
         this.toggleTheme();
       }
@@ -286,9 +298,9 @@ class ThemeManager {
   getThemeColors() {
     const style = getComputedStyle(document.documentElement);
     return {
-      primary: style.getPropertyValue('--color-primary').trim(),
-      background: style.getPropertyValue('--color-background').trim(),
-      text: style.getPropertyValue('--color-text').trim()
+      primary: style.getPropertyValue("--color-primary").trim(),
+      background: style.getPropertyValue("--color-background").trim(),
+      text: style.getPropertyValue("--color-text").trim(),
     };
   }
 }
@@ -297,10 +309,10 @@ class ThemeManager {
 const themeManager = new ThemeManager();
 
 // Export for use in other modules
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   window.themeManager = themeManager;
 }
 
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = ThemeManager;
 }

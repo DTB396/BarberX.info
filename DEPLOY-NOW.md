@@ -38,6 +38,7 @@ railway open
 ## After Railway Deploy:
 
 ### 1. Get Your Production API URL
+
 ```
 https://barberx-api-production-xxxx.up.railway.app
 ```
@@ -66,10 +67,10 @@ In your Netlify site's JavaScript:
 
 ```javascript
 // Change from:
-const API_URL = 'http://localhost:5000';
+const API_URL = "http://localhost:5000";
 
 // To:
-const API_URL = 'https://barberx-api-production-xxxx.up.railway.app';
+const API_URL = "https://barberx-api-production-xxxx.up.railway.app";
 ```
 
 ---
@@ -77,11 +78,13 @@ const API_URL = 'https://barberx-api-production-xxxx.up.railway.app';
 ## Verify Production Deployment
 
 ### Health Check:
+
 ```powershell
 Invoke-RestMethod https://barberx-api-production-xxxx.up.railway.app/health
 ```
 
 **Expected Response:**
+
 ```json
 {
   "status": "healthy",
@@ -92,6 +95,7 @@ Invoke-RestMethod https://barberx-api-production-xxxx.up.railway.app/health
 ```
 
 ### Test PDF Upload:
+
 ```powershell
 $apiUrl = "https://barberx-api-production-xxxx.up.railway.app"
 
@@ -117,6 +121,7 @@ Invoke-RestMethod -Uri "$apiUrl/api/upload/pdf" `
 5. **Done!** Get URL from dashboard
 
 **Render automatically:**
+
 - Creates Flask web service
 - Creates PostgreSQL database
 - Connects them together
@@ -128,6 +133,7 @@ Invoke-RestMethod -Uri "$apiUrl/api/upload/pdf" `
 ## Cost Comparison (Monthly)
 
 ### Railway
+
 - **Free:** $5 credit/month
 - **Pro:** $20/month (unlimited)
 - ✅ PostgreSQL included
@@ -135,6 +141,7 @@ Invoke-RestMethod -Uri "$apiUrl/api/upload/pdf" `
 - ✅ 512MB RAM minimum
 
 ### Render
+
 - **Free:** Limited hours/month
 - **Starter:** $25/month
 - **Pro:** $85/month
@@ -143,6 +150,7 @@ Invoke-RestMethod -Uri "$apiUrl/api/upload/pdf" `
 - ✅ 512MB RAM
 
 ### Recommended for Now:
+
 **Railway** - $5 free credit is enough for testing and initial launch.
 
 ---
@@ -166,12 +174,14 @@ After deployment, verify:
 ## Monitoring Your Production App
 
 ### Railway Dashboard:
+
 - **Metrics:** CPU, Memory, Network
 - **Logs:** Real-time application logs
 - **Deployments:** View deploy history
 - **Database:** PostgreSQL metrics
 
 ### Health Check Monitoring (Free):
+
 ```powershell
 # Use UptimeRobot.com (free)
 # Add monitor: https://barberx-api-production-xxxx.up.railway.app/health
@@ -185,22 +195,26 @@ After deployment, verify:
 ### When you hit limits:
 
 **Railway Free → Pro ($20/month):**
+
 ```powershell
 railway upgrade
 ```
 
 **Add more workers:**
+
 ```yaml
 # Edit Procfile
 web: gunicorn app:app --bind 0.0.0.0:$PORT --workers 8 --timeout 120
 ```
 
 **Add Redis cache:**
+
 ```powershell
 railway add redis
 ```
 
 **Add background workers:**
+
 ```yaml
 # Add to Procfile
 worker: celery -A app.celery worker --loglevel=info
@@ -211,11 +225,13 @@ worker: celery -A app.celery worker --loglevel=info
 ## Your Production URLs After Deploy
 
 ### API Base URL:
+
 ```
 https://barberx-api-production-xxxx.up.railway.app
 ```
 
 ### Important Endpoints:
+
 ```
 GET  /health                        # Health check
 POST /api/upload/pdf                # Upload court documents
@@ -234,21 +250,23 @@ GET  /admin                         # Admin dashboard
 ### Update form submissions in your Netlify site:
 
 **Before (local):**
+
 ```javascript
-fetch('http://localhost:5000/api/upload/pdf', {
-  method: 'POST',
-  body: formData
-})
+fetch("http://localhost:5000/api/upload/pdf", {
+  method: "POST",
+  body: formData,
+});
 ```
 
 **After (production):**
+
 ```javascript
-const API_URL = 'https://barberx-api-production-xxxx.up.railway.app';
+const API_URL = "https://barberx-api-production-xxxx.up.railway.app";
 
 fetch(`${API_URL}/api/upload/pdf`, {
-  method: 'POST',
-  body: formData
-})
+  method: "POST",
+  body: formData,
+});
 ```
 
 ---
@@ -265,6 +283,7 @@ railway up
 ```
 
 **Then check:**
+
 ```
 railway open
 ```

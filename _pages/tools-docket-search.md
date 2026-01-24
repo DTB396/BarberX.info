@@ -59,7 +59,7 @@ toc: false
           <path d="M6 9l6 6 6-6"/>
         </svg>
       </summary>
-      
+
       <div class="filter-panel__content">
         <div class="filter-grid">
           <div class="filter-group">
@@ -132,6 +132,7 @@ toc: false
         <p>Enter a docket number, party name, or use filters to search court records</p>
       </div>
     </div>
+
   </div>
 
   <!-- Sidebar -->
@@ -183,6 +184,7 @@ toc: false
         <li><a href="/tools/document-analysis/">Document Analysis</a></li>
       </ul>
     </div>
+
   </aside>
 </div>
 

@@ -1,4 +1,5 @@
 # BarberX Legal Technologies
+
 # Professional BWC Forensic Analysis Platform
 
 ## 🏢 Company Overview
@@ -12,6 +13,7 @@
 ### Enterprise-Grade Infrastructure
 
 #### Multi-User Authentication & Authorization
+
 - User registration and login system
 - Role-based access control (User, Professional, Admin)
 - Subscription tiers (Free, Professional, Enterprise)
@@ -19,6 +21,7 @@
 - Password hashing with Werkzeug
 
 #### Database Architecture
+
 - **SQLAlchemy ORM** with SQLite (upgradable to PostgreSQL/MySQL)
 - **Models:**
   - `User` - User accounts with tier-based limits
@@ -30,19 +33,20 @@
 
 #### Subscription Tiers
 
-| Feature | Free | Professional | Enterprise |
-|---------|------|--------------|------------|
-| **Analyses/Month** | 5 | 100 | Unlimited |
-| **Max File Size** | 500MB | 2GB | 5GB |
-| **Storage** | 5GB | 100GB | Unlimited |
-| **Batch Processing** | ✗ | ✓ | ✓ |
-| **API Access** | ✗ | ✓ | ✓ |
-| **Team Collaboration** | ✗ | ✓ (5 users) | ✓ (unlimited) |
-| **Priority Support** | ✗ | ✓ | ✓ + SLA |
-| **White-Label Deployment** | ✗ | ✗ | ✓ |
-| **Price** | $0 | $99/mo | Custom |
+| Feature                    | Free  | Professional | Enterprise    |
+| -------------------------- | ----- | ------------ | ------------- |
+| **Analyses/Month**         | 5     | 100          | Unlimited     |
+| **Max File Size**          | 500MB | 2GB          | 5GB           |
+| **Storage**                | 5GB   | 100GB        | Unlimited     |
+| **Batch Processing**       | ✗     | ✓            | ✓             |
+| **API Access**             | ✗     | ✓            | ✓             |
+| **Team Collaboration**     | ✗     | ✓ (5 users)  | ✓ (unlimited) |
+| **Priority Support**       | ✗     | ✓            | ✓ + SLA       |
+| **White-Label Deployment** | ✗     | ✗            | ✓             |
+| **Price**                  | $0    | $99/mo       | Custom        |
 
 #### API Infrastructure
+
 - RESTful API with JSON responses
 - API key authentication for programmatic access
 - Rate limiting (planned)
@@ -50,6 +54,7 @@
 - CORS support for web clients
 
 #### Security & Compliance
+
 - **Audit Logging:**
   - User actions tracked (login, upload, download)
   - IP address and user agent capture
@@ -64,6 +69,7 @@
   - Encrypted password storage
 
 #### Professional UI/UX
+
 - **Landing Page:** Marketing site with pricing tiers
 - **Registration/Login:** Clean authentication flows
 - **Dashboard:** User analytics and management
@@ -120,6 +126,7 @@
 ## 🛠️ Technical Stack
 
 ### Backend
+
 - **Framework:** Flask 3.x
 - **Database:** SQLAlchemy + SQLite (production: PostgreSQL)
 - **Authentication:** Flask-Login
@@ -127,11 +134,13 @@
 - **Logging:** Python logging with rotation
 
 ### Frontend
+
 - **HTML/CSS/JavaScript** (vanilla)
 - **Design System:** Custom legal-tech-platform.css
 - **No framework dependencies** (lightweight, fast)
 
 ### AI/ML
+
 - **Whisper** (OpenAI) - Audio transcription
 - **pyannote.audio** - Speaker diarization
 - **spaCy** - Entity extraction
@@ -139,6 +148,7 @@
 - **PyTorch** - ML framework
 
 ### Deployment
+
 - **Development:** Flask dev server
 - **Production:** (planned) Gunicorn + Nginx
 - **Database:** SQLite → PostgreSQL migration path
@@ -149,6 +159,7 @@
 ## 📈 Scaling Roadmap
 
 ### Phase 1: MVP (Current)
+
 ✅ Core analysis engine
 ✅ Multi-user authentication
 ✅ Subscription tiers
@@ -156,6 +167,7 @@
 ✅ API infrastructure
 
 ### Phase 2: Growth Features
+
 - [ ] Batch processing (upload multiple videos)
 - [ ] Team collaboration (shared workspaces)
 - [ ] Advanced search and filtering
@@ -163,6 +175,7 @@
 - [ ] Payment integration (Stripe)
 
 ### Phase 3: Enterprise Features
+
 - [ ] White-label deployment (Docker)
 - [ ] SSO/SAML integration
 - [ ] Advanced analytics dashboard
@@ -170,6 +183,7 @@
 - [ ] Mobile app (iOS/Android)
 
 ### Phase 4: AI Enhancements
+
 - [ ] Custom model fine-tuning
 - [ ] Predictive analytics (case outcomes)
 - [ ] Automated brief generation
@@ -181,24 +195,28 @@
 ## 🔒 Compliance & Legal
 
 ### Data Protection
+
 - **GDPR Compliant:** User data export, deletion
 - **CCPA Compliant:** California privacy rights
 - **HIPAA Ready:** (for medical records integration)
 - **SOC 2 Ready:** Security controls framework
 
 ### Legal Admissibility
+
 - **FRE 901(b)(9):** Authentication of evidence
 - **FRE 1006:** Summaries to prove content
 - **Daubert Standard:** Scientific evidence admissibility
 - **Chain of Custody:** SHA-256 verification
 
 ### Terms of Service
+
 - User responsibilities
 - Acceptable use policy
 - Data retention policy
 - Limitation of liability
 
 ### Privacy Policy
+
 - Data collection practices
 - Third-party sharing (none)
 - User rights (access, deletion)
@@ -211,6 +229,7 @@
 ### Target Customer Acquisition
 
 #### Free Tier → Professional Conversion
+
 1. **Free signup** with email
 2. **5 analyses** demonstrate value
 3. **Upgrade prompt** when limit reached
@@ -218,6 +237,7 @@
 5. **Convert to paid** ($99/month)
 
 #### Professional → Enterprise Upsell
+
 1. **Team growth** triggers collaboration needs
 2. **API usage** indicates integration requirements
 3. **White-label** for large firms
@@ -250,6 +270,7 @@
 ## 📊 Key Metrics
 
 ### Product Metrics
+
 - **DAU/MAU** (Daily/Monthly Active Users)
 - **Analyses per user**
 - **Conversion rate** (Free → Pro)
@@ -257,6 +278,7 @@
 - **NPS** (Net Promoter Score)
 
 ### Revenue Metrics
+
 - **MRR** (Monthly Recurring Revenue)
 - **ARR** (Annual Recurring Revenue)
 - **CAC** (Customer Acquisition Cost)
@@ -264,6 +286,7 @@
 - **LTV:CAC Ratio** (target >3:1)
 
 ### Technical Metrics
+
 - **Uptime** (target 99.9%)
 - **Analysis success rate** (target 99%)
 - **Avg processing time**
@@ -295,6 +318,7 @@ python app.py
 ```
 
 ### Default Admin Account
+
 - **Email:** admin@barberx.info
 - **Password:** admin123 (⚠️ CHANGE THIS!)
 
@@ -389,5 +413,5 @@ MIT License - Free and open source
 ---
 
 **BarberX Legal Technologies**  
-*Empowering Justice Through Technology*  
+_Empowering Justice Through Technology_  
 🇺🇸 Made in the USA • 100% Open Source • Court-Defensible

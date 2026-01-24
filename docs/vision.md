@@ -14,13 +14,13 @@ permalink: /docs/vision/
 
 ## My Mission
 
-I'm sharing my documented experiences to help others recognize bad actors and systemic 
-dysfunction. Not to build a platform. Not to corner a market. Just to shine light on 
+I'm sharing my documented experiences to help others recognize bad actors and systemic
+dysfunction. Not to build a platform. Not to corner a market. Just to shine light on
 problems honestly and productively.
 
 ## Core Philosophy
 
-Documentation should expose truth, not obscure it. Every case shared must serve honesty, 
+Documentation should expose truth, not obscure it. Every case shared must serve honesty,
 clarity, and helping good people make better decisions — never revenge, harassment, or manipulation.
 
 ---
@@ -50,7 +50,7 @@ My approach emphasizes:
 ## What This Site Is
 
 - A **personal accountability journal** documenting real experiences
-- A **pattern recognition resource** identifying bad actor behaviors  
+- A **pattern recognition resource** identifying bad actor behaviors
 - A **lessons learned repository** helping others navigate better
 - An **evidence preservation site** maintaining chain of custody
 
@@ -65,10 +65,10 @@ My approach emphasizes:
 
 ## Why BarberX?
 
-Because cutting through bureaucratic spin requires precision. These are my documented 
+Because cutting through bureaucratic spin requires precision. These are my documented
 experiences with bad actors who hide behind process, paperwork, and position.
 
-**Truth is preserved through careful documentation.** The goal is protection, not retribution. 
+**Truth is preserved through careful documentation.** The goal is protection, not retribution.
 Evidence exists to help good people recognize bad patterns.
 
 ---
@@ -82,7 +82,7 @@ This documentation operates within legal boundaries:
 - **Privacy considerations** guide what gets shared publicly
 - **Professional counsel** should be consulted for specific situations
 
-**Important:** This site shares experiences and documentation, not legal advice. 
+**Important:** This site shares experiences and documentation, not legal advice.
 Consult licensed attorneys for guidance on your specific situation.
 
 ---

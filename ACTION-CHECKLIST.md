@@ -1,4 +1,5 @@
 # ⚡ COPYRIGHT COMPLIANCE - ACTION CHECKLIST
+
 **Print this page and check off as you complete each step**
 
 ---
@@ -6,16 +7,20 @@
 ## 📋 TODAY - CRITICAL BLOCKERS (2-4 hours)
 
 ### ☐ Step 1: Create Database Tables (5 minutes)
+
 ```bash
 cd c:\web-dev\github-repos\BarberX.info
 python models_data_rights.py
 ```
+
 **Expected Output:**
+
 ```
 ✅ Data rights compliance tables created
 ```
 
 **Verify in database:**
+
 - [ ] `data_sources` table exists
 - [ ] `citation_metadata` table exists
 - [ ] `public_case_data` table exists
@@ -26,11 +31,13 @@ python models_data_rights.py
 ---
 
 ### ☐ Step 2: Test Compliance Module (5 minutes)
+
 ```bash
 python integration_example.py
 ```
 
 **Expected Results:**
+
 - [ ] ✅ BWC footage included in export
 - [ ] ✅ AI transcript included in export
 - [ ] ❌ Westlaw content blocked
@@ -42,6 +49,7 @@ python integration_example.py
 ### ☐ Step 3: Integrate into app.py (1-2 hours)
 
 **Add imports at top of app.py:**
+
 ```python
 from data_rights import RightsAwareExport, Material, RIGHTS_PROFILES, ExportViolation
 from models_data_rights import (
@@ -51,18 +59,19 @@ from models_data_rights import (
 ```
 
 **Update PDF export function:**
+
 ```python
 @app.route('/api/export/<analysis_id>/pdf', methods=['POST'])
 @login_required
 def export_pdf(analysis_id):
     analysis = Analysis.query.get_or_404(analysis_id)
-    
+
     # Create rights-aware export
     export = RightsAwareExport(
         case_number=analysis.case_number,
         export_type="discovery_production"
     )
-    
+
     # Add BWC video
     bwc_material = Material(
         filename=analysis.filename,
@@ -72,7 +81,7 @@ def export_pdf(analysis_id):
         acquired_by=current_user.full_name
     )
     export.add_material(bwc_material)
-    
+
     # Add transcript if exists
     if analysis.report_json_path:
         transcript_material = Material(
@@ -81,19 +90,20 @@ def export_pdf(analysis_id):
             rights=RIGHTS_PROFILES["our_transcript"]
         )
         export.add_material(transcript_material)
-    
+
     # Finalize export
     export_path = export.finalize_export(
         certifying_attorney=current_user.full_name,
         attorney_bar_number=request.form.get('bar_number', 'Unknown'),
         export_directory=Path('./exports')
     )
-    
+
     # Return PDF
     return send_file(export_path / 'export.pdf')
 ```
 
 **Checklist:**
+
 - [ ] Imports added to app.py
 - [ ] Export function updated
 - [ ] Test export route works
@@ -104,16 +114,18 @@ def export_pdf(analysis_id):
 ### ☐ Step 4: Update bwc_forensic_analyzer.py (30 minutes)
 
 **Add at top of file:**
+
 ```python
 from data_rights import Material, RIGHTS_PROFILES, DataRights, SourceType
 from models_data_rights import MaterialInventory, DataSource
 ```
 
 **Update transcript generation:**
+
 ```python
 def generate_transcript(self, bwc_video_path):
     # Existing transcription code...
-    
+
     # Track transcript as our work product
     transcript_material = MaterialInventory(
         id=str(uuid.uuid4()),
@@ -128,6 +140,7 @@ def generate_transcript(self, bwc_video_path):
 ```
 
 **Checklist:**
+
 - [ ] Imports added
 - [ ] Transcript tracking added
 - [ ] Test analysis generates MaterialInventory records
@@ -139,6 +152,7 @@ def generate_transcript(self, bwc_video_path):
 ### ☐ Step 5: Configure Environment Variables (30 minutes)
 
 **Create `.env` file:**
+
 ```bash
 SECRET_KEY=generate-256-bit-random-key-here
 DATABASE_URL=postgresql://user:pass@localhost/barberx_legal
@@ -146,6 +160,7 @@ STRIPE_API_KEY=sk_live_...
 ```
 
 **Update app.py:**
+
 ```python
 import os
 from dotenv import load_dotenv
@@ -157,11 +172,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 ```
 
 **Generate SECRET_KEY:**
+
 ```bash
 python -c "import secrets; print(secrets.token_hex(32))"
 ```
 
 **Checklist:**
+
 - [ ] `.env` file created
 - [ ] SECRET_KEY generated (256-bit)
 - [ ] app.py reads from environment
@@ -172,6 +189,7 @@ python -c "import secrets; print(secrets.token_hex(32))"
 ### ☐ Step 6: Migrate to PostgreSQL (2-3 hours)
 
 **Install PostgreSQL:**
+
 ```bash
 # Windows (via Chocolatey)
 choco install postgresql
@@ -180,6 +198,7 @@ choco install postgresql
 ```
 
 **Create database:**
+
 ```bash
 psql -U postgres
 CREATE DATABASE barberx_legal;
@@ -188,17 +207,20 @@ GRANT ALL PRIVILEGES ON DATABASE barberx_legal TO barberx;
 ```
 
 **Update DATABASE_URL in `.env`:**
+
 ```
 DATABASE_URL=postgresql://barberx:secure-password@localhost/barberx_legal
 ```
 
 **Migrate data:**
+
 ```bash
 # Export from SQLite
 python migrate_to_postgres.py  # You'll need to create this script
 ```
 
 **Checklist:**
+
 - [ ] PostgreSQL installed
 - [ ] Database created
 - [ ] User/permissions configured
@@ -211,6 +233,7 @@ python migrate_to_postgres.py  # You'll need to create this script
 ### ☐ Step 7: Configure HTTPS/SSL (2 hours)
 
 **For production server:**
+
 ```bash
 # Install Certbot (Let's Encrypt)
 sudo apt-get install certbot python3-certbot-nginx
@@ -220,6 +243,7 @@ sudo certbot --nginx -d barberx.info -d www.barberx.info
 ```
 
 **For local development:**
+
 ```bash
 # Generate self-signed certificate
 openssl req -x509 -newkey rsa:4096 -nodes \
@@ -227,6 +251,7 @@ openssl req -x509 -newkey rsa:4096 -nodes \
 ```
 
 **Update app.py for HTTPS:**
+
 ```python
 if __name__ == '__main__':
     app.run(
@@ -237,6 +262,7 @@ if __name__ == '__main__':
 ```
 
 **Checklist:**
+
 - [ ] SSL certificate obtained
 - [ ] HTTPS configured
 - [ ] HTTP → HTTPS redirect
@@ -250,6 +276,7 @@ if __name__ == '__main__':
 ### ☐ Step 8: End-to-End Testing (2-3 hours)
 
 **Test scenarios:**
+
 - [ ] User registration works
 - [ ] Login/logout works
 - [ ] Upload BWC video (500MB test file)
@@ -268,6 +295,7 @@ if __name__ == '__main__':
 ### ☐ Step 9: Copyright Compliance Testing (1 hour)
 
 **Create test materials:**
+
 ```python
 # Test 1: Verify Westlaw blocking
 westlaw_test = Material(
@@ -297,6 +325,7 @@ bwc_test = Material(
 ```
 
 **Checklist:**
+
 - [ ] Westlaw content blocked
 - [ ] Lexis content blocked
 - [ ] 250-word excerpt blocked
@@ -309,6 +338,7 @@ bwc_test = Material(
 ### ☐ Step 10: Security Audit (1-2 hours)
 
 **Run security checks:**
+
 ```bash
 # Check for hardcoded secrets
 grep -r "SECRET_KEY\|API_KEY\|PASSWORD" *.py
@@ -324,6 +354,7 @@ psql -U barberx -c "SHOW ssl;"
 ```
 
 **Checklist:**
+
 - [ ] No hardcoded secrets in code
 - [ ] HTTPS enforced (HTTP redirects)
 - [ ] File permissions secure (not world-readable)
@@ -338,6 +369,7 @@ psql -U barberx -c "SHOW ssl;"
 ### ☐ Step 11: Pre-Launch Verification (30 minutes)
 
 **Final checklist:**
+
 - [ ] All database tables created
 - [ ] Copyright compliance integrated
 - [ ] Export blocking tested
@@ -354,6 +386,7 @@ psql -U barberx -c "SHOW ssl;"
 ### ☐ Step 12: Go Live (30 minutes)
 
 **Deployment steps:**
+
 1. [ ] Deploy to production server
 2. [ ] Verify HTTPS certificate
 3. [ ] Test user registration
@@ -364,6 +397,7 @@ psql -U barberx -c "SHOW ssl;"
 8. [ ] Monitor for 1 hour
 
 **Post-launch monitoring:**
+
 - [ ] Hour 1: Check logs every 15 minutes
 - [ ] Day 1: Check logs every 2 hours
 - [ ] Week 1: Daily log review
@@ -374,6 +408,7 @@ psql -U barberx -c "SHOW ssl;"
 ## ✅ SUCCESS CRITERIA
 
 **You're production-ready when:**
+
 - [x] Legal documents complete
 - [x] Compliance code implemented
 - [ ] Database tables created
@@ -383,9 +418,9 @@ psql -U barberx -c "SHOW ssl;"
 - [ ] End-to-end tests passing
 - [ ] Security audit clean
 
-**Current Status:** ___% complete (check items above)
+**Current Status:** \_\_\_% complete (check items above)
 
-**Target Launch Date:** ________________
+**Target Launch Date:** ******\_\_\_\_******
 
 **Launched Successfully:** ☐ YES ☐ NO
 
@@ -408,10 +443,10 @@ BarberCamX@ProtonMail.com
 
 ---
 
-**Print Date:** ________________  
-**Completed By:** ________________  
-**Completion Date:** ________________  
-**Signature:** ________________
+**Print Date:** ******\_\_\_\_******  
+**Completed By:** ******\_\_\_\_******  
+**Completion Date:** ******\_\_\_\_******  
+**Signature:** ******\_\_\_\_******
 
 ---
 

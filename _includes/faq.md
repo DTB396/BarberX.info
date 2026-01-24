@@ -1,5 +1,6 @@
 ---
-# This file was moved from the project root to _includes/ for Jekyll compatibility.
+
+# This file was moved from the project root to \_includes/ for Jekyll compatibility.
 
 # Barber Cam — FAQ
 
@@ -42,4 +43,3 @@ Not yet for core systems. When contribution pathways open, they will be governed
 ## How can I stay informed?
 
 Use the contact method on the landing page or open an issue in this repository with “Updates” in the title.
-

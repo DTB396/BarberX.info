@@ -11,6 +11,7 @@ Welcome to the official documentation for BarberX Legal Technologies, the profes
 ---
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Quick Start](#quick-start)
 - [Installation Guide](#installation-guide)
@@ -24,7 +25,9 @@ Welcome to the official documentation for BarberX Legal Technologies, the profes
 ---
 
 ## Overview
+
 BarberX is a local-first, privacy-focused legal tech platform for processing body-worn camera (BWC) footage, police reports, and legal documents. It features:
+
 - 100% local AI (no cloud required)
 - Multi-user authentication & role-based access
 - Chain of custody, audit logging, and evidence management
@@ -33,6 +36,7 @@ BarberX is a local-first, privacy-focused legal tech platform for processing bod
 ---
 
 ## Quick Start
+
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/DTB396/BarberX.info.git
@@ -59,14 +63,18 @@ BarberX is a local-first, privacy-focused legal tech platform for processing bod
 ---
 
 ## Installation Guide
+
 ### Requirements
+
 - Python 3.9+
 - Git
 - (Optional) PostgreSQL for production
 - (Optional) ffmpeg for media processing
 
 ### Environment Variables
+
 Create a `.env` file in the project root with:
+
 ```
 SECRET_KEY=your-secret-key
 DATABASE_URL=sqlite:///instance/barberx_auth.db  # or your PostgreSQL URI
@@ -76,25 +84,31 @@ CORS_ORIGINS=http://localhost:5000
 ---
 
 ## User Guide
+
 ### Logging In
+
 - Default admin: `admin@barberx.info`
 - Use the password you set or reset via the admin panel.
 
 ### Uploading Evidence
+
 - Go to the dashboard and use the upload form for BWC videos, PDFs, or images.
 - Supported formats: MP4, MOV, PDF, JPG, PNG, CSV, JSON, DOCX, etc.
 
 ### AI-Powered Analysis
+
 - Transcribe audio, extract text, and run entity recognition on uploaded files.
 - All processing is local—no data leaves your machine.
 
 ### Search & Export
+
 - Use semantic search to find relevant evidence.
 - Export court-ready exhibits as PDF, DOCX, or JSON.
 
 ---
 
 ## Admin Guide
+
 - Manage users, roles, and subscription tiers from the admin panel (`/admin`).
 - View audit logs and chain of custody for all evidence.
 - Configure system settings and integrations.
@@ -102,17 +116,20 @@ CORS_ORIGINS=http://localhost:5000
 ---
 
 ## API Reference
+
 - RESTful endpoints for evidence upload, user management, and analysis.
 - See [API documentation](../api-reference.html) for full details.
 
 ---
 
 ## FAQ
+
 - [FAQ page](../faq/)
 
 ---
 
 ## Troubleshooting
+
 - **Missing dependencies:** Run `pip install -r requirements.txt`.
 - **Database errors:** Ensure your database URI is correct and migrations are applied.
 - **AI features unavailable:** Install required AI dependencies (see `requirements.txt` and documentation).
@@ -121,6 +138,7 @@ CORS_ORIGINS=http://localhost:5000
 ---
 
 ## Support & Community
+
 - [GitHub Issues](https://github.com/DTB396/BarberX.info/issues)
 - [Contact](mailto:support@barberx.info)
 - [Changelog](../CHANGELOG.md)

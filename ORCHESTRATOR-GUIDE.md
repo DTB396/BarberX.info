@@ -7,11 +7,13 @@ The **@orchestrator** agent is your master coordinator that automatically runs a
 ## 🚀 Quick Start
 
 ### Simple Invocation
+
 ```
 @orchestrator: Add batch PDF upload feature
 ```
 
 The orchestrator will automatically:
+
 1. ✅ Check legal compliance requirements (@legal-compliance)
 2. ✅ Design database schema (@database-architect)
 3. ✅ Build backend API (@flask-backend)
@@ -22,6 +24,7 @@ The orchestrator will automatically:
 ## 📋 Common Use Cases
 
 ### Feature Development
+
 ```
 @orchestrator: Create user authentication system with role-based access
 @orchestrator: Add BWC video analysis with chain of custody
@@ -29,18 +32,21 @@ The orchestrator will automatically:
 ```
 
 ### Bug Fixes
+
 ```
 @orchestrator: Fix upload validation error in batch processor
 @orchestrator: Debug authentication issue affecting admin panel
 ```
 
 ### Performance Optimization
+
 ```
 @orchestrator: Optimize database queries for 10,000+ cases
 @orchestrator: Improve frontend loading time to under 2 seconds
 ```
 
 ### Deployment & Security
+
 ```
 @orchestrator: Prepare platform for production deployment
 @orchestrator: Perform comprehensive security audit
@@ -52,25 +58,31 @@ The orchestrator will automatically:
 The orchestrator always follows this order:
 
 ### Phase 1: Foundation (Legal & Data)
+
 - **@legal-compliance** - Copyright, compliance, legal requirements
 - **@database-architect** - Schema design, migrations, indexes
 
 ### Phase 2: Core Implementation
+
 - **@bwc-forensics** - Video analysis, forensics, evidence handling
 - **@flask-backend** - API endpoints, business logic, authentication
 
 ### Phase 3: User Interface
+
 - **@frontend-dev** - UI components, accessibility, performance
 
 ### Phase 4: Security & Operations
+
 - **@security-devops** - Security, deployment, CI/CD
 
 ### Phase 5: Documentation
+
 - **@documentation** - Guides, API docs, deployment instructions
 
 ## 🎓 Advanced Usage
 
 ### Multi-Step Complex Tasks
+
 ```
 @orchestrator: Implement the following:
 1. Secure batch PDF upload
@@ -80,6 +92,7 @@ The orchestrator always follows this order:
 ```
 
 ### With Specific Requirements
+
 ```
 @orchestrator: Add case search API with these requirements:
 - Must comply with 200-word fair use limits
@@ -90,6 +103,7 @@ The orchestrator always follows this order:
 ```
 
 ### Cross-Domain Features
+
 ```
 @orchestrator: Build BWC evidence timeline that:
 - Syncs multiple video sources
@@ -100,19 +114,20 @@ The orchestrator always follows this order:
 
 ## 📊 Agent Specialties
 
-| Agent | Expertise |
-|-------|-----------|
-| **@legal-compliance** | Copyright, OPRA, export validation, attribution |
-| **@database-architect** | Schema design, migrations, performance |
-| **@bwc-forensics** | Video analysis, Whisper, chain of custody |
-| **@flask-backend** | REST APIs, auth, rate limiting, business logic |
-| **@frontend-dev** | UI/UX, accessibility, responsive design |
-| **@security-devops** | SSL, CI/CD, secrets, deployment |
-| **@documentation** | User guides, API docs, tutorials |
+| Agent                   | Expertise                                       |
+| ----------------------- | ----------------------------------------------- |
+| **@legal-compliance**   | Copyright, OPRA, export validation, attribution |
+| **@database-architect** | Schema design, migrations, performance          |
+| **@bwc-forensics**      | Video analysis, Whisper, chain of custody       |
+| **@flask-backend**      | REST APIs, auth, rate limiting, business logic  |
+| **@frontend-dev**       | UI/UX, accessibility, responsive design         |
+| **@security-devops**    | SSL, CI/CD, secrets, deployment                 |
+| **@documentation**      | User guides, API docs, tutorials                |
 
 ## ✅ Validation & Testing
 
 After each phase, the orchestrator verifies:
+
 - ✅ Code compiles without errors
 - ✅ Tests pass (if applicable)
 - ✅ No security vulnerabilities
@@ -122,11 +137,13 @@ After each phase, the orchestrator verifies:
 ## 🛑 When to Use Individual Agents
 
 Use **individual agents** for:
+
 - Simple, single-domain tasks
 - Quick fixes in one area
 - Specific expertise questions
 
 Use **@orchestrator** for:
+
 - Complex, multi-step features
 - Cross-domain implementations
 - Production deployments
@@ -135,6 +152,7 @@ Use **@orchestrator** for:
 ## 📝 Examples from Your Platform
 
 ### Completed by Orchestrator
+
 ```
 ✅ Batch PDF Upload System
    - Legal compliance review
@@ -147,6 +165,7 @@ Use **@orchestrator** for:
 ```
 
 ### Next Tasks for Orchestrator
+
 ```
 @orchestrator: Implement BWC analysis dashboard with:
 - Real-time transcription progress
@@ -178,11 +197,13 @@ A: Explicitly state it: "@orchestrator: Add feature X (skip documentation phase)
 ## 📚 Real-World Example
 
 **Request:**
+
 ```
 @orchestrator: Add export feature for case files with copyright compliance
 ```
 
 **Orchestrator Executes:**
+
 ```
 Phase 1: Foundation
 → @legal-compliance: Review Westlaw/Lexis export rules
@@ -191,7 +212,7 @@ Phase 1: Foundation
 → @database-architect: Design export_logs and export_manifests tables
    ✅ Created migration script, added indexes
 
-Phase 2: Core Implementation  
+Phase 2: Core Implementation
 → @flask-backend: Create /api/export/case endpoint
    ✅ Added copyright validation
    ✅ Implemented attorney certification

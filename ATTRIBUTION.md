@@ -1,4 +1,5 @@
 # ATTRIBUTION AND ACKNOWLEDGMENTS
+
 **BarberX Legal Technologies**
 
 We stand on the shoulders of giants. This platform is made possible by the incredible work of open-source communities and technology providers.
@@ -11,24 +12,28 @@ We stand on the shoulders of giants. This platform is made possible by the incre
 
 **OpenAI Whisper**  
 The backbone of our transcription engine. Whisper's state-of-the-art speech recognition enables accurate BWC footage transcription even in challenging audio conditions.
+
 - **License:** MIT License
 - **Copyright:** © 2022 OpenAI
 - **Website:** https://github.com/openai/whisper
 
 **pyannote.audio**  
 Powers our speaker diarization, allowing us to identify different speakers in complex multi-person interactions captured on body-worn cameras.
+
 - **License:** MIT License
 - **Copyright:** © 2020-2024 CNRS
 - **Website:** https://github.com/pyannote/pyannote-audio
 
 **spaCy**  
 Our named entity recognition system, extracting critical information like officer names, locations, and dates from transcripts.
+
 - **License:** MIT License
 - **Copyright:** © 2016-2024 ExplosionAI GmbH
 - **Website:** https://spacy.io
 
 **Hugging Face Transformers**  
 Advanced natural language processing models that power our semantic analysis and discrepancy detection.
+
 - **License:** Apache License 2.0
 - **Copyright:** © 2018 The HuggingFace Team
 - **Website:** https://huggingface.co/transformers
@@ -39,18 +44,21 @@ Advanced natural language processing models that power our semantic analysis and
 
 **Flask**  
 The elegant Python web framework that powers our entire application, chosen for its simplicity and security.
+
 - **License:** BSD-3-Clause License
 - **Copyright:** © 2010 Pallets
 - **Website:** https://flask.palletsprojects.com
 
 **SQLAlchemy**  
 Our database ORM, providing robust and secure data management for sensitive legal evidence.
+
 - **License:** MIT License
 - **Copyright:** © 2005-2024 Michael Bayer
 - **Website:** https://www.sqlalchemy.org
 
 **PostgreSQL**  
 The production database system ensuring data integrity and reliability for our users' critical case files.
+
 - **License:** PostgreSQL License
 - **Copyright:** © 1996-2024 PostgreSQL Global Development Group
 - **Website:** https://www.postgresql.org
@@ -61,12 +69,14 @@ The production database system ensuring data integrity and reliability for our u
 
 **Bootstrap**  
 The responsive CSS framework that makes our platform accessible on any device, from desktop to mobile.
+
 - **License:** MIT License
 - **Copyright:** © 2011-2024 The Bootstrap Authors
 - **Website:** https://getbootstrap.com
 
 **Bootstrap Icons**  
 Clean, professional iconography throughout our interface.
+
 - **License:** MIT License
 - **Copyright:** © 2019-2024 The Bootstrap Authors
 - **Website:** https://icons.getbootstrap.com
@@ -77,18 +87,21 @@ Clean, professional iconography throughout our interface.
 
 **Pandas**  
 Data manipulation and analysis for processing complex forensic timelines.
+
 - **License:** BSD-3-Clause License
 - **Copyright:** © 2008-2024 PyData Development Team
 - **Website:** https://pandas.pydata.org
 
 **NumPy**  
 Fundamental numerical computing library supporting our analysis algorithms.
+
 - **License:** BSD-3-Clause License
 - **Copyright:** © 2005-2024 NumPy Developers
 - **Website:** https://numpy.org
 
 **FFmpeg**  
 Essential audio/video processing for handling BWC footage in multiple formats.
+
 - **License:** LGPL 2.1
 - **Copyright:** © 2000-2024 FFmpeg team
 - **Website:** https://ffmpeg.org
@@ -99,12 +112,14 @@ Essential audio/video processing for handling BWC footage in multiple formats.
 
 **Stripe**  
 Secure payment processing that never stores credit card information on our servers.
+
 - **License:** MIT License (SDK)
 - **Copyright:** © Stripe, Inc.
 - **Website:** https://stripe.com
 
 **Werkzeug**  
 Security utilities including password hashing to protect user accounts.
+
 - **License:** BSD-3-Clause License
 - **Copyright:** © 2007 Pallets
 - **Website:** https://palletsprojects.com/p/werkzeug/
@@ -115,6 +130,7 @@ Security utilities including password hashing to protect user accounts.
 
 **CourtListener (Free Law Project)**  
 Public domain case law database, making legal precedent accessible to all.
+
 - **License:** CC0 1.0 Universal (Public Domain)
 - **Operated by:** Free Law Project (501(c)(3) nonprofit)
 - **Website:** https://www.courtlistener.com
@@ -123,6 +139,7 @@ We are grateful to Free Law Project for their mission to make the law more acces
 
 **Justia**  
 Additional public domain legal resources and case law.
+
 - **Website:** https://www.justia.com
 
 ---
@@ -141,6 +158,7 @@ We believe in contributing to the open-source ecosystem that makes our work poss
 ## 📜 FULL LICENSE TEXTS
 
 Complete license texts for all third-party software are available in:
+
 - **THIRD-PARTY-LICENSES.md** - Complete license documentation
 - **LICENSES/** directory - Individual license files
 

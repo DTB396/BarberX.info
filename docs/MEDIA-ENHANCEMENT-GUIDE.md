@@ -44,23 +44,23 @@ Enhanced File (output): Separate directory, marked as derivative
 
 ### Noise Profiles
 
-| Profile | Best For |
-|---------|----------|
-| **Traffic/Road Noise** | Roadside stops, highway patrol |
-| **Wind Noise** | Outdoor BWC recordings |
-| **Radio Static/Interference** | Police radio crosstalk |
-| **Background Crowd** | Multiple speakers, protests, crowds |
-| **Vehicle Engine Hum** | In-car recordings, transports |
-| **HVAC/Air Conditioning** | Station interrogations |
-| **General** | Unknown or mixed noise sources |
+| Profile                       | Best For                            |
+| ----------------------------- | ----------------------------------- |
+| **Traffic/Road Noise**        | Roadside stops, highway patrol      |
+| **Wind Noise**                | Outdoor BWC recordings              |
+| **Radio Static/Interference** | Police radio crosstalk              |
+| **Background Crowd**          | Multiple speakers, protests, crowds |
+| **Vehicle Engine Hum**        | In-car recordings, transports       |
+| **HVAC/Air Conditioning**     | Station interrogations              |
+| **General**                   | Unknown or mixed noise sources      |
 
 ### Quality Levels
 
-| Level | Noise Reduction | Court Admissibility |
-|-------|----------------|---------------------|
-| **Minimal** | 6 dB | ✅ Always admissible (subtle enhancement) |
-| **Moderate** | 12 dB | ✅ Admissible with disclosure (balanced) |
-| **Aggressive** | 20 dB | ⚠️ Caution (may affect admissibility) |
+| Level          | Noise Reduction | Court Admissibility                       |
+| -------------- | --------------- | ----------------------------------------- |
+| **Minimal**    | 6 dB            | ✅ Always admissible (subtle enhancement) |
+| **Moderate**   | 12 dB           | ✅ Admissible with disclosure (balanced)  |
+| **Aggressive** | 20 dB           | ⚠️ Caution (may affect admissibility)     |
 
 ### API Request
 
@@ -120,11 +120,11 @@ curl -X POST http://localhost:8000/api/v1/ediscovery/enhancement/audio \
 
 ### Upscaling Algorithms
 
-| Algorithm | Quality | Court Admissibility |
-|-----------|---------|---------------------|
-| **Lanczos** | High-quality traditional | ✅ Always admissible |
-| **Bicubic** | Good traditional | ✅ Always admissible |
-| **AI-ESRGAN** | AI super-resolution | ⚠️ Disclose AI usage |
+| Algorithm     | Quality                  | Court Admissibility  |
+| ------------- | ------------------------ | -------------------- |
+| **Lanczos**   | High-quality traditional | ✅ Always admissible |
+| **Bicubic**   | Good traditional         | ✅ Always admissible |
+| **AI-ESRGAN** | AI super-resolution      | ⚠️ Disclose AI usage |
 
 ### Common Resolutions
 
@@ -191,11 +191,11 @@ curl -X POST http://localhost:8000/api/v1/ediscovery/enhancement/video \
 
 ### Target Scales
 
-| Scale | Use Case |
-|-------|----------|
+| Scale  | Use Case                                     |
+| ------ | -------------------------------------------- |
 | **2x** | License plates, faces from moderate distance |
-| **4x** | Small text, distant objects |
-| **8x** | Maximum detail (use with caution) |
+| **4x** | Small text, distant objects                  |
+| **8x** | Maximum detail (use with caution)            |
 
 ### API Request
 
@@ -282,6 +282,7 @@ curl http://localhost:8000/api/v1/ediscovery/enhancement/compare/ENH-AUD-EV-BWC-
 ### Always Admissible (Minimal/Moderate)
 
 ✅ **Minimal Enhancement**
+
 - Subtle noise reduction (6 dB)
 - Light sharpening
 - Standard upscaling (Lanczos)
@@ -289,6 +290,7 @@ curl http://localhost:8000/api/v1/ediscovery/enhancement/compare/ENH-AUD-EV-BWC-
 - **Use for**: Court exhibits, depositions, trial
 
 ✅ **Moderate Enhancement**
+
 - Balanced noise reduction (12 dB)
 - Moderate sharpening
 - Standard stabilization
@@ -297,6 +299,7 @@ curl http://localhost:8000/api/v1/ediscovery/enhancement/compare/ENH-AUD-EV-BWC-
 ### Use with Caution (Aggressive)
 
 ⚠️ **Aggressive Enhancement**
+
 - Heavy noise reduction (20 dB)
 - AI super-resolution
 - Maximum sharpening
@@ -425,6 +428,7 @@ pip install pyannote.audio
 **Scenario**: Officer commands inaudible due to traffic noise
 
 **Solution**:
+
 ```json
 {
   "evidence_id": "EV-BWC-STOP-001",
@@ -444,6 +448,7 @@ pip install pyannote.audio
 **Scenario**: License plate too small to read (720p BWC)
 
 **Solution**:
+
 ```json
 {
   "evidence_id": "EV-BWC-STOP-001",
@@ -462,6 +467,7 @@ pip install pyannote.audio
 **Scenario**: Badge number unclear in body-worn photo
 
 **Solution**:
+
 ```json
 {
   "evidence_id": "EV-IMG-BADGE-001",

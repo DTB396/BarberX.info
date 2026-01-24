@@ -256,6 +256,7 @@ Execute these stages **sequentially**, documenting progress and issues at each s
    - Identify missing PDFs referenced in dockets
 
 4. **Filing Link Validation:**
+
    ```bash
    node scripts/repair-docket-file-links-to-filings.js
    ```
@@ -305,6 +306,7 @@ Execute these stages **sequentially**, documenting progress and issues at each s
    - Check semantic HTML structure
 
 4. **Frontend JavaScript Health:**
+
    ```bash
    node scripts/verify-frontend-js.js
    ```

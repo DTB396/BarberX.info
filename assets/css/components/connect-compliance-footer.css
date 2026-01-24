@@ -14,15 +14,16 @@
 }
 
 .connect-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--barberx-gold) 50%, 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--barberx-gold) 50%,
     transparent 100%
   );
 }
@@ -61,7 +62,7 @@
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--barberx-gold);
@@ -103,7 +104,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgb(212 175 55 / 20%) 0%, rgb(212 175 55 / 10%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(212 175 55 / 20%) 0%,
+    rgb(212 175 55 / 10%) 100%
+  );
   border: 1px solid rgb(212 175 55 / 30%);
 }
 
@@ -154,7 +159,7 @@
 }
 
 .form-header h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--barberx-gold);
@@ -298,7 +303,7 @@
     background: rgb(255 255 255 / 3%);
     border-color: rgb(212 175 55 / 25%);
   }
-  
+
   .compliance-card:hover {
     background: rgb(255 255 255 / 5%);
     border-color: rgb(212 175 55 / 40%);
@@ -306,7 +311,7 @@
 }
 
 .compliance-card h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--barberx-gold);
@@ -350,7 +355,7 @@
 }
 
 .compliance-card ul li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: var(--barberx-gold);
@@ -443,15 +448,16 @@
 }
 
 .site-footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--barberx-gold) 50%, 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--barberx-gold) 50%,
     transparent 100%
   );
 }
@@ -603,15 +609,15 @@
   .site-footer {
     padding: 3rem 0;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .connect-form-wrapper {
     padding: 1.5rem;
   }
-  
+
   .compliance-footer {
     margin-top: 2rem;
   }

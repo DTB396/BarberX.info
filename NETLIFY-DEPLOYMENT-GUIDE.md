@@ -28,6 +28,7 @@ netlify deploy --prod
 ### Option 2: Deploy via Git (GitHub Integration)
 
 1. **Push to GitHub:**
+
    ```bash
    git add .
    git commit -m "Add Netlify configuration"
@@ -52,6 +53,7 @@ netlify deploy --prod
 ## 🔧 Configuration Files Created
 
 ### 1. `netlify.toml` (Main Configuration)
+
 ✅ **Build command:** `bundle exec jekyll build`  
 ✅ **Publish directory:** `_site`  
 ✅ **Environment:** Production/Staging/Development contexts  
@@ -61,14 +63,17 @@ netlify deploy --prod
 ✅ **Node version:** 18
 
 ### 2. `Gemfile` (Ruby Dependencies)
+
 ✅ Jekyll 4.3.2  
 ✅ Required plugins (feed, sitemap, SEO)  
 ✅ Development dependencies
 
 ### 3. `runtime.txt` (Ruby Version)
+
 ✅ Specifies Ruby 3.1.0 for Netlify build
 
 ### 4. `.nvmrc` (Node Version)
+
 ✅ Specifies Node 18 for build environment
 
 ---
@@ -94,12 +99,13 @@ netlify deploy --prod
 
 Add these DNS records at your domain registrar:
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| A | @ | `75.2.60.5` | 3600 |
-| CNAME | www | `barberx.netlify.app` | 3600 |
+| Type  | Name | Value                 | TTL  |
+| ----- | ---- | --------------------- | ---- |
+| A     | @    | `75.2.60.5`           | 3600 |
+| CNAME | www  | `barberx.netlify.app` | 3600 |
 
 **HTTPS/SSL Certificate:**
+
 - ✅ Netlify provides free SSL via Let's Encrypt
 - ✅ Auto-renews every 90 days
 - ✅ Force HTTPS redirect enabled in `netlify.toml`
@@ -128,14 +134,16 @@ Add these DNS records at your domain registrar:
 ## 📦 What Gets Deployed
 
 ### Static Site (Jekyll)
+
 ✅ All HTML pages (`index.html`, `admin.html`, etc.)  
 ✅ Jekyll layouts from `_layouts/`  
 ✅ CSS from `assets/css/`  
 ✅ JavaScript files  
 ✅ Images and media  
-✅ Collections (cases, essays, OPRA requests)  
+✅ Collections (cases, essays, OPRA requests)
 
 ### What's EXCLUDED
+
 ❌ `app.py` (Flask backend - see serverless functions below)  
 ❌ `*.py` files (Python backend)  
 ❌ `node_modules/`  
@@ -157,12 +165,12 @@ Convert Flask routes to Netlify Functions:
 // netlify/functions/auth-handler.js
 exports.handler = async (event, context) => {
   // Handle /auth/* routes
-  const path = event.path.replace('/.netlify/functions/auth-handler/', '');
-  
+  const path = event.path.replace("/.netlify/functions/auth-handler/", "");
+
   // Your auth logic here
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'Auth handler' })
+    body: JSON.stringify({ message: "Auth handler" }),
   };
 };
 ```
@@ -196,6 +204,7 @@ Deploy `app.py` to a separate platform:
 Go to: Site Settings → Environment Variables → Add Variable
 
 **Recommended Variables:**
+
 ```bash
 JEKYLL_ENV=production
 SITE_URL=https://barberx.info
@@ -208,6 +217,7 @@ API_KEY=your-api-key
 ```
 
 **Access in Jekyll templates:**
+
 ```liquid
 {{ site.env.SITE_URL }}
 ```
@@ -247,23 +257,27 @@ API_KEY=your-api-key
 ### Already Configured in `netlify.toml`
 
 ✅ **Asset Optimization:**
+
 - CSS bundling and minification
 - JavaScript bundling and minification
 - Image compression
 - HTML pretty URLs
 
 ✅ **Caching Strategy:**
+
 - Static assets: 1 year cache
 - HTML pages: 1 hour cache
 - Service worker: No cache
 
 ✅ **Security Headers:**
+
 - X-Frame-Options
 - X-XSS-Protection
 - Content-Security-Policy
 - Referrer-Policy
 
 ✅ **CDN:**
+
 - Global edge network
 - Auto-scaling
 - DDoS protection
@@ -275,18 +289,21 @@ API_KEY=your-api-key
 ### Common Build Errors
 
 **Error: `Jekyll not found`**
+
 ```bash
 # Solution: Ensure Gemfile includes Jekyll
 gem "jekyll", "~> 4.3.2"
 ```
 
 **Error: `Ruby version mismatch`**
+
 ```bash
 # Solution: Check runtime.txt matches Gemfile
 # runtime.txt: 3.1.0
 ```
 
 **Error: `Cannot find module 'jekyll-feed'`**
+
 ```bash
 # Solution: Add to Gemfile plugins group
 group :jekyll_plugins do
@@ -295,6 +312,7 @@ end
 ```
 
 **Error: `404 on all pages`**
+
 ```bash
 # Solution: Check _config.yml baseurl
 baseurl: "" # Must be empty for root domain
@@ -304,7 +322,7 @@ baseurl: "" # Must be empty for root domain
 
 1. **Optimize images** before committing (use ImageOptim, TinyPNG)
 2. **Reduce dependencies** in Gemfile
-3. **Use incremental builds** (add to _config.yml):
+3. **Use incremental builds** (add to \_config.yml):
    ```yaml
    incremental: true
    ```
@@ -321,6 +339,7 @@ baseurl: "" # Must be empty for root domain
 ## 💰 Netlify Pricing
 
 ### Free Starter Plan (Perfect for BarberX.info)
+
 ✅ 100 GB bandwidth/month  
 ✅ 300 build minutes/month  
 ✅ Unlimited sites  
@@ -331,6 +350,7 @@ baseurl: "" # Must be empty for root domain
 ✅ Serverless functions (125k requests/month)
 
 ### When to Upgrade
+
 - More than 100 GB bandwidth
 - Need team collaboration
 - Advanced analytics
@@ -351,6 +371,7 @@ Once connected to GitHub, every push triggers:
 3. **Pull requests** → Deploy previews
 
 **Deploy Previews:**
+
 - Each PR gets unique URL: `https://deploy-preview-123--barberx.netlify.app`
 - Test changes before merging
 - Share with team for review
@@ -362,6 +383,7 @@ Once connected to GitHub, every push triggers:
 ### Built-in Netlify Analytics
 
 Enable in dashboard for:
+
 - Page views
 - Unique visitors
 - Bandwidth usage
@@ -411,16 +433,19 @@ netlify status
 ## 📞 Support Resources
 
 ### Netlify Documentation
+
 - [Netlify Docs](https://docs.netlify.com)
 - [Jekyll on Netlify](https://docs.netlify.com/configure-builds/common-configurations/jekyll/)
 - [Custom Domains](https://docs.netlify.com/domains-https/custom-domains/)
 - [Netlify Functions](https://docs.netlify.com/functions/overview/)
 
 ### Community
+
 - [Netlify Community Forums](https://answers.netlify.com)
 - [Netlify Discord](https://discord.com/invite/netlify)
 
 ### BarberX Specific
+
 - Site URL: `https://barberx.info`
 - Git Repo: `github.com/your-username/BarberX.info`
 - Netlify Dashboard: `app.netlify.com/sites/your-site-name`
@@ -434,12 +459,14 @@ netlify status
 ### Next Steps:
 
 1. **Test local build:**
+
    ```bash
    bundle install
    bundle exec jekyll build
    ```
 
 2. **Commit configuration:**
+
    ```bash
    git add netlify.toml Gemfile runtime.txt .nvmrc
    git commit -m "Add Netlify deployment configuration"
@@ -455,6 +482,7 @@ netlify status
    - Update DNS settings at your registrar
 
 **Expected Timeline:**
+
 - Initial deployment: 5 minutes
 - DNS propagation: 24-48 hours
 - SSL certificate: Automatic after DNS

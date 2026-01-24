@@ -24,6 +24,7 @@ layout: trust_document # Ecclesiastical/spiritual documents
 ## ⚡ Common Front Matter
 
 ### Every Page Should Have:
+
 ```yaml
 ---
 layout: [type]
@@ -33,6 +34,7 @@ description: "SEO description (160 chars max)"
 ```
 
 ### Optional Enhancements:
+
 ```yaml
 # Metadata
 author: "BarberX"
@@ -61,12 +63,14 @@ robots: "index, follow"
 ## 🎨 Layout-Specific Options
 
 ### Article
+
 ```yaml
 layout: article
-subcategory: "Constitutional Narrative"  # Default: Constitutional Narrative
+subcategory: "Constitutional Narrative" # Default: Constitutional Narrative
 ```
 
 ### Essay
+
 ```yaml
 layout: essay
 show_toc: true
@@ -77,6 +81,7 @@ related_essays:
 ```
 
 ### Post
+
 ```yaml
 layout: post
 categories: [News, Updates]
@@ -87,13 +92,14 @@ related_posts:
 ```
 
 ### Case
+
 ```yaml
 layout: case
 court: "U.S. District Court"
 venue: "Trenton"
 primary_docket: "3:23-cv-12345"
 case_type: "Civil Rights"
-status: "active"  # or "closed"
+status: "active" # or "closed"
 filed_date: 2023-06-15
 forum_level: "Federal District Court"
 role: "Pro Se Plaintiff"
@@ -102,6 +108,7 @@ overview: "Brief case summary..."
 ```
 
 ### Doc
+
 ```yaml
 layout: doc
 version: "1.0.0"
@@ -114,11 +121,12 @@ github_path: "docs/filename.md"
 ```
 
 ### OPRA Record
+
 ```yaml
 layout: record
 request_date: 2024-01-10
 agency: "Department Name"
-status: "completed"  # or "pending"
+status: "completed" # or "pending"
 request_number: "2024-001"
 documents:
   - title: "Document Name"
@@ -127,6 +135,7 @@ documents:
 ```
 
 ### Trust Document
+
 ```yaml
 layout: trust_document
 doc_type: "ecclesiastical_declaration"
@@ -141,16 +150,16 @@ witness: "Witness Name"
 
 ## 🔧 Feature Flags Quick Reference
 
-| Flag | Default | Description |
-|------|---------|-------------|
-| `show_breadcrumbs` | `false` | Navigation breadcrumb trail |
-| `show_toc` | `false` | Auto table of contents |
-| `show_newsletter` | `false` | Newsletter signup CTA |
-| `hide_social_share` | `false` | Social sharing buttons |
-| `hide_progress_bar` | `false` | Reading progress bar |
-| `hide_back_to_top` | `false` | Scroll-to-top button |
-| `comments` | `true` | Comments section |
-| `track_analytics` | `true` | Analytics tracking |
+| Flag                | Default | Description                 |
+| ------------------- | ------- | --------------------------- |
+| `show_breadcrumbs`  | `false` | Navigation breadcrumb trail |
+| `show_toc`          | `false` | Auto table of contents      |
+| `show_newsletter`   | `false` | Newsletter signup CTA       |
+| `hide_social_share` | `false` | Social sharing buttons      |
+| `hide_progress_bar` | `false` | Reading progress bar        |
+| `hide_back_to_top`  | `false` | Scroll-to-top button        |
+| `comments`          | `true`  | Comments section            |
+| `track_analytics`   | `true`  | Analytics tracking          |
 
 ---
 
@@ -160,17 +169,17 @@ witness: "Witness Name"
 
 ```liquid
 {%- comment -%} Search Bar {%- endcomment -%}
-{% include components/search.html 
-   placeholder="Search..." 
+{% include components/search.html
+   placeholder="Search..."
    max_width="600px" %}
 
 {%- comment -%} Newsletter {%- endcomment -%}
-{% include components/newsletter-signup.html 
+{% include components/newsletter-signup.html
    title="Stay Updated"
    description="Custom description" %}
 
 {%- comment -%} Social Share {%- endcomment -%}
-{% include components/social-share.html 
+{% include components/social-share.html
    background="rgba(0,0,0,0.5)" %}
 
 {%- comment -%} Breadcrumbs {%- endcomment -%}
@@ -191,16 +200,17 @@ witness: "Witness Name"
 ## 🎯 Content Examples
 
 ### Minimal Page
+
 ```yaml
 ---
 layout: page
 title: "Simple Page"
 ---
-
 Your content here...
 ```
 
 ### Full-Featured Article
+
 ```yaml
 ---
 layout: article
@@ -215,11 +225,11 @@ show_breadcrumbs: true
 show_newsletter: true
 og_image: "/assets/images/journey-og.jpg"
 ---
-
 Content...
 ```
 
 ### Legal Case
+
 ```yaml
 ---
 layout: case
@@ -233,7 +243,6 @@ role: "Pro Se Plaintiff"
 tags: [constitutional, religious-freedom]
 overview: "Challenge to state regulation..."
 ---
-
 Case details...
 ```
 

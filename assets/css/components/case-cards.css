@@ -36,7 +36,7 @@
 
 .case-card:hover {
   transform: translateY(-6px);
-  box-shadow: 
+  box-shadow:
     0 16px 48px rgb(0 0 0 / 50%),
     0 8px 24px rgb(212 165 116 / 15%);
   border-color: rgb(212 165 116 / 50%);
@@ -144,25 +144,41 @@
 }
 
 .case-card__status--active {
-  background: linear-gradient(135deg, rgb(16 185 129 / 25%) 0%, rgb(16 185 129 / 15%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(16 185 129 / 25%) 0%,
+    rgb(16 185 129 / 15%) 100%
+  );
   color: #34d399;
   border: 1px solid rgb(16 185 129 / 40%);
 }
 
 .case-card__status--pending {
-  background: linear-gradient(135deg, rgb(212 165 116 / 25%) 0%, rgb(212 165 116 / 15%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(212 165 116 / 25%) 0%,
+    rgb(212 165 116 / 15%) 100%
+  );
   color: #e2c275;
   border: 1px solid rgb(212 165 116 / 40%);
 }
 
 .case-card__status--closed {
-  background: linear-gradient(135deg, rgb(107 114 128 / 25%) 0%, rgb(107 114 128 / 15%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(107 114 128 / 25%) 0%,
+    rgb(107 114 128 / 15%) 100%
+  );
   color: #9ca3af;
   border: 1px solid rgb(107 114 128 / 40%);
 }
 
 .case-card__status--appeal {
-  background: linear-gradient(135deg, rgb(139 92 246 / 25%) 0%, rgb(139 92 246 / 15%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(139 92 246 / 25%) 0%,
+    rgb(139 92 246 / 15%) 100%
+  );
   color: #a78bfa;
   border: 1px solid rgb(139 92 246 / 40%);
 }
@@ -265,7 +281,11 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(180deg, rgb(0 0 0 / 25%) 0%, rgb(0 0 0 / 35%) 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 25%) 0%,
+    rgb(0 0 0 / 35%) 100%
+  );
   border-top: 1px solid rgb(212 165 116 / 15%);
 }
 
@@ -335,7 +355,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgb(220 38 38 / 30%),
     inset 0 1px 0 rgb(255 255 255 / 15%);
   white-space: nowrap;
@@ -345,7 +365,7 @@
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   border-color: #ef4444;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 0 20px rgb(220 38 38 / 50%),
     0 4px 12px rgb(220 38 38 / 40%),
     inset 0 1px 0 rgb(255 255 255 / 20%);
@@ -355,7 +375,7 @@
 
 .case-card__btn:focus {
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgb(220 38 38 / 40%),
     0 4px 12px rgb(220 38 38 / 40%);
 }

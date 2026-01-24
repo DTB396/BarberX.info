@@ -3,44 +3,52 @@
  * Mobile app experience with PWA support
  */
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   // ============================================
   // App Configuration
   // ============================================
   const CONFIG = {
-    APP_NAME: 'BarberX Legal',
-    VERSION: '1.0.0',
-    DEBUG: false
+    APP_NAME: "BarberX Legal",
+    VERSION: "1.0.0",
+    DEBUG: false,
   };
 
   // ============================================
   // Service Worker Registration
   // ============================================
   async function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
+    if ("serviceWorker" in navigator) {
       try {
-        const registration = await navigator.serviceWorker.register('/assets/js/service-worker.js', {
-          scope: '/'
-        });
-        
+        const registration = await navigator.serviceWorker.register(
+          "/assets/js/service-worker.js",
+          {
+            scope: "/",
+          },
+        );
+
         if (CONFIG.DEBUG) {
-          console.log('[App] Service Worker registered:', registration.scope);
+          console.log("[App] Service Worker registered:", registration.scope);
         }
 
         // Check for updates
-        registration.addEventListener('updatefound', () => {
+        registration.addEventListener("updatefound", () => {
           const newWorker = registration.installing;
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              showToast('Update available! Refresh to get the latest version.', 'info');
+          newWorker.addEventListener("statechange", () => {
+            if (
+              newWorker.state === "installed" &&
+              navigator.serviceWorker.controller
+            ) {
+              showToast(
+                "Update available! Refresh to get the latest version.",
+                "info",
+              );
             }
           });
         });
-
       } catch (error) {
-        console.error('[App] Service Worker registration failed:', error);
+        console.error("[App] Service Worker registration failed:", error);
       }
     }
   }
@@ -49,53 +57,53 @@
   // PWA Install Prompt
   // ============================================
   let deferredPrompt;
-  
+
   function setupInstallPrompt() {
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      
+
       // Check if user has dismissed before
-      if (!localStorage.getItem('pwa-install-dismissed')) {
+      if (!localStorage.getItem("pwa-install-dismissed")) {
         setTimeout(() => showInstallBanner(), 3000);
       }
     });
 
-    window.addEventListener('appinstalled', () => {
+    window.addEventListener("appinstalled", () => {
       hideInstallBanner();
-      showToast('App installed successfully! 🎉', 'success');
+      showToast("App installed successfully! 🎉", "success");
       deferredPrompt = null;
     });
   }
 
   function showInstallBanner() {
-    const banner = document.getElementById('install-banner');
+    const banner = document.getElementById("install-banner");
     if (banner && deferredPrompt) {
-      banner.classList.add('visible');
+      banner.classList.add("visible");
     }
   }
 
   function hideInstallBanner() {
-    const banner = document.getElementById('install-banner');
+    const banner = document.getElementById("install-banner");
     if (banner) {
-      banner.classList.remove('visible');
+      banner.classList.remove("visible");
     }
   }
 
   async function installApp() {
     if (!deferredPrompt) return;
-    
+
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    
+
     if (CONFIG.DEBUG) {
-      console.log('[App] Install prompt outcome:', outcome);
+      console.log("[App] Install prompt outcome:", outcome);
     }
-    
-    if (outcome === 'dismissed') {
-      localStorage.setItem('pwa-install-dismissed', 'true');
+
+    if (outcome === "dismissed") {
+      localStorage.setItem("pwa-install-dismissed", "true");
     }
-    
+
     hideInstallBanner();
     deferredPrompt = null;
   }
@@ -103,46 +111,49 @@
   // ============================================
   // Toast Notifications
   // ============================================
-  function showToast(message, type = 'info', duration = 4000) {
-    const container = document.getElementById('toast-container') || createToastContainer();
-    
-    const toast = document.createElement('div');
+  function showToast(message, type = "info", duration = 4000) {
+    const container =
+      document.getElementById("toast-container") || createToastContainer();
+
+    const toast = document.createElement("div");
     toast.className = `toast toast--${type}`;
-    
+
     const icons = {
-      success: '✓',
-      error: '✕',
-      info: 'ℹ',
-      warning: '⚠'
+      success: "✓",
+      error: "✕",
+      info: "ℹ",
+      warning: "⚠",
     };
-    
+
     toast.innerHTML = `
       <span class="toast__icon">${icons[type] || icons.info}</span>
       <span class="toast__message">${message}</span>
       <button class="toast__close" aria-label="Close">✕</button>
     `;
-    
+
     container.appendChild(toast);
-    
+
     // Close button
-    toast.querySelector('.toast__close').addEventListener('click', () => removeToast(toast));
-    
+    toast
+      .querySelector(".toast__close")
+      .addEventListener("click", () => removeToast(toast));
+
     // Auto-dismiss
     setTimeout(() => removeToast(toast), duration);
-    
+
     return toast;
   }
 
   function createToastContainer() {
-    const container = document.createElement('div');
-    container.id = 'toast-container';
-    container.className = 'toast-container';
+    const container = document.createElement("div");
+    container.id = "toast-container";
+    container.className = "toast-container";
     document.body.appendChild(container);
     return container;
   }
 
   function removeToast(toast) {
-    toast.classList.add('toast-out');
+    toast.classList.add("toast-out");
     setTimeout(() => toast.remove(), 200);
   }
 
@@ -150,35 +161,49 @@
   // Bottom Navigation
   // ============================================
   function createBottomNav() {
-    const nav = document.createElement('nav');
-    nav.className = 'bottom-nav';
-    nav.setAttribute('aria-label', 'Main navigation');
-    
+    const nav = document.createElement("nav");
+    nav.className = "bottom-nav";
+    nav.setAttribute("aria-label", "Main navigation");
+
     const currentPath = window.location.pathname;
-    
+
     const navItems = [
-      { href: '/', icon: '🏠', label: 'Home', paths: ['/', '/index.html'] },
-      { href: '/cases/', icon: '📁', label: 'Cases', paths: ['/cases/', '/cases'] },
-      { href: '/opra/', icon: '📋', label: 'OPRA', paths: ['/opra/', '/opra'] },
-      { href: '/essays/', icon: '📝', label: 'Essays', paths: ['/essays/', '/essays'] }
+      { href: "/", icon: "🏠", label: "Home", paths: ["/", "/index.html"] },
+      {
+        href: "/cases/",
+        icon: "📁",
+        label: "Cases",
+        paths: ["/cases/", "/cases"],
+      },
+      { href: "/opra/", icon: "📋", label: "OPRA", paths: ["/opra/", "/opra"] },
+      {
+        href: "/essays/",
+        icon: "📝",
+        label: "Essays",
+        paths: ["/essays/", "/essays"],
+      },
     ];
-    
+
     nav.innerHTML = `
       <ul class="bottom-nav__items">
-        ${navItems.map(item => {
-          const isActive = item.paths.some(p => currentPath === p || currentPath.startsWith(p + '/'));
-          return `
+        ${navItems
+          .map((item) => {
+            const isActive = item.paths.some(
+              (p) => currentPath === p || currentPath.startsWith(p + "/"),
+            );
+            return `
             <li>
-              <a href="${item.href}" class="bottom-nav__item${isActive ? ' active' : ''}" aria-current="${isActive ? 'page' : 'false'}">
+              <a href="${item.href}" class="bottom-nav__item${isActive ? " active" : ""}" aria-current="${isActive ? "page" : "false"}">
                 <span class="bottom-nav__icon">${item.icon}</span>
                 <span class="bottom-nav__label">${item.label}</span>
               </a>
             </li>
           `;
-        }).join('')}
+          })
+          .join("")}
       </ul>
     `;
-    
+
     document.body.appendChild(nav);
   }
 
@@ -186,10 +211,10 @@
   // Floating Action Button
   // ============================================
   function createFAB() {
-    const fab = document.createElement('button');
-    fab.className = 'fab haptic-tap';
-    fab.setAttribute('aria-label', 'Quick actions');
-    fab.setAttribute('aria-expanded', 'false');
+    const fab = document.createElement("button");
+    fab.className = "fab haptic-tap";
+    fab.setAttribute("aria-label", "Quick actions");
+    fab.setAttribute("aria-expanded", "false");
     fab.innerHTML = `
       <span class="fab__icon">⚡</span>
       <div class="fab__menu">
@@ -207,28 +232,30 @@
         </a>
       </div>
     `;
-    
-    fab.addEventListener('click', (e) => {
-      if (e.target.closest('.fab__menu-item')) return;
-      fab.classList.toggle('active');
-      fab.setAttribute('aria-expanded', fab.classList.contains('active'));
+
+    fab.addEventListener("click", (e) => {
+      if (e.target.closest(".fab__menu-item")) return;
+      fab.classList.toggle("active");
+      fab.setAttribute("aria-expanded", fab.classList.contains("active"));
     });
 
     // Handle scroll to top
-    fab.querySelector('[data-action="scroll-top"]').addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      fab.classList.remove('active');
-    });
+    fab
+      .querySelector('[data-action="scroll-top"]')
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        fab.classList.remove("active");
+      });
 
     // Close on outside click
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       if (!fab.contains(e.target)) {
-        fab.classList.remove('active');
-        fab.setAttribute('aria-expanded', 'false');
+        fab.classList.remove("active");
+        fab.setAttribute("aria-expanded", "false");
       }
     });
-    
+
     document.body.appendChild(fab);
   }
 
@@ -236,9 +263,9 @@
   // Install Banner Component
   // ============================================
   function createInstallBanner() {
-    const banner = document.createElement('div');
-    banner.id = 'install-banner';
-    banner.className = 'install-banner';
+    const banner = document.createElement("div");
+    banner.id = "install-banner";
+    banner.className = "install-banner";
     banner.innerHTML = `
       <div class="install-banner__content">
         <div class="install-banner__icon">⚖️</div>
@@ -252,13 +279,17 @@
         <button class="install-banner__btn install-banner__btn--primary" data-action="install">Install</button>
       </div>
     `;
-    
-    banner.querySelector('[data-action="install"]').addEventListener('click', installApp);
-    banner.querySelector('[data-action="dismiss"]').addEventListener('click', () => {
-      hideInstallBanner();
-      localStorage.setItem('pwa-install-dismissed', 'true');
-    });
-    
+
+    banner
+      .querySelector('[data-action="install"]')
+      .addEventListener("click", installApp);
+    banner
+      .querySelector('[data-action="dismiss"]')
+      .addEventListener("click", () => {
+        hideInstallBanner();
+        localStorage.setItem("pwa-install-dismissed", "true");
+      });
+
     document.body.appendChild(banner);
   }
 
@@ -266,21 +297,24 @@
   // Search & Filter Functionality
   // ============================================
   function initSearch() {
-    const searchInput = document.querySelector('.search-bar');
-    const searchClear = document.querySelector('.search-clear');
-    const cards = document.querySelectorAll('[data-searchable]');
-    
+    const searchInput = document.querySelector(".search-bar");
+    const searchClear = document.querySelector(".search-clear");
+    const cards = document.querySelectorAll("[data-searchable]");
+
     if (!searchInput || cards.length === 0) return;
-    
-    searchInput.addEventListener('input', debounce((e) => {
-      const query = e.target.value.toLowerCase().trim();
-      filterCards(cards, query);
-    }, 200));
-    
+
+    searchInput.addEventListener(
+      "input",
+      debounce((e) => {
+        const query = e.target.value.toLowerCase().trim();
+        filterCards(cards, query);
+      }, 200),
+    );
+
     if (searchClear) {
-      searchClear.addEventListener('click', () => {
-        searchInput.value = '';
-        filterCards(cards, '');
+      searchClear.addEventListener("click", () => {
+        searchInput.value = "";
+        filterCards(cards, "");
         searchInput.focus();
       });
     }
@@ -288,31 +322,33 @@
 
   function filterCards(cards, query) {
     let visibleCount = 0;
-    
-    cards.forEach(card => {
-      const searchText = card.dataset.searchable?.toLowerCase() || card.textContent.toLowerCase();
+
+    cards.forEach((card) => {
+      const searchText =
+        card.dataset.searchable?.toLowerCase() ||
+        card.textContent.toLowerCase();
       const matches = !query || searchText.includes(query);
-      
-      card.style.display = matches ? '' : 'none';
+
+      card.style.display = matches ? "" : "none";
       if (matches) visibleCount++;
     });
-    
+
     // Show empty state if no results
     updateEmptyState(visibleCount === 0 && query);
   }
 
   function updateEmptyState(show) {
-    let emptyState = document.querySelector('.search-empty-state');
-    
+    let emptyState = document.querySelector(".search-empty-state");
+
     if (show && !emptyState) {
-      emptyState = document.createElement('div');
-      emptyState.className = 'empty-state search-empty-state';
+      emptyState = document.createElement("div");
+      emptyState.className = "empty-state search-empty-state";
       emptyState.innerHTML = `
         <div class="empty-state__icon">🔍</div>
         <h3 class="empty-state__title">No results found</h3>
         <p class="empty-state__desc">Try adjusting your search or filters</p>
       `;
-      document.querySelector('.cases-grid, .opra-grid')?.after(emptyState);
+      document.querySelector(".cases-grid, .opra-grid")?.after(emptyState);
     } else if (!show && emptyState) {
       emptyState.remove();
     }
@@ -322,22 +358,22 @@
   // Filter Pills
   // ============================================
   function initFilterPills() {
-    const pills = document.querySelectorAll('.filter-pill');
-    const cards = document.querySelectorAll('[data-status]');
-    
+    const pills = document.querySelectorAll(".filter-pill");
+    const cards = document.querySelectorAll("[data-status]");
+
     if (pills.length === 0 || cards.length === 0) return;
-    
-    pills.forEach(pill => {
-      pill.addEventListener('click', () => {
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
         // Update active state
-        pills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        
+        pills.forEach((p) => p.classList.remove("active"));
+        pill.classList.add("active");
+
         // Filter cards
         const status = pill.dataset.filter;
-        cards.forEach(card => {
-          const matches = status === 'all' || card.dataset.status === status;
-          card.style.display = matches ? '' : 'none';
+        cards.forEach((card) => {
+          const matches = status === "all" || card.dataset.status === status;
+          card.style.display = matches ? "" : "none";
         });
       });
     });
@@ -347,17 +383,20 @@
   // Staggered Animations
   // ============================================
   function animateOnScroll() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationDelay = `${index * 0.05}s`;
-          entry.target.classList.add('stagger-item');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.case-card, .opra-card').forEach(el => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = `${index * 0.05}s`;
+            entry.target.classList.add("stagger-item");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    document.querySelectorAll(".case-card, .opra-card").forEach((el) => {
       observer.observe(el);
     });
   }
@@ -366,36 +405,44 @@
   // Pull to Refresh (simulated)
   // ============================================
   function initPullToRefresh() {
-    if (!('ontouchstart' in window)) return;
-    
+    if (!("ontouchstart" in window)) return;
+
     let startY = 0;
     let pulling = false;
-    
-    const indicator = document.createElement('div');
-    indicator.className = 'pull-indicator';
+
+    const indicator = document.createElement("div");
+    indicator.className = "pull-indicator";
     indicator.innerHTML = '<div class="pull-indicator__spinner"></div>';
     document.body.appendChild(indicator);
-    
-    document.addEventListener('touchstart', (e) => {
-      if (window.scrollY === 0) {
-        startY = e.touches[0].clientY;
-        pulling = true;
-      }
-    }, { passive: true });
-    
-    document.addEventListener('touchmove', (e) => {
-      if (!pulling) return;
-      
-      const y = e.touches[0].clientY;
-      const diff = y - startY;
-      
-      if (diff > 60 && window.scrollY === 0) {
-        indicator.classList.add('visible');
-      }
-    }, { passive: true });
-    
-    document.addEventListener('touchend', () => {
-      if (indicator.classList.contains('visible')) {
+
+    document.addEventListener(
+      "touchstart",
+      (e) => {
+        if (window.scrollY === 0) {
+          startY = e.touches[0].clientY;
+          pulling = true;
+        }
+      },
+      { passive: true },
+    );
+
+    document.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!pulling) return;
+
+        const y = e.touches[0].clientY;
+        const diff = y - startY;
+
+        if (diff > 60 && window.scrollY === 0) {
+          indicator.classList.add("visible");
+        }
+      },
+      { passive: true },
+    );
+
+    document.addEventListener("touchend", () => {
+      if (indicator.classList.contains("visible")) {
         // Trigger refresh
         setTimeout(() => {
           window.location.reload();
@@ -409,7 +456,7 @@
   // Theme Toggle (Future Feature)
   // ============================================
   function initThemeToggle() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const savedTheme = localStorage.getItem("theme") || "dark";
     document.documentElement.dataset.theme = savedTheme;
   }
 
@@ -432,12 +479,12 @@
   // Offline Detection
   // ============================================
   function initOfflineDetection() {
-    window.addEventListener('online', () => {
-      showToast('Back online! ✓', 'success');
+    window.addEventListener("online", () => {
+      showToast("Back online! ✓", "success");
     });
-    
-    window.addEventListener('offline', () => {
-      showToast('You\'re offline. Some features may be limited.', 'warning');
+
+    window.addEventListener("offline", () => {
+      showToast("You're offline. Some features may be limited.", "warning");
     });
   }
 
@@ -445,11 +492,11 @@
   // Page Visibility API
   // ============================================
   function initVisibilityHandler() {
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
         // Could refresh data here when app becomes visible
         if (CONFIG.DEBUG) {
-          console.log('[App] Page became visible');
+          console.log("[App] Page became visible");
         }
       }
     });
@@ -460,82 +507,82 @@
   // ============================================
   function initKeyboardShortcuts() {
     const shortcuts = {
-      'g h': () => window.location.href = '/',           // Go Home
-      'g c': () => window.location.href = '/cases/',     // Go Cases
-      'g o': () => window.location.href = '/opra/',      // Go OPRA
-      'g e': () => window.location.href = '/essays/',    // Go Essays
-      '/': () => document.querySelector('.search-bar')?.focus(), // Focus search
-      'Escape': () => {
-        document.querySelector('.search-bar')?.blur();
-        document.querySelector('.fab')?.classList.remove('active');
-        document.querySelector('.bottom-sheet')?.classList.remove('active');
-        document.querySelector('.modal-overlay')?.classList.remove('active');
+      "g h": () => (window.location.href = "/"), // Go Home
+      "g c": () => (window.location.href = "/cases/"), // Go Cases
+      "g o": () => (window.location.href = "/opra/"), // Go OPRA
+      "g e": () => (window.location.href = "/essays/"), // Go Essays
+      "/": () => document.querySelector(".search-bar")?.focus(), // Focus search
+      Escape: () => {
+        document.querySelector(".search-bar")?.blur();
+        document.querySelector(".fab")?.classList.remove("active");
+        document.querySelector(".bottom-sheet")?.classList.remove("active");
+        document.querySelector(".modal-overlay")?.classList.remove("active");
       },
-      '?': () => showShortcutsModal(),                   // Show shortcuts
-      't': () => window.scrollTo({ top: 0, behavior: 'smooth' }), // Top
+      "?": () => showShortcutsModal(), // Show shortcuts
+      t: () => window.scrollTo({ top: 0, behavior: "smooth" }), // Top
     };
 
-    let keySequence = '';
+    let keySequence = "";
     let keyTimer;
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener("keydown", (e) => {
       // Don't trigger in input fields
-      if (e.target.matches('input, textarea, select, [contenteditable]')) {
-        if (e.key === 'Escape') {
+      if (e.target.matches("input, textarea, select, [contenteditable]")) {
+        if (e.key === "Escape") {
           e.target.blur();
         }
         return;
       }
 
       // Handle Escape directly
-      if (e.key === 'Escape') {
-        shortcuts['Escape']();
+      if (e.key === "Escape") {
+        shortcuts["Escape"]();
         return;
       }
 
       // Handle single-key shortcuts
-      if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+      if (e.key === "/" && !e.ctrlKey && !e.metaKey) {
         e.preventDefault();
-        shortcuts['/']();
+        shortcuts["/"]();
         return;
       }
 
-      if (e.key === '?' && e.shiftKey) {
+      if (e.key === "?" && e.shiftKey) {
         e.preventDefault();
-        shortcuts['?']();
+        shortcuts["?"]();
         return;
       }
 
-      if (e.key === 't' && !e.ctrlKey && !e.metaKey) {
-        shortcuts['t']();
+      if (e.key === "t" && !e.ctrlKey && !e.metaKey) {
+        shortcuts["t"]();
         return;
       }
 
       // Handle key sequences (like 'g h')
       clearTimeout(keyTimer);
-      keySequence += e.key + ' ';
+      keySequence += e.key + " ";
       keySequence = keySequence.slice(-4); // Keep last 4 chars
 
-      const matchedShortcut = Object.keys(shortcuts).find(s => 
-        keySequence.trim() === s
+      const matchedShortcut = Object.keys(shortcuts).find(
+        (s) => keySequence.trim() === s,
       );
 
       if (matchedShortcut) {
         e.preventDefault();
         shortcuts[matchedShortcut]();
-        keySequence = '';
+        keySequence = "";
       }
 
-      keyTimer = setTimeout(() => keySequence = '', 500);
+      keyTimer = setTimeout(() => (keySequence = ""), 500);
     });
   }
 
   function showShortcutsModal() {
-    let modal = document.querySelector('.shortcuts-modal');
-    
+    let modal = document.querySelector(".shortcuts-modal");
+
     if (!modal) {
-      modal = document.createElement('div');
-      modal.className = 'shortcuts-modal';
+      modal = document.createElement("div");
+      modal.className = "shortcuts-modal";
       modal.innerHTML = `
         <div class="shortcuts-modal__content">
           <div class="shortcuts-modal__header">
@@ -604,44 +651,54 @@
           </div>
         </div>
       `;
-      
-      modal.querySelector('.bottom-sheet__close').addEventListener('click', () => {
-        modal.classList.remove('open');
-      });
-      
-      modal.addEventListener('click', (e) => {
+
+      modal
+        .querySelector(".bottom-sheet__close")
+        .addEventListener("click", () => {
+          modal.classList.remove("open");
+        });
+
+      modal.addEventListener("click", (e) => {
         if (e.target === modal) {
-          modal.classList.remove('open');
+          modal.classList.remove("open");
         }
       });
-      
+
       document.body.appendChild(modal);
     }
-    
-    modal.classList.add('open');
+
+    modal.classList.add("open");
   }
 
   // ============================================
   // Swipe Gestures (Mobile)
   // ============================================
   function initSwipeGestures() {
-    if (!('ontouchstart' in window)) return;
+    if (!("ontouchstart" in window)) return;
 
     let touchStartX = 0;
     let touchStartY = 0;
     let touchEndX = 0;
     let touchEndY = 0;
 
-    document.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
+    document.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      },
+      { passive: true },
+    );
 
-    document.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
-    }, { passive: true });
+    document.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      },
+      { passive: true },
+    );
 
     function handleSwipe() {
       const deltaX = touchEndX - touchStartX;
@@ -649,7 +706,10 @@
       const minSwipeDistance = 100;
 
       // Horizontal swipe
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+      if (
+        Math.abs(deltaX) > Math.abs(deltaY) &&
+        Math.abs(deltaX) > minSwipeDistance
+      ) {
         if (deltaX > 0) {
           // Swipe right - go back
           if (window.history.length > 1) {
@@ -672,7 +732,7 @@
     createBottomNav();
     createFAB();
     createInstallBanner();
-    
+
     // Interactive features
     initSearch();
     initFilterPills();
@@ -681,22 +741,22 @@
     initThemeToggle();
     initKeyboardShortcuts();
     initSwipeGestures();
-    
+
     // System features
     initOfflineDetection();
     initVisibilityHandler();
-    
+
     // Add page transition class
-    document.body.classList.add('page-enter');
-    
+    document.body.classList.add("page-enter");
+
     if (CONFIG.DEBUG) {
       console.log(`[${CONFIG.APP_NAME}] v${CONFIG.VERSION} initialized`);
     }
   }
 
   // Run when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
@@ -706,7 +766,6 @@
     showToast,
     installApp,
     showShortcutsModal,
-    VERSION: CONFIG.VERSION
+    VERSION: CONFIG.VERSION,
   };
-
 })();

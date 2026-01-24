@@ -1,10 +1,8 @@
-{%- comment -%}
-BACK TO TOP BUTTON
-Smooth scroll to top with progress indicator
+{%- comment -%} BACK TO TOP BUTTON Smooth scroll to top with progress indicator
 {%- endcomment -%}
 
-<button 
-  id="back-to-top" 
+<button
+  id="back-to-top"
   class="back-to-top"
   aria-label="Scroll to top"
   style="
@@ -14,7 +12,11 @@ Smooth scroll to top with progress indicator
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-primary, #dc2626), var(--color-accent, #2563eb));
+    background: linear-gradient(
+      135deg,
+      var(--color-primary, #dc2626),
+      var(--color-accent, #2563eb)
+    );
     color: white;
     border: none;
     cursor: pointer;
@@ -30,7 +32,12 @@ Smooth scroll to top with progress indicator
   "
 >
   <!-- Progress circle -->
-  <svg class="progress-ring" width="56" height="56" style="position: absolute; top: 0; left: 0; transform: rotate(-90deg);">
+  <svg
+    class="progress-ring"
+    width="56"
+    height="56"
+    style="position: absolute; top: 0; left: 0; transform: rotate(-90deg)"
+  >
     <circle
       class="progress-ring__circle"
       stroke="rgba(255, 255, 255, 0.3)"
@@ -57,70 +64,83 @@ Smooth scroll to top with progress indicator
   </svg>
 
   <!-- Arrow icon -->
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 1;">
-    <path d="M12 19V5M5 12l7-7 7 7"/>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    style="position: relative; z-index: 1"
+  >
+    <path d="M12 19V5M5 12l7-7 7 7" />
   </svg>
 </button>
 
 <script>
-(function() {
-  const backToTop = document.getElementById('back-to-top');
-  const progressCircle = document.querySelector('.progress-ring__progress');
-  const circumference = 2 * Math.PI * 25; // radius is 25
-  
-  let ticking = false;
+  (function () {
+    const backToTop = document.getElementById("back-to-top");
+    const progressCircle = document.querySelector(".progress-ring__progress");
+    const circumference = 2 * Math.PI * 25; // radius is 25
 
-  function updateProgress() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    
-    // Update progress circle
-    const offset = circumference - (scrollPercent / 100) * circumference;
-    progressCircle.style.strokeDashoffset = offset;
-    
-    // Show/hide button
-    if (scrollTop > 300) {
-      backToTop.style.opacity = '1';
-      backToTop.style.visibility = 'visible';
-    } else {
-      backToTop.style.opacity = '0';
-      backToTop.style.visibility = 'hidden';
+    let ticking = false;
+
+    function updateProgress() {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+      // Update progress circle
+      const offset = circumference - (scrollPercent / 100) * circumference;
+      progressCircle.style.strokeDashoffset = offset;
+
+      // Show/hide button
+      if (scrollTop > 300) {
+        backToTop.style.opacity = "1";
+        backToTop.style.visibility = "visible";
+      } else {
+        backToTop.style.opacity = "0";
+        backToTop.style.visibility = "hidden";
+      }
+
+      ticking = false;
     }
-    
-    ticking = false;
-  }
 
-  function requestTick() {
-    if (!ticking) {
-      window.requestAnimationFrame(updateProgress);
-      ticking = true;
+    function requestTick() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
     }
-  }
 
-  window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener("scroll", requestTick, { passive: true });
 
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
-  });
 
-  // Hover effects
-  backToTop.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-5px) scale(1.05)';
-    this.style.boxShadow = '0 8px 30px rgba(220, 38, 38, 0.6)';
-  });
+    // Hover effects
+    backToTop.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-5px) scale(1.05)";
+      this.style.boxShadow = "0 8px 30px rgba(220, 38, 38, 0.6)";
+    });
 
-  backToTop.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) scale(1)';
-    this.style.boxShadow = '0 4px 20px rgba(220, 38, 38, 0.4)';
-  });
+    backToTop.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0) scale(1)";
+      this.style.boxShadow = "0 4px 20px rgba(220, 38, 38, 0.4)";
+    });
 
-  // Initial check
-  updateProgress();
-})();
+    // Initial check
+    updateProgress();
+  })();
 </script>
 
 <style>
@@ -131,19 +151,19 @@ Smooth scroll to top with progress indicator
       width: 48px;
       height: 48px;
     }
-    
+
     .progress-ring {
       width: 48px;
       height: 48px;
     }
-    
+
     .progress-ring__circle,
     .progress-ring__progress {
       r: 21;
       cx: 24;
       cy: 24;
     }
-    
+
     #back-to-top svg:last-child {
       width: 20px;
       height: 20px;

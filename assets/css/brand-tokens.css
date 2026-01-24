@@ -17,46 +17,48 @@
   --barber-blue: #1e40af;
   --barber-blue-light: #3b82f6;
   --barber-blue-dark: #1e3a8a;
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      BRASS & CHROME — Premium Finishes
      ═══════════════════════════════════════════════════════════════════════ */
-  --brass-light: #FFF8DC;
-  --brass-gold: #FFD700;
+  --brass-light: #fff8dc;
+  --brass-gold: #ffd700;
   --brass-mid: #d4a574;
-  --brass-dark: #DAA520;
-  --brass-shadow: #B8860B;
+  --brass-dark: #daa520;
+  --brass-shadow: #b8860b;
   --chrome-light: #f0f0f5;
   --chrome-mid: #e0e0e8;
   --chrome-dark: #c0c0cc;
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      TYPOGRAPHY — Clean & Professional
      ═══════════════════════════════════════════════════════════════════════ */
-  --font-display: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
-  --font-body: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
-  --font-mono: 'SF Mono', monaco, 'Cascadia Code', monospace;
+  --font-display:
+    "Inter", -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
+  --font-body:
+    "Inter", -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", monaco, "Cascadia Code", monospace;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      SPACING — Consistent Rhythm
      ═══════════════════════════════════════════════════════════════════════ */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
-  --space-16: 4rem;    /* 64px */
-  --space-20: 5rem;    /* 80px */
-  --space-24: 6rem;    /* 96px */
-  
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+
   /* ═══════════════════════════════════════════════════════════════════════
      RADIUS — Smooth Like a Fresh Fade
      ═══════════════════════════════════════════════════════════════════════ */
@@ -67,7 +69,7 @@
   --radius-xl: 24px;
   --radius-2xl: 32px;
   --radius-full: 9999px;
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      TRANSITIONS — Crisp & Clean
      ═══════════════════════════════════════════════════════════════════════ */
@@ -88,7 +90,7 @@
   --transition-base: var(--duration-base) var(--ease-smooth);
   --transition-slow: var(--duration-slow) var(--ease-smooth);
   --transition-all: all var(--duration-base) var(--ease-smooth);
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      SHADOWS — Depth & Elevation
      ═══════════════════════════════════════════════════════════════════════ */
@@ -103,20 +105,34 @@
   --shadow-glow-gold: 0 0 24px rgb(212 165 116 / 20%);
   --shadow-inset-sm: inset 0 1px 2px 0 rgb(0 0 0 / 5%);
   --shadow-inset-md: inset 0 2px 4px 0 rgb(0 0 0 / 8%);
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      BARBER POLE ANIMATIONS — Smooth Spin
      ═══════════════════════════════════════════════════════════════════════ */
   --pole-spin-duration: 1.5s;
   --pole-glow-duration: 2s;
-  
+
   /* ═══════════════════════════════════════════════════════════════════════
      GRADIENTS — Premium Finishes
      ═══════════════════════════════════════════════════════════════════════ */
-  --gradient-barber: linear-gradient(135deg, var(--barber-red) 0%, var(--barber-blue) 100%);
-  --gradient-brass: linear-gradient(180deg, var(--brass-light) 0%, var(--brass-gold) 50%, var(--brass-dark) 100%);
-  --gradient-glass: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 40%) 50%, transparent 100%);
-  
+  --gradient-barber: linear-gradient(
+    135deg,
+    var(--barber-red) 0%,
+    var(--barber-blue) 100%
+  );
+  --gradient-brass: linear-gradient(
+    180deg,
+    var(--brass-light) 0%,
+    var(--brass-gold) 50%,
+    var(--brass-dark) 100%
+  );
+  --gradient-glass: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 40%) 50%,
+    transparent 100%
+  );
+
   /* ═══════════════════════════════════════════════════════════════════════
      Z-INDEX LAYERS — Clean Stacking
      ═══════════════════════════════════════════════════════════════════════ */
@@ -159,8 +175,10 @@
     --pole-spin-duration: 0ms;
     --pole-glow-duration: 0ms;
   }
-  
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0ms !important;

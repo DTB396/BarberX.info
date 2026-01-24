@@ -5,6 +5,7 @@
 Process all evidence **locally on your machine** using 100% open-source AI tools. No cloud APIs, no subscriptions, completely free and court-defensible.
 
 **Benefits:**
+
 - ✅ **No costs** - All tools are free and open-source
 - ✅ **Privacy** - Data never leaves your system
 - ✅ **Court-defensible** - Fully auditable open-source algorithms
@@ -63,6 +64,7 @@ python -c "import spacy; nlp = spacy.load('en_core_web_md'); print('✅ spaCy re
 **What it does:** Converts spoken words to text with word-level timestamps
 
 **Models:**
+
 - `tiny` - Fastest (1GB RAM) - Good for quick tests
 - `base` - Fast (1GB RAM) - Good quality
 - **`small`** - **⭐ RECOMMENDED** (2GB RAM) - Best balance
@@ -70,6 +72,7 @@ python -c "import spacy; nlp = spacy.load('en_core_web_md'); print('✅ spaCy re
 - `large` - Best quality (10GB RAM)
 
 **Example:**
+
 ```python
 from app.services.local_ai_service import local_ai
 
@@ -85,6 +88,7 @@ for segment in result["segments"]:
 ```
 
 **Use cases:**
+
 - BWC video transcription
 - Interview recordings
 - Radio communications
@@ -97,12 +101,14 @@ for segment in result["segments"]:
 **What it does:** Identifies who is speaking when ("SPEAKER_00" = Officer, "SPEAKER_01" = Civilian)
 
 **Setup:**
+
 1. Create free Hugging Face account: https://huggingface.co
 2. Accept model license: https://huggingface.co/pyannote/speaker-diarization
 3. Get token: https://huggingface.co/settings/tokens
 4. Set in .env: `HUGGINGFACE_TOKEN=your_token`
 
 **Example:**
+
 ```python
 from app.services.local_ai_service import local_ai
 
@@ -117,6 +123,7 @@ for segment in segments:
 ```
 
 **Use cases:**
+
 - Separate officer vs civilian speech
 - Identify multiple officers at scene
 - Track who said what in interviews
@@ -128,11 +135,13 @@ for segment in segments:
 **What it does:** Extracts text from images and scanned PDFs
 
 **Installation:**
+
 - **Windows:** Download from https://github.com/UB-Mannheim/tesseract/wiki
 - **Linux:** `sudo apt-get install tesseract-ocr`
 - **macOS:** `brew install tesseract`
 
 **Example:**
+
 ```python
 import pytesseract
 from PIL import Image
@@ -147,6 +156,7 @@ print(text)
 ```
 
 **Use cases:**
+
 - OPRA response PDFs
 - Tow invoices
 - Police reports
@@ -159,11 +169,13 @@ print(text)
 **What it does:** Upscales images/video 4x with AI (make license plates readable)
 
 **Models:**
+
 - `RealESRGAN_x4plus` - General purpose (photos, BWC)
 - `RealESRNet_x4plus` - Real photos (sharper)
 - `RealESRGAN_x4plus_anime` - Anime/cartoons
 
 **Example:**
+
 ```python
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from realesrgan import RealESRGANer
@@ -188,6 +200,7 @@ upscaled.save("upscaled.jpg")
 ```
 
 **Use cases:**
+
 - Enhance license plates
 - Read badge numbers
 - Improve low-res BWC footage
@@ -200,6 +213,7 @@ upscaled.save("upscaled.jpg")
 **What it does:** Detects objects in images/video (handcuffs, vehicles, weapons, people)
 
 **Models:**
+
 - `yolov8n` - Nano (fastest)
 - `yolov8s` - Small
 - **`yolov8m`** - **⭐ RECOMMENDED** (balanced)
@@ -207,6 +221,7 @@ upscaled.save("upscaled.jpg")
 - `yolov8x` - Extra large (most accurate)
 
 **Example:**
+
 ```python
 from app.services.local_ai_service import local_ai
 
@@ -221,6 +236,7 @@ for detection in detections:
 ```
 
 **Detected objects:**
+
 - person, car, truck, bus, motorcycle
 - handcuffs (requires custom training)
 - weapon, knife, gun (use with caution)
@@ -228,6 +244,7 @@ for detection in detections:
 - backpack, handbag, suitcase
 
 **Use cases:**
+
 - Auto-detect key events in BWC (handcuffs visible, person on ground)
 - Vehicle tracking
 - Scene analysis
@@ -239,11 +256,13 @@ for detection in detections:
 **What it does:** Extracts names, places, organizations, dates from text
 
 **Models:**
+
 - `en_core_web_sm` - Small (fast)
 - **`en_core_web_md`** - **⭐ RECOMMENDED** (balanced)
 - `en_core_web_lg` - Large (most accurate)
 
 **Example:**
+
 ```python
 from app.services.local_ai_service import local_ai
 
@@ -263,6 +282,7 @@ for entity in entities:
 ```
 
 **Entity types:**
+
 - PERSON (names)
 - GPE (cities, counties, states)
 - ORG (agencies, departments)
@@ -271,6 +291,7 @@ for entity in entities:
 - LOC (locations)
 
 **Use cases:**
+
 - Extract names from transcripts
 - Build entity relationship maps
 - Auto-populate chronologies
@@ -282,10 +303,12 @@ for entity in entities:
 **What it does:** Find relevant documents by meaning (not just keywords)
 
 **Models:**
+
 - **`all-MiniLM-L6-v2`** - **⭐ RECOMMENDED** (fast, lightweight)
 - `all-mpnet-base-v2` - Higher quality (slower)
 
 **Example:**
+
 ```python
 from app.services.local_ai_service import local_ai
 
@@ -310,6 +333,7 @@ for doc_idx, score in results:
 ```
 
 **Use cases:**
+
 - Find relevant BWC segments
 - Search across all evidence by meaning
 - Build "similar events" finder
@@ -321,6 +345,7 @@ for doc_idx, score in results:
 The local AI tools are **automatically integrated** with the eDiscovery platform services:
 
 ### BWC Processing
+
 ```python
 from app.services.bwc_processor_service import bwc_processor
 
@@ -336,6 +361,7 @@ print(result.speakers)    # Diarized speakers
 ```
 
 ### Media Enhancement
+
 ```python
 from app.services.media_enhancement_service import media_enhancer
 
@@ -351,6 +377,7 @@ print(result.enhanced_file)
 ```
 
 ### Document Processing
+
 ```python
 from app.services.document_processor_service import document_processor
 
@@ -369,18 +396,21 @@ print(result.ocr_text)
 ## 💻 System Requirements
 
 ### Minimum (CPU Only)
+
 - **CPU:** 4 cores
 - **RAM:** 8GB (16GB recommended)
 - **Storage:** 20GB free (for models)
 - **OS:** Windows 10+, Ubuntu 20.04+, macOS 10.15+
 
 ### Recommended (GPU Acceleration)
+
 - **GPU:** NVIDIA GPU with 6GB+ VRAM
 - **CUDA:** 11.7+ (for PyTorch)
 - **RAM:** 16GB+
 - **Storage:** 50GB free
 
 ### GPU Acceleration Benefits
+
 - **Whisper:** 5-10x faster
 - **pyannote:** 3-5x faster
 - **Real-ESRGAN:** 10-20x faster
@@ -393,6 +423,7 @@ print(result.ocr_text)
 ### "ModuleNotFoundError: No module named 'whisper'"
 
 **Solution:**
+
 ```bash
 pip install openai-whisper
 ```
@@ -400,6 +431,7 @@ pip install openai-whisper
 ### "CUDA out of memory"
 
 **Solution:** Reduce batch size or use CPU
+
 ```bash
 # In .env
 WHISPER_DEVICE=cpu
@@ -409,6 +441,7 @@ YOLO_DEVICE=cpu
 ### "Tesseract not found"
 
 **Solution:** Set tesseract path in .env
+
 ```bash
 # Windows
 TESSERACT_CMD=C:\\Program Files\\Tesseract-OCR\\tesseract.exe
@@ -420,6 +453,7 @@ which tesseract
 ### "pyannote requires HUGGINGFACE_TOKEN"
 
 **Solution:**
+
 1. Get token: https://huggingface.co/settings/tokens
 2. Set in .env: `HUGGINGFACE_TOKEN=your_token`
 3. Accept license: https://huggingface.co/pyannote/speaker-diarization
@@ -428,27 +462,27 @@ which tesseract
 
 ## 📊 Processing Speed Estimates
 
-| Task | CPU (4-core) | GPU (NVIDIA RTX 3060) |
-|------|--------------|----------------------|
-| Whisper (1hr audio) | 15-20 min | 2-3 min |
-| pyannote (1hr audio) | 10-15 min | 2-4 min |
-| Real-ESRGAN (1080p image) | 5-10 sec | 0.5-1 sec |
-| YOLO (video frame) | 0.5-1 sec | 0.05-0.1 sec |
-| Tesseract OCR (1 page) | 2-5 sec | N/A (CPU only) |
-| spaCy (1000 words) | 1-2 sec | N/A (CPU only) |
+| Task                      | CPU (4-core) | GPU (NVIDIA RTX 3060) |
+| ------------------------- | ------------ | --------------------- |
+| Whisper (1hr audio)       | 15-20 min    | 2-3 min               |
+| pyannote (1hr audio)      | 10-15 min    | 2-4 min               |
+| Real-ESRGAN (1080p image) | 5-10 sec     | 0.5-1 sec             |
+| YOLO (video frame)        | 0.5-1 sec    | 0.05-0.1 sec          |
+| Tesseract OCR (1 page)    | 2-5 sec      | N/A (CPU only)        |
+| spaCy (1000 words)        | 1-2 sec      | N/A (CPU only)        |
 
 ---
 
 ## 🆚 Local vs Cloud Comparison
 
-| Feature | Local AI | Cloud APIs |
-|---------|----------|------------|
-| **Cost** | Free | $0.006/min (Whisper), $0.001/page (Textract) |
-| **Privacy** | Data stays local | Data sent to third parties |
-| **Speed** | Depends on hardware | Fast (but network latency) |
-| **Offline** | ✅ Yes | ❌ No |
-| **Court** | ✅ Fully auditable | ⚠️ Black box |
-| **Scale** | Limited by hardware | Unlimited |
+| Feature     | Local AI            | Cloud APIs                                   |
+| ----------- | ------------------- | -------------------------------------------- |
+| **Cost**    | Free                | $0.006/min (Whisper), $0.001/page (Textract) |
+| **Privacy** | Data stays local    | Data sent to third parties                   |
+| **Speed**   | Depends on hardware | Fast (but network latency)                   |
+| **Offline** | ✅ Yes              | ❌ No                                        |
+| **Court**   | ✅ Fully auditable  | ⚠️ Black box                                 |
+| **Scale**   | Limited by hardware | Unlimited                                    |
 
 **Recommendation:** Use local AI for all processing. Only use cloud as fallback if local fails.
 
@@ -471,6 +505,7 @@ All models are **open-source** and **free for commercial use**:
 ## 🎓 Training Resources
 
 ### Learn More
+
 - Whisper: https://github.com/openai/whisper
 - pyannote: https://github.com/pyannote/pyannote-audio
 - Tesseract: https://github.com/tesseract-ocr/tesseract
@@ -480,7 +515,9 @@ All models are **open-source** and **free for commercial use**:
 - sentence-transformers: https://www.sbert.net
 
 ### Custom Training
+
 All models support custom training for your specific use case:
+
 - Train YOLO to detect handcuffs, police vehicles, etc.
 - Train spaCy to recognize officer names, badge numbers
 - Fine-tune Whisper on police radio communications

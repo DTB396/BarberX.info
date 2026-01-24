@@ -1,4 +1,5 @@
 # THIRD-PARTY LICENSES AND ATTRIBUTIONS
+
 **BarberX Legal Technologies**
 
 This document lists all third-party software, APIs, and open-source tools used in the BarberX platform, along with their licenses and required attributions.
@@ -8,6 +9,7 @@ This document lists all third-party software, APIs, and open-source tools used i
 ## 🤖 AI/ML LIBRARIES
 
 ### OpenAI Whisper
+
 **Purpose:** Audio transcription (BWC footage → text)  
 **License:** MIT License  
 **Copyright:** © 2022 OpenAI  
@@ -15,6 +17,7 @@ This document lists all third-party software, APIs, and open-source tools used i
 **Attribution Required:** YES
 
 **License Text:**
+
 ```
 MIT License
 
@@ -32,12 +35,14 @@ copies or substantial portions of the Software.
 ```
 
 **Our Attribution:**
+
 > Transcription powered by OpenAI Whisper (MIT License)  
 > https://github.com/openai/whisper
 
 ---
 
 ### Pyannote.audio
+
 **Purpose:** Speaker diarization (identify different speakers in audio)  
 **License:** MIT License  
 **Copyright:** © 2020-2024 CNRS  
@@ -45,6 +50,7 @@ copies or substantial portions of the Software.
 **Attribution Required:** YES
 
 **License Text:**
+
 ```
 MIT License
 
@@ -54,12 +60,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ```
 
 **Our Attribution:**
+
 > Speaker identification powered by pyannote.audio (MIT License)  
 > https://github.com/pyannote/pyannote-audio
 
 ---
 
 ### spaCy
+
 **Purpose:** Named entity recognition (extract names, locations, organizations)  
 **License:** MIT License  
 **Copyright:** © 2016-2024 ExplosionAI GmbH  
@@ -67,12 +75,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **Our Attribution:**
+
 > Entity extraction powered by spaCy (MIT License)  
 > https://spacy.io
 
 ---
 
 ### Transformers (Hugging Face)
+
 **Purpose:** Advanced NLP models  
 **License:** Apache License 2.0  
 **Copyright:** © 2018 The HuggingFace Team  
@@ -80,12 +90,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **Our Attribution:**
+
 > NLP models provided by Hugging Face Transformers (Apache 2.0)  
 > https://huggingface.co/transformers
 
 ---
 
 ### SentenceTransformers
+
 **Purpose:** Semantic similarity and embeddings  
 **License:** Apache License 2.0  
 **Copyright:** © 2019 Nils Reimers  
@@ -93,6 +105,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **Our Attribution:**
+
 > Semantic analysis powered by SentenceTransformers (Apache 2.0)  
 > https://www.sbert.net
 
@@ -101,6 +114,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 🌐 WEB FRAMEWORK
 
 ### Flask
+
 **Purpose:** Web application framework  
 **License:** BSD-3-Clause License  
 **Copyright:** © 2010 Pallets  
@@ -108,12 +122,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **Our Attribution:**
+
 > Built with Flask web framework (BSD-3-Clause)  
 > https://flask.palletsprojects.com
 
 ---
 
 ### Flask-Login
+
 **Purpose:** User authentication and session management  
 **License:** MIT License  
 **Copyright:** © 2011 Matthew Frazier  
@@ -123,6 +139,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### Flask-SQLAlchemy
+
 **Purpose:** Database ORM  
 **License:** BSD-3-Clause License  
 **Copyright:** © 2010 Pallets  
@@ -132,6 +149,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### Flask-CORS
+
 **Purpose:** Cross-origin resource sharing  
 **License:** MIT License  
 **Copyright:** © 2013 Cory Dolphin  
@@ -143,6 +161,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 🗄️ DATABASE
 
 ### SQLAlchemy
+
 **Purpose:** SQL toolkit and ORM  
 **License:** MIT License  
 **Copyright:** © 2005-2024 Michael Bayer and contributors  
@@ -150,12 +169,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **Our Attribution:**
+
 > Database management powered by SQLAlchemy (MIT License)  
 > https://www.sqlalchemy.org
 
 ---
 
 ### PostgreSQL (Production)
+
 **Purpose:** Production database  
 **License:** PostgreSQL License (similar to MIT/BSD)  
 **Copyright:** © 1996-2024 The PostgreSQL Global Development Group  
@@ -167,6 +188,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 🎨 FRONTEND LIBRARIES
 
 ### Bootstrap
+
 **Purpose:** CSS framework for responsive design  
 **License:** MIT License  
 **Copyright:** © 2011-2024 The Bootstrap Authors  
@@ -174,12 +196,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **Our Attribution:**
+
 > UI components powered by Bootstrap 5.3 (MIT License)  
 > https://getbootstrap.com
 
 ---
 
 ### Bootstrap Icons
+
 **Purpose:** Icon library  
 **License:** MIT License  
 **Copyright:** © 2019-2024 The Bootstrap Authors  
@@ -189,6 +213,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### Font Awesome (if used)
+
 **Purpose:** Icon library  
 **License:** Font Awesome Free License (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT)  
 **Copyright:** © Fonticons, Inc.  
@@ -200,6 +225,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 📊 DATA PROCESSING
 
 ### Pandas
+
 **Purpose:** Data manipulation and analysis  
 **License:** BSD-3-Clause License  
 **Copyright:** © 2008-2024 AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team  
@@ -209,6 +235,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### NumPy
+
 **Purpose:** Numerical computing  
 **License:** BSD-3-Clause License  
 **Copyright:** © 2005-2024 NumPy Developers  
@@ -218,6 +245,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### Pydub
+
 **Purpose:** Audio file manipulation  
 **License:** MIT License  
 **Copyright:** © 2011 James Robert  
@@ -227,6 +255,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### FFmpeg
+
 **Purpose:** Audio/video processing  
 **License:** LGPL 2.1 (GPL-free build) ✅  
 **Copyright:** © 2000-2026 FFmpeg team  
@@ -236,6 +265,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** YES
 
 **✅ GPL CONFLICT RESOLVED (January 22, 2026):**
+
 - Using verified LGPL-only build (NO GPL components)
 - Compatible with proprietary "ALL RIGHTS RESERVED" license
 - Build verified GPL-free via `ffmpeg -version` (no `--enable-gpl` flag)
@@ -246,6 +276,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 🔐 SECURITY & ENCRYPTION
 
 ### Werkzeug
+
 **Purpose:** Password hashing and security utilities  
 **License:** BSD-3-Clause License  
 **Copyright:** © 2007 Pallets  
@@ -255,6 +286,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### cryptography
+
 **Purpose:** Encryption and secure hashing  
 **License:** Apache License 2.0 or BSD License  
 **Copyright:** © Individual contributors  
@@ -266,6 +298,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 💳 PAYMENT PROCESSING
 
 ### Stripe Python SDK
+
 **Purpose:** Payment processing  
 **License:** MIT License  
 **Copyright:** © Stripe, Inc.  
@@ -279,6 +312,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 📄 DOCUMENT GENERATION
 
 ### ReportLab (if used)
+
 **Purpose:** PDF generation  
 **License:** BSD-3-Clause License (open source) / Commercial (for proprietary fonts)  
 **Copyright:** © 2000-2024 ReportLab Inc.  
@@ -288,6 +322,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### python-docx (if used)
+
 **Purpose:** DOCX file generation  
 **License:** MIT License  
 **Copyright:** © 2013 Steve Canny  
@@ -299,6 +334,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## 🌐 LEGAL DATA SOURCES
 
 ### CourtListener
+
 **Purpose:** Public domain case law  
 **License:** CC0 1.0 Universal (Public Domain Dedication)  
 **Copyright:** Public domain (U.S. government works)  
@@ -307,12 +343,14 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 **Attribution Required:** NO (but recommended)
 
 **Recommended Attribution:**
+
 > Case law from CourtListener (Free Law Project)  
 > https://www.courtlistener.com
 
 ---
 
 ### Justia
+
 **Purpose:** Public domain legal resources  
 **License:** Public domain (U.S. government works)  
 **Website:** https://www.justia.com  
@@ -323,6 +361,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ## ⚠️ PROPRIETARY SERVICES (NOT FOR EXPORT)
 
 ### Westlaw (Thomson Reuters)
+
 **Purpose:** Legal research (INTERNAL USE ONLY)  
 **License:** Proprietary subscription  
 **Copyright:** © Thomson Reuters  
@@ -332,6 +371,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ---
 
 ### LexisNexis
+
 **Purpose:** Legal research (INTERNAL USE ONLY)  
 **License:** Proprietary subscription  
 **Copyright:** © LexisNexis  
@@ -378,18 +418,21 @@ All trademarks are property of their respective owners.
 ## 🔍 LICENSE COMPLIANCE CHECKLIST
 
 ### MIT License Requirements:
+
 - [x] Include copyright notice in source code
 - [x] Include license text in distributions
 - [x] Attribute in documentation/About page
 - [ ] **Include in export manifests**
 
 ### BSD License Requirements:
+
 - [x] Include copyright notice
 - [x] Include license text
 - [x] Do not use project names to endorse without permission
 - [ ] **Include in export manifests**
 
 ### Apache 2.0 Requirements:
+
 - [x] Include copyright notice
 - [x] Include license text
 - [x] Include NOTICE file if provided
@@ -397,6 +440,7 @@ All trademarks are property of their respective owners.
 - [ ] **Include in export manifests**
 
 ### GPL/LGPL Requirements (FFmpeg):
+
 - [x] Use LGPL-licensed build only
 - [x] Do not statically link GPL code
 - [x] Provide access to source code (if distributing)
@@ -407,6 +451,7 @@ All trademarks are property of their respective owners.
 ## ⚠️ CRITICAL COMPLIANCE ACTIONS
 
 ### Immediate (Before Launch):
+
 1. [ ] Create LICENSES/ directory with full license texts
 2. [ ] Add attribution block to About page
 3. [ ] Update export manifest to include ALL open-source tools
@@ -414,6 +459,7 @@ All trademarks are property of their respective owners.
 5. [ ] Create NOTICE.txt for Apache 2.0 libraries
 
 ### Ongoing:
+
 1. [ ] Update this file when adding new dependencies
 2. [ ] Include attribution in every export
 3. [ ] Credit open-source projects in marketing materials

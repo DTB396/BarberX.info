@@ -1,4 +1,5 @@
 # BarberX Legal Technologies®
+
 ## Professional AI-Powered BWC Forensic Analysis Platform
 
 **Elite evidence processing for civil rights litigation, police accountability, and legal discovery.**
@@ -14,6 +15,7 @@
 **This is proprietary commercial software. Public repository ≠ free license.**
 
 ### Quick License Summary
+
 - ✅ **Evaluation:** View source for assessment purposes only
 - ❌ **No Use:** Cannot deploy, fork, clone, or use without license
 - 💼 **Commercial Licenses Available:** Contact BarberCamX@ProtonMail.com
@@ -27,8 +29,9 @@
 **⚠️ LEGAL WARNING:** This platform processes copyrighted legal materials (court filings, police reports, case law).
 
 ### Required Reading Before Production Use:
+
 1. **[COPYRIGHT-QUICK-START.md](COPYRIGHT-QUICK-START.md)** - 3 critical rules to avoid $150k lawsuits
-2. **[DATA-RIGHTS-COMPLIANCE.md](DATA-RIGHTS-COMPLIANCE.md)** - Complete compliance framework  
+2. **[DATA-RIGHTS-COMPLIANCE.md](DATA-RIGHTS-COMPLIANCE.md)** - Complete compliance framework
 3. **Implementation Patterns** - Citation-only storage, proprietary segregation, rights-aware exports
 
 **⚠️ Non-compliance may result in copyright infringement claims up to $150,000 per work under 17 U.S.C. § 504(c).**
@@ -45,8 +48,9 @@ npm run setup:agents
 ```
 
 Then use in GitHub Copilot Chat:
+
 - `@legal-compliance` - Copyright & data rights expert
-- `@bwc-forensics` - BWC video analysis specialist  
+- `@bwc-forensics` - BWC video analysis specialist
 - `@flask-backend` - Flask API & backend developer
 - `@frontend-dev` - React/UI component expert
 - `@database-architect` - Database schema designer
@@ -62,8 +66,9 @@ Then use in GitHub Copilot Chat:
 Professional-grade AI forensic analysis platform for civil rights attorneys, legal discovery teams, law enforcement oversight, and forensic analysts.
 
 ### Core Capabilities
+
 - 🎙️ **AI Transcription** - OpenAI Whisper with 99%+ accuracy
-- 👥 **Speaker Diarization** - Automatic speaker identification and labeling  
+- 👥 **Speaker Diarization** - Automatic speaker identification and labeling
 - 📋 **Entity Extraction** - Names, dates, locations, organizations (spaCy NLP)
 - ⚠️ **Discrepancy Detection** - Compare BWC vs. reports vs. CAD logs
 - ⏱️ **Timeline Builder** - Synchronized multi-source timelines
@@ -78,34 +83,37 @@ Professional-grade AI forensic analysis platform for civil rights attorneys, leg
 
 ### Subscription Tiers
 
-| Tier | Deployment | Monthly Fee | Annual Fee |
-|------|------------|-------------|------------|
-| **Free** | SaaS only (web app) | $0 | $0 |
-| **Professional** | SaaS only (web app) | $99 | $990 |
-| **Enterprise** | SaaS **OR** Self-Hosted* | Custom | $50,000+ |
-| **Gov/Non-Profit** | SaaS only | Custom | 50% discount |
+| Tier               | Deployment                | Monthly Fee | Annual Fee   |
+| ------------------ | ------------------------- | ----------- | ------------ |
+| **Free**           | SaaS only (web app)       | $0          | $0           |
+| **Professional**   | SaaS only (web app)       | $99         | $990         |
+| **Enterprise**     | SaaS **OR** Self-Hosted\* | Custom      | $50,000+     |
+| **Gov/Non-Profit** | SaaS only                 | Custom      | 50% discount |
 
 **Self-Hosted License:** Only available with Enterprise tier. Requires separate licensing agreement.
 
 ### What's Included (All Tiers)
 
 #### Free Tier
+
 ✅ Web-based access (SaaS)  
 ✅ 5 analyses/month  
 ✅ 500MB file size limit  
 ✅ Basic features  
-✅ Community support  
+✅ Community support
 
 #### Professional Tier ($99/month)
+
 ✅ Web-based access (SaaS)  
 ✅ 100 analyses/month  
 ✅ 2GB file size limit  
 ✅ All analysis features  
 ✅ API access (100 req/min)  
 ✅ Priority email support  
-✅ 99.5% uptime SLA  
+✅ 99.5% uptime SLA
 
 #### Enterprise Tier ($50k+/year)
+
 ✅ SaaS **OR** Self-Hosted deployment*  
 ✅ Unlimited analyses  
 ✅ Unlimited file sizes  
@@ -114,12 +122,13 @@ Professional-grade AI forensic analysis platform for civil rights attorneys, leg
 ✅ Custom integrations  
 ✅ Legal indemnification  
 ✅ Source code access* (for self-hosted only)  
-✅ 99.9% uptime SLA  
+✅ 99.9% uptime SLA
 
 **Traditional Download Option:**  
-*Enterprise customers can choose self-hosted deployment with full source code license for additional $25,000/year minimum.  
+\*Enterprise customers can choose self-hosted deployment with full source code license for additional $25,000/year minimum.
 
 ### Get a License
+
 📧 **BarberCamX@ProtonMail.com**  
 Include: use case, # users, organization
 
@@ -128,6 +137,7 @@ Include: use case, # users, organization
 ## 🛡️ Security & Privacy
 
 ### SaaS Platform Security (Free & Professional)
+
 - **Enterprise-grade encryption** - AES-256 at rest, TLS 1.3 in transit
 - **Zero-knowledge architecture** - We never see your evidence content
 - **Automatic deletion** - Files deleted after analysis (configurable retention)
@@ -136,12 +146,14 @@ Include: use case, # users, organization
 - **99.5%+ uptime** - Redundant infrastructure
 
 ### Self-Hosted Security (Enterprise Only)
+
 - **Air-gap compatible** - Deploy on isolated networks
 - **100% local processing** - Evidence never leaves your infrastructure
 - **Full data control** - You manage all storage and retention
 - **Custom compliance** - Meet your specific regulatory requirements
 
 ### Chain of Custody (All Tiers)
+
 - SHA-256 checksums for integrity verification
 - Cryptographic audit trails
 - Tamper-evident evidence packages
@@ -155,7 +167,7 @@ Include: use case, # users, organization
 **Enterprise Sales:** BarberCamX@ProtonMail.com (Self-hosted licensing)  
 **Support:** support@barberx.info  
 **Legal:** legal@barberx.info  
-**Security:** security@barberx.info  
+**Security:** security@barberx.info
 
 **🌐 Start Free Trial:** https://app.barberx.info/signup
 

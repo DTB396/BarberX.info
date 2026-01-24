@@ -17,10 +17,10 @@ show_breadcrumbs: true
     and operational oversight across New Jersey government agencies.
   </p>
 
-  {% assign opra_all = site.opra | where_exp: "item", "item.slug != 'template'" %}
-  {% assign opra_active = site.opra | where: "status", "Active" | where_exp: "item", "item.slug != 'template'" %}
-  {% assign opra_awaiting = site.opra | where: "status", "Awaiting Response" | where_exp: "item", "item.slug != 'template'" %}
-  {% assign opra_review = site.opra | where: "status", "Internal Review Pending" | where_exp: "item", "item.slug != 'template'" %}
+{% assign opra_all = site.opra | where_exp: "item", "item.slug != 'template'" %}
+{% assign opra_active = site.opra | where: "status", "Active" | where_exp: "item", "item.slug != 'template'" %}
+{% assign opra_awaiting = site.opra | where: "status", "Awaiting Response" | where_exp: "item", "item.slug != 'template'" %}
+{% assign opra_review = site.opra | where: "status", "Internal Review Pending" | where_exp: "item", "item.slug != 'template'" %}
 
   <div class="opra-hero-stats">
     <div class="opra-hero-stat">
@@ -150,6 +150,7 @@ show_breadcrumbs: true
   <p style="color: var(--ff-text-muted, #9ca3af); margin-bottom: 1.5rem;">Requests currently open or producing records.</p>
 
 {% include opra-list.html status="Active" %}
+
 </section>
 
 <hr style="border: none; border-top: 1px solid rgb(255 255 255 / 10%); margin: 2rem 0;">
@@ -159,6 +160,7 @@ show_breadcrumbs: true
   <p style="color: var(--ff-text-muted, #9ca3af); margin-bottom: 1.5rem;">Requests properly filed and pending an initial response or statutory extension.</p>
 
 {% include opra-list.html status="Awaiting Response" %}
+
 </section>
 
 <hr style="border: none; border-top: 1px solid rgb(255 255 255 / 10%); margin: 2rem 0;">
@@ -168,6 +170,7 @@ show_breadcrumbs: true
   <p style="color: var(--ff-text-muted, #9ca3af); margin-bottom: 1.5rem;">Requests subject to internal review, clarification, or custodian reconsideration.</p>
 
 {% include opra-list.html status="Internal Review Pending" %}
+
 </section>
 
 <hr style="border: none; border-top: 1px solid rgb(255 255 255 / 10%); margin: 2rem 0;">
@@ -177,6 +180,7 @@ show_breadcrumbs: true
   <p style="color: var(--ff-text-muted, #9ca3af); margin-bottom: 1.5rem;">Requests referred to another agency or responded to with a "no records maintained" determination.</p>
 
 {% include opra-list.html status="Referred — No Records Maintained" %}
+
 </section>
 
 <hr style="border: none; border-top: 1px solid rgb(255 255 255 / 10%); margin: 2rem 0;">
@@ -186,6 +190,7 @@ show_breadcrumbs: true
   <p style="color: var(--ff-text-muted, #9ca3af); margin-bottom: 1.5rem;">Complete index of all OPRA administrative records maintained on this site.</p>
 
 {% include opra-list.html status="ALL" %}
+
 </section>
 
 <hr style="border: none; border-top: 1px solid rgb(255 255 255 / 10%); margin: 2rem 0;">

@@ -12,8 +12,8 @@ Add these configuration options to your `_config.yml` file:
 # ========================================
 
 # Analytics & Performance
-analytics_provider: 'google'  # Options: 'google', 'ga4', 'plausible', 'custom'
-analytics_id: 'G-XXXXXXXXXX'  # Your Google Analytics 4 ID
+analytics_provider: "google" # Options: 'google', 'ga4', 'plausible', 'custom'
+analytics_id: "G-XXXXXXXXXX" # Your Google Analytics 4 ID
 analytics_anonymize_ip: true
 enable_performance_monitoring: true
 
@@ -37,33 +37,33 @@ cookie_settings_url: "/privacy-policy/#cookies"
 
 # Newsletter
 newsletter_enabled: true
-newsletter_provider: 'mailchimp'  # Options: 'mailchimp', 'convertkit', 'custom'
-newsletter_action_url: 'https://yoursite.us1.list-manage.com/subscribe/post?u=xxx&id=xxx'
+newsletter_provider: "mailchimp" # Options: 'mailchimp', 'convertkit', 'custom'
+newsletter_action_url: "https://yoursite.us1.list-manage.com/subscribe/post?u=xxx&id=xxx"
 newsletter_title: "Stay Updated"
 newsletter_description: "Get the latest updates, insights, and case analysis delivered straight to your inbox."
-newsletter_honeypot_field: "b_xxx_xxx"  # For Mailchimp bot protection
-page_newsletter_enabled: false  # Set to true to show on all pages
+newsletter_honeypot_field: "b_xxx_xxx" # For Mailchimp bot protection
+page_newsletter_enabled: false # Set to true to show on all pages
 
 # Comments System
 comments_enabled: true
-comments_provider: 'utterances'  # Options: 'disqus', 'utterances', 'giscus', 'custom'
+comments_provider: "utterances" # Options: 'disqus', 'utterances', 'giscus', 'custom'
 
 # For Disqus:
-disqus_shortname: 'your-disqus-shortname'
+disqus_shortname: "your-disqus-shortname"
 
 # For Utterances (GitHub Issues):
-utterances_repo: 'your-username/your-repo'
-utterances_issue_term: 'pathname'  # Options: 'pathname', 'url', 'title'
-utterances_label: 'comment'
-utterances_theme: 'github-dark'
+utterances_repo: "your-username/your-repo"
+utterances_issue_term: "pathname" # Options: 'pathname', 'url', 'title'
+utterances_label: "comment"
+utterances_theme: "github-dark"
 
 # For Giscus (GitHub Discussions):
-giscus_repo: 'your-username/your-repo'
-giscus_repo_id: 'R_xxxxx'
-giscus_category: 'General'
-giscus_category_id: 'DIC_xxxxx'
-giscus_mapping: 'pathname'
-giscus_theme: 'dark'
+giscus_repo: "your-username/your-repo"
+giscus_repo_id: "R_xxxxx"
+giscus_category: "General"
+giscus_category_id: "DIC_xxxxx"
+giscus_mapping: "pathname"
+giscus_theme: "dark"
 
 show_comment_guidelines: true
 ```
@@ -73,12 +73,14 @@ show_comment_guidelines: true
 ### 1. Analytics (`analytics.html`)
 
 Automatically loaded in `default.html` layout. Supports:
+
 - Google Analytics 4
 - Plausible Analytics
 - Custom tracking code
 - Performance monitoring
 
 **Disable on specific pages:**
+
 ```yaml
 ---
 track_analytics: false
@@ -104,11 +106,13 @@ robots: "index, follow"
 ### 3. Cookie Consent (`cookie-consent.html`)
 
 Automatically appears for first-time visitors. Features:
+
 - GDPR/CCPA compliant
 - LocalStorage persistence (365 days)
 - Accept/Reject/Customize options
 
 **Disable sitewide:**
+
 ```yaml
 enable_cookie_consent: false
 ```
@@ -122,8 +126,9 @@ Include anywhere in your content:
 ```
 
 **Custom parameters:**
+
 ```liquid
-{% include components/newsletter-signup.html 
+{% include components/newsletter-signup.html
    title="Join Our Community"
    description="Custom description here"
    margin="2rem 0"
@@ -131,6 +136,7 @@ Include anywhere in your content:
 ```
 
 **Show on all pages automatically:**
+
 ```yaml
 page_newsletter_enabled: true
 ```
@@ -144,6 +150,7 @@ Include in layouts or pages:
 ```
 
 **Disable on specific pages:**
+
 ```yaml
 ---
 hide_social_share: true
@@ -151,8 +158,9 @@ hide_social_share: true
 ```
 
 **Custom styling:**
+
 ```liquid
-{% include components/social-share.html 
+{% include components/social-share.html
    background="rgba(0,0,0,0.5)"
    padding="2rem"
    margin="3rem 0"
@@ -162,11 +170,13 @@ hide_social_share: true
 ### 6. Back to Top Button (`back-to-top.html`)
 
 Automatically loaded in `default.html`. Features:
+
 - Circular progress indicator
 - Smooth scroll animation
 - Appears after scrolling 300px
 
 **Disable on specific pages:**
+
 ```yaml
 ---
 hide_back_to_top: true
@@ -178,6 +188,7 @@ hide_back_to_top: true
 Automatically loaded in `default.html`. Shows scroll progress at top of page.
 
 **Disable on specific pages:**
+
 ```yaml
 ---
 hide_progress_bar: true
@@ -193,8 +204,9 @@ Add to your header or any page:
 ```
 
 **Custom configuration:**
+
 ```liquid
-{% include components/search.html 
+{% include components/search.html
    placeholder="Search cases and articles..."
    max_width="500px"
    margin="2rem auto"
@@ -204,6 +216,7 @@ Add to your header or any page:
 **Note:** Requires `search.json` to be generated (already created).
 
 **Exclude pages from search:**
+
 ```yaml
 ---
 exclude_from_search: true
@@ -215,6 +228,7 @@ exclude_from_search: true
 Automatically included in `page.html` layout.
 
 **Disable on specific pages:**
+
 ```yaml
 ---
 comments: false
@@ -222,6 +236,7 @@ comments: false
 ```
 
 **Manual inclusion:**
+
 ```liquid
 {% include components/comments.html margin="5rem 0" %}
 ```
@@ -251,6 +266,7 @@ All components are in: `_includes/components/`
 ## 📝 Page Layout Examples
 
 ### Article with all features:
+
 ```yaml
 ---
 layout: page
@@ -260,11 +276,11 @@ show_breadcrumbs: true
 show_newsletter: true
 tags: [legal, advocacy]
 ---
-
 Content here...
 ```
 
 ### Minimal page (no extras):
+
 ```yaml
 ---
 layout: page
@@ -274,7 +290,6 @@ hide_back_to_top: true
 hide_progress_bar: true
 comments: false
 ---
-
 Content here...
 ```
 

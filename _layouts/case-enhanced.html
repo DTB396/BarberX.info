@@ -3,10 +3,8 @@ layout: default
 ---
 
 <article class="case-record case-record--enhanced shell">
-  {% include components/navigation/breadcrumbs.html %}
-
-{%- comment -%} CASE CAPTION - Standardized
-  formal header {%- endcomment -%}
+  {% include components/navigation/breadcrumbs.html %} {%- comment -%} CASE
+  CAPTION - Standardized formal header {%- endcomment -%}
   <header class="case-header case-caption">
     <p class="case-eyebrow">
       {{ page.court }}{% if page.venue %} — {{ page.venue }}{% endif %}

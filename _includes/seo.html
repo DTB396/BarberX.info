@@ -3,8 +3,14 @@
 page.image | default: site.image -%} {%- assign seo_type = page.og_type |
 default: 'website' -%}
 
-<title>{% if seo_title and seo_title != '' %}{{ seo_title }}{% else %}BarberX Legal Technologies{% endif %}</title>
-<meta name="description" content="{% if seo_desc and seo_desc != '' %}{{ seo_desc | escape }}{% else %}Professional-grade AI-powered eDiscovery platform. Process body-worn camera footage, police reports, and legal documents with 100% local AI—no cloud, no subscriptions.{% endif %}" />
+<title>
+  {% if seo_title and seo_title != '' %}{{ seo_title }}{% else %}BarberX Legal
+  Technologies{% endif %}
+</title>
+<meta
+  name="description"
+  content="{% if seo_desc and seo_desc != '' %}{{ seo_desc | escape }}{% else %}Professional-grade AI-powered eDiscovery platform. Process body-worn camera footage, police reports, and legal documents with 100% local AI—no cloud, no subscriptions.{% endif %}"
+/>
 <!-- Ensured title and description always present for SEO -->
 <meta name="robots" content="index, follow" />
 

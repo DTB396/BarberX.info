@@ -9,6 +9,7 @@
 ## Executive Summary
 
 Critical integrity issues identified in current docket system:
+
 - **Duplicate data directories** (`_data/docket/` and `_data/docket_index/`)
 - **Inconsistent path references** between directories
 - **Missing unified validation layer**
@@ -24,7 +25,7 @@ Critical integrity issues identified in current docket system:
 _data/
 ├── docket/              # Source of truth? 13 files
 │   └── {case-id}.yml    # Uses: /assets/cases/{id}/docket/*.pdf
-├── docket_index/        # Duplicate? 13 files  
+├── docket_index/        # Duplicate? 13 files
 │   └── {case-id}.yml    # Uses: /cases/{id}/filings/*.pdf
 ├── checksums/           # 9 files (incomplete coverage)
 │   └── {case-id}.yml    # SHA-256 hashes
@@ -40,22 +41,24 @@ _inbox/
 
 ### 1.2 Critical Issues Identified
 
-| Issue | Severity | Impact |
-|-------|----------|--------|
+| Issue                   | Severity    | Impact                                 |
+| ----------------------- | ----------- | -------------------------------------- |
 | Dual docket directories | 🔴 Critical | Data inconsistency, maintenance burden |
-| Different path formats | 🔴 Critical | Broken file links, 404 errors |
-| Missing checksums | 🟠 High | Cannot verify file integrity |
-| No schema validation | 🟠 High | Invalid data can enter system |
-| Incomplete audit trail | 🟡 Medium | Cannot trace file provenance |
+| Different path formats  | 🔴 Critical | Broken file links, 404 errors          |
+| Missing checksums       | 🟠 High     | Cannot verify file integrity           |
+| No schema validation    | 🟠 High     | Invalid data can enter system          |
+| Incomplete audit trail  | 🟡 Medium   | Cannot trace file provenance           |
 
 ### 1.3 Path Inconsistency Detail
 
 **`_data/docket/` format:**
+
 ```yaml
 file: /assets/cases/usdj-1-22-cv-06206/docket/20250827-motion.pdf
 ```
 
 **`_data/docket_index/` format:**
+
 ```yaml
 file: /cases/usdj-1-22-cv-06206/filings/20250827-motion.pdf
 ```
@@ -118,7 +121,18 @@ _data/docket_index/            # Remove after consolidation
     },
     "type": {
       "type": "string",
-      "enum": ["Order", "Motion", "Brief", "Filing", "Notice", "Opinion", "Judgment", "Subpoena", "Summons", "Other"]
+      "enum": [
+        "Order",
+        "Motion",
+        "Brief",
+        "Filing",
+        "Notice",
+        "Opinion",
+        "Judgment",
+        "Subpoena",
+        "Summons",
+        "Other"
+      ]
     },
     "title": {
       "type": "string",
@@ -204,7 +218,7 @@ def process_case(case_id: str, assets_path: Path, output_path: Path):
     docket_dir = assets_path / case_id / 'docket'
     if not docket_dir.exists():
         return
-    
+
     checksums = []
     for pdf in sorted(docket_dir.glob('*.pdf')):
         checksums.append({
@@ -213,7 +227,7 @@ def process_case(case_id: str, assets_path: Path, output_path: Path):
             'size_bytes': pdf.stat().st_size,
             'verified_at': datetime.now().isoformat()
         })
-    
+
     output_file = output_path / f"{case_id}.yml"
     with open(output_file, 'w') as f:
         yaml.dump(checksums, f, default_flow_style=False)
@@ -222,7 +236,7 @@ if __name__ == '__main__':
     assets = Path('assets/cases')
     output = Path('_data/checksums')
     output.mkdir(exist_ok=True)
-    
+
     for case_dir in assets.iterdir():
         if case_dir.is_dir():
             process_case(case_dir.name, assets, output)
@@ -249,28 +263,28 @@ def validate_docket_file(filepath: Path, schema: dict) -> list:
     errors = []
     with open(filepath) as f:
         entries = yaml.safe_load(f)
-    
+
     for i, entry in enumerate(entries):
         try:
             jsonschema.validate(entry, schema)
         except jsonschema.ValidationError as e:
             errors.append(f"{filepath.name}[{i}]: {e.message}")
-        
+
         # Verify file exists
         pdf_path = Path(entry['file'].lstrip('/'))
         if not pdf_path.exists():
             errors.append(f"{filepath.name}[{i}]: File not found: {entry['file']}")
-    
+
     return errors
 
 def main():
     schema = load_schema()
     all_errors = []
-    
+
     for docket_file in Path('_data/docket').glob('*.yml'):
         errors = validate_docket_file(docket_file, schema)
         all_errors.extend(errors)
-    
+
     if all_errors:
         print("❌ Validation failed:")
         for error in all_errors:
@@ -309,24 +323,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: pip install pyyaml jsonschema
-      
+
       - name: Validate intake manifests
         run: python scripts/validate-intake.py
-      
+
       - name: Check for duplicates
         run: python scripts/check-duplicates.py
-      
+
       - name: Generate checksums
         run: python scripts/generate-checksums.py
-      
+
       - name: Validate all dockets
         run: python scripts/validate-docket.py
 
@@ -335,26 +349,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Process intake files
         run: python scripts/process-intake.py
-      
+
       - name: Move files to canonical location
         run: python scripts/move-to-assets.py
-      
+
       - name: Update docket index
         run: python scripts/update-docket.py
-      
+
       - name: Create PR with changes
         uses: peter-evans/create-pull-request@v6
         with:
           title: {% raw %}"📁 Docket Intake: ${{ github.event.inputs.case_id || 'Batch' }}"{% endraw %}
           body: |
             Automated docket intake processing.
-            
+
             ## Files Added
             {% raw %}${{ steps.process.outputs.files_added }}{% endraw %}
-            
+
             ## Validation
             - ✅ Schema validated
             - ✅ Checksums generated
@@ -370,7 +384,7 @@ name: Docket Integrity Verification
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily at 6 AM
+    - cron: "0 6 * * *" # Daily at 6 AM
   workflow_dispatch:
 
 jobs:
@@ -378,19 +392,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Verify checksums
         run: python scripts/verify-checksums.py
-      
+
       - name: Check for orphaned files
         run: python scripts/find-orphans.py
-      
+
       - name: Validate all schemas
         run: python scripts/validate-all.py
-      
+
       - name: Generate integrity report
         run: python scripts/integrity-report.py
-      
+
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
@@ -405,12 +419,14 @@ jobs:
 ### Phase 1: Consolidation (Week 1)
 
 1. **Backup current state**
+
    ```bash
    cp -r _data/docket _data/docket.bak
    cp -r _data/docket_index _data/docket_index.bak
    ```
 
 2. **Audit current duplicates**
+
    ```bash
    python scripts/audit-duplicates.py > reports/duplicate-audit.md
    ```
@@ -449,17 +465,17 @@ jobs:
 
 ## 6. Implementation Priority Matrix
 
-| Priority | Task | Effort | Impact |
-|----------|------|--------|--------|
-| 🔴 P0 | Consolidate docket directories | 2 hrs | Critical |
-| 🔴 P0 | Fix path inconsistencies | 1 hr | Critical |
-| 🔴 P1 | Create JSON Schema | 1 hr | High |
-| 🔴 P1 | Add validation script | 2 hrs | High |
-| 🟠 P2 | Generate all checksums | 1 hr | High |
-| 🟠 P2 | GitHub Actions intake workflow | 4 hrs | High |
-| 🟠 P2 | Integrity verification workflow | 2 hrs | Medium |
-| 🟡 P3 | Audit trail system | 4 hrs | Medium |
-| 🟡 P3 | Documentation updates | 2 hrs | Medium |
+| Priority | Task                            | Effort | Impact   |
+| -------- | ------------------------------- | ------ | -------- |
+| 🔴 P0    | Consolidate docket directories  | 2 hrs  | Critical |
+| 🔴 P0    | Fix path inconsistencies        | 1 hr   | Critical |
+| 🔴 P1    | Create JSON Schema              | 1 hr   | High     |
+| 🔴 P1    | Add validation script           | 2 hrs  | High     |
+| 🟠 P2    | Generate all checksums          | 1 hr   | High     |
+| 🟠 P2    | GitHub Actions intake workflow  | 4 hrs  | High     |
+| 🟠 P2    | Integrity verification workflow | 2 hrs  | Medium   |
+| 🟡 P3    | Audit trail system              | 4 hrs  | Medium   |
+| 🟡 P3    | Documentation updates           | 2 hrs  | Medium   |
 
 ---
 
@@ -468,6 +484,7 @@ jobs:
 ### Today (P0 Critical)
 
 1. **Run this command to identify differences:**
+
    ```bash
    diff -q _data/docket _data/docket_index
    ```
@@ -492,26 +509,26 @@ jobs:
 
 ## Appendix A: Canonical Path Reference
 
-| Component | Canonical Path |
-|-----------|----------------|
-| Case docket YAML | `_data/docket/{case-id}.yml` |
-| Checksums YAML | `_data/checksums/{case-id}.yml` |
-| PDF files | `assets/cases/{case-id}/docket/{date}-{slug}.pdf` |
-| Intake staging | `_inbox/{case-id}/` |
-| Case page | `_cases/{case-id}.md` |
+| Component        | Canonical Path                                    |
+| ---------------- | ------------------------------------------------- |
+| Case docket YAML | `_data/docket/{case-id}.yml`                      |
+| Checksums YAML   | `_data/checksums/{case-id}.yml`                   |
+| PDF files        | `assets/cases/{case-id}/docket/{date}-{slug}.pdf` |
+| Intake staging   | `_inbox/{case-id}/`                               |
+| Case page        | `_cases/{case-id}.md`                             |
 
 ## Appendix B: Document Type Enum
 
 ```yaml
 valid_types:
-  - Order          # Court orders
-  - Motion         # Motions filed
-  - Brief          # Legal briefs
-  - Filing         # General filings
-  - Notice         # Notices
-  - Opinion        # Court opinions
-  - Judgment       # Final judgments
-  - Subpoena       # Subpoenas
-  - Summons        # Summons
-  - Other          # Catch-all
+  - Order # Court orders
+  - Motion # Motions filed
+  - Brief # Legal briefs
+  - Filing # General filings
+  - Notice # Notices
+  - Opinion # Court opinions
+  - Judgment # Final judgments
+  - Subpoena # Subpoenas
+  - Summons # Summons
+  - Other # Catch-all
 ```

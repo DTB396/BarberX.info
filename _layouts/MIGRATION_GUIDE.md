@@ -7,6 +7,7 @@ This guide helps you migrate existing pages to use the new enhanced layout syste
 ### Step 1: Identify Pages to Migrate
 
 Pages currently using `layout: default` that would benefit from enhanced features:
+
 - Documentation pages
 - About/info pages
 - Guide pages
@@ -15,6 +16,7 @@ Pages currently using `layout: default` that would benefit from enhanced feature
 ### Step 2: Change Layout
 
 **Before:**
+
 ```yaml
 ---
 layout: default
@@ -23,6 +25,7 @@ title: "My Page"
 ```
 
 **After:**
+
 ```yaml
 ---
 layout: page
@@ -38,10 +41,10 @@ Enhance with recommended metadata:
 ---
 layout: page
 title: "My Page"
-description: "What this page is about"  # NEW
-category: "Documentation"                # NEW
-author: "Devon Tyler"                   # NEW
-date: 2026-01-19                        # NEW
+description: "What this page is about" # NEW
+category: "Documentation" # NEW
+author: "Devon Tyler" # NEW
+date: 2026-01-19 # NEW
 ---
 ```
 
@@ -53,9 +56,9 @@ layout: page
 title: "My Page"
 description: "What this page is about"
 category: "Documentation"
-show_breadcrumbs: true                  # NEW - Navigation trail
-toc: true                               # NEW - Table of contents
-tags:                                   # NEW - Categorization
+show_breadcrumbs: true # NEW - Navigation trail
+toc: true # NEW - Table of contents
+tags: # NEW - Categorization
   - Guide
   - Important
 ---
@@ -143,6 +146,7 @@ cta_link: /signup/
 ## ⚠️ Pages That Should NOT Migrate
 
 Keep `layout: default` for:
+
 - Homepage (`index.html`)
 - Special layouts (case pages, essays)
 - Custom designed pages
@@ -215,10 +219,10 @@ $files = Get-ChildItem "_pages" -Filter "*.md"
 
 foreach ($file in $files) {
     $content = Get-Content $file.FullName -Raw
-    
+
     # Replace layout: default with layout: page
     $updated = $content -replace 'layout: default', 'layout: page'
-    
+
     # Only update if changed
     if ($updated -ne $content) {
         Set-Content $file.FullName $updated
@@ -264,6 +268,7 @@ Migrate in this order:
 **Problem:** Layout appears wrong after migration
 
 **Solution:**
+
 - Check front matter syntax (YAML must be valid)
 - Verify all quotes match
 - Ensure boolean values are `true` not `"true"`
@@ -274,6 +279,7 @@ Migrate in this order:
 **Problem:** Table of contents doesn't appear
 
 **Solution:**
+
 - Verify `toc: true` is set
 - Check that content has headings (`##`, `###`)
 - Ensure Jekyll TOC plugin is installed
@@ -283,6 +289,7 @@ Migrate in this order:
 **Problem:** Breadcrumb trail shows incorrect path
 
 **Solution:**
+
 - Check `permalink` setting
 - Verify page is in correct directory
 - Review site.navigation configuration

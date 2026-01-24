@@ -1,18 +1,22 @@
 # BarberX Legal Tech - Complete Route Map
+
 **Last Updated:** January 22, 2026
 
 ## Overview
+
 All navigation links are now fully functional with professional pages created.
 
 ## Authentication & Core Routes
 
 ### Public Routes
+
 - **/** - Modern landing page (index-standalone.html)
 - **/register** - User registration
 - **/login** - User authentication
 - **/logout** - Session logout (requires auth)
 
 ### Dashboard & Tools (Authentication Required)
+
 - **/dashboard** - User control panel with analytics
 - **/analyzer** - BWC video upload and analysis interface
 
@@ -53,6 +57,7 @@ All tools accessible via dropdown menu in navigation:
 ## Resource Pages
 
 ### Documentation
+
 - **/docs** - Complete documentation home
   - Getting started guide
   - Installation instructions
@@ -76,6 +81,7 @@ All tools accessible via dropdown menu in navigation:
   - Pricing information
 
 ### Content
+
 - **/blog** - Blog posts and articles
   - Legal tech insights
   - AI analysis techniques
@@ -114,6 +120,7 @@ All tools accessible via dropdown menu in navigation:
 ## API Endpoints
 
 ### Analysis
+
 - **GET /api/analyses** - List all user analyses
 - **GET /api/analysis/{id}** - Get analysis details
 - **POST /api/upload** - Upload BWC video
@@ -121,18 +128,21 @@ All tools accessible via dropdown menu in navigation:
 - **GET /api/analysis/{id}/report/{format}** - Download report
 
 ### User
+
 - **GET /api/user/profile** - Get user profile
 - **PUT /api/user/profile** - Update profile
 - **GET /api/user/api-keys** - List API keys
 - **POST /api/user/api-keys** - Generate new key
 
 ### Admin (Admin Only)
+
 - **GET /admin/users** - List all users
 - **GET /admin/stats** - Platform statistics
 
 ## Navigation Structure
 
 ### Main Navigation (Landing Page)
+
 ```
 ⚖️ BarberX Legal Tech
 ├── Features (anchor link)
@@ -162,6 +172,7 @@ All tools accessible via dropdown menu in navigation:
 ```
 
 ### Dashboard Navigation (Authenticated)
+
 ```
 User Dashboard
 ├── 📊 Overview
@@ -183,6 +194,7 @@ User Dashboard
 ## File Structure
 
 ### Templates
+
 ```
 templates/
 ├── landing.html (original with pricing)
@@ -211,6 +223,7 @@ templates/
 ```
 
 ### Root Files
+
 ```
 index-standalone.html (new modern landing page for Flask)
 bwc-analyzer.html (main analyzer interface)
@@ -220,6 +233,7 @@ app.py (Flask application with all routes)
 ## Status: ✅ COMPLETE
 
 All navigation links are functional:
+
 - ✅ All tool pages created and working
 - ✅ All resource pages created and working
 - ✅ All company pages created and working

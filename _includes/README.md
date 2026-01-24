@@ -1,4 +1,4 @@
-# Organized _includes Directory Structure
+# Organized \_includes Directory Structure
 
 This directory contains all Jekyll include files organized by function following best practices.
 
@@ -38,18 +38,21 @@ _includes/
 ## 🔧 Usage Examples
 
 ### Heroes
+
 ```liquid
 {% include components/heroes/barber-hero.html %}
 {% include components/heroes/page-hero.html title="Page Title" %}
 ```
 
 ### Navigation
+
 ```liquid
 {% include components/navigation/header.html %}
 {% include components/navigation/breadcrumbs.html %}
 ```
 
 ### Home Sections
+
 ```liquid
 {% include sections/home/preview.html %}
 {% include sections/home/principles.html %}
@@ -57,6 +60,7 @@ _includes/
 ```
 
 ### Case Sections
+
 ```liquid
 {% include sections/cases/case-docket.html %}
 {% include sections/cases/case-analysis.html %}
@@ -64,12 +68,14 @@ _includes/
 ```
 
 ### Layout
+
 ```liquid
 {% include layout/head/head.html %}
 {% include layout/footer/footer.html %}
 ```
 
 ### SEO
+
 ```liquid
 {% include seo/seo.html %}
 {% include seo/schema.html %}
@@ -77,24 +83,25 @@ _includes/
 
 ## 📋 Migration Reference
 
-| Old Path | New Path |
-|----------|----------|
-| `barber-hero.html` | `components/heroes/barber-hero.html` |
-| `header.html` | `components/navigation/header.html` |
-| `breadcrumbs.html` | `components/navigation/breadcrumbs.html` |
-| `preview.html` | `sections/home/preview.html` |
-| `principles.html` | `sections/home/principles.html` |
-| `status.html` | `sections/home/status.html` |
-| `case-docket.html` | `sections/cases/case-docket.html` |
-| `case-analysis.html` | `sections/cases/case-analysis.html` |
-| `head.html` | `layout/head/head.html` |
-| `footer.html` | `layout/footer/footer.html` |
-| `seo.html` | `seo/seo.html` |
-| `schema.html` | `seo/schema.html` |
+| Old Path             | New Path                                 |
+| -------------------- | ---------------------------------------- |
+| `barber-hero.html`   | `components/heroes/barber-hero.html`     |
+| `header.html`        | `components/navigation/header.html`      |
+| `breadcrumbs.html`   | `components/navigation/breadcrumbs.html` |
+| `preview.html`       | `sections/home/preview.html`             |
+| `principles.html`    | `sections/home/principles.html`          |
+| `status.html`        | `sections/home/status.html`              |
+| `case-docket.html`   | `sections/cases/case-docket.html`        |
+| `case-analysis.html` | `sections/cases/case-analysis.html`      |
+| `head.html`          | `layout/head/head.html`                  |
+| `footer.html`        | `layout/footer/footer.html`              |
+| `seo.html`           | `seo/seo.html`                           |
+| `schema.html`        | `seo/schema.html`                        |
 
 ## ✅ Updated Files
 
 The following files have been updated to use the new paths:
+
 - `index.html`
 - `_layouts/default.html`
 - `_layouts/case.html`

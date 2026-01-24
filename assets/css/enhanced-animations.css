@@ -18,13 +18,13 @@
   --anim-duration-normal: 400ms;
   --anim-duration-slow: 600ms;
   --anim-duration-slower: 800ms;
-  
+
   /* Easing Functions */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  
+
   /* Animation Distances */
   --slide-distance: 60px;
   --float-distance: 20px;
@@ -39,7 +39,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .reduced-motion * {
     animation: none !important;
     transition: none !important;
@@ -79,7 +79,7 @@
 .slide-up {
   opacity: 0;
   transform: translate3d(0, var(--slide-distance), 0);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-smooth);
 }
@@ -93,7 +93,7 @@
 .slide-down {
   opacity: 0;
   transform: translate3d(0, calc(-1 * var(--slide-distance)), 0);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-smooth);
 }
@@ -107,7 +107,7 @@
 .slide-left {
   opacity: 0;
   transform: translate3d(var(--slide-distance), 0, 0);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-smooth);
 }
@@ -121,7 +121,7 @@
 .slide-right {
   opacity: 0;
   transform: translate3d(calc(-1 * var(--slide-distance)), 0, 0);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-smooth);
 }
@@ -135,7 +135,7 @@
 .zoom-in {
   opacity: 0;
   transform: scale3d(0.8, 0.8, 1);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-spring);
 }
@@ -149,7 +149,7 @@
 .zoom-out {
   opacity: 0;
   transform: scale3d(1.2, 1.2, 1);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-smooth);
 }
@@ -163,7 +163,7 @@
 .rotate-in {
   opacity: 0;
   transform: rotate3d(0, 0, 1, -180deg);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slower) var(--ease-spring);
 }
@@ -177,7 +177,7 @@
 .flip-in {
   opacity: 0;
   transform: perspective(1000px) rotateY(-90deg);
-  transition: 
+  transition:
     opacity var(--anim-duration-normal) var(--ease-smooth),
     transform var(--anim-duration-slower) var(--ease-spring);
 }
@@ -192,7 +192,7 @@
   opacity: 0;
   filter: blur(10px);
   transform: scale3d(0.95, 0.95, 1);
-  transition: 
+  transition:
     opacity var(--anim-duration-slow) var(--ease-smooth),
     filter var(--anim-duration-slow) var(--ease-smooth),
     transform var(--anim-duration-slow) var(--ease-smooth);
@@ -212,16 +212,45 @@
   animation: fadeInUp var(--anim-duration-slow) var(--ease-smooth) both;
 }
 
-.stagger-container > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-container > *:nth-child(2) { animation-delay: 100ms; }
-.stagger-container > *:nth-child(3) { animation-delay: 200ms; }
-.stagger-container > *:nth-child(4) { animation-delay: 300ms; }
-.stagger-container > *:nth-child(5) { animation-delay: 400ms; }
-.stagger-container > *:nth-child(6) { animation-delay: 500ms; }
-.stagger-container > *:nth-child(7) { animation-delay: 600ms; }
-.stagger-container > *:nth-child(8) { animation-delay: 700ms; }
-.stagger-container > *:nth-child(9) { animation-delay: 800ms; }
-.stagger-container > *:nth-child(10) { animation-delay: 900ms; }
+.stagger-container > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.stagger-container > *:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.stagger-container > *:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.stagger-container > *:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.stagger-container > *:nth-child(5) {
+  animation-delay: 400ms;
+}
+
+.stagger-container > *:nth-child(6) {
+  animation-delay: 500ms;
+}
+
+.stagger-container > *:nth-child(7) {
+  animation-delay: 600ms;
+}
+
+.stagger-container > *:nth-child(8) {
+  animation-delay: 700ms;
+}
+
+.stagger-container > *:nth-child(9) {
+  animation-delay: 800ms;
+}
+
+.stagger-container > *:nth-child(10) {
+  animation-delay: 900ms;
+}
 
 @keyframes fade-in-up {
   from {
@@ -273,7 +302,7 @@
 
 /* Lift effect on hover */
 .hover-lift {
-  transition: 
+  transition:
     transform var(--anim-duration-normal) var(--ease-smooth),
     box-shadow var(--anim-duration-normal) var(--ease-smooth);
 }
@@ -306,7 +335,8 @@
    ========================================================================= */
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate3d(0, 0, 0);
   }
 
@@ -329,7 +359,8 @@
 
 .char-reveal {
   display: inline-block;
-  animation: char-fade-in var(--anim-duration-normal) var(--ease-smooth) forwards;
+  animation: char-fade-in var(--anim-duration-normal) var(--ease-smooth)
+    forwards;
 }
 
 @keyframes char-fade-in {
@@ -409,7 +440,8 @@ body.page-transitioning {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
 
@@ -419,7 +451,8 @@ body.page-transitioning {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate3d(0, 0, 0);
   }
 
@@ -455,13 +488,23 @@ body.page-transitioning {
 
 /* Fade animations */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .fade-in-animation {
@@ -536,15 +579,23 @@ body.page-transitioning {
 
 /* Shake animation for errors */
 @keyframes shake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate3d(0, 0, 0);
   }
 
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translate3d(-10px, 0, 0);
   }
 
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translate3d(10px, 0, 0);
   }
 }

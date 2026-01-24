@@ -7,12 +7,14 @@ This repository includes **7 specialized AI agents** built with GitHub Copilot S
 ## 🚀 Quick Start
 
 ### Setup
+
 ```bash
 npm install
 npm run setup:agents
 ```
 
 ### Using Agents in GitHub Copilot Chat
+
 In your IDE with GitHub Copilot, invoke agents with `@agent-name`:
 
 ```
@@ -28,9 +30,11 @@ In your IDE with GitHub Copilot, invoke agents with `@agent-name`:
 ## 📋 Available Agents
 
 ### 1. **@legal-compliance** - Legal Compliance Expert
+
 **Expertise:** Copyright law, data rights, OPRA compliance, export validation
 
 **Use Cases:**
+
 - Review export functions for copyright violations
 - Validate fair use compliance (200-word limits)
 - Ensure proper attribution in reports
@@ -40,17 +44,20 @@ In your IDE with GitHub Copilot, invoke agents with `@agent-name`:
 **Key Files:** `data_rights.py`, `models_data_rights.py`, `DATA-RIGHTS-COMPLIANCE.md`
 
 **Example:**
+
 ```
-@legal-compliance 
+@legal-compliance
 Check if this PDF export violates Westlaw copyright terms
 ```
 
 ---
 
 ### 2. **@bwc-forensics** - BWC Forensic Analysis Specialist
+
 **Expertise:** Video analysis, AI transcription, evidence integrity, chain of custody
 
 **Use Cases:**
+
 - Implement video metadata extraction
 - Integrate Whisper AI for transcription
 - Build timeline reconstruction features
@@ -60,17 +67,20 @@ Check if this PDF export violates Westlaw copyright terms
 **Key Files:** `bwc_forensic_analyzer.py`, `bwc_web_app.py`, `BWC-ANALYSIS-GUIDE.md`
 
 **Example:**
+
 ```
-@bwc-forensics 
+@bwc-forensics
 Add SHA-256 hashing for video file integrity verification
 ```
 
 ---
 
 ### 3. **@flask-backend** - Flask Backend Developer
+
 **Expertise:** Flask APIs, authentication, database integration, security
 
 **Use Cases:**
+
 - Build REST API endpoints
 - Implement role-based access control
 - Design database migrations
@@ -80,17 +90,20 @@ Add SHA-256 hashing for video file integrity verification
 **Key Files:** `app.py`, `auth_routes.py`, `models_auth.py`, `ROUTE-MAP.md`
 
 **Example:**
+
 ```
-@flask-backend 
+@flask-backend
 Create an API endpoint for bulk case export with attorney certification
 ```
 
 ---
 
 ### 4. **@frontend-dev** - Frontend UI/UX Developer
+
 **Expertise:** React components, responsive design, accessibility, animations
 
 **Use Cases:**
+
 - Build attorney-friendly dashboards
 - Create responsive case management UI
 - Ensure WCAG AA accessibility
@@ -100,17 +113,20 @@ Create an API endpoint for bulk case export with attorney certification
 **Key Files:** `index.html`, `assets/css/style.css`, `components/`, `admin.html`
 
 **Example:**
+
 ```
-@frontend-dev 
+@frontend-dev
 Create a responsive evidence gallery component with keyboard navigation
 ```
 
 ---
 
 ### 5. **@database-architect** - Database Schema Designer
+
 **Expertise:** SQLAlchemy ORM, migrations, data integrity, query optimization
 
 **Use Cases:**
+
 - Design normalized database schemas
 - Create migration scripts
 - Add indexes for performance
@@ -120,17 +136,20 @@ Create a responsive evidence gallery component with keyboard navigation
 **Key Files:** `models_auth.py`, `models_data_rights.py`, `add_missing_columns.py`
 
 **Example:**
+
 ```
-@database-architect 
+@database-architect
 Design a schema for multi-file BWC case management with chain of custody
 ```
 
 ---
 
 ### 6. **@security-devops** - Security & DevOps Engineer
+
 **Expertise:** Application security, SSL/TLS, secrets management, CI/CD
 
 **Use Cases:**
+
 - Configure HTTPS for production
 - Implement secrets management
 - Set up GitHub Actions CI/CD
@@ -140,17 +159,20 @@ Design a schema for multi-file BWC case management with chain of custody
 **Key Files:** `.github/workflows/`, `SECURITY.md`, `DEPLOYMENT-COMPLETE.md`
 
 **Example:**
+
 ```
-@security-devops 
+@security-devops
 Configure SSL certificate and rotate SECRET_KEY for production deployment
 ```
 
 ---
 
 ### 7. **@documentation** - Technical Documentation Specialist
+
 **Expertise:** Technical writing, API docs, user guides, compliance documentation
 
 **Use Cases:**
+
 - Write attorney-friendly tutorials
 - Document REST API endpoints
 - Create quick start guides
@@ -160,8 +182,9 @@ Configure SSL certificate and rotate SECRET_KEY for production deployment
 **Key Files:** `README-NEW.md`, `ADMIN-QUICK-START.md`, `COPYRIGHT-QUICK-START.md`
 
 **Example:**
+
 ```
-@documentation 
+@documentation
 Write a 5-minute quick start guide for attorneys using the BWC analyzer
 ```
 
@@ -170,6 +193,7 @@ Write a 5-minute quick start guide for attorneys using the BWC analyzer
 ## 🎯 Best Practices
 
 ### Multi-Agent Workflows
+
 Chain agents for complex tasks:
 
 ```
@@ -182,17 +206,18 @@ Chain agents for complex tasks:
 
 ### Agent Selection Guide
 
-| Task Type | Recommended Agent |
-|-----------|-------------------|
-| Export validation | `@legal-compliance` |
-| Video processing | `@bwc-forensics` |
-| API endpoints | `@flask-backend` |
-| UI components | `@frontend-dev` |
-| Schema changes | `@database-architect` |
-| Deployment | `@security-devops` |
-| User guides | `@documentation` |
+| Task Type         | Recommended Agent     |
+| ----------------- | --------------------- |
+| Export validation | `@legal-compliance`   |
+| Video processing  | `@bwc-forensics`      |
+| API endpoints     | `@flask-backend`      |
+| UI components     | `@frontend-dev`       |
+| Schema changes    | `@database-architect` |
+| Deployment        | `@security-devops`    |
+| User guides       | `@documentation`      |
 
 ### Code Review Workflow
+
 ```
 @legal-compliance Review for copyright violations
 @security-devops Review for security vulnerabilities
@@ -201,15 +226,15 @@ Chain agents for complex tasks:
 
 ## 📊 Agent Comparison
 
-| Agent | Model | Primary Focus | Audience |
-|-------|-------|---------------|----------|
-| Legal Compliance | Claude Sonnet 4.5 | Copyright law | Attorneys |
-| BWC Forensics | Claude Sonnet 4.5 | Video analysis | Forensic experts |
-| Flask Backend | Claude Sonnet 4.5 | API development | Backend devs |
-| Frontend Dev | Claude Sonnet 4.5 | UI/UX design | Frontend devs |
-| Database Architect | Claude Sonnet 4.5 | Schema design | Database admins |
-| Security DevOps | Claude Sonnet 4.5 | Infrastructure | DevOps engineers |
-| Documentation | Claude Sonnet 4.5 | Technical writing | End users |
+| Agent              | Model             | Primary Focus     | Audience         |
+| ------------------ | ----------------- | ----------------- | ---------------- |
+| Legal Compliance   | Claude Sonnet 4.5 | Copyright law     | Attorneys        |
+| BWC Forensics      | Claude Sonnet 4.5 | Video analysis    | Forensic experts |
+| Flask Backend      | Claude Sonnet 4.5 | API development   | Backend devs     |
+| Frontend Dev       | Claude Sonnet 4.5 | UI/UX design      | Frontend devs    |
+| Database Architect | Claude Sonnet 4.5 | Schema design     | Database admins  |
+| Security DevOps    | Claude Sonnet 4.5 | Infrastructure    | DevOps engineers |
+| Documentation      | Claude Sonnet 4.5 | Technical writing | End users        |
 
 ## 🔧 Configuration
 
@@ -228,6 +253,7 @@ agents:
 ### Customizing Agents
 
 Edit `.github/copilot-agents.yml` to:
+
 - Add new agents for specific domains
 - Modify agent instructions
 - Change tool permissions
@@ -236,6 +262,7 @@ Edit `.github/copilot-agents.yml` to:
 ## 🚨 Critical Use Cases
 
 ### Before Production Launch
+
 ```bash
 @legal-compliance Audit all export endpoints for copyright violations
 @security-devops Run security scan and configure SSL
@@ -244,6 +271,7 @@ Edit `.github/copilot-agents.yml` to:
 ```
 
 ### New Feature Development
+
 ```bash
 @database-architect Design schema for new feature
 @flask-backend Implement backend API
@@ -254,6 +282,7 @@ Edit `.github/copilot-agents.yml` to:
 ```
 
 ### Bug Fixes
+
 ```bash
 @bwc-forensics Debug video processing failure
 @flask-backend Fix API authentication issue
@@ -271,6 +300,7 @@ Edit `.github/copilot-agents.yml` to:
 ## 🏆 Success Metrics
 
 With custom agents, you should achieve:
+
 - ✅ **50% faster development** (specialized context)
 - ✅ **Zero copyright violations** (legal-compliance agent)
 - ✅ **Consistent code quality** (domain-specific best practices)
@@ -280,11 +310,13 @@ With custom agents, you should achieve:
 ## 🆘 Support
 
 **Agent Issues:**
+
 - Check agent configuration in `.github/copilot-agents.yml`
 - Verify GitHub Copilot extension is installed
 - Ensure copilot-sdk is in package.json
 
 **Technical Support:**
+
 - support@barberx.info
 - BarberCamX@ProtonMail.com
 

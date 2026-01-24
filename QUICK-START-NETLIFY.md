@@ -71,6 +71,7 @@ netlify init
 ```
 
 Follow the prompts:
+
 - **Create & configure a new site?** → Yes
 - **Team:** Select your team
 - **Site name:** barberx (or your choice)
@@ -96,6 +97,7 @@ I created a deployment script for you:
 ```
 
 This script:
+
 - ✅ Checks if Netlify CLI is installed
 - ✅ Tests Jekyll build locally
 - ✅ Checks Git status
@@ -114,7 +116,7 @@ This script:
 3. **Runs `bundle install`** (installs Jekyll + plugins)
 4. **Runs `bundle exec jekyll build`** (generates static site)
 5. **Optimizes assets** (minifies CSS/JS, compresses images)
-6. **Deploys to global CDN** (publishes _site/ folder)
+6. **Deploys to global CDN** (publishes \_site/ folder)
 7. **Provisions SSL certificate** (free HTTPS)
 8. **Your site is live!** ✨
 
@@ -137,10 +139,10 @@ This script:
 
 Add these records at your registrar:
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| **A** | @ | `75.2.60.5` | 3600 |
-| **CNAME** | www | `your-site.netlify.app` | 3600 |
+| Type      | Name | Value                   | TTL  |
+| --------- | ---- | ----------------------- | ---- |
+| **A**     | @    | `75.2.60.5`             | 3600 |
+| **CNAME** | www  | `your-site.netlify.app` | 3600 |
 
 **HTTPS:** Netlify provides free SSL automatically!
 
@@ -158,7 +160,8 @@ Add these records at your registrar:
 
 ### "404 on all pages"
 
-**Fix:** Check _config.yml:
+**Fix:** Check \_config.yml:
+
 ```yaml
 baseurl: "" # Must be empty for root domain
 ```
@@ -200,6 +203,7 @@ netlify deploy --prod
 ## 💰 Netlify Pricing
 
 **Free Starter Plan includes:**
+
 - ✅ 100 GB bandwidth/month
 - ✅ 300 build minutes/month
 - ✅ Unlimited sites
@@ -236,6 +240,7 @@ Once connected to GitHub:
 **Recommended next steps:**
 
 1. **Commit all files:**
+
    ```powershell
    git add .
    git commit -m "Add Netlify deployment configuration"
@@ -249,6 +254,7 @@ Once connected to GitHub:
 4. **Celebrate!** 🎊
 
 Your site will be live at:
+
 - **Temporary:** https://your-site.netlify.app (immediately)
 - **Custom:** https://barberx.info (after DNS propagation)
 

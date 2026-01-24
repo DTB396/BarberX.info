@@ -40,7 +40,11 @@
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: linear-gradient(135deg, rgb(255 255 255 / 5%) 0%, rgb(255 255 255 / 2%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 5%) 0%,
+    rgb(255 255 255 / 2%) 100%
+  );
   border: 1px solid rgb(255 255 255 / 8%);
   border-radius: 16px;
   transition: all 0.25s ease;
@@ -58,7 +62,11 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, var(--premium-brass, #d4a574) 0%, #b8956a 100%);
+  background: linear-gradient(
+    135deg,
+    var(--premium-brass, #d4a574) 0%,
+    #b8956a 100%
+  );
   border-radius: 14px;
   font-size: 1.5rem;
   flex-shrink: 0;
@@ -263,7 +271,7 @@
 }
 
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 7px;
   top: 0;
@@ -397,7 +405,11 @@
 
 .doc-preview__thumbnail {
   aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, rgb(255 255 255 / 5%) 0%, rgb(255 255 255 / 2%) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 5%) 0%,
+    rgb(255 255 255 / 2%) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -640,5 +652,7 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -9,12 +9,14 @@ This system provides comprehensive, court-admissible analysis of police body-wor
 ## Features
 
 ### 🔒 Chain of Custody
+
 - SHA-256 cryptographic hash verification
 - Complete file metadata tracking
 - Acquisition documentation
 - Tamper-evident evidence handling
 
 ### 🎙️ Audio Analysis
+
 - **Whisper AI Transcription**
   - Word-level timestamps
   - 99%+ accuracy
@@ -28,6 +30,7 @@ This system provides comprehensive, court-admissible analysis of police body-wor
   - Temporal speaker tracking
 
 ### 📊 Entity Extraction (spaCy NLP)
+
 - **Automatic identification of:**
   - Person names (officers, civilians, witnesses)
   - Locations (addresses, landmarks, jurisdictions)
@@ -36,6 +39,7 @@ This system provides comprehensive, court-admissible analysis of police body-wor
   - Case numbers and badge numbers
 
 ### ⚖️ Discrepancy Detection
+
 - **Cross-reference with:**
   - CAD (Computer-Aided Dispatch) logs
   - Police reports
@@ -49,6 +53,7 @@ This system provides comprehensive, court-admissible analysis of police body-wor
   - Omitted Brady material
 
 ### 📝 Report Generation
+
 - **Multiple formats:**
   - JSON (machine-readable, structured data)
   - Plain text (simple review)
@@ -85,6 +90,7 @@ python -m spacy download en_core_web_md
 2. Get token: https://huggingface.co/settings/tokens
 3. Accept license: https://huggingface.co/pyannote/speaker-diarization-3.1
 4. Set environment variable:
+
 ```powershell
 $env:HUGGINGFACE_TOKEN = "your_token_here"
 ```
@@ -224,8 +230,8 @@ python bwc_forensic_analyzer.py `
       "speaker_label": "Officer Smith",
       "confidence": 0.98,
       "words": [
-        {"word": "Unit", "start": 0.0, "end": 0.3, "probability": 0.99},
-        {"word": "23", "start": 0.3, "end": 0.6, "probability": 0.97}
+        { "word": "Unit", "start": 0.0, "end": 0.3, "probability": 0.99 },
+        { "word": "23", "start": 0.3, "end": 0.6, "probability": 0.97 }
       ]
     }
   ],
@@ -302,6 +308,7 @@ TRANSCRIPT
 
 **Scenario:** Excessive force claim  
 **Process:**
+
 1. Obtain BWC footage via OPRA request
 2. Analyze with `bwc_forensic_analyzer.py`
 3. Cross-reference with CAD logs and police report
@@ -314,6 +321,7 @@ TRANSCRIPT
 
 **Scenario:** Exculpatory evidence not disclosed  
 **Process:**
+
 1. Analyze BWC footage
 2. Compare entities extracted (names, events) with police report
 3. Identify persons/events mentioned in BWC but omitted from report
@@ -325,6 +333,7 @@ TRANSCRIPT
 
 **Scenario:** Disputed timeline of events  
 **Process:**
+
 1. Analyze BWC footage with word-level timestamps
 2. Cross-reference with CAD log timestamps
 3. Detect >60 second variances
@@ -336,6 +345,7 @@ TRANSCRIPT
 
 **Scenario:** Unidentified officers in incident  
 **Process:**
+
 1. Use speaker diarization to separate voices
 2. Extract officer names from transcript
 3. Match speakers to identified names
@@ -349,22 +359,24 @@ TRANSCRIPT
 
 ### Processing Speed (CPU vs GPU)
 
-| Component | CPU (Intel i7) | GPU (NVIDIA RTX 3060) |
-|-----------|----------------|----------------------|
-| **Whisper Transcription** | 15-20 min per hour | 2-3 min per hour |
-| **Speaker Diarization** | 10-15 min per hour | 2-4 min per hour |
-| **Entity Extraction** | 1-2 min per hour | 1-2 min per hour |
-| **Total Processing** | ~30 min per hour | ~5 min per hour |
+| Component                 | CPU (Intel i7)     | GPU (NVIDIA RTX 3060) |
+| ------------------------- | ------------------ | --------------------- |
+| **Whisper Transcription** | 15-20 min per hour | 2-3 min per hour      |
+| **Speaker Diarization**   | 10-15 min per hour | 2-4 min per hour      |
+| **Entity Extraction**     | 1-2 min per hour   | 1-2 min per hour      |
+| **Total Processing**      | ~30 min per hour   | ~5 min per hour       |
 
 ### System Requirements
 
 **Minimum:**
+
 - CPU: Intel i5 or AMD Ryzen 5
 - RAM: 8GB
 - Storage: 50GB free
 - OS: Windows 10+, macOS 12+, Ubuntu 20.04+
 
 **Recommended:**
+
 - CPU: Intel i7/i9 or AMD Ryzen 7/9
 - RAM: 16GB+
 - GPU: NVIDIA GTX 1660 or better (6GB+ VRAM)
@@ -378,12 +390,14 @@ TRANSCRIPT
 ### Federal Rules of Evidence Compliance
 
 **Rule 901(b)(9) - Authentication of Evidence:**
+
 - ✅ SHA-256 hash verification (cryptographic authentication)
 - ✅ Chain of custody documentation
 - ✅ Metadata preservation
 - ✅ Non-destructive analysis (original preserved)
 
 **Rule 1006 - Summaries to Prove Content:**
+
 - ✅ AI-generated transcripts qualify as summaries
 - ✅ Original evidence preserved and available
 - ✅ Method documented and reproducible
@@ -417,6 +431,7 @@ TRANSCRIPT
 ### Common Issues
 
 **1. "FFmpeg not found" error**
+
 ```powershell
 # Install FFmpeg
 choco install ffmpeg
@@ -424,11 +439,13 @@ choco install ffmpeg
 ```
 
 **2. "Numba needs NumPy 2.3 or less" error**
+
 ```powershell
 pip install "numpy<2.4,>=2.0" --force-reinstall
 ```
 
 **3. "Speaker diarization not available" warning**
+
 ```powershell
 # Set Hugging Face token
 $env:HUGGINGFACE_TOKEN = "your_token_here"
@@ -436,6 +453,7 @@ $env:HUGGINGFACE_TOKEN = "your_token_here"
 ```
 
 **4. Out of memory errors**
+
 ```powershell
 # Use smaller Whisper model
 analyzer = BWCForensicAnalyzer(whisper_model_size="tiny")  # or "base"
@@ -445,6 +463,7 @@ analyzer = BWCForensicAnalyzer(device="cpu")
 ```
 
 **5. Slow processing on CPU**
+
 ```powershell
 # Normal - CPU is 6-10x slower than GPU
 # Options:
@@ -457,19 +476,19 @@ analyzer = BWCForensicAnalyzer(device="cpu")
 
 ## Cost Savings vs Commercial Solutions
 
-| Service | Commercial Price | Local AI Cost | Savings |
-|---------|-----------------|---------------|---------|
-| **Audio Transcription** | | | |
-| Rev.com | $1.50/min | $0 | $90 per hour |
-| Otter.ai | $0.99/min | $0 | $59.40 per hour |
-| OpenAI Whisper API | $0.36/hour | $0 | $36 per 100 hours |
-| **Speaker Diarization** | | | |
-| Sonix.ai | $10/hour | $0 | $10 per hour |
-| Descript | $12/month + $0.25/min | $0 | $15+ per hour |
-| **Entity Extraction** | | | |
-| AWS Comprehend | $0.0001/char | $0 | $1 per 10,000 words |
-| Google NLP | $0.50/1000 records | $0 | $50 per 100,000 entities |
-| **TOTAL SAVINGS** | | | **~$200 per hour of BWC footage** |
+| Service                 | Commercial Price      | Local AI Cost | Savings                           |
+| ----------------------- | --------------------- | ------------- | --------------------------------- |
+| **Audio Transcription** |                       |               |                                   |
+| Rev.com                 | $1.50/min             | $0            | $90 per hour                      |
+| Otter.ai                | $0.99/min             | $0            | $59.40 per hour                   |
+| OpenAI Whisper API      | $0.36/hour            | $0            | $36 per 100 hours                 |
+| **Speaker Diarization** |                       |               |                                   |
+| Sonix.ai                | $10/hour              | $0            | $10 per hour                      |
+| Descript                | $12/month + $0.25/min | $0            | $15+ per hour                     |
+| **Entity Extraction**   |                       |               |                                   |
+| AWS Comprehend          | $0.0001/char          | $0            | $1 per 10,000 words               |
+| Google NLP              | $0.50/1000 records    | $0            | $50 per 100,000 entities          |
+| **TOTAL SAVINGS**       |                       |               | **~$200 per hour of BWC footage** |
 
 ---
 
@@ -513,7 +532,7 @@ for i, video_path in enumerate(case_files, 1):
     print(f"\n{'='*60}")
     print(f"Processing BWC File {i}/{len(case_files)}")
     print(f"{'='*60}\n")
-    
+
     # Analyze
     report = analyzer.analyze_bwc_file(
         video_path=video_path,
@@ -525,14 +544,14 @@ for i, video_path in enumerate(case_files, 1):
         cad_log=cad_log,
         police_report=police_report
     )
-    
+
     # Export reports
     files = analyzer.export_report(
         report,
         output_dir=f"./court_exhibits/ATL-L-002794-25/BWC_{i}",
         formats=['json', 'txt', 'md']
     )
-    
+
     # Print summary
     summary = report.generate_summary()
     print(f"\n✅ Analysis Complete:")
@@ -541,7 +560,7 @@ for i, video_path in enumerate(case_files, 1):
     print(f"   - Total words: {summary['total_words']}")
     print(f"   - Discrepancies found: {summary['total_discrepancies']}")
     print(f"   - Critical issues: {summary['critical_discrepancies']}")
-    
+
     # Highlight critical discrepancies
     critical = [d for d in report.discrepancies if d.severity == "critical"]
     if critical:
@@ -549,7 +568,7 @@ for i, video_path in enumerate(case_files, 1):
         for disc in critical:
             print(f"   - {disc.description}")
             print(f"     Legal: {disc.legal_significance}")
-    
+
     print(f"\n📊 Reports saved to:")
     for f in files:
         print(f"   - {f}")
@@ -573,6 +592,7 @@ print(f"{'='*60}\n")
    - Accept license: https://huggingface.co/pyannote/speaker-diarization-3.1
 
 3. **Test on Sample BWC File**
+
    ```powershell
    python bwc_forensic_analyzer.py `
        path/to/sample_bwc.mp4 `
@@ -603,4 +623,4 @@ print(f"{'='*60}\n")
 ---
 
 **Generated by BarberX Legal Tech Platform**  
-*Court-Defensible eDiscovery • 100% Local Processing • Zero Cloud Costs*
+_Court-Defensible eDiscovery • 100% Local Processing • Zero Cloud Costs_
