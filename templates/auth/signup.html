@@ -495,35 +495,39 @@
       <div class="form-group full-width">
         <label>Choose Your Plan</label>
         <div class="tier-selection">
-          <div class="tier-option">
-            <input type="radio" id="tier_free" name="tier" value="FREE" checked>
-            <label for="tier_free" class="tier-label">
-              <span class="tier-name">Free</span>
-              <span class="tier-price">$0/mo</span>
-              <span class="tier-badge" style="background: #10b981;">Start Here</span>
-            </label>
+          <div class="tier-row">
+            <div class="tier-option">
+              <input type="radio" id="tier_free" name="tier" value="FREE" checked>
+              <label for="tier_free" class="tier-label">
+                <span class="tier-name">Free</span>
+                <span class="tier-price">$0/mo</span>
+                <span class="tier-badge" style="background: #10b981;">Start Here</span>
+              </label>
+            </div>
+            <div class="tier-option">
+              <input type="radio" id="tier_pro" name="tier" value="PROFESSIONAL">
+              <label for="tier_pro" class="tier-label">
+                <span class="tier-name">Pro</span>
+                <span class="tier-price">$49/mo</span>
+              </label>
+            </div>
+            <div class="tier-option">
+              <input type="radio" id="tier_premium" name="tier" value="PREMIUM">
+              <label for="tier_premium" class="tier-label">
+                <span class="tier-name">Premium</span>
+                <span class="tier-price">$149/mo</span>
+                <span class="tier-badge" style="background: #1e40af;">Popular</span>
+              </label>
+            </div>
           </div>
-          <div class="tier-option">
-            <input type="radio" id="tier_pro" name="tier" value="PROFESSIONAL">
-            <label for="tier_pro" class="tier-label">
-              <span class="tier-name">Pro</span>
-              <span class="tier-price">$49/mo</span>
-            </label>
-          </div>
-          <div class="tier-option">
-            <input type="radio" id="tier_premium" name="tier" value="PREMIUM">
-            <label for="tier_premium" class="tier-label">
-              <span class="tier-name">Premium</span>
-              <span class="tier-price">$149/mo</span>
-              <span class="tier-badge" style="background: #1e40af;">Popular</span>
-            </label>
-          </div>
-          <div class="tier-option">
-            <input type="radio" id="tier_enterprise" name="tier" value="ENTERPRISE">
-            <label for="tier_enterprise" class="tier-label">
-              <span class="tier-name">Enterprise</span>
-              <span class="tier-price">$499/mo</span>
-            </label>
+          <div class="tier-row tier-row-enterprise">
+            <div class="tier-option tier-option-enterprise">
+              <input type="radio" id="tier_enterprise" name="tier" value="ENTERPRISE">
+              <label for="tier_enterprise" class="tier-label">
+                <span class="tier-name">Enterprise</span>
+                <span class="tier-price">$499/mo</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>
