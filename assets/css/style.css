@@ -3,9 +3,90 @@
   opacity: 0;
   animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
 }
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SYSTEM CARDS SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.system-cards-section {
+  padding: 5rem 0 3rem;
+  background: linear-gradient(180deg, #181824 0%, #23233a 100%);
+}
+
+.system-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.system-card {
+  background: linear-gradient(135deg, #23233a 0%, #181824 100%);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 30%), 0 1px 0 rgb(255 255 255 / 5%) inset;
+  border: 1px solid rgb(255 255 255 / 8%);
+  padding: 2.25rem 1.5rem 1.5rem;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 270px;
+}
+
+.system-card:hover {
+  box-shadow: 0 0 32px #d4af37, 0 8px 32px rgb(0 0 0 / 60%);
+  border-color: #d4af37;
+  transform: translateY(-4px) scale(1.03);
+}
+
+.system-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1.1rem;
+  color: #ffd700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.system-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.system-card li {
+  font-size: 1rem;
+  color: #d1d5db;
+  margin-bottom: 0.7rem;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.system-card li::before {
+  content: "•";
+  color: #d4af37;
+  position: absolute;
+  left: 0;
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+@media (width <= 700px) {
+  .system-cards-section {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .system-card {
+    padding: 1.5rem 1rem 1rem;
+    min-height: 0;
+  }
 }
 
 .card, .panel, .premium-card {
@@ -14,22 +95,47 @@
   transition: box-shadow 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
   background: linear-gradient(135deg, #fff 80%, #f8f5ef 100%);
 }
+
 .card:hover, .panel:hover, .premium-card:hover {
   box-shadow: 0 8px 40px rgb(212 165 116 / 18%), 0 4px 24px rgb(0 0 0 / 12%);
   transform: translateY(-2px) scale(1.012);
 }
 
-.btn, .btn-premium, .btn-primary {
+
+/* Universal button styling for contrast and accessibility */
+.btn, .btn-premium, .btn-primary, button {
   box-shadow: 0 2px 12px rgb(212 175 55 / 18%);
   border-radius: 12px;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s, color 0.2s;
+  color: #181824 !important; /* Default: dark text for light backgrounds */
+  font-weight: 700;
 }
-.btn:hover, .btn-premium:hover, .btn-primary:hover {
+
+.btn:hover, .btn-premium:hover, .btn-primary:hover, button:hover {
   box-shadow: 0 8px 24px rgb(212 175 55 / 28%);
   transform: translateY(-2px) scale(1.03);
+  color: #fff !important; /* Always white text on hover for contrast */
+  background: var(--accent-hover, #a01830) !important;
 }
-.btn:active, .btn-premium:active, .btn-primary:active {
+
+.btn:active, .btn-premium:active, .btn-primary:active, button:active {
   transform: scale(0.98);
+  color: #fff !important;
+  background: var(--accent, #c41e3a) !important;
+}
+
+/* If button has a light background, force dark text; if dark, force white text */
+.btn, .btn-primary, .btn-premium, button {
+  /* fallback for custom backgrounds */
+  background: var(--accent, #c41e3a);
+  color: #fff !important;
+}
+
+.btn:disabled, .btn[disabled], button:disabled {
+  background: #e5e7eb !important;
+  color: #a1a1aa !important;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .input, input, textarea, select {
@@ -38,6 +144,7 @@
   transition: border-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 1px 4px rgb(212 175 55 / 6%);
 }
+
 .input:focus, input:focus, textarea:focus, select:focus {
   border-color: var(--accent-gold, #d4a574);
   box-shadow: 0 0 0 2px rgb(212 175 55 / 18%);
@@ -66,6 +173,7 @@
 .animate-fade-in {
   animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
 }
+
 /* ═══════════════════════════════════════════════════════════════════════════
    BARBER CAM — NY Barbershop Style
    Precision. Patience. Virtue. Honor.
@@ -1433,6 +1541,18 @@ h6 {
   gap: 2rem;
 }
 
+@media (width <= 900px) {
+  .principles-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (width <= 600px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .principle-card {
   position: relative;
   background: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
@@ -1445,6 +1565,10 @@ h6 {
   transition: var(--transition-base);
   overflow: hidden;
   color: #e5e7eb;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .principle-card:hover {
@@ -1479,6 +1603,7 @@ h6 {
   margin-bottom: 1.5rem;
   color: #dc2626;
   filter: drop-shadow(0 0 8px rgb(220 38 38 / 60%));
+  flex-shrink: 0;
 }
 
 .principle-card h3 {
@@ -1495,6 +1620,7 @@ h6 {
   font-size: 0.95rem;
   line-height: 1.7;
   color: #d1d5db;
+  margin-top: auto;
 }
 
 .principles-footer {

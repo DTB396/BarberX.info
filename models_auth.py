@@ -9,6 +9,7 @@ from flask_bcrypt import Bcrypt
 from datetime import datetime, timedelta
 from enum import Enum
 
+bcrypt = Bcrypt()
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 
