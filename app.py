@@ -29,6 +29,14 @@ except ImportError as e:
     ENHANCED_AUTH_AVAILABLE = False
     print(f"⚠️  Enhanced auth not available: {e}")
 
+# UX enhancement utilities
+try:
+    from ux_helpers import register_ux_filters
+    UX_HELPERS_AVAILABLE = True
+except ImportError as e:
+    UX_HELPERS_AVAILABLE = False
+    print(f"⚠️  UX helpers not available: {e}")
+
 # Import our BWC analyzer (optional - only needed for actual analysis)
 try:
     from bwc_forensic_analyzer import BWCForensicAnalyzer
@@ -69,6 +77,11 @@ login_manager.login_view = 'auth.login'  # Updated to use auth blueprint
 if ENHANCED_AUTH_AVAILABLE:
     app.register_blueprint(auth_bp, url_prefix='/auth')
     print("✅ Enhanced auth routes registered at /auth/*")
+
+# Register UX helper filters and context processors
+if UX_HELPERS_AVAILABLE:
+    register_ux_filters(app)
+    print("✅ UX enhancement filters registered")
 
 # Configure logging
 if not app.debug:
@@ -358,6 +371,66 @@ class AppSettings(db.Model):
         return setting
 
 
+class PDFUpload(db.Model):
+    """Model for tracking uploaded PDF files"""
+    __tablename__ = 'pdf_uploads'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True, index=True)
+    
+    # File information
+    filename = db.Column(db.String(255), nullable=False)
+    original_filename = db.Column(db.String(255), nullable=False)
+    file_path = db.Column(db.String(500), nullable=False)
+    file_size = db.Column(db.Integer, nullable=False)
+    file_hash = db.Column(db.String(64), unique=True, nullable=False, index=True)
+    mime_type = db.Column(db.String(100), default='application/pdf')
+    
+    # Metadata
+    case_number = db.Column(db.String(100), index=True)
+    document_type = db.Column(db.String(100))  # brief, motion, order, filing, etc.
+    tags = db.Column(db.JSON)
+    description = db.Column(db.Text)
+    
+    # Status and processing
+    status = db.Column(db.String(20), default='uploaded')  # uploaded, processing, processed, error
+    page_count = db.Column(db.Integer)
+    extracted_text = db.Column(db.Text)
+    
+    # Timestamps
+    created_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    processed_at = db.Column(db.DateTime)
+    
+    # Access control
+    is_public = db.Column(db.Boolean, default=False)
+    share_token = db.Column(db.String(64), unique=True)
+    
+    def generate_hash(self, file_path):
+        """Generate SHA-256 hash of file"""
+        sha256 = hashlib.sha256()
+        with open(file_path, 'rb') as f:
+            for chunk in iter(lambda: f.read(8192), b''):
+                sha256.update(chunk)
+        self.file_hash = sha256.hexdigest()
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'filename': self.filename,
+            'original_filename': self.original_filename,
+            'file_size': self.file_size,
+            'file_hash': self.file_hash,
+            'case_number': self.case_number,
+            'document_type': self.document_type,
+            'tags': self.tags or [],
+            'description': self.description,
+            'status': self.status,
+            'page_count': self.page_count,
+            'created_at': self.created_at.isoformat(),
+            'processed_at': self.processed_at.isoformat() if self.processed_at else None
+        }
+
+
 class AuditLog(db.Model):
     """Audit log for compliance and security"""
     __tablename__ = 'audit_logs'
@@ -533,11 +606,22 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    """User dashboard with usage tracking"""
+    """Enhanced user dashboard with usage tracking and tier-specific features"""
     if ENHANCED_AUTH_AVAILABLE:
         try:
+            from models_auth import UsageTracking
             usage = UsageTracking.get_or_create_current(current_user.id)
             limits = current_user.get_tier_limits()
+            
+            # Add Jinja2 custom filter for number formatting
+            @app.template_filter('format_number')
+            def format_number(value):
+                """Format numbers with thousands separator"""
+                try:
+                    return f"{int(value):,}"
+                except (ValueError, TypeError):
+                    return value
+            
             return render_template('auth/dashboard.html',
                                  user=current_user,
                                  usage=usage,
@@ -553,10 +637,42 @@ def dashboard():
 @app.route('/admin')
 @login_required
 def admin_panel():
-    """Admin panel - requires admin role"""
-    if current_user.role != 'admin':
-        return jsonify({'error': 'Admin access required'}), 403
-    return send_file('templates/admin-enhanced.html')
+    """Enhanced admin panel - requires admin role with full analytics"""
+    if not hasattr(current_user, 'role') or current_user.role != 'admin':
+        flash('Admin access required', 'danger')
+        return redirect(url_for('dashboard'))
+    
+    if ENHANCED_AUTH_AVAILABLE:
+        try:
+            from models_auth import User, UsageTracking
+            from sqlalchemy import func
+            
+            # Get all users
+            users = User.query.all()
+            
+            # Calculate stats
+            total_users = User.query.count()
+            total_analyses = db.session.query(func.sum(UsageTracking.bwc_videos_processed)).scalar() or 0
+            total_storage = db.session.query(func.sum(UsageTracking.storage_used_mb)).scalar() or 0
+            storage_gb = round(total_storage / 1024, 2) if total_storage else 0
+            
+            # Calculate MRR (Monthly Recurring Revenue)
+            revenue = 0
+            for user in users:
+                if user.tier and hasattr(user.tier, 'value'):
+                    revenue += user.tier.value
+            
+            return render_template('admin/dashboard.html',
+                                 users=users,
+                                 total_users=total_users,
+                                 total_analyses=total_analyses,
+                                 storage_gb=storage_gb,
+                                 revenue=revenue)
+        except Exception as e:
+            app.logger.error(f"Admin panel error: {e}")
+            return send_file('admin.html')
+    else:
+        return send_file('admin.html')
 
 
 @app.route('/analyzer')
@@ -803,6 +919,289 @@ def upload_file():
     })
 
 
+@app.route('/api/upload/pdf', methods=['POST'])
+def upload_pdf():
+    """Handle single PDF file upload"""
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+    
+    # Validate PDF file
+    if not file.filename.lower().endswith('.pdf'):
+        return jsonify({'error': 'Only PDF files are allowed'}), 400
+    
+    # Get optional metadata
+    case_number = request.form.get('case_number', '')
+    document_type = request.form.get('document_type', '')
+    description = request.form.get('description', '')
+    tags_str = request.form.get('tags', '')
+    tags = [t.strip() for t in tags_str.split(',') if t.strip()] if tags_str else []
+    
+    # Secure filename
+    original_filename = file.filename
+    filename = secure_filename(file.filename)
+    timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
+    unique_filename = f"{timestamp}_{filename}"
+    
+    # Create upload directory
+    upload_dir = Path('./uploads/pdfs')
+    upload_dir.mkdir(parents=True, exist_ok=True)
+    
+    filepath = upload_dir / unique_filename
+    
+    # Save file
+    file.save(filepath)
+    
+    # Get file size
+    file_size = os.path.getsize(filepath)
+    
+    # Create PDF upload record
+    pdf_upload = PDFUpload(
+        user_id=current_user.id if current_user.is_authenticated else None,
+        filename=unique_filename,
+        original_filename=original_filename,
+        file_path=str(filepath),
+        file_size=file_size,
+        case_number=case_number,
+        document_type=document_type,
+        description=description,
+        tags=tags,
+        status='uploaded'
+    )
+    
+    # Generate hash
+    pdf_upload.generate_hash(str(filepath))
+    
+    db.session.add(pdf_upload)
+    db.session.commit()
+    
+    # Log audit
+    AuditLog.log('pdf_uploaded', 'pdf_upload', str(pdf_upload.id), {
+        'filename': original_filename,
+        'file_size': file_size
+    })
+    
+    app.logger.info(f'PDF uploaded: {original_filename} (ID: {pdf_upload.id})')
+    
+    return jsonify({
+        'success': True,
+        'upload_id': pdf_upload.id,
+        'filename': original_filename,
+        'file_hash': pdf_upload.file_hash,
+        'file_size': file_size,
+        'message': 'PDF uploaded successfully'
+    })
+
+
+@app.route('/api/upload/pdf/batch', methods=['POST'])
+def batch_upload_pdf():
+    """Handle batch PDF file upload"""
+    if 'files' not in request.files:
+        return jsonify({'error': 'No files provided'}), 400
+    
+    files = request.files.getlist('files')
+    
+    if not files:
+        return jsonify({'error': 'No files selected'}), 400
+    
+    results = {
+        'total': len(files),
+        'successful': [],
+        'failed': []
+    }
+    
+    for file in files:
+        try:
+            if file.filename == '':
+                results['failed'].append({
+                    'filename': 'unknown',
+                    'error': 'Empty filename'
+                })
+                continue
+            
+            # Validate PDF
+            if not file.filename.lower().endswith('.pdf'):
+                results['failed'].append({
+                    'filename': file.filename,
+                    'error': 'Not a PDF file'
+                })
+                continue
+            
+            # Secure filename
+            original_filename = file.filename
+            filename = secure_filename(file.filename)
+            timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S_%f')
+            unique_filename = f"{timestamp}_{filename}"
+            
+            # Create upload directory
+            upload_dir = Path('./uploads/pdfs')
+            upload_dir.mkdir(parents=True, exist_ok=True)
+            
+            filepath = upload_dir / unique_filename
+            
+            # Save file
+            file.save(filepath)
+            
+            # Get file size
+            file_size = os.path.getsize(filepath)
+            
+            # Create PDF upload record
+            pdf_upload = PDFUpload(
+                user_id=current_user.id if current_user.is_authenticated else None,
+                filename=unique_filename,
+                original_filename=original_filename,
+                file_path=str(filepath),
+                file_size=file_size,
+                status='uploaded'
+            )
+            
+            # Generate hash
+            pdf_upload.generate_hash(str(filepath))
+            
+            db.session.add(pdf_upload)
+            db.session.commit()
+            
+            results['successful'].append({
+                'upload_id': pdf_upload.id,
+                'filename': original_filename,
+                'file_size': file_size,
+                'file_hash': pdf_upload.file_hash
+            })
+            
+            app.logger.info(f'PDF uploaded (batch): {original_filename} (ID: {pdf_upload.id})')
+            
+        except Exception as e:
+            results['failed'].append({
+                'filename': file.filename if file else 'unknown',
+                'error': str(e)
+            })
+            app.logger.error(f'Batch PDF upload error: {str(e)}')
+    
+    # Log audit for batch
+    AuditLog.log('pdf_batch_uploaded', 'pdf_upload', None, {
+        'total': results['total'],
+        'successful': len(results['successful']),
+        'failed': len(results['failed'])
+    })
+    
+    return jsonify({
+        'success': True,
+        'results': results,
+        'summary': {
+            'total': results['total'],
+            'successful': len(results['successful']),
+            'failed': len(results['failed'])
+        }
+    })
+
+
+@app.route('/api/pdfs', methods=['GET'])
+def list_pdfs():
+    """List uploaded PDFs"""
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 50, type=int)
+    
+    # Filter by user if authenticated
+    query = PDFUpload.query
+    
+    if current_user.is_authenticated:
+        # Admins can see all, users see only their own
+        if current_user.role != 'admin':
+            query = query.filter_by(user_id=current_user.id)
+    else:
+        # Public access - only show public PDFs
+        query = query.filter_by(is_public=True)
+    
+    pagination = query.order_by(PDFUpload.created_at.desc()).paginate(
+        page=page, per_page=per_page, error_out=False
+    )
+    
+    return jsonify({
+        'total': pagination.total,
+        'page': page,
+        'per_page': per_page,
+        'total_pages': pagination.pages,
+        'pdfs': [pdf.to_dict() for pdf in pagination.items]
+    })
+
+
+@app.route('/api/pdf/<int:pdf_id>', methods=['GET'])
+def get_pdf_info(pdf_id):
+    """Get PDF information"""
+    pdf = PDFUpload.query.get(pdf_id)
+    
+    if not pdf:
+        return jsonify({'error': 'PDF not found'}), 404
+    
+    # Check access
+    if not pdf.is_public and (not current_user.is_authenticated or 
+                              (current_user.id != pdf.user_id and current_user.role != 'admin')):
+        return jsonify({'error': 'Access denied'}), 403
+    
+    return jsonify(pdf.to_dict())
+
+
+@app.route('/api/pdf/<int:pdf_id>/download', methods=['GET'])
+def download_pdf(pdf_id):
+    """Download PDF file"""
+    pdf = PDFUpload.query.get(pdf_id)
+    
+    if not pdf:
+        return jsonify({'error': 'PDF not found'}), 404
+    
+    # Check access
+    if not pdf.is_public and (not current_user.is_authenticated or 
+                              (current_user.id != pdf.user_id and current_user.role != 'admin')):
+        return jsonify({'error': 'Access denied'}), 403
+    
+    # Check if file exists
+    if not os.path.exists(pdf.file_path):
+        return jsonify({'error': 'File not found on server'}), 404
+    
+    return send_file(
+        pdf.file_path,
+        as_attachment=True,
+        download_name=pdf.original_filename,
+        mimetype='application/pdf'
+    )
+
+
+@app.route('/api/pdf/<int:pdf_id>', methods=['DELETE'])
+@login_required
+def delete_pdf(pdf_id):
+    """Delete PDF file"""
+    pdf = PDFUpload.query.get(pdf_id)
+    
+    if not pdf:
+        return jsonify({'error': 'PDF not found'}), 404
+    
+    # Check permission
+    if current_user.id != pdf.user_id and current_user.role != 'admin':
+        return jsonify({'error': 'Permission denied'}), 403
+    
+    # Delete file from disk
+    if os.path.exists(pdf.file_path):
+        os.remove(pdf.file_path)
+    
+    # Delete from database
+    db.session.delete(pdf)
+    db.session.commit()
+    
+    # Log audit
+    AuditLog.log('pdf_deleted', 'pdf_upload', str(pdf_id), {
+        'filename': pdf.original_filename
+    })
+    
+    return jsonify({
+        'success': True,
+        'message': 'PDF deleted successfully'
+    })
+
+
 @app.route('/api/analyze', methods=['POST'])
 @login_required
 def analyze_video():
@@ -935,6 +1334,41 @@ def get_analysis(analysis_id):
     return jsonify(analysis.to_dict(include_results=True))
 
 
+@app.route('/api/analysis/<analysis_id>/status', methods=['GET'])
+@login_required
+def get_analysis_status(analysis_id):
+    """Get real-time analysis status"""
+    analysis = Analysis.query.filter_by(id=analysis_id, user_id=current_user.id).first()
+    
+    if not analysis:
+        return jsonify({'error': 'Analysis not found'}), 404
+    
+    status_data = {
+        'id': analysis.id,
+        'status': analysis.status,
+        'progress': analysis.progress,
+        'current_step': analysis.current_step,
+        'filename': analysis.filename,
+        'case_number': analysis.case_number,
+        'created_at': analysis.created_at.isoformat(),
+        'started_at': analysis.started_at.isoformat() if analysis.started_at else None,
+        'completed_at': analysis.completed_at.isoformat() if analysis.completed_at else None,
+        'error_message': analysis.error_message
+    }
+    
+    # Add results if completed
+    if analysis.status == 'completed':
+        status_data.update({
+            'duration': analysis.duration,
+            'total_speakers': analysis.total_speakers,
+            'total_segments': analysis.total_segments,
+            'total_discrepancies': analysis.total_discrepancies,
+            'critical_discrepancies': analysis.critical_discrepancies
+        })
+    
+    return jsonify(status_data)
+
+
 @app.route('/api/analysis/<analysis_id>/report/<format>', methods=['GET'])
 @login_required
 def download_report(analysis_id, format):
@@ -957,6 +1391,9 @@ def download_report(analysis_id, format):
     elif format == 'md':
         report_path = analysis.report_md_path
         mimetype = 'text/markdown'
+    elif format in ['pdf', 'docx']:
+        # Generate on-demand for PDF/DOCX
+        return export_analysis_report(analysis, format)
     else:
         return jsonify({'error': 'Invalid format'}), 400
     
@@ -972,6 +1409,422 @@ def download_report(analysis_id, format):
         as_attachment=True,
         download_name=f"BWC_Analysis_{analysis.case_number or analysis_id}.{format}"
     )
+
+
+def export_analysis_report(analysis, format):
+    """Export analysis to PDF or DOCX format"""
+    try:
+        # Load the JSON report
+        if not analysis.report_json_path or not Path(analysis.report_json_path).exists():
+            return jsonify({'error': 'Analysis report not available'}), 404
+        
+        import json
+        with open(analysis.report_json_path, 'r') as f:
+            report_data = json.load(f)
+        
+        output_dir = Path(app.config['ANALYSIS_FOLDER']) / analysis.id
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        if format == 'pdf':
+            # Generate PDF report
+            from reportlab.lib.pagesizes import letter
+            from reportlab.lib.styles import getSampleStyleSheet
+            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+            from reportlab.lib import colors
+            
+            pdf_path = output_dir / f'report_{analysis.id}.pdf'
+            doc = SimpleDocTemplate(str(pdf_path), pagesize=letter)
+            styles = getSampleStyleSheet()
+            story = []
+            
+            # Title
+            story.append(Paragraph(f"<b>BWC Forensic Analysis Report</b>", styles['Title']))
+            story.append(Spacer(1, 12))
+            
+            # Case Information
+            story.append(Paragraph("<b>Case Information</b>", styles['Heading2']))
+            case_info = [
+                ['Case Number:', analysis.case_number or 'N/A'],
+                ['Evidence Number:', analysis.evidence_number or 'N/A'],
+                ['Filename:', analysis.filename],
+                ['File Hash (SHA-256):', analysis.file_hash],
+                ['Analysis Date:', analysis.created_at.strftime('%Y-%m-%d %H:%M:%S')],
+                ['Duration:', f"{analysis.duration:.2f} seconds" if analysis.duration else 'N/A']
+            ]
+            case_table = Table(case_info)
+            case_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
+                ('TEXTCOLOR', (0, 0), (-1, -1), colors.black),
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (-1, -1), 10),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 12),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black)
+            ]))
+            story.append(case_table)
+            story.append(Spacer(1, 20))
+            
+            # Results Summary
+            story.append(Paragraph("<b>Analysis Results</b>", styles['Heading2']))
+            results = [
+                ['Total Speakers:', str(analysis.total_speakers or 0)],
+                ['Transcript Segments:', str(analysis.total_segments or 0)],
+                ['Total Discrepancies:', str(analysis.total_discrepancies or 0)],
+                ['Critical Discrepancies:', str(analysis.critical_discrepancies or 0)]
+            ]
+            results_table = Table(results)
+            results_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold')
+            ]))
+            story.append(results_table)
+            story.append(Spacer(1, 20))
+            
+            # Chain of Custody
+            story.append(Paragraph("<b>Chain of Custody</b>", styles['Heading2']))
+            story.append(Paragraph(f"File Integrity (SHA-256): {analysis.file_hash}", styles['Normal']))
+            story.append(Paragraph(f"Acquired By: {analysis.acquired_by or 'Not specified'}", styles['Normal']))
+            story.append(Paragraph(f"Source: {analysis.source or 'Not specified'}", styles['Normal']))
+            
+            doc.build(story)
+            
+            # Log audit
+            AuditLog.log('report_exported', 'analysis', analysis.id, {'format': 'pdf'})
+            
+            return send_file(
+                str(pdf_path),
+                mimetype='application/pdf',
+                as_attachment=True,
+                download_name=f"BWC_Analysis_{analysis.case_number or analysis.id}.pdf"
+            )
+        
+        elif format == 'docx':
+            # Generate DOCX report
+            from docx import Document
+            from docx.shared import Inches, Pt, RGBColor
+            from docx.enum.text import WD_ALIGN_PARAGRAPH
+            
+            docx_path = output_dir / f'report_{analysis.id}.docx'
+            doc = Document()
+            
+            # Title
+            title = doc.add_heading('BWC Forensic Analysis Report', 0)
+            title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            
+            # Case Information
+            doc.add_heading('Case Information', level=1)
+            table = doc.add_table(rows=6, cols=2)
+            table.style = 'Light Grid Accent 1'
+            
+            cells = table.rows[0].cells
+            cells[0].text = 'Case Number:'
+            cells[1].text = analysis.case_number or 'N/A'
+            
+            cells = table.rows[1].cells
+            cells[0].text = 'Evidence Number:'
+            cells[1].text = analysis.evidence_number or 'N/A'
+            
+            cells = table.rows[2].cells
+            cells[0].text = 'Filename:'
+            cells[1].text = analysis.filename
+            
+            cells = table.rows[3].cells
+            cells[0].text = 'File Hash (SHA-256):'
+            cells[1].text = analysis.file_hash
+            
+            cells = table.rows[4].cells
+            cells[0].text = 'Analysis Date:'
+            cells[1].text = analysis.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            
+            cells = table.rows[5].cells
+            cells[0].text = 'Duration:'
+            cells[1].text = f"{analysis.duration:.2f} seconds" if analysis.duration else 'N/A'
+            
+            # Results Summary
+            doc.add_heading('Analysis Results', level=1)
+            results_table = doc.add_table(rows=4, cols=2)
+            results_table.style = 'Light Grid Accent 1'
+            
+            cells = results_table.rows[0].cells
+            cells[0].text = 'Total Speakers:'
+            cells[1].text = str(analysis.total_speakers or 0)
+            
+            cells = results_table.rows[1].cells
+            cells[0].text = 'Transcript Segments:'
+            cells[1].text = str(analysis.total_segments or 0)
+            
+            cells = results_table.rows[2].cells
+            cells[0].text = 'Total Discrepancies:'
+            cells[1].text = str(analysis.total_discrepancies or 0)
+            
+            cells = results_table.rows[3].cells
+            cells[0].text = 'Critical Discrepancies:'
+            cells[1].text = str(analysis.critical_discrepancies or 0)
+            
+            # Chain of Custody
+            doc.add_heading('Chain of Custody', level=1)
+            doc.add_paragraph(f'File Integrity (SHA-256): {analysis.file_hash}')
+            doc.add_paragraph(f'Acquired By: {analysis.acquired_by or "Not specified"}')
+            doc.add_paragraph(f'Source: {analysis.source or "Not specified"}')
+            
+            # Attribution
+            doc.add_heading('Attribution', level=1)
+            doc.add_paragraph('This analysis was generated using:')
+            doc.add_paragraph('• OpenAI Whisper (Apache 2.0 License) - Audio transcription')
+            doc.add_paragraph('• pyannote.audio (MIT License) - Speaker diarization')
+            doc.add_paragraph('• BarberX Legal Technologies - Forensic analysis platform')
+            
+            doc.save(str(docx_path))
+            
+            # Log audit
+            AuditLog.log('report_exported', 'analysis', analysis.id, {'format': 'docx'})
+            
+            return send_file(
+                str(docx_path),
+                mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                as_attachment=True,
+                download_name=f"BWC_Analysis_{analysis.case_number or analysis.id}.docx"
+            )
+        
+        elif format == 'json':
+            # Generate JSON export
+            import json
+            
+            json_path = output_dir / f'report_{analysis.id}.json'
+            
+            json_data = {
+                'case_information': {
+                    'case_number': analysis.case_number or 'N/A',
+                    'evidence_number': analysis.evidence_number or 'N/A',
+                    'filename': analysis.filename,
+                    'file_hash': analysis.file_hash,
+                    'file_size': analysis.file_size,
+                    'duration': analysis.duration,
+                    'analysis_date': analysis.created_at.isoformat(),
+                    'updated_at': analysis.updated_at.isoformat()
+                },
+                'analysis_results': {
+                    'status': analysis.status,
+                    'progress': analysis.progress,
+                    'current_step': analysis.current_step,
+                    'total_speakers': analysis.total_speakers or 0,
+                    'total_segments': analysis.total_segments or 0,
+                    'total_discrepancies': analysis.total_discrepancies or 0,
+                    'critical_discrepancies': analysis.critical_discrepancies or 0
+                },
+                'chain_of_custody': {
+                    'file_integrity_hash': analysis.file_hash,
+                    'acquired_by': analysis.acquired_by or 'Not specified',
+                    'source': analysis.source or 'Not specified',
+                    'analyzed_by': current_user.email
+                },
+                'metadata': analysis.metadata or {},
+                'export_timestamp': datetime.utcnow().isoformat(),
+                'platform': 'BarberX Legal Tech Platform',
+                'version': '2.0'
+            }
+            
+            with open(str(json_path), 'w') as f:
+                json.dump(json_data, f, indent=2)
+            
+            # Log audit
+            AuditLog.log('report_exported', 'analysis', analysis.id, {'format': 'json'})
+            
+            return send_file(
+                str(json_path),
+                mimetype='application/json',
+                as_attachment=True,
+                download_name=f"BWC_Analysis_{analysis.case_number or analysis.id}.json"
+            )
+        
+        elif format == 'txt':
+            # Generate plain text export
+            txt_path = output_dir / f'report_{analysis.id}.txt'
+            
+            duration_str = f"{int(analysis.duration // 60)}m {int(analysis.duration % 60)}s" if analysis.duration else 'N/A'
+            file_size_str = f"{analysis.file_size / (1024*1024):.2f} MB" if analysis.file_size else 'N/A'
+            
+            text_content = f"""
+========================================
+BWC FORENSIC ANALYSIS REPORT
+========================================
+Generated: {datetime.utcnow().strftime('%B %d, %Y at %I:%M %p UTC')}
+
+CASE INFORMATION
+----------------
+Case Number: {analysis.case_number or 'N/A'}
+Evidence Number: {analysis.evidence_number or 'N/A'}
+Filename: {analysis.filename}
+File Size: {file_size_str}
+Duration: {duration_str}
+SHA-256 Hash: {analysis.file_hash}
+
+ANALYSIS RESULTS
+----------------
+Speakers Identified: {analysis.total_speakers or 0}
+Transcript Segments: {analysis.total_segments or 0}
+Total Discrepancies: {analysis.total_discrepancies or 0}
+Critical Issues: {analysis.critical_discrepancies or 0}
+Analysis Status: {analysis.status.upper()}
+Completion Progress: {analysis.progress}%
+Current Step: {analysis.current_step or 'N/A'}
+
+CHAIN OF CUSTODY
+----------------
+Evidence Acquired By: {analysis.acquired_by or 'Not specified'}
+Source/Origin: {analysis.source or 'Not specified'}
+Upload Date: {analysis.created_at.strftime('%Y-%m-%d %H:%M:%S UTC')}
+Analysis Completed: {analysis.updated_at.strftime('%Y-%m-%d %H:%M:%S UTC')}
+Analyzed By: {current_user.email}
+
+INTEGRITY VERIFICATION
+----------------------
+File Hash (SHA-256): {analysis.file_hash}
+This cryptographic hash ensures file integrity and admissibility
+in legal proceedings. Any modification to the original file will
+result in a different hash value, allowing detection of tampering.
+
+LEGAL NOTICE
+------------
+This report is generated for official use only and contains chain-of-custody
+verified evidence. The SHA-256 cryptographic hash ensures file integrity and
+admissibility. Any unauthorized modification, reproduction, or distribution
+is prohibited.
+
+This analysis was conducted using BarberX Legal Tech Platform certified
+forensic analysis tools in compliance with digital evidence standards.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BarberX Legal Tech Platform
+BWC Forensic Analysis System | Copyright © 2024-2026
+For official use only - Confidential
+"""
+            
+            with open(str(txt_path), 'w') as f:
+                f.write(text_content)
+            
+            # Log audit
+            AuditLog.log('report_exported', 'analysis', analysis.id, {'format': 'txt'})
+            
+            return send_file(
+                str(txt_path),
+                mimetype='text/plain',
+                as_attachment=True,
+                download_name=f"BWC_Analysis_{analysis.case_number or analysis.id}.txt"
+            )
+        
+        elif format == 'md':
+            # Generate Markdown export
+            md_path = output_dir / f'report_{analysis.id}.md'
+            
+            duration_str = f"{int(analysis.duration // 60)}m {int(analysis.duration % 60)}s" if analysis.duration else 'N/A'
+            file_size_str = f"{analysis.file_size / (1024*1024):.2f} MB" if analysis.file_size else 'N/A'
+            
+            markdown_content = f"""# BWC FORENSIC ANALYSIS REPORT
+
+**Generated:** {datetime.utcnow().strftime('%B %d, %Y at %I:%M %p UTC')}
+
+---
+
+## EXECUTIVE SUMMARY
+
+This report presents the forensic analysis results for body-worn camera footage case **{analysis.case_number or 'N/A'}**. 
+The analysis identified **{analysis.total_speakers or 0}** distinct speaker(s) across **{analysis.total_segments or 0}** transcript segments.
+
+{"**⚠️ ALERT:** " + str(analysis.critical_discrepancies) + " critical discrepancies require immediate attention." if analysis.critical_discrepancies and analysis.critical_discrepancies > 0 else "✅ No critical issues were detected."}
+
+---
+
+## CASE INFORMATION
+
+| Field | Value |
+|-------|-------|
+| Case Number | {analysis.case_number or 'N/A'} |
+| Evidence Number | {analysis.evidence_number or 'N/A'} |
+| Filename | {analysis.filename} |
+| File Size | {file_size_str} |
+| Duration | {duration_str} |
+| SHA-256 Hash | `{analysis.file_hash}` |
+
+---
+
+## ANALYSIS RESULTS
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| Speakers Identified | {analysis.total_speakers or 0} | ✓ |
+| Transcript Segments | {analysis.total_segments or 0} | ✓ |
+| Total Discrepancies | {analysis.total_discrepancies or 0} | {'⚠️' if analysis.total_discrepancies and analysis.total_discrepancies > 0 else '✓'} |
+| Critical Issues | {analysis.critical_discrepancies or 0} | {'⚠️' if analysis.critical_discrepancies and analysis.critical_discrepancies > 0 else '✓'} |
+| Analysis Status | {analysis.status.upper()} | {'✓' if analysis.status == 'completed' else '⏳'} |
+| Completion | {analysis.progress}% | {'✓' if analysis.progress == 100 else '⏳'} |
+
+---
+
+## CHAIN OF CUSTODY
+
+| Event | Details |
+|-------|---------|
+| Evidence Acquired By | {analysis.acquired_by or 'Not specified'} |
+| Source/Origin | {analysis.source or 'Not specified'} |
+| Upload Date | {analysis.created_at.strftime('%Y-%m-%d %H:%M:%S UTC')} |
+| Analysis Completed | {analysis.updated_at.strftime('%Y-%m-%d %H:%M:%S UTC')} |
+| Analyzed By | {current_user.email} |
+| Integrity Verification | `SHA-256: {analysis.file_hash}` |
+
+---
+
+## INTEGRITY VERIFICATION
+
+```
+File Hash (SHA-256): {analysis.file_hash}
+```
+
+This cryptographic hash ensures file integrity and admissibility in legal proceedings. 
+Any modification to the original file will result in a different hash value, allowing 
+detection of tampering.
+
+---
+
+## LEGAL NOTICE
+
+This report is generated for official use only and contains chain-of-custody verified evidence. 
+The **SHA-256 cryptographic hash** ensures file integrity and admissibility. 
+
+⚠️ Any unauthorized modification, reproduction, or distribution is prohibited.
+
+This analysis was conducted using BarberX Legal Tech Platform certified forensic analysis tools 
+in compliance with digital evidence standards.
+
+---
+
+**BarberX Legal Tech Platform**  
+BWC Forensic Analysis System | Copyright © 2024-2026  
+*For official use only - Confidential*
+"""
+            
+            with open(str(md_path), 'w') as f:
+                f.write(markdown_content)
+            
+            # Log audit
+            AuditLog.log('report_exported', 'analysis', analysis.id, {'format': 'md'})
+            
+            return send_file(
+                str(md_path),
+                mimetype='text/markdown',
+                as_attachment=True,
+                download_name=f"BWC_Analysis_{analysis.case_number or analysis.id}.md"
+            )
+    
+    except ImportError as e:
+        return jsonify({
+            'error': 'Export dependencies not installed',
+            'message': f'Please install: pip install reportlab python-docx'
+        }), 500
+    except Exception as e:
+        app.logger.error(f'Export error: {str(e)}')
+        return jsonify({'error': f'Export failed: {str(e)}'}), 500
 
 
 # ========================================

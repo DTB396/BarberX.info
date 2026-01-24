@@ -224,6 +224,9 @@
 </head>
 <body>
   
+  {%- comment -%} Onboarding Tour for First-Time Users {%- endcomment -%}
+  {% include 'components/onboarding-tour.html' %}
+  
   <div class="dashboard-header">
     <div class="header-left">
       <div class="barber-pole-spinner barber-pole-spinner--static barber-pole-spinner--nav" aria-hidden="true">
@@ -255,12 +258,9 @@
   
   <div class="dashboard-container">
     
-    {% if current_user.tier.name == 'FREE' %}
-    <div class="upgrade-banner">
-      <h2>🚀 Unlock the Full BarberX Experience</h2>
-      <p>Upgrade to Professional and get 25x more processing power, unlimited searches, and no watermarks.</p>
-      <button class="upgrade-btn" onclick="window.location.href='#pricing'">Upgrade Now</button>
-    </div>
+    {%- comment -%} Tier Upgrade Card - Shows personalized upgrade path {%- endcomment -%}
+    {% if current_user.tier.name in ['FREE', 'PROFESSIONAL', 'PREMIUM'] %}
+    {% include 'components/tier-upgrade-card.html' %}
     {% endif %}
     
     <div class="stats-grid">

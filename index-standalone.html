@@ -95,29 +95,52 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-navy), var(--primary-navy-dark));
+            background: linear-gradient(135deg, #0a1f44 0%, #051229 50%, #0a1f44 100%);
             color: white;
-            padding: 8rem 2rem 6rem 2rem;
+            padding: 10rem 2rem 8rem 2rem;
             text-align: center;
             margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             font-weight: 800;
             line-height: 1.1;
             color: #ffffff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2.5rem;
-            opacity: 0.9;
+            opacity: 0.95;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
         }
         
         .hero-buttons {
@@ -127,37 +150,57 @@
             flex-wrap: wrap;
         }
         
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn-primary {
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         
         .btn-primary:hover {
-            background: #2563eb;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
         }
         
         .btn-secondary {
             background: white;
             color: var(--primary-navy);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .btn-secondary:hover {
             background: var(--bg-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
         .btn-lg {
@@ -167,39 +210,58 @@
         
         /* Stats Bar */
         .stats-bar {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-top: 4rem;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
         }
         
         @media (max-width: 900px) {
             .stats-bar {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                padding: 2rem 1.5rem;
             }
         }
         
         .stat-item {
             padding: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-4px);
         }
         
         .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        75rem;
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+            font-weight: 800;
         }
         
-        .stat-label {
-            font-size: 0.875rem;
-            opacity: 0.9;
-        }
-        
-        /* Features Section */
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto
         .features {
             padding: 5rem 2rem;
             max-width: 1400px;
@@ -255,31 +317,59 @@
         
         .feature-card {
             background: var(--surface-color);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
         .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border-color: var(--accent-blue);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
         }
         
         .feature-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
         }
         
         .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--primary-navy);
+            font-weight: 700;
         }
         
         .feature-card p {
             color: var(--text-secondary);
             line-height: 1.8;
+            font-size: 1.05rem;
         }
         
         /* CTA Section */
@@ -338,39 +428,34 @@
             margin-bottom: 1.5rem;
             font-size: 1.125rem;
             color: #ffffff;
-            font-weight: 600;
+           Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.7;
         }
         
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        .footer-section a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+        .trust-badge {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding: 7rem 1.5rem 5rem;
+            }
+            
             .hero h1 {
-                font-size: 2rem;
-                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+                font-size: 2.5rem;
             }
             
             .hero p {
@@ -379,6 +464,39 @@
             
             .nav-links {
                 display: none;
+            }
+            
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .stat-value {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.875rem;
+            }
+            
+            .feature-card {
+                padding: 2rem;
+            }
+            
+            .btn-lg {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.25e;
             }
             
             .stats-bar {
@@ -436,21 +554,40 @@
     
     <!-- Hero Section -->
     <section class="hero">
-        <h1>AI-Powered BWC Analysis<br>for Civil Rights Litigation</h1>
+        <h1>Professional BWC Analysis<br>Powered by Local AI</h1>
         <p>
-            Professional-grade evidence processing with 100% local AI tools. 
-            Process body-worn camera footage without cloud costs or subscriptions.
+            Process body-worn camera footage with industry-leading accuracy. 
+            Zero cloud costs, complete data privacy, unlimited processing power.
         </p>
         
         <div class="hero-buttons">
             <a href="/register" class="btn btn-primary btn-lg">Start Free Trial</a>
-            <a href="/docs" class="btn btn-secondary btn-lg">View Documentation</a>
+            <a href="/batch-pdf-upload.html" class="btn btn-secondary btn-lg">Upload Documents</a>
+        </div>
+        
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span>🔒</span>
+                <span>100% Local Processing</span>
+            </div>
+            <div class="trust-badge">
+                <span>⚖️</span>
+                <span>Court-Defensible</span>
+            </div>
+            <div class="trust-badge">
+                <span>🏆</span>
+                <span>99.8% Accuracy</span>
+            </div>
+            <div class="trust-badge">
+                <span>💰</span>
+                <span>Zero Cloud Costs</span>
+            </div>
         </div>
         
         <div class="stats-bar">
             <div class="stat-item">
                 <div class="stat-value">1,000+</div>
-                <div class="stat-label">BWC Videos Analyzed</div>
+                <div class="stat-label">Videos Analyzed</div>
             </div>
             <div class="stat-item">
                 <div class="stat-value">99.8%</div>
@@ -458,11 +595,11 @@
             </div>
             <div class="stat-item">
                 <div class="stat-value">$200K+</div>
-                <div class="stat-label">Saved in Processing Costs</div>
+                <div class="stat-label">Cost Savings</div>
             </div>
             <div class="stat-item">
                 <div class="stat-value">24/7</div>
-                <div class="stat-label">Local Processing Available</div>
+                <div class="stat-label">Processing Available</div>
             </div>
         </div>
     </section>

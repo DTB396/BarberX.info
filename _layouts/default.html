@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="{{ '/assets/css/components/barber-branding.css' | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/components/ux-enhancements.css' | relative_url }}" />
     
+    {%- comment -%} Accessibility Enhancements - WCAG 2.1 Level AA {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/css/accessibility.css' | relative_url }}" />
+    
     {%- comment -%} Animation System {%- endcomment -%}
     <link rel="stylesheet" href="{{ '/assets/css/enhanced-animations.css' | relative_url }}" />
     
@@ -89,6 +92,10 @@
   </head>
 
   <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}{% if page.data_theme %} data-theme="{{ page.data_theme }}"{% endif %} data-layout="{{ page.layout | default: 'default' }}"{% if page.collection %} data-collection="{{ page.collection }}"{% endif %}>
+    
+    {%- comment -%} Accessibility Skip Links {%- endcomment -%}
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#navigation" class="skip-link">Skip to navigation</a>
     
     {%- comment -%} Reading Progress Bar {%- endcomment -%}
     {% unless page.hide_progress_bar %}
