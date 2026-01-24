@@ -1,0 +1,9 @@
+This is a sample court document for testing PDF upload functionality.
+
+Case Number: 2026-CV-TEST-001
+Document Type: Test Filing
+Date: January 23, 2026
+
+This PDF will be uploaded to verify the court document processing system is operational.
+
+BarberX Legal Tech Platform - Production Readiness Test
