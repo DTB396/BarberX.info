@@ -92,7 +92,7 @@
 
 # Ruby version for Jekyll and build environment
 [build.environment]
-  RUBY_VERSION = "3.1.0"
+  RUBY_VERSION = "3.2.2"
   NODE_VERSION = "22.19.0"
   JEKYLL_ENV = "production"
 
