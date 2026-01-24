@@ -2,11 +2,17 @@
 # Optimized for Jekyll + Custom Domain Deployment
 
 [build]
-  # Jekyll build command
-  command = "bundle exec jekyll build"
+  # Pre-build script
+  command = "chmod +x build.sh && ./build.sh && bundle exec jekyll build"
   
   # Output directory (Jekyll default)
   publish = "_site"
+  
+  # Build environment
+  [build.environment]
+    RUBY_VERSION = "3.2.2"
+    NODE_VERSION = "22.19.0"
+    JEKYLL_ENV = "production"
 
 [build.processing]
   # Skip processing - we'll handle optimization ourselves
