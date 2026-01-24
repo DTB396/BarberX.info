@@ -2,12 +2,14 @@
 .premium-nav__link, .premium-nav__dropdown-link, .premium-nav__sublink {
   transition: color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s;
 }
+
 .premium-nav__link:hover, .premium-nav__dropdown-link:hover, .premium-nav__sublink:hover {
   color: #d4a574;
   background: rgb(212 175 55 / 10%);
   box-shadow: 0 2px 12px rgb(212 175 55 / 10%);
   transform: translateY(-1px) scale(1.03);
 }
+
 .premium-nav__link:active, .premium-nav__dropdown-link:active, .premium-nav__sublink:active {
   color: #b88a44;
   background: rgb(212 175 55 / 18%);
@@ -34,10 +36,12 @@
 .premium-nav__chevron {
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
 }
+
 .premium-nav__item--has-dropdown:hover .premium-nav__chevron,
 .premium-nav__submenu-toggle[aria-expanded="true"] .premium-nav__chevron {
   transform: rotate(180deg);
 }
+
 /**
  * PREMIUM UI ENHANCEMENTS — BarberX Legal
  * Polished components, transitions, and micro-interactions

@@ -122,7 +122,6 @@ textarea:focus-visible {
     outline-width: 4px;
     outline-offset: 4px;
   }
-}
 
 /* ==========================================
    REDUCED MOTION - Respect user preferences
@@ -437,4 +436,5 @@ h6 { font-size: 1rem; }
 
 .no-scroll {
   overflow: hidden;
+}
 }

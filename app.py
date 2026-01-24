@@ -84,8 +84,10 @@ CORS_ORIGINS_LIST = [origin.strip() for origin in cors_origins.split(',')]
 app.config['UPLOAD_FOLDER'].mkdir(parents=True, exist_ok=True)
 app.config['ANALYSIS_FOLDER'].mkdir(parents=True, exist_ok=True)
 
-# Initialize extensions
-db = SQLAlchemy(app)
+
+# Initialize extensions (defer db binding)
+from models_auth import db
+db.init_app(app)
 CORS(app, origins=CORS_ORIGINS_LIST, supports_credentials=True)
 login_manager = LoginManager(app)
 login_manager.login_view = 'auth.login'  # Updated to use auth blueprint
