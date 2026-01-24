@@ -1459,9 +1459,50 @@ h6 {
 .principles-quote {
   font-size: 1.125rem;
   font-style: italic;
-  color: var(--muted);
+  color: #d1d5db;
   max-width: 500px;
   margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.principles-note {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
+}
+
+.principles-note p {
+  color: #e5e7eb;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.principles-note p:last-child {
+  margin-bottom: 0;
+}
+
+.principles-note strong {
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.principles-note a {
+  color: #D4AF37 !important;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.principles-note a:hover {
+  color: #FFD700 !important;
+  text-decoration: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
