@@ -2697,6 +2697,81 @@ def admin_initialize_settings():
 # HEALTH CHECK ENDPOINT
 # ========================================
 
+# ========================================
+# AI CHAT ENDPOINT (for chat widget)
+# ========================================
+import openai
+from flask_login import login_required
+
+# PDF extraction
+import PyPDF2
+import base64
+import tempfile
+import shutil
+
+# Video placeholder (future: add video transcript extraction)
+@app.route('/api/upload/pdf', methods=['POST'])
+@login_required
+def upload_pdf():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file uploaded'}), 400
+    file = request.files['file']
+    if not file.filename.lower().endswith('.pdf'):
+        return jsonify({'error': 'Only PDF files allowed'}), 400
+    save_path = app.config['UPLOAD_FOLDER'].parent / 'pdfs' / secure_filename(file.filename)
+    file.save(save_path)
+    # Extract text for chat context
+    with open(save_path, 'rb') as f:
+        reader = PyPDF2.PdfReader(f)
+        text = '\n'.join(page.extract_text() or '' for page in reader.pages)
+    return jsonify({'message': 'PDF uploaded', 'filename': str(save_path.name), 'text': text[:10000]})
+
+@app.route('/api/upload/video', methods=['POST'])
+@login_required
+def upload_video():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file uploaded'}), 400
+    file = request.files['file']
+    if not file.filename.lower().endswith(('.mp4', '.mov', '.avi')):
+        return jsonify({'error': 'Only video files allowed'}), 400
+    save_path = app.config['UPLOAD_FOLDER'] / secure_filename(file.filename)
+    file.save(save_path)
+    # Placeholder: In production, extract transcript here
+    return jsonify({'message': 'Video uploaded', 'filename': str(save_path.name), 'transcript': '[Transcript extraction coming soon]'})
+
+@app.route('/api/chat', methods=['POST'])
+@login_required
+def ai_chat():
+    data = request.get_json()
+    question = data.get('question', '').strip()
+    context = data.get('context', '')
+    user_api_key = data.get('api_key', '').strip()
+    if not question:
+        return jsonify({'error': 'No question provided'}), 400
+
+    # Use user-provided API key if present, else server key
+    api_key = user_api_key or os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        return jsonify({'answer': '[No OpenAI API key provided. Please enter your key.]'}), 400
+
+    try:
+        openai.api_key = api_key
+        prompt = f"You are a legal tech assistant. Context: {context}. User question: {question}"
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a helpful legal tech assistant for BWC and analysis reports."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=400,
+            temperature=0.2
+        )
+        answer = response.choices[0].message['content'].strip()
+    except Exception as e:
+        answer = f"[AI unavailable: {e}]"
+
+    return jsonify({'answer': answer})
+
 @app.route('/health')
 def health_check():
     """Health check endpoint for monitoring"""

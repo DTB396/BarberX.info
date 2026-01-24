@@ -365,3 +365,242 @@
     </script>
 </body>
 </html>
+
+
+<!-- Premium Upload & AI Chat Panel -->
+<div id="aiPanel" class="ai-panel-glass animate-fade-in">
+    <div class="ai-panel-header" onclick="toggleAIPanel()">
+        <span class="ai-panel-title">🧠 AI Analysis Assistant</span>
+        <span class="ai-panel-toggle" id="aiPanelToggle">▲</span>
+    </div>
+    <div class="ai-panel-body" id="aiPanelBody">
+        <div class="ai-upload-area" id="aiUploadArea">
+            <div class="ai-upload-icon">📄</div>
+            <div class="ai-upload-label">Upload PDF or Video</div>
+            <input type="file" id="aiFileInput" accept=".pdf,.mp4,.mov,.avi" />
+            <div class="ai-upload-status" id="aiUploadStatus"></div>
+        </div>
+        <div class="ai-api-key-row">
+            <input id="aiApiKeyInput" type="password" placeholder="Paste your OpenAI API key (optional)" />
+            <button id="aiApiKeySave" class="btn btn-secondary">Use My API Key</button>
+            <div id="aiApiKeyStatus"></div>
+        </div>
+        <div class="ai-chat-messages" id="aiChatMessages"></div>
+        <form id="aiChatForm" class="ai-chat-form">
+            <input id="aiChatInput" type="text" placeholder="Ask a question..." autocomplete="off" />
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+<style>
+.ai-panel-glass {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 400px;
+    max-width: 98vw;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 8px 32px rgba(30,64,175,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    z-index: 9999;
+    backdrop-filter: blur(18px) saturate(160%);
+    border: 1.5px solid rgba(59,130,246,0.12);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s, background 0.3s;
+}
+.ai-panel-header {
+    background: linear-gradient(90deg, #3B82F6 0%, #06B6D4 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+    letter-spacing: 0.01em;
+}
+.ai-panel-title { font-size: 1.1rem; }
+.ai-panel-toggle { font-size: 1.2rem; transition: transform 0.3s; }
+.ai-panel-body {
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.92);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.ai-upload-area {
+    border: 2px dashed #3B82F6;
+    border-radius: 12px;
+    background: rgba(59,130,246,0.04);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+}
+.ai-upload-area.dragover {
+    border-color: #06B6D4;
+    background: rgba(6,182,212,0.08);
+}
+.ai-upload-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #3B82F6;
+}
+.ai-upload-label {
+    font-size: 1rem;
+    color: #1E3A8A;
+    margin-bottom: 0.5rem;
+}
+.ai-upload-status {
+    font-size: 0.95rem;
+    color: #10B981;
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+}
+.ai-upload-area input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    cursor: pointer;
+}
+.ai-api-key-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.ai-api-key-row input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 0.98rem;
+}
+.ai-api-key-row button {
+    min-width: 120px;
+}
+.ai-api-key-row #aiApiKeyStatus {
+    font-size: 0.85rem;
+    color: #888;
+    margin-left: 0.5rem;
+}
+.ai-chat-messages {
+    background: rgba(243,244,246,0.7);
+    border-radius: 10px;
+    min-height: 120px;
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #222;
+    box-shadow: 0 1px 4px rgba(59,130,246,0.04);
+}
+.ai-chat-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.ai-chat-form input[type="text"] {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+}
+.ai-chat-form button {
+    min-width: 100px;
+}
+@media (max-width: 600px) {
+    .ai-panel-glass { right: 1vw; left: 1vw; width: 98vw; min-width: unset; }
+    .ai-panel-body { padding: 0.75rem; }
+}
+</style>
+<script>
+function toggleAIPanel() {
+    const body = document.getElementById('aiPanelBody');
+    const toggle = document.getElementById('aiPanelToggle');
+    if (body.style.display === 'none') {
+        body.style.display = 'flex';
+        toggle.textContent = '▲';
+    } else {
+        body.style.display = 'none';
+        toggle.textContent = '▼';
+    }
+}
+// Drag-and-drop upload
+const uploadArea = document.getElementById('aiUploadArea');
+const fileInput = document.getElementById('aiFileInput');
+const uploadStatus = document.getElementById('aiUploadStatus');
+uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+uploadArea.addEventListener('dragleave', e => { uploadArea.classList.remove('dragover'); });
+uploadArea.addEventListener('drop', e => {
+    e.preventDefault(); uploadArea.classList.remove('dragover');
+    if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileUpload(e.dataTransfer.files[0]);
+    }
+});
+fileInput.addEventListener('change', e => {
+    if (fileInput.files.length) handleFileUpload(fileInput.files[0]);
+});
+function handleFileUpload(file) {
+    uploadStatus.textContent = 'Uploading...';
+    const formData = new FormData();
+    formData.append('file', file);
+    const isPDF = file.name.toLowerCase().endsWith('.pdf');
+    const url = isPDF ? '/api/upload/pdf' : '/api/upload/video';
+    fetch(url, { method: 'POST', body: formData })
+        .then(r => r.json())
+        .then(data => {
+            if (data.error) {
+                uploadStatus.textContent = data.error;
+            } else {
+                uploadStatus.textContent = 'Uploaded: ' + data.filename;
+                window.aiContext = isPDF ? data.text : data.transcript;
+            }
+        })
+        .catch(() => { uploadStatus.textContent = 'Upload failed.'; });
+}
+// API key logic
+document.getElementById('aiApiKeySave').onclick = function(e) {
+    e.preventDefault();
+    const key = document.getElementById('aiApiKeyInput').value.trim();
+    if (!key) {
+        document.getElementById('aiApiKeyStatus').textContent = 'No key entered.';
+        return;
+    }
+    localStorage.setItem('openai_api_key', key);
+    document.getElementById('aiApiKeyStatus').textContent = 'API key saved for this browser session.';
+};
+// Chat logic
+document.getElementById('aiChatForm').onsubmit = async function(e) {
+    e.preventDefault();
+    const input = document.getElementById('aiChatInput');
+    const messages = document.getElementById('aiChatMessages');
+    const userMsg = input.value.trim();
+    if (!userMsg) return;
+    messages.innerHTML += `<div style='margin-bottom:0.5rem;'><b>You:</b> ${userMsg}</div>`;
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+    messages.innerHTML += `<div style='margin-bottom:0.5rem; color: #888;'><b>AI:</b> <span>Thinking...</span></div>`;
+    messages.scrollTop = messages.scrollHeight;
+    try {
+        const apiKey = localStorage.getItem('openai_api_key') || '';
+        const context = window.aiContext || '';
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: userMsg, context, api_key: apiKey })
+        });
+        const data = await res.json();
+        messages.innerHTML = messages.innerHTML.replace('Thinking...', data.answer || 'No response.');
+    } catch (err) {
+        messages.innerHTML = messages.innerHTML.replace('Thinking...', 'Error contacting AI.');
+    }
+    messages.scrollTop = messages.scrollHeight;
+};
+</script>
