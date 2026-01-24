@@ -332,3 +332,27 @@ A: Yes! Edit the SVG element in the component or HTML file.
 - 📱 **Badge Component:** Read `BARBERSHOP_BADGE_QUICKSTART.md`
 
 Happy deploying! 🚀
+
+---
+
+# BarberX.info
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_SITE_ID/deploy-status)](https://app.netlify.com/sites/barberx-info/deploys)
+
+## Quick Start
+
+- See QUICK-START-NETLIFY.md for instant Netlify deployment.
+- See NETLIFY-DEPLOYMENT-GUIDE.md for advanced options.
+
+## Production Deploy
+
+- All production deploys are handled by Netlify.
+- Use the Netlify dashboard or CLI for branch/preview deploys.
+
+## Status
+
+- This site is optimized for Netlify: static, serverless, and forms-ready.
+
+---
+
+Replace `YOUR_NETLIFY_SITE_ID` in the badge URL with your actual Netlify site ID for live status.
