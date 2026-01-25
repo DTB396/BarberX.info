@@ -1,60 +1,43 @@
-# _config.yml — BarberX Legal Technologies (GitHub Pages + custom domain)
+﻿# BarberX Legal Technologies - GitHub Pages Configuration
 
-title: "BarberX Legal Technologies"
-description: "AI-Powered Civil Rights eDiscovery Platform | Precision & Honor in the Tradition of America's Golden Age"
-tagline: "Precision. Excellence. Honor. Justice."
-
-# Custom domain (root)
-url: "https://barberx.info"
-baseurl: "" # MUST be empty for root custom domain
-
-# Branding / contact
-theme_color: "#D4AF37" # Golden age gold
-email: "contact@barberx.info"
+title: BarberX Legal Technologies
+description: Professional AI-powered eDiscovery platform for civil rights litigation
+url: "https://dtb396.github.io"
+baseurl: "/BarberX.info"
 
 # Build settings
 markdown: kramdown
-permalink: pretty
+theme: minima
 
-# Optional but recommended for GitHub Pages sites
-timezone: "America/New_York"
-lang: "en"
-
-# Social share image (use | relative_url in templates when referencing)
-image: "/assets/img/og-image.png"
-
-# Plugins supported by GitHub Pages (keep it tight)
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - venv
+  - .venv
+  - __pycache__
+  - *.py
+  - requirements.txt
+  - app.py
+  - instance
+  - logs
+  - uploads
+  - backups
 
 # Collections
 collections:
-  cases:
+  docs:
     output: true
-    permalink: /cases/:name/
-  essays:
-    output: true
-    permalink: /essays/:name/
-  opra:
-    output: true
-    permalink: /opra/:name/
+    permalink: /docs/:path/
 
-# Excludes (keeps build clean)
-exclude:
-  - README.md
-  - LICENSE
-  - node_modules
-  - vendor
-  - vendor/bundle
-  - Gemfile
-  - Gemfile.lock
-  - package.json
-  - package-lock.json
-  - yarn.lock
-  - scripts
-  - tools
-  - tillerstead-toolkit
-  - backend
-  - .venv
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
