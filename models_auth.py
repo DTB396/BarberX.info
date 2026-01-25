@@ -98,7 +98,7 @@ class User(UserMixin, db.Model):
             },
             TierLevel.PROFESSIONAL: {
                 'bwc_videos_per_month': 25,
-                'max_file_size_mb': 500,
+                'max_file_size_mb': 1024,  # 1 GB
                 'document_pages_per_month': 1000,
                 'transcription_minutes_per_month': 600,
                 'search_queries_per_month': -1,  # unlimited
@@ -108,7 +108,7 @@ class User(UserMixin, db.Model):
             },
             TierLevel.PREMIUM: {
                 'bwc_videos_per_month': 100,
-                'max_file_size_mb': 2048,
+                'max_file_size_mb': 5120,  # 5 GB
                 'document_pages_per_month': 10000,
                 'transcription_minutes_per_month': 3000,
                 'search_queries_per_month': -1,
@@ -120,7 +120,7 @@ class User(UserMixin, db.Model):
             },
             TierLevel.ENTERPRISE: {
                 'bwc_videos_per_month': -1,  # unlimited
-                'max_file_size_mb': 10240,
+                'max_file_size_mb': 20480,  # 20 GB for 4K videos
                 'document_pages_per_month': -1,
                 'transcription_minutes_per_month': -1,
                 'search_queries_per_month': -1,
