@@ -71,7 +71,7 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///barberx_FRESH.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MAX_CONTENT_LENGTH'] = int(os.getenv('MAX_CONTENT_LENGTH', 5 * 1024 * 1024 * 1024))  # 5GB default
+app.config['MAX_CONTENT_LENGTH'] = int(os.getenv('MAX_CONTENT_LENGTH', 20 * 1024 * 1024 * 1024))  # 20GB max to support Enterprise tier
 app.config['UPLOAD_FOLDER'] = Path('./uploads/bwc_videos')
 app.config['ANALYSIS_FOLDER'] = Path('./bwc_analysis')
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
