@@ -2594,7 +2594,13 @@ def admin_initialize_settings():
 # ========================================
 # AI CHAT ENDPOINT (for chat widget)
 # ========================================
-import openai
+try:
+    import openai
+    OPENAI_AVAILABLE = True
+except ImportError:
+    OPENAI_AVAILABLE = False
+    app.logger.warning("OpenAI not available - AI chat features disabled")
+
 from flask_login import login_required
 
 # PDF extraction
