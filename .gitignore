@@ -52,3 +52,8 @@ overnight-improvements/
 
 # Node
 node_modules/
+
+# Environment files
+.env.render
+.env.local
+.env
