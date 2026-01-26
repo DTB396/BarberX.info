@@ -131,9 +131,20 @@ if BACKEND_OPTIMIZATION_AVAILABLE:
     print(f"[OK] Configuration manager initialized - {config_mgr.config.environment} environment")
 else:
     # Fallback to manual configuration
-    app.config["SECRET_KEY"] = os.getenv(
-        "SECRET_KEY", "barberx-legal-tech-2026-secure-key-change-in-production"
-    )
+    # CRITICAL: SECRET_KEY must be set in environment - no hardcoded fallback
+    secret_key = os.getenv("SECRET_KEY")
+    if not secret_key:
+        if app.config.get('TESTING'):
+            # Only allow auto-generation in testing
+            import secrets
+            secret_key = secrets.token_hex(32)
+            app.logger.warning("Generated temporary SECRET_KEY for testing")
+        else:
+            raise RuntimeError(
+                "SECRET_KEY environment variable is required for security. "
+                "Generate one with: python -c 'import secrets; print(secrets.token_hex(32))'"
+            )
+    app.config["SECRET_KEY"] = secret_key
 
     # Use absolute path for database
     basedir = os.path.abspath(os.path.dirname(__file__))
@@ -1106,49 +1117,98 @@ def evidence_dashboard_page():
 def evidence_intake_submit():
     """Submit new evidence for processing"""
     from evidence_processing import evidence_workflow
+    from utils.security import InputValidator, ErrorSanitizer
+    from utils.responses import error_response, validation_error, success_response
+    from utils.logging_config import get_logger
+    
+    logger = get_logger('api')
 
     try:
-        # Get form data
+        # Validate required fields
+        validation_errors = {}
+        
+        case_number = request.form.get("case_number", "").strip()
+        if not case_number:
+            validation_errors["case_number"] = ["Case number is required"]
+        elif len(case_number) > 50:
+            validation_errors["case_number"] = ["Case number too long (max 50 characters)"]
+        
+        evidence_type = request.form.get("evidence_type", "").strip()
+        if not evidence_type:
+            validation_errors["evidence_type"] = ["Evidence type is required"]
+        
+        # Return validation errors if any
+        if validation_errors:
+            return validation_error(validation_errors)
+        
+        # Get form data with sanitization
         data = {
-            "case_number": request.form.get("case_number"),
-            "incident_date": request.form.get("incident_date"),
-            "incident_location": request.form.get("incident_location"),
-            "case_type": request.form.get("case_type"),
-            "jurisdiction": request.form.get("jurisdiction"),
-            "lead_investigator": request.form.get("lead_investigator"),
-            "evidence_type": request.form.get("evidence_type"),
-            "description": request.form.get("description"),
-            "source": request.form.get("source"),
-            "officer_name": request.form.get("officer_name"),
-            "badge_number": request.form.get("badge_number"),
-            "acquired_by": request.form.get("acquired_by"),
-            "acquired_date": request.form.get("acquired_date"),
-            "acquisition_method": request.form.get("acquisition_method"),
-            "storage_location": request.form.get("storage_location"),
+            "case_number": InputValidator.sanitize_text(case_number, 50),
+            "incident_date": request.form.get("incident_date", "").strip(),
+            "incident_location": InputValidator.sanitize_text(request.form.get("incident_location", ""), 200),
+            "case_type": request.form.get("case_type", "").strip(),
+            "jurisdiction": InputValidator.sanitize_text(request.form.get("jurisdiction", ""), 100),
+            "lead_investigator": InputValidator.sanitize_text(request.form.get("lead_investigator", ""), 100),
+            "evidence_type": evidence_type,
+            "description": InputValidator.sanitize_text(request.form.get("description", ""), 5000),
+            "source": InputValidator.sanitize_text(request.form.get("source", ""), 200),
+            "officer_name": InputValidator.sanitize_text(request.form.get("officer_name", ""), 100),
+            "badge_number": InputValidator.sanitize_text(request.form.get("badge_number", ""), 50),
+            "acquired_by": InputValidator.sanitize_text(request.form.get("acquired_by", ""), 100),
+            "acquired_date": request.form.get("acquired_date", "").strip(),
+            "acquisition_method": InputValidator.sanitize_text(request.form.get("acquisition_method", ""), 200),
+            "storage_location": InputValidator.sanitize_text(request.form.get("storage_location", ""), 200),
             "priority": request.form.get("priority", "normal"),
-            "assigned_to": request.form.get("assigned_to"),
-            "special_instructions": request.form.get("special_instructions"),
-            "tags": json.loads(request.form.get("tags", "[]")),
+            "assigned_to": InputValidator.sanitize_text(request.form.get("assigned_to", ""), 100),
+            "special_instructions": InputValidator.sanitize_text(request.form.get("special_instructions", ""), 2000),
             "submitted_by": current_user.email,
             "id": str(uuid.uuid4())[:12].upper(),
         }
+        
+        # Parse tags safely
+        try:
+            tags_str = request.form.get("tags", "[]")
+            data["tags"] = json.loads(tags_str) if tags_str else []
+        except json.JSONDecodeError:
+            data["tags"] = []
 
-        # Handle file upload
+        # Handle file upload with validation
         if "files" in request.files:
             files = request.files.getlist("files")
             for file in files:
-                if file.filename:
+                if file and file.filename:
+                    # Validate file type
+                    is_valid, error_msg = InputValidator.validate_file_type(file)
+                    if not is_valid:
+                        logger.warning(f"File upload rejected: {error_msg}")
+                        return error_response(error_msg, error_code='FILE_TYPE_NOT_ALLOWED', status_code=400)
+                    
+                    # Validate file size (get category from evidence type)
+                    category = 'video' if 'video' in evidence_type.lower() else 'document'
+                    is_valid, error_msg = InputValidator.validate_file_size(file, category)
+                    if not is_valid:
+                        logger.warning(f"File upload rejected: {error_msg}")
+                        return error_response(error_msg, error_code='FILE_TOO_LARGE', status_code=400)
+                    
+                    # Sanitize filename and save securely
                     filename = secure_filename(file.filename)
                     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
                     unique_filename = f"{data['id']}_{timestamp}_{filename}"
 
-                    # Save file
+                    # Save file with secure path
                     upload_dir = Path(app.config.get("UPLOAD_FOLDER", "./uploads/evidence"))
                     upload_dir.mkdir(parents=True, exist_ok=True)
-                    filepath = upload_dir / unique_filename
+                    
+                    try:
+                        filepath = InputValidator.sanitize_path(str(upload_dir), unique_filename)
+                    except ValueError as e:
+                        logger.error(f"Path traversal attempt detected: {e}")
+                        return error_response("Invalid file path", error_code='VALIDATION_ERROR', status_code=400)
+                    
                     file.save(filepath)
+                    logger.info(f"File saved: {filepath}")
 
-                    # Calculate hash
+                    # Calculate hash for integrity
                     file_hash = hashlib.sha256()
                     with open(filepath, "rb") as f:
                         for chunk in iter(lambda: f.read(8192), b""):
@@ -1159,6 +1219,8 @@ def evidence_intake_submit():
                     data["file_size"] = os.path.getsize(filepath)
                     data["file_hash"] = file_hash.hexdigest()
                     data["format"] = filename.split(".")[-1].lower()
+                    
+                    logger.info(f"File validated and saved: {filename}, size: {data['file_size']}, hash: {data['file_hash'][:16]}...")
 
         # Create evidence package
         evidence_package = evidence_workflow.processor.create_evidence_package(data)
@@ -1191,17 +1253,30 @@ def evidence_intake_submit():
         with open(metadata_path, "w") as f:
             json.dump(evidence_package, f, indent=2)
 
-        return jsonify(
-            {
-                "success": True,
+        return success_response(
+            data={
                 "evidence_id": analysis.id,
-                "message": "Evidence submitted successfully",
-            }
+                "case_number": data["case_number"]
+            },
+            message="Evidence submitted successfully",
+            status_code=201
         )
 
     except Exception as e:
-        app.logger.error(f"Evidence intake error: {e}")
-        return jsonify({"error": str(e)}), 500
+        # Log full error server-side
+        logger.error(f"Evidence intake failed: {type(e).__name__}: {e}", exc_info=True)
+        
+        # Generate error ticket for support
+        error_ticket = ErrorSanitizer.create_error_ticket()
+        
+        # Return sanitized error to user
+        user_message = ErrorSanitizer.sanitize_error(e, 'file')
+        return error_response(
+            user_message,
+            error_code='OPERATION_FAILED',
+            status_code=500,
+            error_ticket=error_ticket
+        )
 
 
 @app.route("/api/evidence/list", methods=["GET"])
