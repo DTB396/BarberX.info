@@ -14,26 +14,11 @@ from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 import flask
-from flask import (
-    Flask,
-    flash,
-    jsonify,
-    redirect,
-    render_template,
-    request,
-    send_file,
-    session,
-    url_for,
-)
+from flask import (Flask, flash, jsonify, redirect, render_template, request,
+                   send_file, session, url_for)
 from flask_cors import CORS
-from flask_login import (
-    LoginManager,
-    UserMixin,
-    current_user,
-    login_required,
-    login_user,
-    logout_user,
-)
+from flask_login import (LoginManager, UserMixin, current_user, login_required,
+                         login_user, logout_user)
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
@@ -61,6 +46,7 @@ except ImportError as e:
 # Phase 1 Premium Features
 try:
     from whisper_transcription import WhisperTranscriptionService
+
     WHISPER_AVAILABLE = True
 except ImportError as e:
     WHISPER_AVAILABLE = False
@@ -68,6 +54,7 @@ except ImportError as e:
 
 try:
     from ocr_service import OCRService
+
     OCR_AVAILABLE = True
 except ImportError as e:
     OCR_AVAILABLE = False
@@ -75,13 +62,15 @@ except ImportError as e:
 
 try:
     from two_factor_auth import TwoFactorAuthService
+
     TWO_FACTOR_AVAILABLE = True
 except ImportError as e:
     TWO_FACTOR_AVAILABLE = False
     print(f"[!] 2FA service not available: {e}")
 
 try:
-    from stripe_payment_service import StripePaymentService, SUBSCRIPTION_PLANS
+    from stripe_payment_service import SUBSCRIPTION_PLANS, StripePaymentService
+
     STRIPE_AVAILABLE = True
 except ImportError as e:
     STRIPE_AVAILABLE = False
@@ -99,35 +88,29 @@ except ImportError:
 
 # Backend Optimization Components
 try:
-    from config_manager import ConfigManager, DatabaseOptimizer, DatabaseBackup
-    from unified_evidence_service import UnifiedEvidenceProcessor, EvidenceReportGenerator
-    from api_middleware import (
-        api_endpoint,
-        rate_limit,
-        require_api_key,
-        require_tier,
-        validate_request,
-        log_request,
-        handle_errors
-    )
-    from backend_integration import (
-        service_registry,
-        success_response,
-        error_response,
-        event_bus,
-        Event,
-        performance_monitor
-    )
+    from api_middleware import (api_endpoint, handle_errors, log_request,
+                                rate_limit, require_api_key, require_tier,
+                                validate_request)
+    from backend_integration import (Event, error_response, event_bus,
+                                     performance_monitor, service_registry,
+                                     success_response)
+    from config_manager import ConfigManager, DatabaseBackup, DatabaseOptimizer
+    from unified_evidence_service import (EvidenceReportGenerator,
+                                          UnifiedEvidenceProcessor)
+
     BACKEND_OPTIMIZATION_AVAILABLE = True
     print("[OK] Backend optimization components loaded")
 except ImportError as e:
     BACKEND_OPTIMIZATION_AVAILABLE = False
     print(f"[!] Backend optimization not available: {e}")
+
     # Fallback response helpers
     def success_response(message, data=None):
         return {"success": True, "message": message, "data": data or {}}
+
     def error_response(message, error_code=None, details=None):
         return {"success": False, "message": message, "error_code": error_code, "details": details}
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -151,10 +134,10 @@ else:
     app.config["SECRET_KEY"] = os.getenv(
         "SECRET_KEY", "barberx-legal-tech-2026-secure-key-change-in-production"
     )
-    
+
     # Use absolute path for database
     basedir = os.path.abspath(os.path.dirname(__file__))
-    
+
     # Database configuration - PostgreSQL for production, SQLite for development
     database_url = os.getenv("DATABASE_URL")
     if database_url:
@@ -167,7 +150,7 @@ else:
         # Local development with SQLite
         app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///barberx_FRESH.db"
         print(f"[OK] Using SQLite database for development")
-    
+
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["MAX_CONTENT_LENGTH"] = int(
         os.getenv("MAX_CONTENT_LENGTH", 20 * 1024 * 1024 * 1024)
@@ -232,37 +215,41 @@ if not app.debug:
 evidence_processor = None
 report_generator = None
 
+
 def initialize_backend_services():
     """Initialize backend optimization services"""
     global evidence_processor, report_generator
-    
+
     if not BACKEND_OPTIMIZATION_AVAILABLE:
         return
-    
+
     with app.app_context():
         try:
             # Create database indexes for performance
             optimizer = DatabaseOptimizer(db)
             optimizer.create_indexes()
             app.logger.info("[OK] Database indexes created/verified")
-            
+
             # Initialize evidence processor
             evidence_processor = UnifiedEvidenceProcessor()
             report_generator = EvidenceReportGenerator()
             app.logger.info("[OK] Evidence processor initialized")
-            
+
             # Subscribe to events (optional)
             def on_evidence_processed(event):
                 app.logger.info(f"Evidence {event.data.get('evidence_id')} processed")
-            
-            event_bus.subscribe('evidence.processed', on_evidence_processed)
-            event_bus.subscribe('evidence.processing_failed', 
-                              lambda e: app.logger.error(f"Processing failed: {e.data}"))
-            
+
+            event_bus.subscribe("evidence.processed", on_evidence_processed)
+            event_bus.subscribe(
+                "evidence.processing_failed",
+                lambda e: app.logger.error(f"Processing failed: {e.data}"),
+            )
+
             app.logger.info("[OK] Backend optimization services initialized")
-            
+
         except Exception as e:
             app.logger.error(f"Failed to initialize backend services: {e}")
+
 
 # Global analyzer instance (lazy load)
 analyzer = None
@@ -574,9 +561,31 @@ def api_key_required(f):
 @app.route("/")
 def index():
     """Landing page - modern standalone version"""
-    if current_user.is_authenticated:
-        return redirect(url_for("dashboard"))
-    return send_file("templates/index-standalone.html")
+    try:
+        if current_user.is_authenticated:
+            return redirect(url_for("dashboard"))
+        # Use render_template instead of send_file for better compatibility
+        return render_template("index-standalone.html")
+    except Exception as e:
+        # Fallback to a simple response if template fails
+        app.logger.error(f"Index route error: {e}")
+        return f"""
+        <html>
+        <head><title>BarberX Legal Technologies</title></head>
+        <body style="font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px;">
+            <h1>BarberX Legal Technologies</h1>
+            <p>Professional BWC Forensic Analysis Platform</p>
+            <p><a href="/login">Login</a> | <a href="/auth/signup">Sign Up</a> | <a href="/health">Health Check</a></p>
+            <p style="color: red;">Error: {e}</p>
+        </body>
+        </html>
+        """, 500
+
+
+@app.route("/health")
+def health():
+    """Simple health check for Render"""
+    return jsonify({"status": "ok", "timestamp": datetime.utcnow().isoformat()})
 
 
 @app.route("/preview")
@@ -589,46 +598,50 @@ def preview_demo():
 # BACKEND OPTIMIZATION API ENDPOINTS
 # ========================================
 
+
 @app.route("/health-detailed")
 def health_check_detailed():
     """Detailed system health check endpoint"""
     if not BACKEND_OPTIMIZATION_AVAILABLE:
-        return jsonify({
-            "status": "healthy",
-            "timestamp": datetime.utcnow().isoformat(),
-            "backend_optimization": "not available"
-        })
-    
+        return jsonify(
+            {
+                "status": "healthy",
+                "timestamp": datetime.utcnow().isoformat(),
+                "backend_optimization": "not available",
+            }
+        )
+
     # Check database
     db_healthy = True
     try:
-        db.session.execute('SELECT 1')
+        db.session.execute("SELECT 1")
     except Exception:
         db_healthy = False
-    
+
     # Check services
     services = service_registry.list_services()
-    services_healthy = all(s['status'] == 'active' for s in services)
-    
+    services_healthy = all(s["status"] == "active" for s in services)
+
     # Get performance stats
     from backend_integration import performance_monitor
+
     stats = performance_monitor.get_stats()
-    
+
     health_status = {
-        'status': 'healthy' if (db_healthy and services_healthy) else 'degraded',
-        'timestamp': datetime.utcnow().isoformat(),
-        'components': {
-            'database': 'up' if db_healthy else 'down',
-            'services': 'up' if services_healthy else 'degraded'
+        "status": "healthy" if (db_healthy and services_healthy) else "degraded",
+        "timestamp": datetime.utcnow().isoformat(),
+        "components": {
+            "database": "up" if db_healthy else "down",
+            "services": "up" if services_healthy else "degraded",
         },
-        'metrics': {
-            'total_requests': sum(s.get('call_count', 0) for s in stats.values()),
-            'registered_services': len(services)
-        }
+        "metrics": {
+            "total_requests": sum(s.get("call_count", 0) for s in stats.values()),
+            "registered_services": len(services),
+        },
     }
-    
-    status_code = 200 if health_status['status'] == 'healthy' else 503
-    
+
+    status_code = 200 if health_status["status"] == "healthy" else 503
+
     return jsonify(health_status), status_code
 
 
@@ -637,29 +650,32 @@ def api_rate_limit_status():
     """Get current rate limit status for user"""
     if not BACKEND_OPTIMIZATION_AVAILABLE:
         return jsonify(error_response("Backend optimization not available")), 503
-    
-    from api_middleware import rate_limiter
+
     from flask import g
-    
+
+    from api_middleware import rate_limiter
+
     if current_user.is_authenticated:
         identifier = str(current_user.id)
         tier = current_user.tier
     else:
         identifier = request.remote_addr
-        tier = 'free'
-    
+        tier = "free"
+
     remaining = rate_limiter.get_remaining(identifier, tier)
     limit = rate_limiter.tier_limits[tier]
-    
-    return jsonify(success_response(
-        "Rate limit status",
-        {
-            'tier': tier,
-            'limit_per_minute': limit,
-            'remaining': remaining,
-            'reset_in_seconds': 60
-        }
-    ))
+
+    return jsonify(
+        success_response(
+            "Rate limit status",
+            {
+                "tier": tier,
+                "limit_per_minute": limit,
+                "remaining": remaining,
+                "reset_in_seconds": 60,
+            },
+        )
+    )
 
 
 @app.route("/bwc-dashboard")
@@ -804,7 +820,7 @@ def admin_panel():
     if not hasattr(current_user, "is_admin") or not current_user.is_admin:
         flash("Admin access required", "danger")
         return redirect(url_for("dashboard"))
-    
+
     return send_file("templates/admin/admin-dashboard-enhanced.html")
 
 
@@ -814,21 +830,19 @@ def account_settings():
     """User account settings page"""
     if ENHANCED_AUTH_AVAILABLE:
         from models_auth import UsageTracking
-        
+
         # Get usage for current month
         usage = UsageTracking.query.filter_by(
-            user_id=current_user.id,
-            month=datetime.utcnow().month,
-            year=datetime.utcnow().year
+            user_id=current_user.id, month=datetime.utcnow().month, year=datetime.utcnow().year
         ).first()
-        
+
         # Get tier limits
         limits = current_user.get_tier_limits()
-        
+
         return render_template(
             "auth/account-settings.html",
             usage=usage or UsageTracking(user_id=current_user.id),
-            limits=limits
+            limits=limits,
         )
     else:
         return send_file("templates/auth/account-settings.html")
@@ -840,19 +854,19 @@ def update_user_profile():
     """Update user profile information"""
     if not ENHANCED_AUTH_AVAILABLE:
         return jsonify({"error": "Feature not available"}), 503
-    
+
     from models_auth import User, db
-    
+
     try:
         data = request.get_json()
-        
+
         if data.get("full_name"):
             current_user.full_name = data["full_name"]
         if data.get("organization"):
             current_user.organization = data["organization"]
-        
+
         db.session.commit()
-        
+
         return jsonify({"message": "Profile updated successfully"})
     except Exception as e:
         app.logger.error(f"Profile update error: {e}")
@@ -865,20 +879,20 @@ def change_password():
     """Change user password"""
     if not ENHANCED_AUTH_AVAILABLE:
         return jsonify({"error": "Feature not available"}), 503
-    
+
     from models_auth import User, db
-    
+
     try:
         data = request.get_json()
         current_password = data.get("current_password")
         new_password = data.get("new_password")
-        
+
         if not current_user.check_password(current_password):
             return jsonify({"error": "Current password incorrect"}), 401
-        
+
         current_user.set_password(new_password)
         db.session.commit()
-        
+
         return jsonify({"message": "Password changed successfully"})
     except Exception as e:
         app.logger.error(f"Password change error: {e}")
@@ -900,16 +914,17 @@ def delete_user_account():
     """Delete user account (GDPR compliance)"""
     if not ENHANCED_AUTH_AVAILABLE:
         return jsonify({"error": "Feature not available"}), 503
-    
-    from models_auth import User, db
+
     from flask_login import logout_user
-    
+
+    from models_auth import User, db
+
     try:
         user_id = current_user.id
         db.session.delete(current_user)
         db.session.commit()
         logout_user()
-        
+
         app.logger.info(f"User account {user_id} deleted")
         return jsonify({"message": "Account deleted"})
     except Exception as e:
@@ -982,17 +997,18 @@ def view_analysis_results(analysis_id):
 def get_enhanced_analysis(analysis_id):
     """Get enhanced analysis data with all features"""
     analysis = Analysis.query.filter_by(id=analysis_id, user_id=current_user.id).first()
-    
+
     if not analysis:
         return jsonify({"error": "Analysis not found"}), 404
-    
+
     # Load the full report from file
     if analysis.report_json_path and os.path.exists(analysis.report_json_path):
         import json
-        with open(analysis.report_json_path, 'r') as f:
+
+        with open(analysis.report_json_path, "r") as f:
             report_data = json.load(f)
         return jsonify(report_data)
-    
+
     return jsonify({"error": "Analysis report not available"}), 404
 
 
@@ -1001,14 +1017,14 @@ def get_enhanced_analysis(analysis_id):
 def get_analysis_video(analysis_id):
     """Stream video file for analysis"""
     analysis = Analysis.query.filter_by(id=analysis_id, user_id=current_user.id).first()
-    
+
     if not analysis:
         return jsonify({"error": "Analysis not found"}), 404
-    
+
     if not analysis.file_path or not os.path.exists(analysis.file_path):
         return jsonify({"error": "Video file not found"}), 404
-    
-    return send_file(analysis.file_path, mimetype='video/mp4')
+
+    return send_file(analysis.file_path, mimetype="video/mp4")
 
 
 @app.route("/api/analysis/<analysis_id>/report/<format>", methods=["GET"])
@@ -1016,31 +1032,27 @@ def get_analysis_video(analysis_id):
 def download_analysis_report(analysis_id, format):
     """Download analysis report in specified format"""
     analysis = Analysis.query.filter_by(id=analysis_id, user_id=current_user.id).first()
-    
+
     if not analysis:
         return jsonify({"error": "Analysis not found"}), 404
-    
+
     format = format.lower()
-    
+
     if format == "json" and analysis.report_json_path:
         return send_file(
-            analysis.report_json_path, 
+            analysis.report_json_path,
             as_attachment=True,
-            download_name=f"{analysis.id}_report.json"
+            download_name=f"{analysis.id}_report.json",
         )
     elif format == "txt" and analysis.report_txt_path:
         return send_file(
-            analysis.report_txt_path,
-            as_attachment=True,
-            download_name=f"{analysis.id}_report.txt"
+            analysis.report_txt_path, as_attachment=True, download_name=f"{analysis.id}_report.txt"
         )
     elif format == "md" and analysis.report_md_path and os.path.exists(analysis.report_md_path):
         return send_file(
-            analysis.report_md_path,
-            as_attachment=True,
-            download_name=f"{analysis.id}_report.md"
+            analysis.report_md_path, as_attachment=True, download_name=f"{analysis.id}_report.md"
         )
-    
+
     return jsonify({"error": f"Report format '{format}' not available"}), 404
 
 
@@ -1048,29 +1060,31 @@ def download_analysis_report(analysis_id, format):
 @login_required
 def get_user_analyses():
     """Get all analyses for current user"""
-    analyses = Analysis.query.filter_by(user_id=current_user.id)\
-        .order_by(Analysis.created_at.desc())\
-        .all()
-    
-    return jsonify({
-        "analyses": [{
-            "id": a.id,
-            "filename": a.filename,
-            "status": a.status,
-            "case_number": a.case_number,
-            "created_at": a.created_at.isoformat() if a.created_at else None,
-            "progress": a.progress
-        } for a in analyses]
-    })
+    analyses = (
+        Analysis.query.filter_by(user_id=current_user.id).order_by(Analysis.created_at.desc()).all()
+    )
+
+    return jsonify(
+        {
+            "analyses": [
+                {
+                    "id": a.id,
+                    "filename": a.filename,
+                    "status": a.status,
+                    "case_number": a.case_number,
+                    "created_at": a.created_at.isoformat() if a.created_at else None,
+                    "progress": a.progress,
+                }
+                for a in analyses
+            ]
+        }
+    )
 
 
 @app.route("/api/health", methods=["GET"])
 def health_check():
     """System health check"""
-    return jsonify({
-        "status": "ok",
-        "timestamp": datetime.utcnow().isoformat()
-    })
+    return jsonify({"status": "ok", "timestamp": datetime.utcnow().isoformat()})
 
 
 # Evidence Processing Routes
@@ -1093,7 +1107,7 @@ def evidence_dashboard_page():
 def evidence_intake_submit():
     """Submit new evidence for processing"""
     from evidence_processing import evidence_workflow
-    
+
     try:
         # Get form data
         data = {
@@ -1103,27 +1117,23 @@ def evidence_intake_submit():
             "case_type": request.form.get("case_type"),
             "jurisdiction": request.form.get("jurisdiction"),
             "lead_investigator": request.form.get("lead_investigator"),
-            
             "evidence_type": request.form.get("evidence_type"),
             "description": request.form.get("description"),
             "source": request.form.get("source"),
             "officer_name": request.form.get("officer_name"),
             "badge_number": request.form.get("badge_number"),
-            
             "acquired_by": request.form.get("acquired_by"),
             "acquired_date": request.form.get("acquired_date"),
             "acquisition_method": request.form.get("acquisition_method"),
             "storage_location": request.form.get("storage_location"),
-            
             "priority": request.form.get("priority", "normal"),
             "assigned_to": request.form.get("assigned_to"),
             "special_instructions": request.form.get("special_instructions"),
             "tags": json.loads(request.form.get("tags", "[]")),
-            
             "submitted_by": current_user.email,
-            "id": str(uuid.uuid4())[:12].upper()
+            "id": str(uuid.uuid4())[:12].upper(),
         }
-        
+
         # Handle file upload
         if "files" in request.files:
             files = request.files.getlist("files")
@@ -1132,28 +1142,28 @@ def evidence_intake_submit():
                     filename = secure_filename(file.filename)
                     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
                     unique_filename = f"{data['id']}_{timestamp}_{filename}"
-                    
+
                     # Save file
                     upload_dir = Path(app.config.get("UPLOAD_FOLDER", "./uploads/evidence"))
                     upload_dir.mkdir(parents=True, exist_ok=True)
                     filepath = upload_dir / unique_filename
                     file.save(filepath)
-                    
+
                     # Calculate hash
                     file_hash = hashlib.sha256()
                     with open(filepath, "rb") as f:
                         for chunk in iter(lambda: f.read(8192), b""):
                             file_hash.update(chunk)
-                    
+
                     data["filename"] = filename
                     data["file_path"] = str(filepath)
                     data["file_size"] = os.path.getsize(filepath)
                     data["file_hash"] = file_hash.hexdigest()
                     data["format"] = filename.split(".")[-1].lower()
-        
+
         # Create evidence package
         evidence_package = evidence_workflow.processor.create_evidence_package(data)
-        
+
         # Save to database (using Analysis model for now)
         analysis = Analysis(
             user_id=current_user.id,
@@ -1165,25 +1175,31 @@ def evidence_intake_submit():
             case_number=data["case_number"],
             evidence_number=data.get("id"),
             acquired_by=data["acquired_by"],
-            source=data["source"]
+            source=data["source"],
         )
         analysis.generate_id()
-        
+
         db.session.add(analysis)
         db.session.commit()
-        
+
         # Save evidence package metadata
-        metadata_path = Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis")) / analysis.id / "evidence_package.json"
+        metadata_path = (
+            Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis"))
+            / analysis.id
+            / "evidence_package.json"
+        )
         metadata_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(metadata_path, 'w') as f:
+        with open(metadata_path, "w") as f:
             json.dump(evidence_package, f, indent=2)
-        
-        return jsonify({
-            "success": True,
-            "evidence_id": analysis.id,
-            "message": "Evidence submitted successfully"
-        })
-        
+
+        return jsonify(
+            {
+                "success": True,
+                "evidence_id": analysis.id,
+                "message": "Evidence submitted successfully",
+            }
+        )
+
     except Exception as e:
         app.logger.error(f"Evidence intake error: {e}")
         return jsonify({"error": str(e)}), 500
@@ -1193,37 +1209,38 @@ def evidence_intake_submit():
 @login_required
 def list_evidence():
     """List all evidence items for current user"""
-    analyses = Analysis.query.filter_by(user_id=current_user.id)\
-        .order_by(Analysis.created_at.desc())\
-        .all()
-    
+    analyses = (
+        Analysis.query.filter_by(user_id=current_user.id).order_by(Analysis.created_at.desc()).all()
+    )
+
     evidence_list = []
     for analysis in analyses:
         # Load evidence package if exists
-        metadata_path = Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis")) / analysis.id / "evidence_package.json"
-        
+        metadata_path = (
+            Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis"))
+            / analysis.id
+            / "evidence_package.json"
+        )
+
         if metadata_path.exists():
-            with open(metadata_path, 'r') as f:
+            with open(metadata_path, "r") as f:
                 evidence_package = json.load(f)
             evidence_list.append(evidence_package)
         else:
             # Fallback to basic analysis data
-            evidence_list.append({
-                "evidence_id": analysis.id,
-                "case_information": {
-                    "case_number": analysis.case_number or "N/A"
-                },
-                "evidence_details": {
-                    "description": analysis.filename,
-                    "type": "bwc_video"
-                },
-                "processing_status": {
-                    "stage": analysis.status,
-                    "priority": "normal",
-                    "sla_deadline": (datetime.utcnow() + timedelta(hours=72)).isoformat()
+            evidence_list.append(
+                {
+                    "evidence_id": analysis.id,
+                    "case_information": {"case_number": analysis.case_number or "N/A"},
+                    "evidence_details": {"description": analysis.filename, "type": "bwc_video"},
+                    "processing_status": {
+                        "stage": analysis.status,
+                        "priority": "normal",
+                        "sla_deadline": (datetime.utcnow() + timedelta(hours=72)).isoformat(),
+                    },
                 }
-            })
-    
+            )
+
     return jsonify(evidence_list)
 
 
@@ -1240,44 +1257,44 @@ def analytics_dashboard():
 def ai_suggest():
     """AI-powered suggestions for forms"""
     from ai_suggestions import smart_suggest
-    
+
     data = request.get_json()
     field = data.get("field")
     text = data.get("text", "")
     context = data.get("context", {})
-    
+
     if field == "description":
         suggestions = smart_suggest.suggest_description(text)
         return jsonify({"suggestions": suggestions})
-    
+
     elif field == "priority":
         result = smart_suggest.suggest_priority(text)
         return jsonify(result)
-    
+
     elif field == "tags":
         evidence_type = context.get("evidence_type")
         result = smart_suggest.suggest_tags(text, evidence_type)
         return jsonify(result)
-    
+
     elif field == "categorize":
         filename = context.get("filename", "")
         result = smart_suggest.auto_categorize(filename, text)
         return jsonify(result)
-    
+
     elif field == "case_number":
         result = smart_suggest.suggest_case_number()
         return jsonify(result)
-    
+
     elif field == "similar_cases":
         results = smart_suggest.suggest_similar_cases(text)
         return jsonify({"cases": results})
-    
+
     elif field == "processing_time":
         priority = context.get("priority", "normal")
         evidence_type = context.get("evidence_type", "unknown")
         result = smart_suggest.predict_processing_time(priority, evidence_type, text)
         return jsonify(result)
-    
+
     else:
         return jsonify({"error": "Unknown field"}), 400
 
@@ -1305,6 +1322,7 @@ def command_center():
 try:
     from case_law_violation_scanner import ViolationScanner
     from statutory_compliance_checker import StatutoryComplianceChecker
+
     LEGAL_TOOLS_AVAILABLE = True
 except ImportError:
     LEGAL_TOOLS_AVAILABLE = False
@@ -1324,20 +1342,20 @@ def scan_violations():
     """Scan transcript for legal violations"""
     if not LEGAL_TOOLS_AVAILABLE:
         return jsonify({"error": "Legal analysis tools not available"}), 503
-    
+
     try:
         data = request.get_json()
         transcript = data.get("transcript", "")
         context = data.get("context", {})
-        
+
         if not transcript:
             return jsonify({"error": "No transcript provided"}), 400
-        
+
         scanner = ViolationScanner()
         results = scanner.scan_transcript(transcript, context)
-        
+
         return jsonify(results), 200
-        
+
     except Exception as e:
         app.logger.error(f"Violation scan error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1349,19 +1367,19 @@ def check_compliance():
     """Check evidence for statutory compliance"""
     if not LEGAL_TOOLS_AVAILABLE:
         return jsonify({"error": "Legal analysis tools not available"}), 503
-    
+
     try:
         data = request.get_json()
         evidence = data.get("evidence", {})
-        
+
         if not evidence:
             return jsonify({"error": "No evidence provided"}), 400
-        
+
         checker = StatutoryComplianceChecker()
         results = checker.comprehensive_check(evidence)
-        
+
         return jsonify(results), 200
-        
+
     except Exception as e:
         app.logger.error(f"Compliance check error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1373,18 +1391,18 @@ def combined_legal_analysis():
     """Run both violation scan and compliance check"""
     if not LEGAL_TOOLS_AVAILABLE:
         return jsonify({"error": "Legal analysis tools not available"}), 503
-    
+
     try:
         data = request.get_json()
         transcript = data.get("transcript", "")
         evidence = data.get("evidence", {})
-        
+
         scanner = ViolationScanner()
         checker = StatutoryComplianceChecker()
-        
+
         violation_results = scanner.scan_transcript(transcript, evidence)
         compliance_results = checker.comprehensive_check(evidence)
-        
+
         # Combine results
         combined = {
             "analysis_timestamp": datetime.utcnow().isoformat(),
@@ -1392,15 +1410,17 @@ def combined_legal_analysis():
             "violations": violation_results,
             "compliance": compliance_results,
             "overall_assessment": {
-                "total_issues": violation_results["total_violations"] + compliance_results["total_issues"],
+                "total_issues": violation_results["total_violations"]
+                + compliance_results["total_issues"],
                 "critical_violations": len(violation_results.get("critical_violations", [])),
                 "non_compliant_count": compliance_results["issues_by_status"]["non_compliant"],
-                "recommended_actions": violation_results.get("recommended_motions", []) + compliance_results.get("recommendations", [])
-            }
+                "recommended_actions": violation_results.get("recommended_motions", [])
+                + compliance_results.get("recommendations", []),
+            },
         }
-        
+
         return jsonify(combined), 200
-        
+
     except Exception as e:
         app.logger.error(f"Combined analysis error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1410,52 +1430,48 @@ def combined_legal_analysis():
 # PHASE 1 PREMIUM FEATURES - API ROUTES
 # ========================================
 
+
 @app.route("/api/evidence/transcribe", methods=["POST"])
 @login_required
 def transcribe_audio():
     """Transcribe audio/video using Whisper AI"""
     if not WHISPER_AVAILABLE:
         return jsonify({"error": "Whisper transcription service not available"}), 503
-    
+
     try:
         # Get file from request
-        if 'file' not in request.files:
+        if "file" not in request.files:
             return jsonify({"error": "No file provided"}), 400
-        
-        file = request.files['file']
-        if file.filename == '':
+
+        file = request.files["file"]
+        if file.filename == "":
             return jsonify({"error": "No file selected"}), 400
-        
+
         # Save uploaded file
         filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(file_path)
-        
+
         # Initialize Whisper service
         whisper_service = WhisperTranscriptionService(model_size="base")
-        
+
         # Get options from request
-        language = request.form.get('language', None)
-        enable_timestamps = request.form.get('timestamps', 'true').lower() == 'true'
-        
+        language = request.form.get("language", None)
+        enable_timestamps = request.form.get("timestamps", "true").lower() == "true"
+
         # Transcribe
         result = whisper_service.transcribe_audio(
-            str(file_path),
-            language=language,
-            enable_timestamps=enable_timestamps
+            str(file_path), language=language, enable_timestamps=enable_timestamps
         )
-        
+
         # Export to requested format
-        export_format = request.form.get('format', 'json')
-        if export_format == 'json':
-            return jsonify({
-                "success": True,
-                "transcription": result
-            })
+        export_format = request.form.get("format", "json")
+        if export_format == "json":
+            return jsonify({"success": True, "transcription": result})
         else:
             output = whisper_service.export_transcript(result, export_format)
-            return output, 200, {'Content-Type': 'text/plain'}
-        
+            return output, 200, {"Content-Type": "text/plain"}
+
     except Exception as e:
         app.logger.error(f"Transcription error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1467,46 +1483,39 @@ def extract_text_ocr():
     """Extract text from images/scanned PDFs using OCR"""
     if not OCR_AVAILABLE:
         return jsonify({"error": "OCR service not available"}), 503
-    
+
     try:
         # Get file from request
-        if 'file' not in request.files:
+        if "file" not in request.files:
             return jsonify({"error": "No file provided"}), 400
-        
-        file = request.files['file']
-        if file.filename == '':
+
+        file = request.files["file"]
+        if file.filename == "":
             return jsonify({"error": "No file selected"}), 400
-        
+
         # Save uploaded file
         filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(file_path)
-        
+
         # Initialize OCR service
-        engine = request.form.get('engine', 'tesseract')  # or 'aws'
+        engine = request.form.get("engine", "tesseract")  # or 'aws'
         ocr_service = OCRService(engine=engine)
-        
+
         # Get options
-        language = request.form.get('language', 'eng')
-        preserve_layout = request.form.get('preserve_layout', 'false').lower() == 'true'
-        
+        language = request.form.get("language", "eng")
+        preserve_layout = request.form.get("preserve_layout", "false").lower() == "true"
+
         # Detect file type and process
         file_ext = os.path.splitext(filename)[1].lower()
-        
-        if file_ext == '.pdf':
+
+        if file_ext == ".pdf":
             result = ocr_service.extract_text_from_pdf(str(file_path), language)
         else:
-            result = ocr_service.extract_text_from_image(
-                str(file_path),
-                language,
-                preserve_layout
-            )
-        
-        return jsonify({
-            "success": True,
-            "ocr_result": result
-        })
-        
+            result = ocr_service.extract_text_from_image(str(file_path), language, preserve_layout)
+
+        return jsonify({"success": True, "ocr_result": result})
+
     except Exception as e:
         app.logger.error(f"OCR error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1518,9 +1527,9 @@ def two_factor_setup_page():
     """2FA setup page"""
     if not TWO_FACTOR_AVAILABLE:
         flash("Two-factor authentication is not available", "warning")
-        return redirect(url_for('account_settings'))
-    
-    return render_template('auth/2fa-setup.html')
+        return redirect(url_for("account_settings"))
+
+    return render_template("auth/2fa-setup.html")
 
 
 @app.route("/api/account/2fa/setup", methods=["POST"])
@@ -1529,23 +1538,25 @@ def setup_two_factor():
     """Setup 2FA for current user"""
     if not TWO_FACTOR_AVAILABLE:
         return jsonify({"error": "2FA service not available"}), 503
-    
+
     try:
         tfa_service = TwoFactorAuthService(issuer_name="BarberX Legal")
-        
+
         # Generate 2FA setup data
         setup_data = tfa_service.setup_2fa_for_user(current_user.email)
-        
+
         # Store secret in database (encrypted in production!)
         # For now, return to frontend - implement User2FA model later
-        
-        return jsonify({
-            "success": True,
-            "qr_code": setup_data['qr_code'],
-            "manual_entry_key": setup_data['manual_entry_key'],
-            "backup_codes": setup_data['backup_codes']
-        })
-        
+
+        return jsonify(
+            {
+                "success": True,
+                "qr_code": setup_data["qr_code"],
+                "manual_entry_key": setup_data["manual_entry_key"],
+                "backup_codes": setup_data["backup_codes"],
+            }
+        )
+
     except Exception as e:
         app.logger.error(f"2FA setup error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1557,30 +1568,24 @@ def verify_two_factor():
     """Verify 2FA token"""
     if not TWO_FACTOR_AVAILABLE:
         return jsonify({"error": "2FA service not available"}), 503
-    
+
     try:
         data = request.get_json()
-        token = data.get('token')
-        secret = data.get('secret')  # In production, fetch from database
-        
+        token = data.get("token")
+        secret = data.get("secret")  # In production, fetch from database
+
         if not token or not secret:
             return jsonify({"error": "Missing token or secret"}), 400
-        
+
         tfa_service = TwoFactorAuthService()
         is_valid = tfa_service.verify_token(secret, token)
-        
+
         if is_valid:
             # Enable 2FA for user in database
-            return jsonify({
-                "success": True,
-                "message": "2FA enabled successfully"
-            })
+            return jsonify({"success": True, "message": "2FA enabled successfully"})
         else:
-            return jsonify({
-                "success": False,
-                "message": "Invalid token"
-            }), 401
-        
+            return jsonify({"success": False, "message": "Invalid token"}), 401
+
     except Exception as e:
         app.logger.error(f"2FA verification error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1594,13 +1599,13 @@ def pricing_page():
     else:
         # Fallback plans if Stripe not available
         plans = {
-            'basic': {'name': 'Basic', 'price_monthly': 29},
-            'pro': {'name': 'Professional', 'price_monthly': 99},
-            'premium': {'name': 'Premium', 'price_monthly': 299},
-            'enterprise': {'name': 'Enterprise', 'price_monthly': 'custom'}
+            "basic": {"name": "Basic", "price_monthly": 29},
+            "pro": {"name": "Professional", "price_monthly": 99},
+            "premium": {"name": "Premium", "price_monthly": 299},
+            "enterprise": {"name": "Enterprise", "price_monthly": "custom"},
         }
-    
-    return render_template('pricing.html', plans=plans)
+
+    return render_template("pricing.html", plans=plans)
 
 
 @app.route("/api/billing/create-checkout", methods=["POST"])
@@ -1609,58 +1614,56 @@ def create_checkout_session():
     """Create Stripe checkout session"""
     if not STRIPE_AVAILABLE:
         return jsonify({"error": "Payment processing not available"}), 503
-    
+
     try:
         data = request.get_json()
-        plan = data.get('plan')  # 'basic', 'pro', 'premium'
-        billing_period = data.get('period', 'monthly')  # 'monthly' or 'yearly'
-        
+        plan = data.get("plan")  # 'basic', 'pro', 'premium'
+        billing_period = data.get("period", "monthly")  # 'monthly' or 'yearly'
+
         if plan not in SUBSCRIPTION_PLANS:
             return jsonify({"error": "Invalid plan"}), 400
-        
+
         # Initialize Stripe service
         stripe_service = StripePaymentService()
-        
+
         # Get or create Stripe customer
-        stripe_customer_id = getattr(current_user, 'stripe_customer_id', None)
-        
+        stripe_customer_id = getattr(current_user, "stripe_customer_id", None)
+
         if not stripe_customer_id:
             customer = stripe_service.create_customer(
                 email=current_user.email,
                 name=current_user.username,
-                metadata={'user_id': current_user.id}
+                metadata={"user_id": current_user.id},
             )
-            stripe_customer_id = customer['customer_id']
-            
+            stripe_customer_id = customer["customer_id"]
+
             # Save to database
             current_user.stripe_customer_id = stripe_customer_id
             db.session.commit()
-        
+
         # Get price ID
-        price_key = f'stripe_price_id_{billing_period}'
+        price_key = f"stripe_price_id_{billing_period}"
         price_id = SUBSCRIPTION_PLANS[plan].get(price_key)
-        
+
         if not price_id:
             return jsonify({"error": "Price ID not configured"}), 500
-        
+
         # Create checkout session
-        success_url = url_for('billing_success', _external=True)
-        cancel_url = url_for('pricing_page', _external=True)
-        
+        success_url = url_for("billing_success", _external=True)
+        cancel_url = url_for("pricing_page", _external=True)
+
         session = stripe_service.create_checkout_session(
             customer_id=stripe_customer_id,
             price_id=price_id,
             success_url=success_url,
             cancel_url=cancel_url,
-            trial_days=14
+            trial_days=14,
         )
-        
-        return jsonify({
-            "success": True,
-            "checkout_url": session['url'],
-            "session_id": session['session_id']
-        })
-        
+
+        return jsonify(
+            {"success": True, "checkout_url": session["url"], "session_id": session["session_id"]}
+        )
+
     except Exception as e:
         app.logger.error(f"Checkout creation error: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -1671,29 +1674,29 @@ def stripe_webhook():
     """Handle Stripe webhook events"""
     if not STRIPE_AVAILABLE:
         return jsonify({"error": "Payment processing not available"}), 503
-    
+
     try:
         payload = request.data
-        sig_header = request.headers.get('Stripe-Signature')
-        
+        sig_header = request.headers.get("Stripe-Signature")
+
         stripe_service = StripePaymentService()
         event_data = stripe_service.handle_webhook(payload, sig_header)
-        
+
         # Handle different event types
-        action = event_data.get('action')
-        
-        if action == 'subscription_created':
+        action = event_data.get("action")
+
+        if action == "subscription_created":
             # Update user subscription status
             app.logger.info(f"Subscription created: {event_data}")
-        elif action == 'subscription_deleted':
+        elif action == "subscription_deleted":
             # Handle cancellation
             app.logger.info(f"Subscription deleted: {event_data}")
-        elif action == 'payment_failed':
+        elif action == "payment_failed":
             # Handle failed payment
             app.logger.warning(f"Payment failed: {event_data}")
-        
+
         return jsonify({"received": True})
-        
+
     except Exception as e:
         app.logger.error(f"Webhook error: {str(e)}")
         return jsonify({"error": str(e)}), 400
@@ -1704,33 +1707,33 @@ def stripe_webhook():
 def billing_success():
     """Billing success page"""
     flash("Subscription activated successfully! Welcome to BarberX Premium.", "success")
-    return redirect(url_for('evidence_dashboard'))
+    return redirect(url_for("evidence_dashboard"))
 
 
 @app.route("/account/billing")
 @login_required
 def billing_dashboard():
     """User billing dashboard"""
-    return render_template('auth/billing.html')
+    return render_template("auth/billing.html")
 
 
 @app.route("/offline.html")
 def offline_page():
     """PWA offline fallback page"""
-    return render_template('offline.html')
+    return render_template("offline.html")
 
 
 # PWA static files
 @app.route("/manifest.json")
 def pwa_manifest():
     """Serve PWA manifest"""
-    return send_file("manifest.json", mimetype='application/json')
+    return send_file("manifest.json", mimetype="application/json")
 
 
 @app.route("/service-worker.js")
 def service_worker():
     """Serve service worker"""
-    return send_file("service-worker.js", mimetype='application/javascript')
+    return send_file("service-worker.js", mimetype="application/javascript")
 
 
 # ========================================
@@ -1750,22 +1753,17 @@ def integrated_analysis_page():
 def deploy_agent():
     """Deploy a new AI agent"""
     from legal_ai_agents import agent_manager
-    
+
     data = request.get_json()
     agent_type = data.get("agent_type")
     config = data.get("config", {})
-    
+
     try:
         agent_id = agent_manager.deploy_agent(
-            agent_type=agent_type,
-            user_id=str(current_user.id),
-            config=config
+            agent_type=agent_type, user_id=str(current_user.id), config=config
         )
-        
-        return jsonify({
-            "agent_id": agent_id,
-            "message": "Agent deployed successfully"
-        })
+
+        return jsonify({"agent_id": agent_id, "message": "Agent deployed successfully"})
     except Exception as e:
         app.logger.error(f"Agent deployment error: {e}")
         return jsonify({"error": str(e)}), 400
@@ -1776,7 +1774,7 @@ def deploy_agent():
 def list_agents():
     """List all agents for current user"""
     from legal_ai_agents import agent_manager
-    
+
     try:
         agents = agent_manager.list_user_agents(str(current_user.id))
         return jsonify(agents)
@@ -1790,10 +1788,10 @@ def list_agents():
 def execute_agent(agent_id):
     """Execute an agent with input data"""
     from legal_ai_agents import agent_manager
-    
+
     data = request.get_json()
     input_data = data.get("input_data", {})
-    
+
     try:
         result = agent_manager.execute_agent(agent_id, input_data)
         return jsonify(result)
@@ -1807,30 +1805,32 @@ def execute_agent(agent_id):
 def analyze_pdf_discovery():
     """Analyze PDF discovery document for legal information"""
     from enhanced_pdf_discovery_analyzer import PDFDiscoveryAnalyzer
-    
+
     try:
         data = request.get_json()
         pdf_content = data.get("content", "")
         filename = data.get("filename", "document.pdf")
-        
+
         if not pdf_content:
             return jsonify({"error": "No content provided"}), 400
-        
+
         # Analyze the PDF
         analyzer = PDFDiscoveryAnalyzer()
         results = analyzer.analyze_document(pdf_content, filename)
-        
+
         # Save to analysis record if user wants
         if data.get("save_analysis"):
             # TODO: Save to database
             pass
-        
-        return jsonify({
-            "success": True,
-            "results": results,
-            "formatted_report": analyzer.export_to_report(results)
-        })
-        
+
+        return jsonify(
+            {
+                "success": True,
+                "results": results,
+                "formatted_report": analyzer.export_to_report(results),
+            }
+        )
+
     except Exception as e:
         app.logger.error(f"PDF analysis error: {e}")
         return jsonify({"error": str(e)}), 500
@@ -1841,7 +1841,7 @@ def analyze_pdf_discovery():
 def get_agent_status(agent_id):
     """Get agent status and results"""
     from legal_ai_agents import agent_manager
-    
+
     try:
         status = agent_manager.get_agent_status(agent_id)
         return jsonify(status)
@@ -1855,7 +1855,7 @@ def get_agent_status(agent_id):
 def delete_agent(agent_id):
     """Delete an agent"""
     from legal_ai_agents import agent_manager
-    
+
     try:
         agent_manager.delete_agent(agent_id)
         return jsonify({"message": "Agent deleted"})
@@ -1868,6 +1868,7 @@ def delete_agent(agent_id):
 # UNIFIED INTEGRATION ROUTES - Connect all features into one workflow
 # ============================================================================
 
+
 @app.route("/api/workflow/process-evidence", methods=["POST"])
 @login_required
 def process_evidence_workflow():
@@ -1875,11 +1876,11 @@ def process_evidence_workflow():
     Complete workflow: Upload → Auto-analyze → Deploy agents → Enable chat
     """
     from unified_integration import get_orchestrator
-    
+
     try:
         data = request.get_json()
         orchestrator = get_orchestrator(current_user.id)
-        
+
         result = orchestrator.process_evidence_intake(data)
         return jsonify(result)
     except Exception as e:
@@ -1892,15 +1893,15 @@ def process_evidence_workflow():
 def workflow_chat():
     """AI chat with full evidence context"""
     from unified_integration import get_orchestrator
-    
+
     try:
         data = request.get_json()
         workflow_id = data.get("workflow_id")
         query = data.get("query", "")
-        
+
         orchestrator = get_orchestrator(current_user.id)
         result = orchestrator.process_ai_chat_query(workflow_id, query)
-        
+
         return jsonify(result)
     except Exception as e:
         app.logger.error(f"Workflow chat error: {e}")
@@ -1912,18 +1913,18 @@ def workflow_chat():
 def workflow_generate_document():
     """Generate legal document from evidence analysis"""
     from unified_integration import get_orchestrator
-    
+
     try:
         data = request.get_json()
         workflow_id = data.get("workflow_id")
         document_type = data.get("document_type")
         custom_inputs = data.get("custom_inputs", {})
-        
+
         orchestrator = get_orchestrator(current_user.id)
         result = orchestrator.generate_document_from_analysis(
             workflow_id, document_type, custom_inputs
         )
-        
+
         return jsonify(result)
     except Exception as e:
         app.logger.error(f"Document generation error: {e}")
@@ -1935,26 +1936,26 @@ def workflow_generate_document():
 def workflow_scan_document():
     """Scan and process document with OCR + AI"""
     from unified_integration import get_orchestrator
-    
+
     try:
         # Handle file upload
-        if 'file' not in request.files:
+        if "file" not in request.files:
             return jsonify({"error": "No file provided"}), 400
-        
-        file = request.files['file']
-        if file.filename == '':
+
+        file = request.files["file"]
+        if file.filename == "":
             return jsonify({"error": "Empty filename"}), 400
-        
+
         # Read file data
         file_data = {
             "name": secure_filename(file.filename),
-            "content": file.read().decode('utf-8', errors='ignore'),
-            "size": len(file.read())
+            "content": file.read().decode("utf-8", errors="ignore"),
+            "size": len(file.read()),
         }
-        
+
         orchestrator = get_orchestrator(current_user.id)
         result = orchestrator.scan_and_process_document(file_data)
-        
+
         return jsonify(result)
     except Exception as e:
         app.logger.error(f"Document scan error: {e}")
@@ -1966,7 +1967,6 @@ def workflow_scan_document():
 def transcript_search():
     """Transcript search tool"""
     return send_file("templates/tools/transcript.html")
-
 
 
 @app.route("/tools/entity-extract")
@@ -2696,13 +2696,8 @@ def export_analysis_report(analysis, format):
             from reportlab.lib import colors
             from reportlab.lib.pagesizes import letter
             from reportlab.lib.styles import getSampleStyleSheet
-            from reportlab.platypus import (
-                Paragraph,
-                SimpleDocTemplate,
-                Spacer,
-                Table,
-                TableStyle,
-            )
+            from reportlab.platypus import (Paragraph, SimpleDocTemplate,
+                                            Spacer, Table, TableStyle)
 
             pdf_path = output_dir / f"report_{analysis.id}.pdf"
             doc = SimpleDocTemplate(str(pdf_path), pagesize=letter)
@@ -3722,6 +3717,9 @@ def admin_system_info():
 with app.app_context():
     db.create_all()
     app.logger.info("Database tables initialized")
+    
+    # Initialize backend optimization services (indexes, evidence processor)
+    initialize_backend_services()
 
     # Admin user already created via create_admin.py
     # Use admin@barberx.info with the 33-char password from that script
@@ -4148,9 +4146,9 @@ import base64
 import shutil
 import tempfile
 
+from flask_login import login_required
 # PDF extraction
 from pypdf import PdfReader
-from flask_login import login_required
 
 
 # Video placeholder (future: add video transcript extraction)
@@ -4179,32 +4177,32 @@ def upload_video():
     """Upload video and generate mock transcription"""
     if "file" not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
-    
+
     file = request.files["file"]
-    
+
     if not file.filename.lower().endswith((".mp4", ".mov", ".avi", ".webm")):
         return jsonify({"error": "Only video files allowed (.mp4, .mov, .avi, .webm)"}), 400
-    
+
     # Secure filename
     filename = secure_filename(file.filename)
     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     unique_filename = f"{current_user.id}_{timestamp}_{filename}"
-    
+
     # Save to BWC videos folder
     upload_dir = Path(app.config.get("UPLOAD_FOLDER", "./uploads/bwc_videos"))
     upload_dir.mkdir(parents=True, exist_ok=True)
     filepath = upload_dir / unique_filename
     file.save(filepath)
-    
+
     # Calculate file hash
     file_hash = hashlib.sha256()
     with open(filepath, "rb") as f:
         for chunk in iter(lambda: f.read(8192), b""):
             file_hash.update(chunk)
     file_hash_hex = file_hash.hexdigest()
-    
+
     file_size = os.path.getsize(filepath)
-    
+
     # Create analysis record
     analysis = Analysis(
         user_id=current_user.id,
@@ -4215,64 +4213,68 @@ def upload_video():
         status="uploaded",
     )
     analysis.generate_id()
-    
+
     # Get optional metadata from form
     analysis.case_number = request.form.get("case_number", "")
     analysis.evidence_number = request.form.get("evidence_number", "")
-    analysis.acquired_by = request.form.get("acquired_by", current_user.full_name or current_user.email)
+    analysis.acquired_by = request.form.get(
+        "acquired_by", current_user.full_name or current_user.email
+    )
     analysis.source = request.form.get("source", "Web Upload")
-    
+
     db.session.add(analysis)
     db.session.commit()
-    
+
     # Start enhanced analysis in background
     try:
         from enhanced_analysis_tools import advanced_analyzer
-        
+
         def generate_mock_analysis():
             try:
                 analysis.status = "analyzing"
                 analysis.current_step = "Generating enhanced transcription..."
                 analysis.progress = 10
                 db.session.commit()
-                
+
                 # Generate enhanced analysis
                 import time
+
                 time.sleep(2)  # Simulate processing
-                
+
                 analysis.progress = 30
                 analysis.current_step = "Analyzing voice stress patterns..."
                 db.session.commit()
-                
+
                 time.sleep(1)
-                
+
                 analysis.progress = 50
                 analysis.current_step = "Detecting scenes and objects..."
                 db.session.commit()
-                
+
                 time.sleep(1)
-                
+
                 # Generate complete enhanced analysis
                 mock_report = advanced_analyzer.generate_complete_analysis(
                     str(filepath),
                     case_number=analysis.case_number,
-                    evidence_number=analysis.evidence_number
+                    evidence_number=analysis.evidence_number,
                 )
-                
+
                 analysis.progress = 80
                 analysis.current_step = "Generating reports and visualizations..."
                 db.session.commit()
-                
+
                 # Save report to file
                 output_dir = Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis")) / analysis.id
                 output_dir.mkdir(parents=True, exist_ok=True)
-                
+
                 # Save JSON report
                 import json
+
                 json_path = output_dir / "report.json"
                 with open(json_path, "w") as f:
                     json.dump(mock_report, f, indent=2)
-                
+
                 # Save TXT report
                 txt_path = output_dir / "report.txt"
                 with open(txt_path, "w") as f:
@@ -4286,46 +4288,51 @@ def upload_video():
                     f.write(f"Discrepancies: {len(mock_report['discrepancies']['items'])}\n\n")
                     f.write(f"TRANSCRIPT\n")
                     f.write(f"{'-' * 60}\n\n")
-                    for segment in mock_report['transcript']['segments']:
-                        f.write(f"[{segment['start_time']:.2f}s] {segment['speaker_label']}: {segment['text']}\n")
-                
+                    for segment in mock_report["transcript"]["segments"]:
+                        f.write(
+                            f"[{segment['start_time']:.2f}s] {segment['speaker_label']}: {segment['text']}\n"
+                        )
+
                 # Update analysis record
                 analysis.status = "completed"
                 analysis.progress = 100
                 analysis.current_step = "Analysis complete"
                 analysis.completed_at = datetime.utcnow()
-                analysis.duration = mock_report['metadata']['duration']
-                analysis.total_speakers = len(mock_report['transcript']['speakers'])
-                analysis.total_segments = len(mock_report['transcript']['segments'])
-                analysis.total_discrepancies = len(mock_report['discrepancies']['items'])
-                analysis.critical_discrepancies = mock_report['discrepancies']['by_severity']['high']
+                analysis.duration = mock_report["metadata"]["duration"]
+                analysis.total_speakers = len(mock_report["transcript"]["speakers"])
+                analysis.total_segments = len(mock_report["transcript"]["segments"])
+                analysis.total_discrepancies = len(mock_report["discrepancies"]["items"])
+                analysis.critical_discrepancies = mock_report["discrepancies"]["by_severity"][
+                    "high"
+                ]
                 analysis.report_json_path = str(json_path)
                 analysis.report_txt_path = str(txt_path)
                 analysis.report_md_path = str(output_dir / "report.md")
-                
+
                 db.session.commit()
-                
+
                 app.logger.info(f"Mock analysis completed for: {analysis.id}")
-                
+
             except Exception as e:
                 analysis.status = "failed"
                 analysis.error_message = str(e)
                 analysis.progress = 0
                 db.session.commit()
                 app.logger.error(f"Mock analysis failed: {e}")
-        
+
         # Start background thread
         import threading
+
         thread = threading.Thread(target=generate_mock_analysis)
         thread.daemon = True
         thread.start()
-        
+
         app.logger.info(f"Video uploaded and mock analysis started: {filename}")
-        
+
     except ImportError:
         # If mock_analysis not available, just mark as uploaded
         app.logger.warning("Mock analysis generator not available")
-    
+
     return jsonify(
         {
             "success": True,
@@ -4334,7 +4341,7 @@ def upload_video():
             "filename": filename,
             "file_hash": file_hash_hex,
             "file_size": file_size,
-            "status": "analyzing"
+            "status": "analyzing",
         }
     )
 
@@ -4397,11 +4404,12 @@ if __name__ == "__main__":
     # Get port from environment variable (for cloud deployments)
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("FLASK_ENV") != "production"
-    
+
     # Initialize backend optimization services
     initialize_backend_services()
 
-    print(f"""
+    print(
+        f"""
     ================================================================
                                                                 
            BarberX Legal Technologies                           
@@ -4442,7 +4450,10 @@ if __name__ == "__main__":
     
     Ready for production deployment!
     Press Ctrl+C to stop the server.
-    """.format(port=port))
+    """.format(
+            port=port
+        )
+    )
 
     app.run(host="0.0.0.0", port=port, debug=debug)
 
