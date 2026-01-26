@@ -198,11 +198,18 @@ if ENHANCED_AUTH_AVAILABLE:
 # Register batch upload handler
 try:
     from batch_upload_handler import batch_upload_bp
-
     app.register_blueprint(batch_upload_bp)
     print("[OK] Unified batch upload registered at /api/upload/batch")
 except ImportError as e:
     print(f"⚠️  Batch upload handler not available: {e}")
+
+# Register Stripe payments
+try:
+    from stripe_payments import payments_bp
+    app.register_blueprint(payments_bp)
+    print("[OK] Stripe payments registered at /payments/*")
+except ImportError as e:
+    print(f"⚠️  Stripe payments not available: {e}")
 
 # Register UX helper filters and context processors
 if UX_HELPERS_AVAILABLE:
@@ -780,6 +787,18 @@ def register():
         login_user(user)
 
         logger.info(f"New user registered: {user.email}")
+
+        # Track registration in analytics
+        try:
+            from utils.analytics import track_user_registration
+            track_user_registration(
+                str(user.id),
+                user.email,
+                user.subscription_tier,
+                request.args.get('utm_source', 'direct')
+            )
+        except Exception as e:
+            logger.warning(f"Analytics tracking failed: {e}")
 
         # Redirect new users to onboarding welcome screen
         return success_response(
