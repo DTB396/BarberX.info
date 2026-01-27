@@ -2570,6 +2570,19 @@ def contact():
     return send_file("templates/company/contact.html")
 
 
+@app.route("/honor")
+def military_honor_installation():
+    """
+    US Military Honor Installation
+    
+    Dedicated to all who served, are serving, and made the ultimate sacrifice.
+    Displays official US military flags in proper protocol and order per Title 4 USC.
+    
+    'By the Grace of Almighty God, we honor their service and defend the Constitution they protected.'
+    """
+    return render_template("honor.html")
+
+
 @app.route("/press")
 def press():
     """Press/media page"""

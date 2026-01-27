@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Honor of Service - BarberX Legal Technologies</title>
+    <meta name="description" content="Honoring the service and sacrifice of all who fought for the Constitution, the rule of law, and the freedoms we defend through legal advocacy.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy-blue: #003366;
+            --military-gold: #C5B358;
+            --honor-red: #B22234;
+            --memorial-gray: #4A4A4A;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+        }
+
+        .installation-header {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--military-gold);
+        }
+
+        .installation-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--military-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .installation-header .subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Flag Installation - US Flag Code Compliant */
+        .flag-installation {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .flag-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Primary Flag - US Flag (Title 4 USC) */
+        .flag-primary {
+            position: relative;
+            text-align: center;
+        }
+
+        .flag-pole-primary {
+            width: 12px;
+            height: 400px;
+            background: linear-gradient(to bottom, #C5B358 0%, #8B7355 100%);
+            margin: 0 auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(197, 179, 88, 0.3);
+        }
+
+        .flag-pole-primary::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #FFD700, #C5B358);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .flag-image-primary {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 186px;
+            background: linear-gradient(135deg, #B22234 0%, #3C3B6E 100%);
+            border: 2px solid #C5B358;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: wave 6s ease-in-out infinite;
+        }
+
+        /* Secondary Flags - POW/MIA and Historical */
+        .flag-secondary {
+            position: relative;
+            text-align: center;
+        }
+
+        .flag-pole-secondary {
+            width: 10px;
+            height: 350px;
+            background: linear-gradient(to bottom, #888 0%, #555 100%);
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .flag-pole-secondary::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: #888;
+            border-radius: 50%;
+        }
+
+        .flag-image-secondary {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 210px;
+            height: 140px;
+            border: 2px solid #666;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: wave 6s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        /* Tertiary Flags - Historical Significance */
+        .flag-tertiary {
+            position: relative;
+            text-align: center;
+        }
+
+        .flag-pole-tertiary {
+            width: 8px;
+            height: 300px;
+            background: linear-gradient(to bottom, #666 0%, #444 100%);
+            margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .flag-pole-tertiary::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #666;
+            border-radius: 50%;
+        }
+
+        .flag-image-tertiary {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 120px;
+            border: 2px solid #555;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: wave 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .flag-label {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: var(--military-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .flag-description {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            max-width: 250px;
+            line-height: 1.5;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(2deg); }
+            75% { transform: translateX(-50%) rotate(-2deg); }
+        }
+
+        /* Flag Backgrounds */
+        .flag-us {
+            background: linear-gradient(to bottom, 
+                #B22234 0%, #B22234 7.69%,
+                #FFFFFF 7.69%, #FFFFFF 15.38%,
+                #B22234 15.38%, #B22234 23.07%,
+                #FFFFFF 23.07%, #FFFFFF 30.76%,
+                #B22234 30.76%, #B22234 38.45%,
+                #FFFFFF 38.45%, #FFFFFF 46.14%,
+                #B22234 46.14%, #B22234 53.83%,
+                #FFFFFF 53.83%, #FFFFFF 61.52%,
+                #B22234 61.52%, #B22234 69.21%,
+                #FFFFFF 69.21%, #FFFFFF 76.9%,
+                #B22234 76.9%, #B22234 84.59%,
+                #FFFFFF 84.59%, #FFFFFF 92.28%,
+                #B22234 92.28%, #B22234 100%);
+            position: relative;
+        }
+
+        .flag-us::before {
+            content: '⭐';
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 40%;
+            height: 46%;
+            background: #3C3B6E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            gap: 2px;
+            padding: 4px;
+        }
+
+        .flag-pow {
+            background: #000;
+            color: #FFF;
+            font-weight: bold;
+        }
+
+        .flag-gadsden {
+            background: #FFFF00;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .flag-appeal {
+            background: #FFF;
+            color: #228B22;
+            font-weight: bold;
+        }
+
+        .flag-gonzales {
+            background: #FFF;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .flag-betsy {
+            background: linear-gradient(to bottom, 
+                #B22234 0%, #B22234 7.69%,
+                #FFFFFF 7.69%, #FFFFFF 15.38%,
+                #B22234 15.38%, #B22234 23.07%);
+        }
+
+        /* Memorial Section */
+        .memorial-section {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--military-gold);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 4rem auto;
+            text-align: center;
+        }
+
+        .memorial-title {
+            font-size: 2rem;
+            color: var(--military-gold);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .memorial-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #e2e8f0;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .memorial-quote {
+            border-left: 4px solid var(--honor-red);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            color: #cbd5e1;
+        }
+
+        .honor-roll {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .honor-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 179, 88, 0.3);
+        }
+
+        .honor-item h3 {
+            color: var(--military-gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .honor-item p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .dedication {
+            background: linear-gradient(135deg, rgba(178, 34, 52, 0.2), rgba(60, 59, 110, 0.2));
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            border: 1px solid var(--military-gold);
+        }
+
+        .dedication h4 {
+            color: var(--military-gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .dedication p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        @media (max-width: 768px) {
+            .flag-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .installation-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Installation Header -->
+    <div class="installation-header">
+        <h1>🇺🇸 In Honor of Service & Sacrifice 🇺🇸</h1>
+        <p class="subtitle">
+            "We the People of the United States, in Order to form a more perfect Union, establish Justice,<br>
+            insure domestic Tranquility, provide for the common defence, promote the general Welfare,<br>
+            and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution."
+        </p>
+        <p style="color: var(--military-gold); font-size: 0.9rem; margin-top: 1rem;">
+            BarberX Legal Technologies honors all who served, all who sacrificed,<br>
+            and the Constitution they defended with their lives.
+        </p>
+    </div>
+
+    <!-- Flag Installation - Title 4 USC Compliant -->
+    <div class="flag-installation">
+        
+        <!-- PRIMARY ROW: US Flag (Center of Honor - Title 4 USC) -->
+        <div class="flag-row">
+            <div class="flag-primary">
+                <div class="flag-pole-primary">
+                    <div class="flag-image-primary flag-us">
+                        🇺🇸
+                    </div>
+                </div>
+                <div class="flag-label">UNITED STATES OF AMERICA</div>
+                <div class="flag-description">
+                    Title 4 USC § 1-10<br>
+                    The Flag of the United States<br>
+                    "Old Glory" - Stars and Stripes<br>
+                    <strong>Center of Honor - Supreme Position</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECONDARY ROW: POW/MIA (Required by Law) and Don't Tread on Me -->
+        <div class="flag-row">
+            <div class="flag-secondary">
+                <div class="flag-pole-secondary">
+                    <div class="flag-image-secondary flag-pow">
+                        POW<br>★<br>MIA
+                    </div>
+                </div>
+                <div class="flag-label">POW/MIA</div>
+                <div class="flag-description">
+                    Required by 36 USC § 902<br>
+                    "You Are Not Forgotten"<br>
+                    82,000+ Americans Missing
+                </div>
+            </div>
+
+            <div class="flag-secondary">
+                <div class="flag-pole-secondary">
+                    <div class="flag-image-secondary flag-gadsden">
+                        🐍<br>DON'T TREAD<br>ON ME
+                    </div>
+                </div>
+                <div class="flag-label">GADSDEN FLAG</div>
+                <div class="flag-description">
+                    Revolutionary War Era<br>
+                    Symbol of American Independence<br>
+                    Liberty and Vigilance
+                </div>
+            </div>
+        </div>
+
+        <!-- TERTIARY ROW: Historical Flags of Significance -->
+        <div class="flag-row">
+            <div class="flag-tertiary">
+                <div class="flag-pole-tertiary">
+                    <div class="flag-image-tertiary flag-appeal">
+                        🌲<br>APPEAL TO<br>HEAVEN
+                    </div>
+                </div>
+                <div class="flag-label">APPEAL TO HEAVEN</div>
+                <div class="flag-description">
+                    Pine Tree Flag - 1775<br>
+                    "An Appeal to Heaven"<br>
+                    Washington's Cruisers
+                </div>
+            </div>
+
+            <div class="flag-tertiary">
+                <div class="flag-pole-tertiary">
+                    <div class="flag-image-tertiary flag-gonzales">
+                        ⭐<br>COME AND<br>TAKE IT
+                    </div>
+                </div>
+                <div class="flag-label">GONZALES FLAG</div>
+                <div class="flag-description">
+                    Texas Revolution - 1835<br>
+                    Battle of Gonzales<br>
+                    Defiance and Liberty
+                </div>
+            </div>
+
+            <div class="flag-tertiary">
+                <div class="flag-pole-tertiary">
+                    <div class="flag-image-tertiary flag-betsy">
+                        ⭐⭐⭐<br>⭐⭐⭐<br>⭐⭐⭐
+                    </div>
+                </div>
+                <div class="flag-label">BETSY ROSS FLAG</div>
+                <div class="flag-description">
+                    1777 - 13 Original Colonies<br>
+                    Circle of 13 Stars<br>
+                    Birth of a Nation
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memorial Section -->
+    <div class="memorial-section">
+        <h2 class="memorial-title">⚔️ In Memoriam ⚔️</h2>
+        
+        <p class="memorial-text">
+            This legal platform stands upon the foundation laid by millions who served,<br>
+            hundreds of thousands who gave their last full measure of devotion,<br>
+            and the Constitution they swore to support and defend.
+        </p>
+
+        <div class="memorial-quote">
+            "It is rather for us to be here dedicated to the great task remaining before us—<br>
+            that from these honored dead we take increased devotion to that cause<br>
+            for which they gave the last full measure of devotion—<br>
+            that we here highly resolve that these dead shall not have died in vain—<br>
+            that this nation, under God, shall have a new birth of freedom—<br>
+            and that government of the people, by the people, for the people,<br>
+            shall not perish from the earth."
+            <br><br>
+            <strong>— President Abraham Lincoln, Gettysburg Address (1863)</strong>
+        </div>
+
+        <!-- Honor Roll -->
+        <div class="honor-roll">
+            <div class="honor-item">
+                <h3>Revolutionary War</h3>
+                <p>1775-1783<br>25,000+ American Patriots gave their lives for independence and the Constitution we defend.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>Civil War</h3>
+                <p>1861-1865<br>620,000+ Americans died to preserve the Union and end slavery.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>World War I</h3>
+                <p>1917-1918<br>116,516 Americans died to make the world safe for democracy.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>World War II</h3>
+                <p>1941-1945<br>405,399 Americans died to defeat tyranny and defend freedom worldwide.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>Korean War</h3>
+                <p>1950-1953<br>36,574 Americans died defending liberty against totalitarianism.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>Vietnam War</h3>
+                <p>1964-1975<br>58,220 Americans died in service to their nation.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>Gulf War & Iraq</h3>
+                <p>1990-2011<br>4,825 Americans died defending freedom and fighting terror.</p>
+            </div>
+
+            <div class="honor-item">
+                <h3>Afghanistan</h3>
+                <p>2001-2021<br>2,461 Americans died in the war on terror.</p>
+            </div>
+        </div>
+
+        <!-- Dedication -->
+        <div class="dedication">
+            <h4>📜 BarberX Dedication to Constitutional Service 📜</h4>
+            <p>
+                We the creators of BarberX Legal Technologies dedicate this platform to:<br><br>
+                
+                <strong>The 1.3 million American service members who gave their lives</strong> defending the Constitution,<br>
+                <strong>The 41 million Americans who served</strong> in times of war and peace,<br>
+                <strong>The Framers</strong> who pledged their lives, fortunes, and sacred honor to establish this Republic,<br>
+                <strong>The millions of families</strong> who sacrificed sons, daughters, fathers, and mothers,<br>
+                <strong>And all who continue to serve</strong> the cause of justice, liberty, and the rule of law.<br><br>
+
+                <em>Their sacrifice enables our work.<br>
+                Their Constitution guides our mission.<br>
+                Their memory inspires our service.<br>
+                By the Grace of Almighty God, we honor their legacy through accessible justice.</em>
+            </p>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--military-gold); font-size: 1.1rem;">
+            <strong>"We sleep safely at night because rough men stand ready to visit violence on those who would harm us."</strong><br>
+            <span style="font-size: 0.9rem; color: #94a3b8;">— Attributed to George Orwell</span>
+        </p>
+
+        <p style="margin-top: 2rem; color: #cbd5e1;">
+            <strong>May God bless the United States of America,<br>
+            her defenders past and present,<br>
+            and the Constitution they swore to uphold.</strong>
+        </p>
+
+        <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #64748b;">
+            <em>This installation honors all service members of the United States Armed Forces:<br>
+            Army • Navy • Air Force • Marine Corps • Coast Guard • Space Force</em>
+        </p>
+    </div>
+
+    <!-- Return to Main Site -->
+    <div style="text-align: center; padding: 3rem 2rem;">
+        <a href="/" style="display: inline-block; background: var(--military-gold); color: #000; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+            Return to BarberX Platform
+        </a>
+        <p style="margin-top: 1rem; color: #64748b; font-size: 0.9rem;">
+            Defending Justice • Honoring Service • Upholding the Constitution
+        </p>
+    </div>
+
+    <script>
+        // Honor moment of silence on load
+        window.addEventListener('load', function() {
+            console.log('%c🇺🇸 IN HONOR OF SERVICE & SACRIFICE 🇺🇸', 'color: #C5B358; font-size: 20px; font-weight: bold;');
+            console.log('%cThis platform honors the 1.3 million Americans who gave their lives defending the Constitution.', 'color: #cbd5e1; font-size: 14px;');
+            console.log('%c"We the People" - By the Grace of Almighty God', 'color: #B22234; font-size: 12px;');
+        });
+    </script>
+</body>
+</html>
