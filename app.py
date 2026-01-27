@@ -14,12 +14,25 @@ from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 import flask
-from flask import Flask, flash, jsonify, redirect, render_template, request, send_file, session, url_for
+from flask import (Flask, flash, jsonify, redirect, render_template, request,
+                   send_file, session, url_for)
+from flask_compress import Compress
 from flask_cors import CORS
-from flask_login import LoginManager, current_user, login_required, login_user, logout_user
+from flask_login import (LoginManager, current_user, login_required,
+                         login_user, logout_user)
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
-from flask_compress import Compress
+
+from free_tier_data_retention import DataRetentionManager, get_user_data_status
+# FREE Tier Functionality
+from free_tier_demo_cases import (get_demo_case_by_id, get_demo_cases,
+                                  is_demo_case)
+from free_tier_educational_resources import (CATEGORIES,
+                                             get_all_educational_resources,
+                                             get_resource_by_id)
+from free_tier_upload_manager import (OneTimeUploadManager,
+                                      free_tier_upload_route_decorator)
+from free_tier_watermark import WatermarkService
 
 # Security utilities
 try:
@@ -45,12 +58,29 @@ except ImportError as e:
 try:
     from auth_routes import auth_bp
     from models_auth import ApiKey as APIKey
-    from models_auth import User
+    from models_auth import User, TierLevel
 
     ENHANCED_AUTH_AVAILABLE = True
 except ImportError as e:
     ENHANCED_AUTH_AVAILABLE = False
     print(f"[!] Enhanced auth not available: {e}")
+
+# Tier gating system
+try:
+    from tier_gating import require_tier, check_usage_limit
+    TIER_GATING_AVAILABLE = True
+except ImportError as e:
+    TIER_GATING_AVAILABLE = False
+    print(f"[!] Tier gating not available: {e}")
+    # Fallback decorators that do nothing
+    def require_tier(tier):
+        def decorator(f):
+            return f
+        return decorator
+    def check_usage_limit(field, increment=0, hours=None):
+        def decorator(f):
+            return f
+        return decorator
 
 # UX enhancement utilities
 try:
@@ -106,14 +136,11 @@ except ImportError:
 
 # Backend Optimization Components
 try:
-    from backend_integration import (
-        error_response,
-        event_bus,
-        service_registry,
-        success_response,
-    )
+    from backend_integration import (error_response, event_bus,
+                                     service_registry, success_response)
     from config_manager import ConfigManager, DatabaseOptimizer
-    from unified_evidence_service import EvidenceReportGenerator, UnifiedEvidenceProcessor
+    from unified_evidence_service import (EvidenceReportGenerator,
+                                          UnifiedEvidenceProcessor)
 
     BACKEND_OPTIMIZATION_AVAILABLE = True
     print("[OK] Backend optimization components loaded")
@@ -198,8 +225,11 @@ else:
 app.config["ANALYSIS_FOLDER"] = Path("./bwc_analysis")
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7)
 
-# CORS configuration for production
-cors_origins = os.getenv("CORS_ORIGINS", "https://barberx.info,https://www.barberx.info,http://localhost:5000")
+# CORS configuration for production (includes mobile/desktop clients)
+cors_origins = os.getenv(
+    "CORS_ORIGINS",
+    "https://barberx.info,https://www.barberx.info,http://localhost:5000,http://127.0.0.1:5000,tauri://localhost,capacitor://localhost",
+)
 CORS_ORIGINS_LIST = [origin.strip() for origin in cors_origins.split(",")]
 
 # Create directories
@@ -217,7 +247,22 @@ csrf.init_app(app)
 # Exempt Stripe webhook from CSRF (it uses signature verification instead)
 csrf.exempt("stripe_payments.webhook")
 
-CORS(app, origins=CORS_ORIGINS_LIST, supports_credentials=True)
+# Exempt REST API endpoints from CSRF (they use JWT authentication)
+csrf.exempt("auth_api")
+csrf.exempt("upload_api")
+csrf.exempt("analysis_api")
+csrf.exempt("user_api")
+csrf.exempt("stripe_api")
+csrf.exempt("admin_api")
+csrf.exempt("evidence_api")
+
+CORS(
+    app,
+    origins=CORS_ORIGINS_LIST,
+    supports_credentials=True,
+    allow_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+)
 login_manager = LoginManager(app)
 login_manager.login_view = "auth.login"  # Updated to use auth blueprint
 
@@ -237,7 +282,7 @@ try:
     app.register_blueprint(batch_upload_bp)
     print("[OK] Unified batch upload registered at /api/upload/batch")
 except ImportError as e:
-    print(f"⚠️  Batch upload handler not available: {e}")
+    print(f"[WARN] Batch upload handler not available: {e}")
 
 # Register Stripe payments blueprint
 try:
@@ -246,7 +291,42 @@ try:
     app.register_blueprint(payments_bp)
     print("[OK] Stripe payments registered at /payments/*")
 except ImportError as e:
-    print(f"⚠️  Stripe payments not available: {e}")
+    print(f"[WARN] Stripe payments not available: {e}")
+
+# Register ChatGPT integration blueprint
+try:
+    from api.chatgpt import chatgpt_bp
+
+    app.register_blueprint(chatgpt_bp)
+    print("[OK] ChatGPT integration registered at /api/v1/chat/*, /api/v1/projects/*")
+except ImportError as e:
+    print(f"[WARN] ChatGPT integration not available: {e}")
+
+# Register Document Optimizer blueprint
+try:
+    from api.document_optimizer import bp as doc_optimizer_bp
+    
+    app.register_blueprint(doc_optimizer_bp)
+    print("[OK] Document Optimizer registered at /api/document-optimizer/*")
+except ImportError as e:
+    print(f"[WARN] Document Optimizer not available: {e}")
+
+# Register Legal Reference Library blueprint
+try:
+    from api.legal_library import bp as legal_library_bp
+    
+    app.register_blueprint(legal_library_bp)
+    print("[OK] Legal Library registered at /api/legal-library/*")
+except ImportError as e:
+    print(f"[WARN] Legal Library not available: {e}")
+
+# Register REST API blueprints for cross-platform clients
+try:
+    from api import register_api_blueprints
+
+    register_api_blueprints(app)
+except ImportError as e:
+    print(f"[WARN] REST API blueprints not available: {e}")
 
 # Register UX helper filters and context processors
 if UX_HELPERS_AVAILABLE:
@@ -258,7 +338,9 @@ if not app.debug:
     if not os.path.exists("logs"):
         os.mkdir("logs")
     file_handler = RotatingFileHandler("logs/barberx.log", maxBytes=10240000, backupCount=10)
-    file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"))
+    file_handler.setFormatter(
+        logging.Formatter("%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]")
+    )
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
@@ -410,7 +492,9 @@ class AppSettings(db.Model):
     key = db.Column(db.String(100), unique=True, nullable=False, index=True)
     value = db.Column(db.Text)
     value_type = db.Column(db.String(20), default="string")  # string, int, float, bool, json
-    category = db.Column(db.String(50), default="general")  # general, security, features, limits, email, branding
+    category = db.Column(
+        db.String(50), default="general"
+    )  # general, security, features, limits, email, branding
     description = db.Column(db.String(500))
     is_editable = db.Column(db.Boolean, default=True)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -752,9 +836,10 @@ def register():
     if request.method == "GET":
         return send_file("templates/register.html")
 
-    from utils.security import InputValidator
-    from utils.responses import error_response, validation_error, success_response
     from utils.logging_config import get_logger
+    from utils.responses import (error_response, success_response,
+                                 validation_error)
+    from utils.security import InputValidator
 
     logger = get_logger("auth")
 
@@ -796,7 +881,9 @@ def register():
 
         # Check if user exists
         if User.query.filter_by(email=email).first():
-            return error_response("This email is already registered", error_code="ALREADY_EXISTS", status_code=400)
+            return error_response(
+                "This email is already registered", error_code="ALREADY_EXISTS", status_code=400
+            )
 
         # Create user
         user = User(
@@ -820,7 +907,9 @@ def register():
 
         # Redirect new users to onboarding welcome screen
         return success_response(
-            data={"user": user.to_dict(), "redirect": "/welcome"}, message="Registration successful", status_code=201
+            data={"user": user.to_dict(), "redirect": "/welcome"},
+            message="Registration successful",
+            status_code=201,
         )
 
     except Exception as e:
@@ -877,6 +966,8 @@ def logout():
     return redirect(url_for("index"))
 
 
+@require_tier(TierLevel.STARTER)
+@check_usage_limit("pdf_documents_per_month", increment=1)
 @app.route("/batch-pdf-upload.html")
 @login_required
 def batch_pdf_upload():
@@ -930,7 +1021,9 @@ def dashboard():
                 except (ValueError, TypeError):
                     return value
 
-            return render_template("auth/dashboard.html", user=current_user, usage=usage, limits=limits)
+            return render_template(
+                "auth/dashboard.html", user=current_user, usage=usage, limits=limits
+            )
         except Exception as e:
             app.logger.error(f"Dashboard error: {e}")
             # Fallback to basic dashboard
@@ -1007,9 +1100,10 @@ def change_password():
         return jsonify({"error": "Feature not available"}), 503
 
     from models_auth import db
-    from utils.security import InputValidator, ErrorSanitizer
-    from utils.responses import error_response, validation_error, success_response
     from utils.logging_config import get_logger
+    from utils.responses import (error_response, success_response,
+                                 validation_error)
+    from utils.security import ErrorSanitizer, InputValidator
 
     logger = get_logger("auth")
 
@@ -1025,7 +1119,9 @@ def change_password():
 
         # Check current password
         if not current_user.check_password(current_password):
-            return error_response("Current password is incorrect", error_code="INVALID_CREDENTIALS", status_code=401)
+            return error_response(
+                "Current password is incorrect", error_code="INVALID_CREDENTIALS", status_code=401
+            )
 
         # Update password
         current_user.set_password(new_password)
@@ -1039,7 +1135,10 @@ def change_password():
         logger.error(f"Password change failed: {type(e).__name__}: {e}", exc_info=True)
         error_ticket = ErrorSanitizer.create_error_ticket()
         return error_response(
-            "Failed to change password", error_code="OPERATION_FAILED", status_code=500, error_ticket=error_ticket
+            "Failed to change password",
+            error_code="OPERATION_FAILED",
+            status_code=500,
+            error_ticket=error_ticket,
         )
 
 
@@ -1092,7 +1191,9 @@ def admin_panel_old():
 
             # Optimize: Get aggregated stats without loading all users
             total_users = User.query.count()
-            total_analyses = db.session.query(func.sum(UsageTracking.bwc_videos_processed)).scalar() or 0
+            total_analyses = (
+                db.session.query(func.sum(UsageTracking.bwc_videos_processed)).scalar() or 0
+            )
             total_storage = db.session.query(func.sum(UsageTracking.storage_used_mb)).scalar() or 0
             storage_gb = round(total_storage / 1024, 2) if total_storage else 0
 
@@ -1189,9 +1290,13 @@ def download_analysis_report(analysis_id, format):
             download_name=f"{analysis.id}_report.json",
         )
     elif format == "txt" and analysis.report_txt_path:
-        return send_file(analysis.report_txt_path, as_attachment=True, download_name=f"{analysis.id}_report.txt")
+        return send_file(
+            analysis.report_txt_path, as_attachment=True, download_name=f"{analysis.id}_report.txt"
+        )
     elif format == "md" and analysis.report_md_path and os.path.exists(analysis.report_md_path):
-        return send_file(analysis.report_md_path, as_attachment=True, download_name=f"{analysis.id}_report.md")
+        return send_file(
+            analysis.report_md_path, as_attachment=True, download_name=f"{analysis.id}_report.md"
+        )
 
     return jsonify({"error": f"Report format '{format}' not available"}), 404
 
@@ -1200,7 +1305,9 @@ def download_analysis_report(analysis_id, format):
 @login_required
 def get_user_analyses():
     """Get all analyses for current user"""
-    analyses = Analysis.query.filter_by(user_id=current_user.id).order_by(Analysis.created_at.desc()).all()
+    analyses = (
+        Analysis.query.filter_by(user_id=current_user.id).order_by(Analysis.created_at.desc()).all()
+    )
 
     return jsonify(
         {
@@ -1245,9 +1352,10 @@ def evidence_dashboard_page():
 def evidence_intake_submit():
     """Submit new evidence for processing"""
     from evidence_processing import evidence_workflow
-    from utils.security import InputValidator, ErrorSanitizer
-    from utils.responses import error_response, validation_error, success_response
     from utils.logging_config import get_logger
+    from utils.responses import (error_response, success_response,
+                                 validation_error)
+    from utils.security import ErrorSanitizer, InputValidator
 
     logger = get_logger("api")
 
@@ -1273,10 +1381,14 @@ def evidence_intake_submit():
         data = {
             "case_number": InputValidator.sanitize_text(case_number, 50),
             "incident_date": request.form.get("incident_date", "").strip(),
-            "incident_location": InputValidator.sanitize_text(request.form.get("incident_location", ""), 200),
+            "incident_location": InputValidator.sanitize_text(
+                request.form.get("incident_location", ""), 200
+            ),
             "case_type": request.form.get("case_type", "").strip(),
             "jurisdiction": InputValidator.sanitize_text(request.form.get("jurisdiction", ""), 100),
-            "lead_investigator": InputValidator.sanitize_text(request.form.get("lead_investigator", ""), 100),
+            "lead_investigator": InputValidator.sanitize_text(
+                request.form.get("lead_investigator", ""), 100
+            ),
             "evidence_type": evidence_type,
             "description": InputValidator.sanitize_text(request.form.get("description", ""), 5000),
             "source": InputValidator.sanitize_text(request.form.get("source", ""), 200),
@@ -1284,11 +1396,17 @@ def evidence_intake_submit():
             "badge_number": InputValidator.sanitize_text(request.form.get("badge_number", ""), 50),
             "acquired_by": InputValidator.sanitize_text(request.form.get("acquired_by", ""), 100),
             "acquired_date": request.form.get("acquired_date", "").strip(),
-            "acquisition_method": InputValidator.sanitize_text(request.form.get("acquisition_method", ""), 200),
-            "storage_location": InputValidator.sanitize_text(request.form.get("storage_location", ""), 200),
+            "acquisition_method": InputValidator.sanitize_text(
+                request.form.get("acquisition_method", ""), 200
+            ),
+            "storage_location": InputValidator.sanitize_text(
+                request.form.get("storage_location", ""), 200
+            ),
             "priority": request.form.get("priority", "normal"),
             "assigned_to": InputValidator.sanitize_text(request.form.get("assigned_to", ""), 100),
-            "special_instructions": InputValidator.sanitize_text(request.form.get("special_instructions", ""), 2000),
+            "special_instructions": InputValidator.sanitize_text(
+                request.form.get("special_instructions", ""), 2000
+            ),
             "submitted_by": current_user.email,
             "id": str(uuid.uuid4())[:12].upper(),
         }
@@ -1309,14 +1427,18 @@ def evidence_intake_submit():
                     is_valid, error_msg = InputValidator.validate_file_type(file)
                     if not is_valid:
                         logger.warning(f"File upload rejected: {error_msg}")
-                        return error_response(error_msg, error_code="FILE_TYPE_NOT_ALLOWED", status_code=400)
+                        return error_response(
+                            error_msg, error_code="FILE_TYPE_NOT_ALLOWED", status_code=400
+                        )
 
                     # Validate file size (get category from evidence type)
                     category = "video" if "video" in evidence_type.lower() else "document"
                     is_valid, error_msg = InputValidator.validate_file_size(file, category)
                     if not is_valid:
                         logger.warning(f"File upload rejected: {error_msg}")
-                        return error_response(error_msg, error_code="FILE_TOO_LARGE", status_code=400)
+                        return error_response(
+                            error_msg, error_code="FILE_TOO_LARGE", status_code=400
+                        )
 
                     # Sanitize filename and save securely
                     filename = secure_filename(file.filename)
@@ -1331,7 +1453,9 @@ def evidence_intake_submit():
                         filepath = InputValidator.sanitize_path(str(upload_dir), unique_filename)
                     except ValueError as e:
                         logger.error(f"Path traversal attempt detected: {e}")
-                        return error_response("Invalid file path", error_code="VALIDATION_ERROR", status_code=400)
+                        return error_response(
+                            "Invalid file path", error_code="VALIDATION_ERROR", status_code=400
+                        )
 
                     file.save(filepath)
                     logger.info(f"File saved: {filepath}")
@@ -1375,7 +1499,9 @@ def evidence_intake_submit():
 
         # Save evidence package metadata
         metadata_path = (
-            Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis")) / analysis.id / "evidence_package.json"
+            Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis"))
+            / analysis.id
+            / "evidence_package.json"
         )
         metadata_path.parent.mkdir(parents=True, exist_ok=True)
         with open(metadata_path, "w") as f:
@@ -1396,7 +1522,9 @@ def evidence_intake_submit():
 
         # Return sanitized error to user
         user_message = ErrorSanitizer.sanitize_error(e, "file")
-        return error_response(user_message, error_code="OPERATION_FAILED", status_code=500, error_ticket=error_ticket)
+        return error_response(
+            user_message, error_code="OPERATION_FAILED", status_code=500, error_ticket=error_ticket
+        )
 
 
 @app.route("/api/evidence/list", methods=["GET"])
@@ -1408,14 +1536,18 @@ def list_evidence():
     per_page = request.args.get("per_page", 20, type=int)
     per_page = min(per_page, 100)  # Cap at 100
 
-    analyses_query = Analysis.query.filter_by(user_id=current_user.id).order_by(Analysis.created_at.desc())
+    analyses_query = Analysis.query.filter_by(user_id=current_user.id).order_by(
+        Analysis.created_at.desc()
+    )
     analyses = analyses_query.limit(per_page).offset((page - 1) * per_page).all()
 
     evidence_list = []
     for analysis in analyses:
         # Load evidence package if exists
         metadata_path = (
-            Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis")) / analysis.id / "evidence_package.json"
+            Path(app.config.get("ANALYSIS_FOLDER", "./bwc_analysis"))
+            / analysis.id
+            / "evidence_package.json"
         )
 
         if metadata_path.exists():
@@ -1522,7 +1654,7 @@ try:
     LEGAL_TOOLS_AVAILABLE = True
 except ImportError:
     LEGAL_TOOLS_AVAILABLE = False
-    print("⚠️  Legal analysis tools not available")
+    print("[WARN] Legal analysis tools not available")
 
 
 @app.route("/legal-analysis")
@@ -1622,7 +1754,8 @@ def combined_legal_analysis():
             "violations": violation_results,
             "compliance": compliance_results,
             "overall_assessment": {
-                "total_issues": violation_results["total_violations"] + compliance_results["total_issues"],
+                "total_issues": violation_results["total_violations"]
+                + compliance_results["total_issues"],
                 "critical_violations": len(violation_results.get("critical_violations", [])),
                 "non_compliant_count": compliance_results["issues_by_status"]["non_compliant"],
                 "recommended_actions": violation_results.get("recommended_motions", [])
@@ -1911,7 +2044,9 @@ def create_checkout_session():
             trial_days=14,
         )
 
-        return jsonify({"success": True, "checkout_url": session["url"], "session_id": session["session_id"]})
+        return jsonify(
+            {"success": True, "checkout_url": session["url"], "session_id": session["session_id"]}
+        )
 
     except Exception as e:
         app.logger.error(f"Checkout creation error: {str(e)}")
@@ -2024,7 +2159,9 @@ def deploy_agent():
     config = data.get("config", {})
 
     try:
-        agent_id = agent_manager.deploy_agent(agent_type=agent_type, user_id=str(current_user.id), config=config)
+        agent_id = agent_manager.deploy_agent(
+            agent_type=agent_type, user_id=str(current_user.id), config=config
+        )
 
         return jsonify({"agent_id": agent_id, "message": "Agent deployed successfully"})
     except Exception as e:
@@ -2248,7 +2385,9 @@ def workflow_generate_document():
         custom_inputs = data.get("custom_inputs", {})
 
         orchestrator = get_orchestrator(current_user.id)
-        result = orchestrator.generate_document_from_analysis(workflow_id, document_type, custom_inputs)
+        result = orchestrator.generate_document_from_analysis(
+            workflow_id, document_type, custom_inputs
+        )
 
         return jsonify(result)
     except Exception as e:
@@ -2453,6 +2592,8 @@ def serve_assets(filename):
 # ========================================
 
 
+@require_tier(TierLevel.STARTER)
+@check_usage_limit("bwc_videos_per_month", increment=1)
 @app.route("/api/upload", methods=["POST"])
 @login_required
 def upload_file():
@@ -2522,6 +2663,8 @@ def upload_file():
     )
 
 
+@require_tier(TierLevel.STARTER)
+@check_usage_limit("pdf_documents_per_month", increment=1)
 @app.route("/api/upload/pdf", methods=["POST"])
 @login_required
 def upload_pdf():
@@ -2605,6 +2748,8 @@ def upload_pdf():
     )
 
 
+@require_tier(TierLevel.STARTER)
+@check_usage_limit("pdf_documents_per_month", increment=1)
 @app.route("/api/upload/pdf/batch", methods=["POST"])
 def batch_upload_pdf():
     """Handle batch PDF file upload"""
@@ -2675,7 +2820,9 @@ def batch_upload_pdf():
             app.logger.info(f"PDF uploaded (batch): {original_filename} (ID: {pdf_upload.id})")
 
         except Exception as e:
-            results["failed"].append({"filename": file.filename if file else "unknown", "error": str(e)})
+            results["failed"].append(
+                {"filename": file.filename if file else "unknown", "error": str(e)}
+            )
             app.logger.error(f"Batch PDF upload error: {str(e)}")
 
     # Log audit for batch
@@ -2720,7 +2867,9 @@ def list_pdfs():
         # Public access - only show public PDFs
         query = query.filter_by(is_public=True)
 
-    pagination = query.order_by(PDFUpload.created_at.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    pagination = query.order_by(PDFUpload.created_at.desc()).paginate(
+        page=page, per_page=per_page, error_out=False
+    )
 
     return jsonify(
         {
@@ -2743,7 +2892,8 @@ def get_pdf_info(pdf_id):
 
     # Check access
     if not pdf.is_public and (
-        not current_user.is_authenticated or (current_user.id != pdf.user_id and current_user.role != "admin")
+        not current_user.is_authenticated
+        or (current_user.id != pdf.user_id and current_user.role != "admin")
     ):
         return jsonify({"error": "Access denied"}), 403
 
@@ -2760,7 +2910,8 @@ def download_pdf(pdf_id):
 
     # Check access
     if not pdf.is_public and (
-        not current_user.is_authenticated or (current_user.id != pdf.user_id and current_user.role != "admin")
+        not current_user.is_authenticated
+        or (current_user.id != pdf.user_id and current_user.role != "admin")
     ):
         return jsonify({"error": "Access denied"}), 403
 
@@ -2851,7 +3002,9 @@ def analyze_video():
             # Save reports
             output_dir = app.config["ANALYSIS_FOLDER"] / analysis.id
             # Export report (output_files not used in mock mode)
-            _ = analyzer.export_report(report, output_dir=str(output_dir), formats=["json", "txt", "md"])
+            _ = analyzer.export_report(
+                report, output_dir=str(output_dir), formats=["json", "txt", "md"]
+            )
 
             # Update analysis record
             analysis.status = "completed"
@@ -2862,7 +3015,9 @@ def analyze_video():
             analysis.total_speakers = len(report.speakers)
             analysis.total_segments = len(report.transcript)
             analysis.total_discrepancies = len(report.discrepancies)
-            analysis.critical_discrepancies = len([d for d in report.discrepancies if d.severity == "critical"])
+            analysis.critical_discrepancies = len(
+                [d for d in report.discrepancies if d.severity == "critical"]
+            )
             analysis.report_json_path = str(output_dir / "report.json")
             analysis.report_txt_path = str(output_dir / "report.txt")
             analysis.report_md_path = str(output_dir / "report.md")
@@ -3027,7 +3182,8 @@ def export_analysis_report(analysis, format):
             from reportlab.lib import colors
             from reportlab.lib.pagesizes import letter
             from reportlab.lib.styles import getSampleStyleSheet
-            from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+            from reportlab.platypus import (Paragraph, SimpleDocTemplate,
+                                            Spacer, Table, TableStyle)
 
             pdf_path = output_dir / f"report_{analysis.id}.pdf"
             doc = SimpleDocTemplate(str(pdf_path), pagesize=letter)
@@ -3088,9 +3244,17 @@ def export_analysis_report(analysis, format):
 
             # Chain of Custody
             story.append(Paragraph("<b>Chain of Custody</b>", styles["Heading2"]))
-            story.append(Paragraph(f"File Integrity (SHA-256): {analysis.file_hash}", styles["Normal"]))
-            story.append(Paragraph(f"Acquired By: {analysis.acquired_by or 'Not specified'}", styles["Normal"]))
-            story.append(Paragraph(f"Source: {analysis.source or 'Not specified'}", styles["Normal"]))
+            story.append(
+                Paragraph(f"File Integrity (SHA-256): {analysis.file_hash}", styles["Normal"])
+            )
+            story.append(
+                Paragraph(
+                    f"Acquired By: {analysis.acquired_by or 'Not specified'}", styles["Normal"]
+                )
+            )
+            story.append(
+                Paragraph(f"Source: {analysis.source or 'Not specified'}", styles["Normal"])
+            )
 
             doc.build(story)
 
@@ -3247,9 +3411,13 @@ def export_analysis_report(analysis, format):
             txt_path = output_dir / f"report_{analysis.id}.txt"
 
             duration_str = (
-                f"{int(analysis.duration // 60)}m {int(analysis.duration % 60)}s" if analysis.duration else "N/A"
+                f"{int(analysis.duration // 60)}m {int(analysis.duration % 60)}s"
+                if analysis.duration
+                else "N/A"
             )
-            file_size_str = f"{analysis.file_size / (1024*1024):.2f} MB" if analysis.file_size else "N/A"
+            file_size_str = (
+                f"{analysis.file_size / (1024*1024):.2f} MB" if analysis.file_size else "N/A"
+            )
 
             text_content = f"""
 ========================================
@@ -3325,9 +3493,13 @@ For official use only - Confidential
             md_path = output_dir / f"report_{analysis.id}.md"
 
             duration_str = (
-                f"{int(analysis.duration // 60)}m {int(analysis.duration % 60)}s" if analysis.duration else "N/A"
+                f"{int(analysis.duration // 60)}m {int(analysis.duration % 60)}s"
+                if analysis.duration
+                else "N/A"
             )
-            file_size_str = f"{analysis.file_size / (1024*1024):.2f} MB" if analysis.file_size else "N/A"
+            file_size_str = (
+                f"{analysis.file_size / (1024*1024):.2f} MB" if analysis.file_size else "N/A"
+            )
 
             markdown_content = f"""# BWC FORENSIC ANALYSIS REPORT
 
@@ -3539,7 +3711,9 @@ def dashboard_stats():
     # Get daily activity for last 7 days
     seven_days_ago = now - timedelta(days=7)
     daily_activity = (
-        db.session.query(func.date(Analysis.created_at).label("date"), func.count(Analysis.id).label("count"))
+        db.session.query(
+            func.date(Analysis.created_at).label("date"), func.count(Analysis.id).label("count")
+        )
         .filter(Analysis.user_id == current_user.id, Analysis.created_at >= seven_days_ago)
         .group_by(func.date(Analysis.created_at))
         .all()
@@ -3648,7 +3822,12 @@ def list_audit_logs():
     """List user's audit logs"""
     limit = request.args.get("limit", 50, type=int)
 
-    logs = AuditLog.query.filter_by(user_id=current_user.id).order_by(AuditLog.created_at.desc()).limit(limit).all()
+    logs = (
+        AuditLog.query.filter_by(user_id=current_user.id)
+        .order_by(AuditLog.created_at.desc())
+        .limit(limit)
+        .all()
+    )
 
     return jsonify(
         {
@@ -3690,7 +3869,9 @@ def admin_list_users():
     total = users_query.count()
     users = users_query.limit(per_page).offset((page - 1) * per_page).all()
 
-    return jsonify({"total": total, "page": page, "per_page": per_page, "users": [u.to_dict() for u in users]})
+    return jsonify(
+        {"total": total, "page": page, "per_page": per_page, "users": [u.to_dict() for u in users]}
+    )
 
 
 @app.route("/admin/users/<int:user_id>", methods=["GET", "PUT", "DELETE"])
@@ -3862,7 +4043,9 @@ def admin_delete_analysis(analysis_id):
     db.session.commit()
 
     # Log audit
-    AuditLog.log("admin_analysis_deleted", "analysis", analysis_id, {"deleted_by": current_user.email})
+    AuditLog.log(
+        "admin_analysis_deleted", "analysis", analysis_id, {"deleted_by": current_user.email}
+    )
 
     return jsonify({"message": "Analysis deleted successfully"})
 
@@ -3883,7 +4066,9 @@ def admin_stats():
     total_analyses = Analysis.query.count()
 
     # Get status counts in a single query
-    status_counts = dict(db.session.query(Analysis.status, func.count(Analysis.id)).group_by(Analysis.status).all())
+    status_counts = dict(
+        db.session.query(Analysis.status, func.count(Analysis.id)).group_by(Analysis.status).all()
+    )
     completed_analyses = status_counts.get("completed", 0)
     analyzing = status_counts.get("analyzing", 0)
     failed = status_counts.get("failed", 0)
@@ -3893,7 +4078,9 @@ def admin_stats():
     tier_counts = {}
     if hasattr(User, "tier"):
         tier_result = db.session.query(User.tier, func.count(User.id)).group_by(User.tier).all()
-        tier_counts = {tier.name if hasattr(tier, "name") else str(tier): count for tier, count in tier_result}
+        tier_counts = {
+            tier.name if hasattr(tier, "name") else str(tier): count for tier, count in tier_result
+        }
 
     free_users = tier_counts.get("FREE", 0)
     pro_users = tier_counts.get("PROFESSIONAL", 0)
@@ -3909,7 +4096,9 @@ def admin_stats():
     # Daily activity for last 7 days (optimized with group by)
     seven_days_ago = datetime.utcnow() - timedelta(days=7)
     daily_analyses = (
-        db.session.query(func.date(Analysis.created_at).label("date"), func.count(Analysis.id).label("count"))
+        db.session.query(
+            func.date(Analysis.created_at).label("date"), func.count(Analysis.id).label("count")
+        )
         .filter(Analysis.created_at >= seven_days_ago)
         .group_by(func.date(Analysis.created_at))
         .all()
@@ -3931,7 +4120,9 @@ def admin_stats():
             "completed_analyses": completed_analyses,
             "analyzing_count": analyzing,
             "failed_count": failed,
-            "success_rate": ((completed_analyses / total_analyses * 100) if total_analyses > 0 else 0),
+            "success_rate": (
+                (completed_analyses / total_analyses * 100) if total_analyses > 0 else 0
+            ),
             "subscription_breakdown": {
                 "free": free_users,
                 "professional": pro_users,
@@ -4440,7 +4631,9 @@ def admin_initialize_settings():
 
     db.session.commit()
 
-    AuditLog.log("settings_initialize", "AppSettings", None, {"created": created, "skipped": skipped})
+    AuditLog.log(
+        "settings_initialize", "AppSettings", None, {"created": created, "skipped": skipped}
+    )
 
     return jsonify(
         {
@@ -4473,6 +4666,8 @@ from flask_login import login_required
 # Subscription & tier gating imports
 
 
+@require_tier(TierLevel.STARTER)
+@check_usage_limit("pdf_documents_per_month", increment=1)
 @app.route("/api/upload/pdf/secure", methods=["POST"])
 @login_required
 def upload_pdf_secure():
@@ -4492,9 +4687,13 @@ def upload_pdf_secure():
     with open(save_path, "rb") as f:
         reader = PdfReader(f)
         text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    return jsonify({"message": "PDF uploaded", "filename": str(save_path.name), "text": text[:10000]})
+    return jsonify(
+        {"message": "PDF uploaded", "filename": str(save_path.name), "text": text[:10000]}
+    )
 
 
+@require_tier(TierLevel.STARTER)
+@check_usage_limit("bwc_videos_per_month", increment=1)
 @app.route("/api/upload/video", methods=["POST"])
 @login_required
 def upload_video():
@@ -4541,7 +4740,9 @@ def upload_video():
     # Get optional metadata from form
     analysis.case_number = request.form.get("case_number", "")
     analysis.evidence_number = request.form.get("evidence_number", "")
-    analysis.acquired_by = request.form.get("acquired_by", current_user.full_name or current_user.email)
+    analysis.acquired_by = request.form.get(
+        "acquired_by", current_user.full_name or current_user.email
+    )
     analysis.source = request.form.get("source", "Web Upload")
 
     db.session.add(analysis)
@@ -4611,7 +4812,9 @@ def upload_video():
                     f.write("TRANSCRIPT\n")
                     f.write("-" * 60 + "\n\n")
                     for segment in mock_report["transcript"]["segments"]:
-                        f.write(f"[{segment['start_time']:.2f}s] {segment['speaker_label']}: {segment['text']}\n")
+                        f.write(
+                            f"[{segment['start_time']:.2f}s] {segment['speaker_label']}: {segment['text']}\n"
+                        )
 
                 # Update analysis record
                 analysis.status = "completed"
@@ -4622,7 +4825,9 @@ def upload_video():
                 analysis.total_speakers = len(mock_report["transcript"]["speakers"])
                 analysis.total_segments = len(mock_report["transcript"]["segments"])
                 analysis.total_discrepancies = len(mock_report["discrepancies"]["items"])
-                analysis.critical_discrepancies = mock_report["discrepancies"]["by_severity"]["high"]
+                analysis.critical_discrepancies = mock_report["discrepancies"]["by_severity"][
+                    "high"
+                ]
                 analysis.report_json_path = str(json_path)
                 analysis.report_txt_path = str(txt_path)
                 analysis.report_md_path = str(output_dir / "report.md")
@@ -4717,7 +4922,8 @@ def health_check_status():
 # ========================================
 # RUN APPLICATION
 
-@app.route('/dashboard/usage')
+
+@app.route("/dashboard/usage")
 @login_required
 def usage_dashboard():
     """Usage dashboard showing subscription and limits"""
@@ -4725,12 +4931,126 @@ def usage_dashboard():
 
     usage_stats = TierGate.get_usage_stats(current_user)
 
-    return render_template(
-        'usage_dashboard.html',
-        usage_stats=usage_stats
-    )
+    return render_template("usage_dashboard.html", usage_stats=usage_stats)
+
 
 # ========================================
+
+
+# ============================================================================
+# FREE TIER ROUTES
+# ============================================================================
+
+
+@app.route("/free-dashboard")
+@login_required
+def free_dashboard():
+    """FREE tier dashboard with demo cases and educational resources"""
+    from flask_login import current_user
+
+    from models_auth import TierLevel
+
+    # Redirect non-FREE users to regular dashboard
+    if current_user.tier != TierLevel.FREE:
+        return redirect(url_for("dashboard"))
+
+    # Get demo cases
+    demo_cases = get_demo_cases()
+
+    # Get educational resources
+    educational_resources = get_all_educational_resources()
+
+    # Get upload status
+    upload_status = OneTimeUploadManager.get_upload_status(current_user)
+
+    # Get data retention status
+    data_status = get_user_data_status(current_user)
+
+    return render_template(
+        "free_tier_dashboard.html",
+        demo_cases=demo_cases,
+        educational_resources=educational_resources,
+        upload_status=upload_status,
+        data_status=data_status,
+    )
+
+
+@app.route("/cases/<case_id>")
+@login_required
+def view_case(case_id):
+    """View case details (handles both demo and real cases)"""
+    from flask_login import current_user
+
+    # Check if it's a demo case
+    if is_demo_case(case_id):
+        demo_case = get_demo_case_by_id(case_id)
+        if not demo_case:
+            flash("Demo case not found", "error")
+            return redirect(url_for("free_dashboard"))
+
+        return render_template("demo_case_detail.html", case=demo_case)
+
+    # Regular case logic here
+    # case = Case.query.get_or_404(case_id)
+    # return render_template('case_detail.html', case=case)
+
+    flash("Case viewing coming soon", "info")
+    return redirect(url_for("free_dashboard"))
+
+
+@app.route("/education")
+@app.route("/education/<category>")
+@login_required
+def education_center(category=None):
+    """Educational resources center"""
+    resources = get_all_educational_resources()
+
+    return render_template(
+        "education_center.html",
+        resources=resources,
+        categories=CATEGORIES,
+        selected_category=category,
+    )
+
+
+@app.route("/education/resource/<resource_id>")
+@login_required
+def view_resource(resource_id):
+    """View specific educational resource"""
+    resource = get_resource_by_id(resource_id)
+
+    if not resource:
+        flash("Resource not found", "error")
+        return redirect(url_for("education_center"))
+
+    return render_template("resource_detail.html", resource=resource)
+
+
+@app.route("/api/upload-status")
+@login_required
+def get_upload_status():
+    """API endpoint for upload status"""
+    from flask import jsonify
+    from flask_login import current_user
+
+    status = OneTimeUploadManager.get_upload_status(current_user)
+    return jsonify(status)
+
+
+@app.route("/api/data-retention-status")
+@login_required
+def get_data_retention_status():
+    """API endpoint for data retention status"""
+    from flask import jsonify
+    from flask_login import current_user
+
+    status = get_user_data_status(current_user)
+    return jsonify(status)
+
+
+# ============================================================================
+# END FREE TIER ROUTES
+# ============================================================================
 
 
 if __name__ == "__main__":
@@ -4795,39 +5115,19 @@ if __name__ == "__main__":
 # RUN APPLICATION
 # ========================================
 
-if __name__ == "__main__":
-    import os
 
-    port = int(os.getenv("PORT", 5000))
-    debug = os.getenv("FLASK_ENV", "production") == "development"
+# Stripe Pricing Table Routes
+@app.route("/pricing-stripe")
+def pricing_stripe():
+    """Stripe embedded pricing table"""
+    return render_template("pricing-stripe-embed.html")
 
-    # Display startup banner
-    print(
-        f"""
-    ╔════════════════════════════════════════════════════════════════╗
-    ║                                                                ║
-    ║        BarberX Legal Technologies                              ║
-    ║        Professional BWC Forensic Analysis Platform             ║
-    ║                                                                ║
-    ╚════════════════════════════════════════════════════════════════╝
 
-    🌐 Web Application: http://localhost:{port}
-    🔐 Admin Login: admin@barberx.info
-    📊 Database: SQLite
-    Logs: ./logs/barberx.log
+@app.route("/pricing")
+def pricing():
+    """Main pricing page with custom cards"""
+    # Option 1: Use custom cards (pricing-5tier.html)
+    return render_template("pricing.html")
 
-    Features:
-    ✅ Multi-user authentication
-    ✅ Role-based access control
-    ✅ Subscription tiers (Free, Professional, Enterprise)
-    ✅ API key management
-    ✅ Audit logging
-    ✅ Database persistence
-    ✅ Professional dashboard
-
-    Ready for production deployment!
-    Press Ctrl+C to stop the server.
-    """
-    )
-
-    app.run(host="0.0.0.0", port=port, debug=debug)
+    # Option 2: Use Stripe embed (uncomment to switch)
+    # return render_template('pricing-stripe-embed.html')
