@@ -38,18 +38,20 @@ DATABASE_URL=<auto-populated-by-render>
 
 #### **Stripe Payment Processing** (REQUIRED for pricing page)
 ```bash
-STRIPE_PRICING_TABLE_ID=prctbl_1Su2jmHGgvJKMFG1wn1Lum5i
-STRIPE_PUBLISHABLE_KEY=pk_live_51RjUMaHGgvJKMFG1baiSBss1LH5qGHAhx02GvqfAWxVszseRfxklan3x6O4Sz1FJtv8hIFz18lbZ0dqCIdwFfJuz005aZZ9LBh
-STRIPE_SECRET_KEY=sk_live_<your-secret-key>
-STRIPE_WEBHOOK_SECRET=whsec_<your-webhook-secret>
+STRIPE_PRICING_TABLE_ID=prctbl_YOUR_ACTUAL_PRICING_TABLE_ID
+STRIPE_PUBLISHABLE_KEY=pk_live_YOUR_ACTUAL_PUBLISHABLE_KEY
+STRIPE_SECRET_KEY=sk_live_YOUR_ACTUAL_SECRET_KEY
+STRIPE_WEBHOOK_SECRET=whsec_YOUR_ACTUAL_WEBHOOK_SECRET
 ```
+
+**⚠️ SECURITY CRITICAL:** The example keys shown above in previous versions were LIVE production credentials and have been removed. You MUST use your own Stripe credentials from your Stripe Dashboard.
 
 **Where to find these:**
 1. Go to https://dashboard.stripe.com
-2. **STRIPE_PRICING_TABLE_ID**: Settings → Pricing Tables → Copy Table ID
-3. **STRIPE_PUBLISHABLE_KEY**: Developers → API keys → Publishable key
-4. **STRIPE_SECRET_KEY**: Developers → API keys → Secret key (Reveal)
-5. **STRIPE_WEBHOOK_SECRET**: Developers → Webhooks → Add endpoint → Copy signing secret
+2. **STRIPE_PRICING_TABLE_ID**: Products → Pricing Tables → Create/Select Table → Copy Table ID (starts with `prctbl_`)
+3. **STRIPE_PUBLISHABLE_KEY**: Developers → API keys → Publishable key (starts with `pk_live_`)
+4. **STRIPE_SECRET_KEY**: Developers → API keys → Secret key → Reveal (starts with `sk_live_`)
+5. **STRIPE_WEBHOOK_SECRET**: Developers → Webhooks → Add endpoint → Copy signing secret (starts with `whsec_`)
 
 #### **Optional Services**
 ```bash
