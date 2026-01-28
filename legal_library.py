@@ -26,7 +26,7 @@ from typing import List, Dict, Optional
 import re
 import requests
 from bs4 import BeautifulSoup
-import PyPDF2
+import pypdf as PyPDF2  # Migrated from PyPDF2 (deprecated), aliased for compatibility
 import docx
 import json
 import os

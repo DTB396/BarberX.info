@@ -10,7 +10,7 @@ from models_auth import TierLevel
 
 # Optional imports for watermarking
 try:
-    from PyPDF2 import PdfReader, PdfWriter
+    from pypdf import PdfReader, PdfWriter  # Migrated from PyPDF2 (deprecated)
     from reportlab.lib.colors import Color
     from reportlab.lib.pagesizes import letter
     from reportlab.pdfgen import canvas

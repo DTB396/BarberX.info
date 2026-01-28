@@ -8,7 +8,7 @@ import os
 from datetime import datetime, timedelta
 
 from flask import flash, jsonify
-from PyPDF2 import PdfReader
+from pypdf import PdfReader  # Migrated from PyPDF2 (deprecated)
 
 from models_auth import TierLevel, db
 
