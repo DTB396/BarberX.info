@@ -29,7 +29,7 @@ pyannote.audio==3.1.1
 speechbrain==0.5.16
 
 # Legal NLP & Constitutional Analysis
-langchain==0.1.0
+langchain==1.2.7
 langchain-community==0.0.10
 langchain-openai==0.0.2
 langchain-anthropic==0.0.1
