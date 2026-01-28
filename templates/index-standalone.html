@@ -8,11 +8,11 @@
     </title>
     <!-- Constitutional Header Witness Component -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        fetch('/components/header-witness')
-          .then(response => response.text())
-          .then(html => {
-            document.body.insertAdjacentHTML('afterbegin', html);
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/components/header-witness")
+          .then((response) => response.text())
+          .then((html) => {
+            document.body.insertAdjacentHTML("afterbegin", html);
           });
       });
     </script>
@@ -549,9 +549,11 @@
     <nav class="main-nav">
       <div class="nav-container">
         <a href="/" class="nav-logo">
-          <img src="/assets/img/logo-barberx-horizontal.svg" 
-               alt="BarberX Legal Technologies" 
-               style="height: 40px; width: auto;" />
+          <img
+            src="/assets/img/logo-barberx-horizontal.svg"
+            alt="BarberX Legal Technologies"
+            style="height: 40px; width: auto"
+          />
         </a>
 
         <ul class="nav-links">

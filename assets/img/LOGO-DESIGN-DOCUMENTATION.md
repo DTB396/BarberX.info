@@ -8,12 +8,14 @@
 ## Design Rationale
 
 ### Symbolism
+
 - **Five-Pointed Star:** Represents excellence and service (NOT political sovereignty)
 - **Industrial Frame:** Early-20th-century American craftsmanship and precision
 - **Precision Markers:** Four corner dots symbolizing accuracy and attention to detail
 - **Dual Borders:** Outer (steel) and inner (navy) frames represent evidence integrity and constitutional boundaries
 
 ### Avoiding Problematic Associations
+
 - ✅ **Single star = excellence/service mark** (like military rank, quality certification)
 - ❌ **NOT a state flag** (no Texas/California secession implication)
 - ❌ **NOT sovereign citizen ideology** (no "alternative nationhood")
@@ -37,11 +39,13 @@ Text Gray:    #475569 (Subtitle text)
 ## Typography
 
 **Primary Font:** Rockwell / Courier New / Georgia (slab-serif)
+
 - Conveys legal authority and technical precision
 - Readable in court documents and digital displays
 - Timeless, early-20th-century industrial aesthetic
 
 **Letterforms:**
+
 - "BarberX" - Bold weight, tight letter-spacing (authority)
 - "LEGAL TECHNOLOGIES" - Uppercase, wide letter-spacing (technical precision)
 - Tagline - Italic, lighter weight (restrained elegance)
@@ -51,13 +55,16 @@ Text Gray:    #475569 (Subtitle text)
 ## Logo Variants
 
 ### 1. **logo-barberx-full.svg** (480×120px)
+
 **Use Cases:**
+
 - Website headers
 - Email signatures
 - Letterhead
 - Court filings cover pages
 
 **Contents:**
+
 - Logo mark (star in industrial frame)
 - Company name
 - Subtitle: "LEGAL TECHNOLOGIES"
@@ -66,13 +73,16 @@ Text Gray:    #475569 (Subtitle text)
 ---
 
 ### 2. **logo-barberx-horizontal.svg** (360×80px)
+
 **Use Cases:**
+
 - Navigation bars
 - Compact headers
 - Mobile responsive layouts
 - Presentation slides
 
 **Contents:**
+
 - Compact logo mark (60×60px)
 - Company name (horizontal layout)
 - Subtitle: "LEGAL TECHNOLOGIES"
@@ -80,13 +90,16 @@ Text Gray:    #475569 (Subtitle text)
 ---
 
 ### 3. **logo-barberx-icon.svg** (100×100px)
+
 **Use Cases:**
+
 - Favicons
 - Mobile app icons
 - Social media avatars
 - Watermarks on reports
 
 **Contents:**
+
 - Logo mark only (star in industrial frame)
 - No text (icon-only version)
 
@@ -95,6 +108,7 @@ Text Gray:    #475569 (Subtitle text)
 ## Usage Guidelines
 
 ### ✅ **Appropriate Uses**
+
 - Federal court filings and exhibits
 - Attorney correspondence
 - BWC forensic reports
@@ -103,6 +117,7 @@ Text Gray:    #475569 (Subtitle text)
 - Website/app interfaces
 
 ### ❌ **Avoid**
+
 - Political campaigns or advocacy
 - Contexts implying secession or sovereignty movements
 - Modifications that add flags, seals, or governmental insignia
@@ -113,30 +128,43 @@ Text Gray:    #475569 (Subtitle text)
 ## Technical Specifications
 
 ### File Format
+
 - **SVG** (Scalable Vector Graphics)
 - Infinite scalability without quality loss
 - Small file size (~3-5KB)
 - Editable in vector graphics software
 
 ### Accessibility
+
 - High contrast ratios (navy on white: 11.2:1 - WCAG AAA)
 - Readable at small sizes (16px minimum)
 - Screen reader compatible (semantic SVG markup)
 
 ### Web Integration
+
 ```html
 <!-- Full Logo -->
-<img src="/assets/img/logo-barberx-full.svg" 
-     alt="BarberX Legal Technologies - Precision. Integrity. Constitutional Technology." 
-     width="480" height="120">
+<img
+  src="/assets/img/logo-barberx-full.svg"
+  alt="BarberX Legal Technologies - Precision. Integrity. Constitutional Technology."
+  width="480"
+  height="120"
+/>
 
 <!-- Horizontal Logo (Navigation) -->
-<img src="/assets/img/logo-barberx-horizontal.svg" 
-     alt="BarberX Legal Technologies" 
-     width="360" height="80">
+<img
+  src="/assets/img/logo-barberx-horizontal.svg"
+  alt="BarberX Legal Technologies"
+  width="360"
+  height="80"
+/>
 
 <!-- Icon Only (Favicon) -->
-<link rel="icon" type="image/svg+xml" href="/assets/img/logo-barberx-icon.svg">
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/assets/img/logo-barberx-icon.svg"
+/>
 ```
 
 ---
@@ -144,7 +172,9 @@ Text Gray:    #475569 (Subtitle text)
 ## Design Elements Explained
 
 ### Star Symbolism (Non-Political)
+
 The five-pointed star represents:
+
 1. **Excellence** - Five-star rating, gold star award
 2. **Service** - Military rank insignia (not flag), public service
 3. **Precision** - Five points of accuracy (like a compass rose)
@@ -152,17 +182,20 @@ The five-pointed star represents:
 5. **Justice** - Five points representing truth, evidence, law, procedure, and verdict
 
 **NOT representing:**
+
 - State sovereignty (Texas lone star)
 - Alternative government (sovereign citizen ideology)
 - National flag (no stripes, canton, or field symbolism)
 
 ### Industrial Frame Motif
+
 - **Early-20th-Century Craftsmanship:** Quality manufacturing era (1900-1930)
 - **Precision Engineering:** Steel fabrication, industrial tolerances
 - **Constitutional Era Continuity:** 1787 Constitution → Industrial Revolution → Modern Tech
 - **Restrained Aesthetics:** No ornament, pure function, honest materials
 
 ### Precision Markers (Four Corners)
+
 - **Quality Control Points:** Like manufacturing inspection marks
 - **Evidence Chain of Custody:** Four corners of integrity (collect, preserve, analyze, present)
 - **Constitutional Cornerstones:** 4th, 5th, 6th, 14th Amendments
@@ -173,16 +206,19 @@ The five-pointed star represents:
 ## Color Psychology
 
 ### Deep Navy (#0a1f44)
+
 - **Association:** Constitutional law, federal authority, trust
 - **Historical:** Naval uniforms, maritime law, Admiralty courts
 - **Emotional:** Stability, competence, seriousness
 
 ### Steel Gray (#64748b)
+
 - **Association:** Industrial steel, precision machinery, objectivity
 - **Historical:** Pittsburgh steel mills, American manufacturing
 - **Emotional:** Neutrality, reliability, technical expertise
 
 ### Muted Red (#b91c1c)
+
 - **Association:** Precision markers, important details, emphasis
 - **Historical:** Blueprint red lines, quality control stamps
 - **Emotional:** Accuracy, attention to detail (NOT aggression)
@@ -203,16 +239,18 @@ The five-pointed star represents:
 
 ## Legal Disclaimer (Internal Use)
 
-This logo is the intellectual property of BarberX Legal Technologies (DTMB). 
+This logo is the intellectual property of BarberX Legal Technologies (DTMB).
 
 **Trademark Status:** Pending registration with USPTO (Class 42: Legal technology services)
 
 **Restrictions:**
+
 - May not be modified to imply government endorsement
 - May not be combined with political party symbols
 - May not be used in contexts implying judicial authority
 
 **Permissible Uses:**
+
 - Private legal practice
 - Attorney work product
 - Court filings (as attorney's mark, not court seal)
@@ -223,6 +261,7 @@ This logo is the intellectual property of BarberX Legal Technologies (DTMB).
 ## Version History
 
 **v1.0 - January 28, 2026**
+
 - Initial design: Full, horizontal, and icon variants
 - Color palette: Navy, steel gray, muted red
 - Typography: Rockwell/Georgia slab-serif
@@ -233,6 +272,7 @@ This logo is the intellectual property of BarberX Legal Technologies (DTMB).
 ## Next Steps
 
 ### Implementation Checklist
+
 - [ ] Add logo to website header (landing-public.html, base.html)
 - [ ] Update favicon.ico and apple-touch-icon.png
 - [ ] Generate PNG fallbacks for older browsers (480w, 960w @2x)
@@ -242,6 +282,7 @@ This logo is the intellectual property of BarberX Legal Technologies (DTMB).
 - [ ] Generate social media profile images (LinkedIn, Twitter)
 
 ### Future Enhancements
+
 - [ ] Animated SVG version for loading screens
 - [ ] Dark mode variant (white/light gray on navy background)
 - [ ] Monochrome version for black-and-white printing
