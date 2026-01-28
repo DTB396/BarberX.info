@@ -4,16 +4,26 @@
     {%- comment -%} Meta tags and SEO - Load First {%- endcomment -%}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="{{ site.theme_color | default: '#D4AF37' }}" />
+    <meta name="theme-color" content="#c41e3a" />
     
     {%- comment -%} SEO & Social Meta Tags {%- endcomment -%}
     {% include components/seo-meta.html %}
     {% include seo.html %}
     {% include schema.html %}
     
-    {%- comment -%} Icons {%- endcomment -%}
-    <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" />
-    <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}" />
+    {%- comment -%} PWA Manifest {%- endcomment -%}
+    <link rel="manifest" href="{{ '/manifest.json' | relative_url }}" />
+    
+    {%- comment -%} Icons - PWA & iOS {%- endcomment -%}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32.png' | relative_url }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16.png' | relative_url }}" />
+    <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}" />
+    
+    {%- comment -%} Apple Touch Icons {%- endcomment -%}
+    <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ '/assets/images/apple-touch-icon-152.png' | relative_url }}" />
+    <link rel="apple-touch-icon" sizes="167x167" href="{{ '/assets/images/apple-touch-icon-167.png' | relative_url }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon-180.png' | relative_url }}" />
     
     {%- comment -%} Preconnect to Google Fonts for Performance {%- endcomment -%}
     <link rel="preconnect" href="https://fonts.googleapis.com">
