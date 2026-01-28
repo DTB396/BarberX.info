@@ -1,4 +1,4 @@
-﻿Flask==3.1.0
+Flask==3.1.0
 Flask-CORS==6.0.2
 Flask-SQLAlchemy==3.1.1
 Flask-Login==0.6.3
@@ -11,12 +11,12 @@ psycopg2-binary==2.9.10
 SQLAlchemy==2.0.36
 python-dotenv==1.0.1
 requests==2.32.5
-Pillow==11.0.0
+Pillow==10.3.0
 # PyPDF2==3.0.1  # REMOVED: Deprecated, has CVE vulnerabilities - use pypdf instead
 pypdf==5.1.0  # UPDATED: Latest stable version with security patches
 pdfplumber==0.11.4
 openai==2.15.0
-cryptography==46.0.4
+cryptography==44.0.1
 certifi==2026.1.4
 
 # Phase 1 Premium Features
