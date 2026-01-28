@@ -108,3 +108,100 @@ test_*.html
 # Numbered version folders
 [0-9]*
 [0-9]*.[0-9]*.[0-9]*
+
+# BarberX Security Rules (Added 2026-01-28)
+# BarberX Confidential Financial Data
+INVESTOR-LOG.md
+*INVESTOR*.md
+*CONFIDENTIAL*.md
+*financial*.xlsx
+*revenue*.csv
+*margins*.csv
+
+# Environment variables (may contain API keys)
+.env
+.env.local
+.env.production
+.env.staging
+
+# Database files (contain user data)
+*.db
+*.sqlite
+*.sqlite3
+instance/*.db
+
+# Logs (may contain sensitive debug info)
+logs/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# IDEs
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# CSV data files (may contain PII)
+founding_member_signups.csv
+user_exports/
+customer_data/
+
+# Investor materials
+investor-deck-*.pptx
+investor-deck-*.pdf
+data-room/
+nda-signed/
+
+# Stripe/Payment test data
+stripe-test-data/
+payment-exports/
+
+# Security audit files
+git-audit-*.txt
+security-audit-*.md
+
+# Week 1 secure data folder (if local)
+SecureData/
+BarberX-Confidential/
